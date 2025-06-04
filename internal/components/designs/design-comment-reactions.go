@@ -3,14 +3,14 @@ package designs
 import (
 	"fmt"
 
+	"github.com/katallaxie/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/utils"
 	"github.com/zeiss/fiber-goth/adapters"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"
 	"github.com/zeiss/fiber-htmx/components/tailwind"
 	"github.com/zeiss/pkg/slices"
-	"github.com/zeiss/service-lens/internal/components"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/utils"
 )
 
 // DesignCommentReactionsProps ...

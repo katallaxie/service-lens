@@ -4,6 +4,11 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/components/workflows"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/utils"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/alerts"
 	"github.com/zeiss/fiber-htmx/components/buttons"
@@ -11,11 +16,6 @@ import (
 	"github.com/zeiss/fiber-htmx/components/loading"
 	"github.com/zeiss/fiber-htmx/components/tailwind"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/service-lens/internal/components"
-	"github.com/zeiss/service-lens/internal/components/workflows"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
-	"github.com/zeiss/service-lens/internal/utils"
 )
 
 // WorkflowShowControllerImpl ...

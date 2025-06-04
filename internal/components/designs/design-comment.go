@@ -3,6 +3,8 @@ package designs
 import (
 	"fmt"
 
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/utils"
 	"github.com/zeiss/fiber-goth/adapters"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/avatars"
@@ -13,8 +15,6 @@ import (
 	"github.com/zeiss/fiber-htmx/components/tooltips"
 	"github.com/zeiss/fiber-htmx/components/typography"
 	"github.com/zeiss/pkg/cast"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/utils"
 )
 
 // DesignCommentProps ...

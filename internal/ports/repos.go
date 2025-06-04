@@ -5,9 +5,9 @@ import (
 	"io"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/zeiss/fiber-goth/adapters"
 	"github.com/zeiss/fiber-htmx/components/tables"
-	"github.com/zeiss/service-lens/internal/models"
 )
 
 // Migration is a method that runs the migration.

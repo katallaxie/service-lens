@@ -1,7 +1,7 @@
 package workloads
 
 import (
-	"github.com/zeiss/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/models"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/cards"

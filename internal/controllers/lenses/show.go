@@ -4,17 +4,17 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/components/lenses"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/utils"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"
 	"github.com/zeiss/fiber-htmx/components/cards"
 	"github.com/zeiss/fiber-htmx/components/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
-	"github.com/zeiss/service-lens/internal/components"
-	"github.com/zeiss/service-lens/internal/components/lenses"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
-	"github.com/zeiss/service-lens/internal/utils"
 )
 
 // LensShowControllerImpl ...

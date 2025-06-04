@@ -3,13 +3,13 @@ package designs
 import (
 	"context"
 
+	"github.com/katallaxie/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/components/designs"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/zeiss/fiber-htmx/components/cards"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/errorx"
-	"github.com/zeiss/service-lens/internal/components"
-	"github.com/zeiss/service-lens/internal/components/designs"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/tables"

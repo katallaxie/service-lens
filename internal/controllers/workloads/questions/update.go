@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/expr-lang/expr"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"

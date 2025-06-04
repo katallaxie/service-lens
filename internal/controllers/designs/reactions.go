@@ -3,10 +3,10 @@ package designs
 import (
 	"context"
 
+	"github.com/katallaxie/service-lens/internal/components/designs"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/zeiss/fiber-htmx/components/toasts"
-	"github.com/zeiss/service-lens/internal/components/designs"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
 
 	"github.com/google/uuid"
 	htmx "github.com/zeiss/fiber-htmx"

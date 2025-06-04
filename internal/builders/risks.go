@@ -5,8 +5,8 @@ import (
 	"sync"
 
 	"github.com/expr-lang/expr"
+	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/zeiss/pkg/cast"
-	"github.com/zeiss/service-lens/internal/models"
 )
 
 // Risk ...

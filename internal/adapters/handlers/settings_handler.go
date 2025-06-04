@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/katallaxie/service-lens/internal/components"
 	goth "github.com/zeiss/fiber-goth"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"
@@ -12,7 +13,6 @@ import (
 	"github.com/zeiss/fiber-htmx/components/tailwind"
 	reload "github.com/zeiss/fiber-reload"
 	"github.com/zeiss/pkg/errorx"
-	"github.com/zeiss/service-lens/internal/components"
 )
 
 type SettingsHandler struct{}

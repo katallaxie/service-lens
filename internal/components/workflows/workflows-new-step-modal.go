@@ -3,8 +3,8 @@ package workflows
 import (
 	"fmt"
 
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/utils"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/utils"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"

@@ -1,10 +1,10 @@
 package dashboard
 
 import (
-	"github.com/zeiss/service-lens/internal/components"
-	"github.com/zeiss/service-lens/internal/components/dashboard"
-	"github.com/zeiss/service-lens/internal/ports"
-	"github.com/zeiss/service-lens/internal/utils"
+	"github.com/katallaxie/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/components/dashboard"
+	"github.com/katallaxie/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/utils"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/loading"

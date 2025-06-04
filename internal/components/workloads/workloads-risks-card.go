@@ -3,10 +3,10 @@ package workloads
 import (
 	"fmt"
 
+	"github.com/katallaxie/service-lens/internal/models"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/stats"
 	"github.com/zeiss/fiber-htmx/components/tailwind"
-	"github.com/zeiss/service-lens/internal/models"
 )
 
 // WorkloadsRisksCardProps ...

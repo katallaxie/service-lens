@@ -3,9 +3,9 @@ package profiles
 import (
 	"context"
 
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
 
 	"github.com/go-playground/validator/v10"
 	htmx "github.com/zeiss/fiber-htmx"

@@ -1,7 +1,7 @@
 package login
 
 import (
-	"github.com/zeiss/service-lens/internal/components"
+	"github.com/katallaxie/service-lens/internal/components"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"

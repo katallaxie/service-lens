@@ -3,9 +3,9 @@ package designs
 import (
 	"fmt"
 
-	"github.com/zeiss/service-lens/internal/builders"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/utils"
+	"github.com/katallaxie/service-lens/internal/builders"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/utils"
 
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"

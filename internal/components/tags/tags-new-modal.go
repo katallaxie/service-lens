@@ -1,7 +1,7 @@
 package tags
 
 import (
-	"github.com/zeiss/service-lens/internal/utils"
+	"github.com/katallaxie/service-lens/internal/utils"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/buttons"

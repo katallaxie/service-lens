@@ -4,12 +4,12 @@ import (
 	"context"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/service-lens/internal/components/lenses"
+	"github.com/katallaxie/service-lens/internal/ports"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/errorx"
-	"github.com/zeiss/service-lens/internal/components/lenses"
-	"github.com/zeiss/service-lens/internal/ports"
 )
 
 // LensPublishControllerImpl ...

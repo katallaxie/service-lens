@@ -1,10 +1,10 @@
 package lenses
 
 import (
+	"github.com/katallaxie/service-lens/internal/models"
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/cards"
 	"github.com/zeiss/pkg/conv"
-	"github.com/zeiss/service-lens/internal/models"
 )
 
 // LensMetadataCardProps ...

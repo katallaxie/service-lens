@@ -5,6 +5,10 @@ import (
 	"context"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/service-lens/internal/builders/renderers"
+	"github.com/katallaxie/service-lens/internal/builders/transformers"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
 	markdown "github.com/teekennedy/goldmark-markdown"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
@@ -12,10 +16,6 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/util"
 	"github.com/zeiss/pkg/conv"
-	"github.com/zeiss/service-lens/internal/builders/renderers"
-	"github.com/zeiss/service-lens/internal/builders/transformers"
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
 
 	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/forms"

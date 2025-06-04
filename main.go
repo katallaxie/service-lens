@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/zeiss/service-lens/cmd"
+	"github.com/katallaxie/service-lens/cmd"
 )
 
 func main() {

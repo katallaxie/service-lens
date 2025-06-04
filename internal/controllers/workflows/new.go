@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/zeiss/service-lens/internal/models"
-	"github.com/zeiss/service-lens/internal/ports"
-	"github.com/zeiss/service-lens/internal/utils"
+	"github.com/katallaxie/service-lens/internal/models"
+	"github.com/katallaxie/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/utils"
 
 	"github.com/go-playground/validator/v10"
 	htmx "github.com/zeiss/fiber-htmx"

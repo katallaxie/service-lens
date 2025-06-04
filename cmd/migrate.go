@@ -1,10 +1,10 @@
 package cmd
 
 import (
+	"github.com/katallaxie/service-lens/internal/adapters/db"
+	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/zeiss/fiber-goth/adapters"
 	"github.com/zeiss/pkg/dbx"
-	"github.com/zeiss/service-lens/internal/adapters/db"
-	"github.com/zeiss/service-lens/internal/models"
 
 	"github.com/spf13/cobra"
 	"gorm.io/driver/postgres"

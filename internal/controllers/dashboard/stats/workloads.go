@@ -3,11 +3,11 @@ package stats
 import (
 	"context"
 
+	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/zeiss/fiber-htmx/components/stats"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 	"github.com/zeiss/pkg/errorx"
-	"github.com/zeiss/service-lens/internal/ports"
 
 	htmx "github.com/zeiss/fiber-htmx"
 )
