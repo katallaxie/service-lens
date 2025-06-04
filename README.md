@@ -133,6 +133,8 @@ This schema provides a structured way to evaluate the design, operations and ris
 
 ## Development
 
+> [podman](https://podman.io) the free & open source container tools.
+
 Please, set all environment variables in `.env`. `docker compose up db` will launch a local development database.
 
 ```
