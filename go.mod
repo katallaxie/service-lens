@@ -8,7 +8,6 @@ tool (
 	gotest.tools/gotestsum
 	mvdan.cc/gofumpt
 	github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen
-	github.com/air-verse/air
 )
 
 require (

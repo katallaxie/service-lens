@@ -5,7 +5,7 @@ GO 					?= go
 GO_RELEASER 		?= goreleaser
 GO_TOOL 			?= $(GO) tool
 GO_TEST 			?= $(GO_TOOL) gotest.tools/gotestsum --format pkgname
-AIR  				?= $(GO_TOOL) github.com/cosmtrek/air
+AIR  				?= air
 
 .PHONY: start
 start: ## Start the application.
