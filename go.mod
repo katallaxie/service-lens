@@ -13,7 +13,7 @@ tool (
 require (
 	github.com/expr-lang/expr v1.17.5
 	github.com/go-playground/validator/v10 v10.22.1
-	github.com/gofiber/fiber/v2 v2.52.6
+	github.com/gofiber/fiber/v2 v2.52.8
 	github.com/google/uuid v1.6.0
 	github.com/katallaxie/pkg v0.6.6
 	github.com/kelseyhightower/envconfig v1.4.0
