@@ -1,11 +1,11 @@
 package environments
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/service-lens/internal/components"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
 )
 
 // NewFormProps ...

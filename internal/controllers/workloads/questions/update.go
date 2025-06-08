@@ -11,7 +11,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/cast"
 	"github.com/zeiss/pkg/conv"

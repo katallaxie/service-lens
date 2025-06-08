@@ -1,12 +1,12 @@
 package login
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/dividers"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/links"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/dividers"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/links"
 )
 
 func NewLogin() htmx.Node {

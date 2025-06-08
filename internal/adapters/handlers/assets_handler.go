@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 type AssetsHandler struct{}

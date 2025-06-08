@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"io"
 
+	middleware "github.com/katallaxie/fiber-htmx"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
@@ -28,7 +28,7 @@ func NewLensController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *Ne
 
 // Error ...
 func (l *NewLensControllerImpl) Error(err error) error {
-	return toasts.Error(err.Error())
+	return middleware.Error(err.Error())
 }
 
 // Post ...

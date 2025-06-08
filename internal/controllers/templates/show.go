@@ -9,7 +9,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/zeiss/pkg/errorx"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

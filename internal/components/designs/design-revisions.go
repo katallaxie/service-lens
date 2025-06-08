@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/collapsible"
+	"github.com/katallaxie/htmx/loading"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/collapsible"
-	"github.com/zeiss/fiber-htmx/components/loading"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 )
 
 // DesignRevisionsCardProps ...

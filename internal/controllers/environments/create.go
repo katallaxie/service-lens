@@ -10,7 +10,7 @@ import (
 	seed "github.com/zeiss/gorm-seed"
 
 	"github.com/go-playground/validator/v10"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 var validate *validator.Validate

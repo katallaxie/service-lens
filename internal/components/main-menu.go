@@ -3,9 +3,9 @@ package components
 import (
 	"strings"
 
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/menus"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/menus"
 )
 
 // MainMenuProps ...

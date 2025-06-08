@@ -5,6 +5,9 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/builders"
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -16,14 +19,11 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 	"github.com/zeiss/pkg/errorx"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 var _ = htmx.Controller(&EditBodyControllerImpl{})

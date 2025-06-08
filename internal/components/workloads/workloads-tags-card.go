@@ -1,11 +1,11 @@
 package workloads
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/models"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 )
 
 // WorkloadTagsCardProps ...

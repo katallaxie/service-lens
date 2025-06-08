@@ -4,16 +4,16 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/tables"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 	"github.com/zeiss/pkg/conv"
 	"github.com/zeiss/pkg/errorx"
 
 	"github.com/google/uuid"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

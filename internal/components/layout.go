@@ -1,13 +1,13 @@
 package components
 
 import (
+	middleware "github.com/katallaxie/fiber-htmx/toasts"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/dividers"
+	"github.com/katallaxie/htmx/drawers"
+	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/navbars"
 	"github.com/zeiss/fiber-goth/adapters"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/dividers"
-	"github.com/zeiss/fiber-htmx/components/drawers"
-	"github.com/zeiss/fiber-htmx/components/icons"
-	"github.com/zeiss/fiber-htmx/components/navbars"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 )
 
 // LayoutProps is the properties for the Layout component.
@@ -50,7 +50,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 					drawers.DrawerContentProps{
 						ID: "drawer",
 					},
-					toasts.Toasts(),
+					middleware.Toasts(),
 					htmx.Div(
 						htmx.ClassNames{
 							"h-full":        true,

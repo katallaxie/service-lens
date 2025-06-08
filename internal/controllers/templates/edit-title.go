@@ -4,18 +4,18 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/links"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/components/templates"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/links"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 var _ = htmx.Controller(&EditTitleControllerImpl{})

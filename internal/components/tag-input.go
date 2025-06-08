@@ -1,8 +1,8 @@
 package components
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/forms"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/forms"
 )
 
 // TagInputProps is a component that allows users to input tags.

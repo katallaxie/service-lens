@@ -1,6 +1,6 @@
 package lenses
 
-import htmx "github.com/zeiss/fiber-htmx"
+import htmx "github.com/katallaxie/htmx"
 
 // LensesStatusProps ...
 type LensesStatusProps struct {

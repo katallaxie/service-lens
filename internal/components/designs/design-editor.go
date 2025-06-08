@@ -1,9 +1,9 @@
 package designs
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alpine"
-	"github.com/zeiss/fiber-htmx/components/forms"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alpine"
+	"github.com/katallaxie/htmx/forms"
 )
 
 // EditorProps ...

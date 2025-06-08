@@ -3,8 +3,8 @@ package components
 import (
 	"strings"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/menus"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/menus"
 )
 
 // UserMenuProps ...

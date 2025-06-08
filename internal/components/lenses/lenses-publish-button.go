@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
 )
 
 // LensesPublishButtonProps ...

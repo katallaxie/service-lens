@@ -1,8 +1,8 @@
 package components
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/tables"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/tables"
 )
 
 // TableProps ...

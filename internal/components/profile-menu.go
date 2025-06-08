@@ -1,10 +1,10 @@
 package components
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/avatars"
+	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/zeiss/fiber-goth/adapters"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/avatars"
-	"github.com/zeiss/fiber-htmx/components/dropdowns"
 	"github.com/zeiss/pkg/cast"
 )
 

@@ -5,7 +5,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/components/environments"
 	"github.com/katallaxie/service-lens/internal/ports"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

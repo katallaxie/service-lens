@@ -1,12 +1,12 @@
 package lenses
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/modals"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/modals"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 )
 
 // NewLensModalProps ...

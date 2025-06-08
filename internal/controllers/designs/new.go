@@ -13,7 +13,7 @@ import (
 	"github.com/zeiss/pkg/errorx"
 	"gorm.io/gorm"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 // NewDesignControllerImpl ...

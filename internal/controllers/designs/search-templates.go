@@ -6,9 +6,9 @@ import (
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/tables"
-	"github.com/zeiss/fiber-htmx/components/toasts"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/toasts"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 )

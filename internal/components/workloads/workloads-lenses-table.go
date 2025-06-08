@@ -3,12 +3,12 @@ package workloads
 import (
 	"fmt"
 
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/links"
+	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/links"
-	"github.com/zeiss/fiber-htmx/components/tables"
 )
 
 // LensesTableProps ...

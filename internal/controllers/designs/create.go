@@ -5,13 +5,13 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 
 	"github.com/go-playground/validator/v10"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

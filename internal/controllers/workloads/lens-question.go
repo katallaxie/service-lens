@@ -9,13 +9,13 @@ import (
 	"github.com/zeiss/pkg/conv"
 
 	"github.com/google/uuid"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alpine"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/collapsible"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alpine"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/collapsible"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 )
 

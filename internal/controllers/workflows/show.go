@@ -9,12 +9,13 @@ import (
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alerts"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/loading"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
+
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alerts"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/loading"
+	"github.com/katallaxie/htmx/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 )
 

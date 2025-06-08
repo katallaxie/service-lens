@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/go-playground/validator/v10"
+	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
 	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )

@@ -1,6 +1,6 @@
 package components
 
-import htmx "github.com/zeiss/fiber-htmx"
+import htmx "github.com/katallaxie/htmx"
 
 // MarkdownToolbar ...
 func MarkdownToolbar(children ...htmx.Node) htmx.Node {

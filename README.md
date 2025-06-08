@@ -13,7 +13,7 @@ Service Lens is an enterprise service management tool. It allows you to manage y
 
 ![preview](assets/screenshot_1.png)
 
-It is build on [fiber-htmx](https://github.com/katallaxie/fiber-htmx) and uses a 3-tier architecture.
+It is build on [htmx](https://github.com/katallaxie/htmx) and uses a 3-tier architecture.
 
 ## Lens Format
 

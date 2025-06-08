@@ -1,11 +1,11 @@
 package templates
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alpine"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alpine"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
 )
 
 // TemplateNewFormProps ...

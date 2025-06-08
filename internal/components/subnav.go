@@ -1,7 +1,7 @@
 package components
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 // SubNavProps ...

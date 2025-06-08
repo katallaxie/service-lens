@@ -1,10 +1,10 @@
 package components
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/dropdowns"
+	"github.com/katallaxie/htmx/icons"
 	"github.com/zeiss/fiber-goth/adapters"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/dropdowns"
-	"github.com/zeiss/fiber-htmx/components/icons"
 )
 
 // AccountSwitcherProps ...

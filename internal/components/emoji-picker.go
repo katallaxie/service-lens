@@ -1,12 +1,12 @@
 package components
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alpine"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/dropdowns"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alpine"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/dropdowns"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/tailwind"
 )
 
 // EmojiPickerProps ...

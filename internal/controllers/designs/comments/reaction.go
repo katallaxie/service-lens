@@ -7,10 +7,10 @@ import (
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 
 	"github.com/google/uuid"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )
 

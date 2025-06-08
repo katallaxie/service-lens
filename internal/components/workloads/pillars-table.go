@@ -1,10 +1,10 @@
 package workloads
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/links"
+	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/links"
-	"github.com/zeiss/fiber-htmx/components/tables"
 )
 
 // LensPillarTableProps ...

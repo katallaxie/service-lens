@@ -22,7 +22,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/controllers/workloads/questions"
 	"github.com/katallaxie/service-lens/internal/ports"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

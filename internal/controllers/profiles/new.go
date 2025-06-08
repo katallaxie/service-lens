@@ -9,15 +9,15 @@ import (
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
+	"github.com/zeiss/fiber-htmx/components/toasts"
 	"github.com/zeiss/pkg/conv"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/tables"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
-	"github.com/zeiss/fiber-htmx/components/toasts"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 )
 

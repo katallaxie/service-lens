@@ -20,12 +20,11 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	logger "github.com/gofiber/fiber/v2/middleware/logger"
 	requestid "github.com/gofiber/fiber/v2/middleware/requestid"
+	htmx "github.com/katallaxie/fiber-htmx"
 	"github.com/katallaxie/pkg/server"
 	"github.com/spf13/cobra"
 	goth "github.com/zeiss/fiber-goth"
 	adapter "github.com/zeiss/fiber-goth/adapters/gorm"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 	reload "github.com/zeiss/fiber-reload"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -165,7 +164,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 
 		app := fiber.New(
 			fiber.Config{
-				ErrorHandler: toasts.DefaultErrorHandler,
+				ErrorHandler: htmx.Toast,
 			},
 		)
 		app.Use(requestid.New())
@@ -180,7 +179,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		app.Use(goth.NewProtectMiddleware(gothConfig))
 
 		compFuncConfig := htmx.Config{
-			ErrorHandler: toasts.DefaultErrorHandler,
+			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
 		app.Get("/", handlers.Dashboard())

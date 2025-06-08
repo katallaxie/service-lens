@@ -3,13 +3,13 @@ package stats
 import (
 	"context"
 
+	"github.com/katallaxie/htmx/stats"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/stats"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 	"github.com/zeiss/pkg/errorx"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 // ProfileStatsControllerImpl ...

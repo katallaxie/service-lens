@@ -4,13 +4,13 @@ import (
 	"context"
 
 	"github.com/go-playground/validator/v10"
+	middleware "github.com/katallaxie/fiber-htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 
 	"github.com/google/uuid"
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
@@ -27,7 +27,7 @@ func NewCommentsController(store seed.Database[ports.ReadTx, ports.ReadWriteTx])
 
 // Error ...
 func (l *CommentsControllerImpl) Error(err error) error {
-	return toasts.Error(err.Error())
+	return middleware.Error(err.Error())
 }
 
 // Post ...

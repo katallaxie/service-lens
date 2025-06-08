@@ -3,17 +3,17 @@ package designs
 import (
 	"fmt"
 
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/alpine"
+	"github.com/katallaxie/htmx/avatars"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
 	"github.com/zeiss/fiber-goth/adapters"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/alpine"
-	"github.com/zeiss/fiber-htmx/components/avatars"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/tables"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 	"github.com/zeiss/pkg/cast"
 )
 

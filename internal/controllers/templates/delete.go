@@ -4,11 +4,11 @@ import (
 	"context"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 

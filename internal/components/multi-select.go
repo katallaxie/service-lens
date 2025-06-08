@@ -1,10 +1,10 @@
 package components
 
 import (
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/dropdowns"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/icons"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/dropdowns"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/icons"
 )
 
 // MultiSelectProps ...

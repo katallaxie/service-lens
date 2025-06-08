@@ -17,9 +17,9 @@ import (
 	"github.com/yuin/goldmark/util"
 	"github.com/zeiss/pkg/conv"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/toasts"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )
 

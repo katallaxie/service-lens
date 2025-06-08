@@ -6,10 +6,10 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/loading"
-	"github.com/zeiss/fiber-htmx/components/stats"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/loading"
+	"github.com/katallaxie/htmx/stats"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )

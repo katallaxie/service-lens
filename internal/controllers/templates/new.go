@@ -6,7 +6,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 // NewTemplateControllerImpl ...

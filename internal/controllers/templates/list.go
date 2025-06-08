@@ -3,16 +3,16 @@ package templates
 import (
 	"context"
 
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/templates"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 	"github.com/zeiss/pkg/errorx"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/tables"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/tables"
 	seed "github.com/zeiss/gorm-seed"
 )
 

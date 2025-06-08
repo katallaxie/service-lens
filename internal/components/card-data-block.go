@@ -1,6 +1,6 @@
 package components
 
-import htmx "github.com/zeiss/fiber-htmx"
+import htmx "github.com/katallaxie/htmx"
 
 // CardDataBlockProps ...
 type CardDataBlockProps struct {

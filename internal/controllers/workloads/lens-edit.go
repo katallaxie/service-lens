@@ -5,16 +5,16 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/drawers"
+	"github.com/katallaxie/htmx/menus"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/drawers"
-	"github.com/zeiss/fiber-htmx/components/menus"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 const (

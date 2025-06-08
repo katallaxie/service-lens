@@ -7,9 +7,9 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
 
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/dropdowns"
-	"github.com/zeiss/fiber-htmx/components/tables"
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/dropdowns"
+	"github.com/katallaxie/htmx/tables"
 )
 
 // EnvironmentPartialListControllerImpl ...

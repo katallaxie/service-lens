@@ -12,7 +12,11 @@ tool (
 
 require (
 	github.com/expr-lang/expr v1.17.5
+<<<<<<< HEAD
 	github.com/go-playground/validator/v10 v10.26.0
+=======
+	github.com/go-playground/validator/v10 v10.22.1
+>>>>>>> ec50efa (wip: setup middleware)
 	github.com/gofiber/fiber/v2 v2.52.8
 	github.com/google/uuid v1.6.0
 	github.com/katallaxie/pkg v0.7.7
@@ -21,16 +25,20 @@ require (
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/pflag v1.0.6
 	github.com/teekennedy/goldmark-markdown v0.5.1
-	github.com/yuin/goldmark v1.7.10
+	github.com/yuin/goldmark v1.7.12
 	github.com/yuin/goldmark-emoji v1.0.6
 	github.com/zeiss/fiber-goth v1.2.15
-	github.com/zeiss/fiber-htmx v1.3.33
 	github.com/zeiss/fiber-reload v0.1.1
 	github.com/zeiss/gorm-seed v0.1.2
 	github.com/zeiss/pkg v0.1.23
 	go.abhg.dev/goldmark/mermaid v0.5.0
+<<<<<<< HEAD
 	golang.org/x/mod v0.25.0
 	gorm.io/driver/postgres v1.6.0
+=======
+	golang.org/x/mod v0.24.0
+	gorm.io/driver/postgres v1.5.9
+>>>>>>> ec50efa (wip: setup middleware)
 	gorm.io/gorm v1.30.0
 	helm.sh/helm v2.17.0+incompatible
 )
@@ -161,6 +169,8 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/julz/importas v0.2.0 // indirect
 	github.com/karamaru-alpha/copyloopvar v1.2.1 // indirect
+	github.com/katallaxie/fiber-htmx v1.0.1-0.20250608191517-4034a8f76995 // indirect
+	github.com/katallaxie/htmx v0.5.1 // indirect
 	github.com/kisielk/errcheck v1.9.0 // indirect
 	github.com/kkHAIKE/contextcheck v1.1.6 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
@@ -210,9 +220,9 @@ require (
 	github.com/perimeterx/marshmallow v1.1.5 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/polyfloyd/go-errorlint v1.8.0 // indirect
-	github.com/prometheus/client_golang v1.20.5 // indirect
+	github.com/prometheus/client_golang v1.21.1 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
-	github.com/prometheus/common v0.60.1 // indirect
+	github.com/prometheus/common v0.62.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/quasilyte/go-ruleguard v0.4.4 // indirect
 	github.com/quasilyte/go-ruleguard/dsl v0.3.22 // indirect
@@ -256,7 +266,7 @@ require (
 	github.com/uudashr/gocognit v1.2.0 // indirect
 	github.com/uudashr/iface v1.3.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.57.0 // indirect
+	github.com/valyala/fasthttp v1.62.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/vektra/mockery/v2 v2.53.4 // indirect
 	github.com/xen0n/gosmopolitan v1.3.0 // indirect
@@ -278,7 +288,7 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/crypto v0.38.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20250210185358-939b2ce775ac // indirect
-	golang.org/x/net v0.39.0 // indirect
+	golang.org/x/net v0.40.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
 	golang.org/x/sync v0.14.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect

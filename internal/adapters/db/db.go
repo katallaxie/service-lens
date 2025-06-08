@@ -8,8 +8,8 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/htmx/tables"
 	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/fiber-htmx/components/tables"
 	"github.com/zeiss/pkg/cast"
 	"github.com/zeiss/pkg/dbx"
 	"gorm.io/gorm"

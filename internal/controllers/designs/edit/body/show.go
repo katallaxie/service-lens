@@ -4,16 +4,16 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/forms"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 
-	htmx "github.com/zeiss/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
 var _ = htmx.Controller(&ShowControllerImpl{})

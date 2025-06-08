@@ -1,16 +1,16 @@
 package designs
 
 import (
+	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/loading"
+	"github.com/katallaxie/htmx/tabs"
+	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/utils"
-	htmx "github.com/zeiss/fiber-htmx"
-	"github.com/zeiss/fiber-htmx/components/buttons"
-	"github.com/zeiss/fiber-htmx/components/cards"
-	"github.com/zeiss/fiber-htmx/components/forms"
-	"github.com/zeiss/fiber-htmx/components/icons"
-	"github.com/zeiss/fiber-htmx/components/loading"
-	"github.com/zeiss/fiber-htmx/components/tabs"
-	"github.com/zeiss/fiber-htmx/components/tailwind"
 )
 
 // DesignNewFormProps ...
