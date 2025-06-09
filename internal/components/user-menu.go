@@ -20,36 +20,36 @@ func UserMenu(p UserMenuProps, children ...htmx.Node) htmx.Node {
 			htmx.ClassNames{},
 		),
 		menus.Menu(
-			menus.MenuProps{
+			menus.Props{
 				ClassNames: htmx.ClassNames{
 					"w-full":      true,
 					"bg-base-200": false,
 				},
 			},
-			menus.MenuItem(
-				menus.MenuItemProps{},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+			menus.Item(
+				menus.ItemProps{},
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/settings",
 						Active: strings.HasPrefix(p.Path, "/settings"),
 					},
 					htmx.Text("Settings"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+			menus.Item(
+				menus.ItemProps{},
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/me",
 						Active: strings.HasPrefix(p.Path, "/me"),
 					},
 					htmx.Text("Profile"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+			menus.Item(
+				menus.ItemProps{},
+				menus.Link(
+					menus.LinkProps{
 						Href: "/logout",
 					},
 					htmx.Text("Logout"),

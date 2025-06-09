@@ -3,13 +3,13 @@ package designs
 import (
 	"context"
 
-	"github.com/katallaxie/htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )
 

@@ -10,12 +10,11 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
 
-	"github.com/go-playground/validator/v10"
 	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
-var validate *validator.Validate
+var validate *validate.Validator
 
 type CreateDesignBody struct {
 	Title      string    `json:"title" form:"title" validate:"required,min=3,max=2048"`
@@ -41,7 +40,7 @@ func NewCreateDesignController(store seed.Database[ports.ReadTx, ports.ReadWrite
 
 // Prepare ...
 func (l *CreateDesignControllerImpl) Prepare() error {
-	validate = validator.New()
+	validate = validate.New()
 
 	err := l.BindBody(&l.body)
 	if err != nil {

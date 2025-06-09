@@ -10,9 +10,9 @@ import (
 
 // MainMenuProps ...
 type MainMenuProps struct {
-	ClassNames htmx.ClassNames
-	Path       string
-	Team       string
+	Path string
+	Team string
+	htmx.ClassNames
 }
 
 // MainMenu ...
@@ -23,34 +23,34 @@ func MainMenu(p MainMenuProps, children ...htmx.Node) htmx.Node {
 			p.ClassNames,
 		),
 		menus.Menu(
-			menus.MenuProps{
+			menus.Props{
 				ClassNames: htmx.ClassNames{
 					"w-full":      true,
 					"bg-base-200": false,
 				},
 			},
-			menus.MenuItem(
-				menus.MenuItemProps{},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+			menus.Item(
+				menus.ItemProps{},
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/",
 						Active: p.Path == "/",
 					},
 					htmx.Text("Dashboard"),
 				),
 			),
-			menus.MenuTitle(
-				menus.MenuTitleProps{},
+			menus.Title(
+				menus.TitleProps{},
 				htmx.Text("Design & Review"),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/designs",
 						Active: strings.HasPrefix(p.Path, "/designs"),
 					},
@@ -58,98 +58,98 @@ func MainMenu(p MainMenuProps, children ...htmx.Node) htmx.Node {
 				),
 			),
 
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/workloads",
 						Active: strings.HasPrefix(p.Path, "/workloads"),
 					},
 					htmx.Text("Workloads"),
 				),
 			),
-			menus.MenuTitle(
-				menus.MenuTitleProps{},
+			menus.Title(
+				menus.TitleProps{},
 				htmx.Text("Configuration"),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/lenses",
 						Active: strings.HasPrefix(p.Path, "/lenses"),
 					},
 					htmx.Text("Lenses"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/profiles",
 						Active: strings.HasPrefix(p.Path, "/profiles"),
 					},
 					htmx.Text("Profiles"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+			menus.Item(
+				menus.ItemProps{},
+				menus.Link(
+					menus.LinkProps{
 						Href:   "/environments",
 						Active: strings.HasPrefix(p.Path, "/environments"),
 					},
 					htmx.Text("Environments"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   utils.ListTagsUrlFormat,
 						Active: strings.HasPrefix(p.Path, "/tags"),
 					},
 					htmx.Text("Tags"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   utils.ListWorkflowsUrlFormat,
 						Active: strings.HasPrefix(p.Path, "/workflows"),
 					},
 					htmx.Text("Workflows"),
 				),
 			),
-			menus.MenuItem(
-				menus.MenuItemProps{
+			menus.Item(
+				menus.ItemProps{
 					ClassNames: htmx.ClassNames{
 						"hover:bg-base-300": false,
 					},
 				},
-				menus.MenuLink(
-					menus.MenuLinkProps{
+				menus.Link(
+					menus.LinkProps{
 						Href:   utils.ListTemplatesUrlFormat,
 						Active: strings.HasPrefix(p.Path, utils.ListTemplatesUrlFormat),
 					},

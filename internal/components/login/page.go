@@ -51,7 +51,7 @@ func NewLogin() htmx.Node {
 							"mt-4": true,
 						},
 						links.Button(
-							links.LinkProps{
+							links.Props{
 								ClassNames: htmx.ClassNames{
 									"w-full":      true,
 									"btn-outline": true,
@@ -66,7 +66,7 @@ func NewLogin() htmx.Node {
 							"mt-4": true,
 						},
 						links.Button(
-							links.LinkProps{
+							links.Props{
 								ClassNames: htmx.ClassNames{
 									"w-full":      true,
 									"btn-outline": true,

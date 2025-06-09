@@ -5,6 +5,7 @@ import (
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 )
 
 // MultiSelectProps ...
@@ -37,7 +38,7 @@ func MultiSelect(props MultiSelectProps) htmx.Node {
 					},
 				},
 				htmx.Text("Select Profile"),
-				icons.ChevronUpDownOutline(icons.IconProps{}),
+				heroicons.ChevronUpDownOutline(icons.IconProps{}),
 
 				//         <h3>
 				//   Search Contacts

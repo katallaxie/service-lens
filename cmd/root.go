@@ -9,12 +9,6 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
 	"github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/models"
-	"github.com/kelseyhightower/envconfig"
-	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/fiber-goth/providers"
-	"github.com/zeiss/fiber-goth/providers/entraid"
-	"github.com/zeiss/fiber-goth/providers/github"
-	"github.com/zeiss/pkg/dbx"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
@@ -22,10 +16,16 @@ import (
 	requestid "github.com/gofiber/fiber/v2/middleware/requestid"
 	htmx "github.com/katallaxie/fiber-htmx"
 	"github.com/katallaxie/pkg/server"
+	"github.com/kelseyhightower/envconfig"
 	"github.com/spf13/cobra"
 	goth "github.com/zeiss/fiber-goth"
+	"github.com/zeiss/fiber-goth/adapters"
 	adapter "github.com/zeiss/fiber-goth/adapters/gorm"
+	"github.com/zeiss/fiber-goth/providers"
+	"github.com/zeiss/fiber-goth/providers/entraid"
+	"github.com/zeiss/fiber-goth/providers/github"
 	reload "github.com/zeiss/fiber-reload"
+	"github.com/zeiss/pkg/dbx"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
@@ -156,15 +156,15 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			CookieHTTPOnly: true,
 		}
 
-		userHandler := handlers.NewUserHandler()
-		settingsHandlers := handlers.NewSettingsHandler()
-		previewHandlers := handlers.NewPreviewHandler()
+		// userHandler := handlers.NewUserHandler()
+		// settingsHandlers := handlers.NewSettingsHandler()
+		// previewHandlers := handlers.NewPreviewHandler()
 
-		handlers := handlers.New(store)
+		// handlers := handlers.New(store)
 
 		app := fiber.New(
 			fiber.Config{
-				ErrorHandler: htmx.Toast,
+				ErrorHandler: htmx.ToastsErrorHandler,
 			},
 		)
 		app.Use(requestid.New())
@@ -182,131 +182,133 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
-		app.Get("/", handlers.Dashboard())
-		app.Get("/login", htmx.NewCompFuncHandler(userHandler.Login(), compFuncConfig))
-		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
-		app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
-		app.Get("/logout", goth.NewLogoutHandler(gothConfig))
+		// app.Get("/", handlers.Dashboard())
+		app.Get("/login", htmx.NewCompFuncHandler(handlers.UserLogin(), compFuncConfig))
+		// app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
+		// app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
+		// app.Get("/logout", goth.NewLogoutHandler(gothConfig))
 
-		// Stats ...
-		stats := app.Group("/stats")
-		stats.Get("/profiles", handlers.StatsTotalProfiles())
-		stats.Get("/designs", handlers.StatsTotalDesigns())
-		stats.Get("/workloads", handlers.StatsTotalWorkloads())
+		// // Stats ...
+		// stats := app.Group("/stats")
+		// stats.Get("/profiles", handlers.StatsTotalProfiles())
+		// stats.Get("/designs", handlers.StatsTotalDesigns())
+		// stats.Get("/workloads", handlers.StatsTotalWorkloads())
 
-		// Designs ...
-		designs := app.Group("/designs")
-		designs.Get("/", handlers.ListDesigns())
-		designs.Get("/new", handlers.NewDesign())
-		designs.Post("/new", handlers.CreateDesign())
-		designs.Get("/search/workflows", handlers.SearchWorkflows())
-		designs.Get("/search/templates", handlers.SearchTemplates())
-		designs.Get("/:id", handlers.ShowDesign())
-		designs.Put("/:id", handlers.UpdateDesign())
-		designs.Delete("/:id", handlers.DeleteDesign())
-		designs.Post("/:id/tags", handlers.AddTagDesign())
-		designs.Delete("/:id/tags/:tag_id", handlers.RemoveTagDesign())
-		designs.Post("/:id/comments", handlers.CreateDesignComment())
-		designs.Delete("/:id/comments/:comment_id", handlers.DeleteDesignComment())
-		designs.Get("/:id/revisions", handlers.ListDesignRevisions())
-		designs.Get("/:id/body/edit", handlers.EditBodyDesign())
-		designs.Put("/:id/body/edit", handlers.UpdateBodyDesign())
-		designs.Get("/:id/title/edit", handlers.EditTitleDesign())
-		designs.Put("/:id/title/edit", handlers.UpdateTitleDesign())
-		designs.Post("/:id/reactions", handlers.DesignReactions())
-		designs.Post("/:id/tasks", handlers.Task())
-		designs.Delete("/:id/reactions/:reaction_id", handlers.DesignReactions())
-		designs.Post("/:id/comments/:comment_id/reactions", handlers.CreateDesignCommentReaction())
-		designs.Delete("/:id/comments/:comment_id/reactions/:reaction_id", handlers.DeleteDesignCommentReaction())
+		// // Designs ...
+		// designs := app.Group("/designs")
+		// designs.Get("/", handlers.ListDesigns())
+		// designs.Get("/new", handlers.NewDesign())
+		// designs.Post("/new", handlers.CreateDesign())
+		// designs.Get("/search/workflows", handlers.SearchWorkflows())
+		// designs.Get("/search/templates", handlers.SearchTemplates())
+		// designs.Get("/:id", handlers.ShowDesign())
+		// designs.Put("/:id", handlers.UpdateDesign())
+		// designs.Delete("/:id", handlers.DeleteDesign())
+		// designs.Post("/:id/tags", handlers.AddTagDesign())
+		// designs.Delete("/:id/tags/:tag_id", handlers.RemoveTagDesign())
+		// designs.Post("/:id/comments", handlers.CreateDesignComment())
+		// designs.Delete("/:id/comments/:comment_id", handlers.DeleteDesignComment())
+		// designs.Get("/:id/revisions", handlers.ListDesignRevisions())
+		// designs.Get("/:id/body/edit", handlers.EditBodyDesign())
+		// designs.Put("/:id/body/edit", handlers.UpdateBodyDesign())
+		// designs.Get("/:id/title/edit", handlers.EditTitleDesign())
+		// designs.Put("/:id/title/edit", handlers.UpdateTitleDesign())
+		// designs.Post("/:id/reactions", handlers.DesignReactions())
+		// designs.Post("/:id/tasks", handlers.Task())
+		// designs.Delete("/:id/reactions/:reaction_id", handlers.DesignReactions())
+		// designs.Post("/:id/comments/:comment_id/reactions", handlers.CreateDesignCommentReaction())
+		// designs.Delete("/:id/comments/:comment_id/reactions/:reaction_id", handlers.DeleteDesignCommentReaction())
 
-		// Profiles
-		profiles := app.Group("/profiles")
-		profiles.Get("/", handlers.ListProfiles())
-		profiles.Get("/new", handlers.NewProfile())
-		profiles.Post("/new", handlers.CreateProfile())
-		profiles.Get("/:id", handlers.ShowProfile())
-		profiles.Put("/:id", handlers.EditProfile())
-		profiles.Delete("/:id", handlers.DeleteProfile())
+		// // Profiles
+		// profiles := app.Group("/profiles")
+		// profiles.Get("/", handlers.ListProfiles())
+		// profiles.Get("/new", handlers.NewProfile())
+		// profiles.Post("/new", handlers.CreateProfile())
+		// profiles.Get("/:id", handlers.ShowProfile())
+		// profiles.Put("/:id", handlers.EditProfile())
+		// profiles.Delete("/:id", handlers.DeleteProfile())
 
-		// Environments ...
-		environments := app.Group("/environments")
-		environments.Get("/", handlers.ListEnvironments())
-		environments.Get("/new", handlers.NewEnvironment())
-		environments.Post("/new", handlers.CreateEnvironment())
-		environments.Get("/:id", handlers.ShowEnvironment())
-		environments.Get("/:id/edit", handlers.EditEnvironment())
-		environments.Put("/:id", handlers.UpdateEnvironment())
-		environments.Delete("/:id", handlers.DeleteEnvironment())
+		// // Environments ...
+		// environments := app.Group("/environments")
+		// environments.Get("/", handlers.ListEnvironments())
+		// environments.Get("/new", handlers.NewEnvironment())
+		// environments.Post("/new", handlers.CreateEnvironment())
+		// environments.Get("/:id", handlers.ShowEnvironment())
+		// environments.Get("/:id/edit", handlers.EditEnvironment())
+		// environments.Put("/:id", handlers.UpdateEnvironment())
+		// environments.Delete("/:id", handlers.DeleteEnvironment())
 
-		// Lenses ...
-		lenses := app.Group("/lenses")
-		lenses.Get("/", handlers.ListLenses())
-		lenses.Post("/", handlers.NewLens())
-		lenses.Get("/:id", handlers.ShowLens())
-		lenses.Get("/:id/edit", handlers.EditLens())
-		lenses.Put("/:id", handlers.UpdateLens())
-		lenses.Delete("/:id", handlers.DeleteLens())
-		lenses.Post("/:id/publish", handlers.PublishLens())
-		lenses.Delete("/:id/publish", handlers.UnpublishLens())
+		// // Lenses ...
+		// lenses := app.Group("/lenses")
+		// lenses.Get("/", handlers.ListLenses())
+		// lenses.Post("/", handlers.NewLens())
+		// lenses.Get("/:id", handlers.ShowLens())
+		// lenses.Get("/:id/edit", handlers.EditLens())
+		// lenses.Put("/:id", handlers.UpdateLens())
+		// lenses.Delete("/:id", handlers.DeleteLens())
+		// lenses.Post("/:id/publish", handlers.PublishLens())
+		// lenses.Delete("/:id/publish", handlers.UnpublishLens())
 
-		// Workloads ...
-		workloads := app.Group("/workloads")
-		workloads.Get("/", handlers.ListWorkloads())
-		workloads.Get("/new", handlers.NewWorkload())
-		workloads.Post("/new", handlers.CreateWorkload())
-		workloads.Get("/search/lenses", handlers.SearchLenses())
-		workloads.Get("/search/environments", handlers.SearchEnvironments())
-		workloads.Get("/search/profiles", handlers.SearchProfiles())
-		workloads.Get("/:id", handlers.ShowWorkload())
-		workloads.Get("/:id/edit", handlers.EditWorkload())
-		workloads.Post("/:id/edit", handlers.EditWorkload())
-		workloads.Post("/:id/tags", handlers.AddTagWorkload())
-		workloads.Delete("/:id/tags/:tag_id", handlers.RemoveTagWorkload())
-		// app.Put("/workloads/:id", handlers.UpdateWorkload())
-		workloads.Delete("/:id", handlers.DeleteWorkload())
-		workloads.Get("/partials/environments", handlers.ListEnvironmentsPartial())
-		workloads.Get("/partials/profiles", handlers.ListProfilesPartial())
-		workloads.Get("/:id/lenses/:lens", handlers.ShowWorkloadLens())
-		workloads.Get("/:id/lenses/:lens/edit", handlers.EditWorkloadLens())
-		workloads.Get("/:workload/lenses/:lens/question/:question", handlers.ShowLensQuestion())
-		workloads.Put("/:workload/lenses/:lens/question/:question", handlers.UpdateWorkloadAnswer())
+		// // Workloads ...
+		// workloads := app.Group("/workloads")
+		// workloads.Get("/", handlers.ListWorkloads())
+		// workloads.Get("/new", handlers.NewWorkload())
+		// workloads.Post("/new", handlers.CreateWorkload())
+		// workloads.Get("/search/lenses", handlers.SearchLenses())
+		// workloads.Get("/search/environments", handlers.SearchEnvironments())
+		// workloads.Get("/search/profiles", handlers.SearchProfiles())
+		// workloads.Get("/:id", handlers.ShowWorkload())
+		// workloads.Get("/:id/edit", handlers.EditWorkload())
+		// workloads.Post("/:id/edit", handlers.EditWorkload())
+		// workloads.Post("/:id/tags", handlers.AddTagWorkload())
+		// workloads.Delete("/:id/tags/:tag_id", handlers.RemoveTagWorkload())
+		// // app.Put("/workloads/:id", handlers.UpdateWorkload())
+		// workloads.Delete("/:id", handlers.DeleteWorkload())
+		// workloads.Get("/partials/environments", handlers.ListEnvironmentsPartial())
+		// workloads.Get("/partials/profiles", handlers.ListProfilesPartial())
+		// workloads.Get("/:id/lenses/:lens", handlers.ShowWorkloadLens())
+		// workloads.Get("/:id/lenses/:lens/edit", handlers.EditWorkloadLens())
+		// workloads.Get("/:workload/lenses/:lens/question/:question", handlers.ShowLensQuestion())
+		// workloads.Put("/:workload/lenses/:lens/question/:question", handlers.UpdateWorkloadAnswer())
 
-		// Tags ...
-		tags := app.Group("/tags")
-		tags.Get("/", handlers.ListTags())
-		tags.Post("/new", handlers.CreateTag())
-		tags.Delete("/:id", handlers.DeleteTag())
+		// // Tags ...
+		// tags := app.Group("/tags")
+		// tags.Get("/", handlers.ListTags())
+		// tags.Post("/new", handlers.CreateTag())
+		// tags.Delete("/:id", handlers.DeleteTag())
 
-		// Workflows ...
-		workflows := app.Group("/workflows")
-		workflows.Get("/", handlers.ListWorkflows())
-		workflows.Post("/new", handlers.CreateWorkflow())
-		workflows.Get("/:id", handlers.ShowWorkflow())
-		workflows.Post("/:id/steps", handlers.CreateWorkflowStep())
-		workflows.Delete("/:id/steps/:step_id", handlers.DeleteWorkflowStep())
-		workflows.Put("/:id/steps", handlers.UpdateWorkflowSteps())
-		workflows.Delete("/:id", handlers.DeleteWorkflow())
+		// // Workflows ...
+		// workflows := app.Group("/workflows")
+		// workflows.Get("/", handlers.ListWorkflows())
+		// workflows.Post("/new", handlers.CreateWorkflow())
+		// workflows.Get("/:id", handlers.ShowWorkflow())
+		// workflows.Post("/:id/steps", handlers.CreateWorkflowStep())
+		// workflows.Delete("/:id/steps/:step_id", handlers.DeleteWorkflowStep())
+		// workflows.Put("/:id/steps", handlers.UpdateWorkflowSteps())
+		// workflows.Delete("/:id", handlers.DeleteWorkflow())
 
-		// Templates ...
-		templates := app.Group("/templates")
-		templates.Get("/", handlers.ListTemplates())
-		templates.Get("/new", handlers.NewTemplate())
-		templates.Get("/:id", handlers.ShowTemplate())
-		templates.Delete("/:id", handlers.DeleteTemplate())
-		templates.Get("/:id/edit/body", handlers.EditTemplateBody())
-		templates.Put("/:id/edit/body", handlers.EditTemplateBody())
-		templates.Get("/:id/edit/title", handlers.EditTemplateTitle())
-		templates.Put("/:id/edit/title", handlers.EditTemplateTitle())
-		templates.Post("/new", handlers.CreateTemplate())
+		// // Templates ...
+		// templates := app.Group("/templates")
+		// templates.Get("/", handlers.ListTemplates())
+		// templates.Get("/new", handlers.NewTemplate())
+		// templates.Get("/:id", handlers.ShowTemplate())
+		// templates.Delete("/:id", handlers.DeleteTemplate())
+		// templates.Get("/:id/edit/body", handlers.EditTemplateBody())
+		// templates.Put("/:id/edit/body", handlers.EditTemplateBody())
+		// templates.Get("/:id/edit/title", handlers.EditTemplateTitle())
+		// templates.Put("/:id/edit/title", handlers.EditTemplateTitle())
+		// templates.Post("/new", handlers.CreateTemplate())
 
-		// Me ...
-		app.Get("/me", handlers.Me())
+		// // Me ...
+		// app.Get("/me", handlers.Me())
 
-		// Settings ...
-		app.Get("/settings", htmx.NewCompFuncHandler(settingsHandlers.ListSettings, compFuncConfig))
+		// // Settings ...
+		// app.Get("/settings", htmx.NewCompFuncHandler(settingsHandlers.ListSettings, compFuncConfig))
 
-		// Preview ...
-		app.Post("/preview", htmx.NewCompFuncHandler(previewHandlers.Preview, compFuncConfig))
+		// // Preview ...
+		// app.Post("/preview", htmx.NewCompFuncHandler(previewHandlers.Preview, compFuncConfig))
+
+		fmt.Println(s.cfg.Flags.Addr)
 
 		err = app.Listen(s.cfg.Flags.Addr)
 		if err != nil {

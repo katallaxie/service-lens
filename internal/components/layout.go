@@ -1,11 +1,12 @@
 package components
 
 import (
-	middleware "github.com/katallaxie/fiber-htmx/toasts"
+	middleware "github.com/katallaxie/fiber-htmx"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/navbars"
 	"github.com/zeiss/fiber-goth/adapters"
 )
@@ -89,7 +90,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 												"btn-primary": false,
 											},
 										},
-										icons.Bars3Outline(
+										heroicons.Bars3Outline(
 											icons.IconProps{},
 										),
 									),

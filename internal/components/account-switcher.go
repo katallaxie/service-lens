@@ -4,15 +4,16 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // AccountSwitcherProps ...
 type AccountSwitcherProps struct {
-	// ClassNames ...
-	ClassNames htmx.ClassNames
 	// User ...
 	User adapters.GothUser
+	// ClassNames ...
+	htmx.ClassNames
 }
 
 // AccountSwitcher ...
@@ -30,7 +31,7 @@ func AccountSwitcher(props AccountSwitcherProps, children ...htmx.Node) htmx.Nod
 				},
 			},
 			htmx.Text("ZEISS"),
-			icons.ChevronUpDownOutline(icons.IconProps{}),
+			heroicons.ChevronUpDownOutline(icons.IconProps{}),
 		),
 		dropdowns.DropdownMenuItems(
 			dropdowns.DropdownMenuItemsProps{

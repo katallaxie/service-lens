@@ -1,19 +1,15 @@
 package handlers
 
 import (
-	"github.com/gofiber/fiber/v2"
-	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/login"
+
+	"github.com/gofiber/fiber/v2"
+	middleware "github.com/katallaxie/fiber-htmx"
+	htmx "github.com/katallaxie/htmx"
 )
 
-type UserHandler struct{}
-
-func NewUserHandler() *UserHandler {
-	return &UserHandler{}
-}
-
-func (h *UserHandler) Login() htmx.CompFunc {
+func UserLogin() middleware.CompFunc {
 	return func(c *fiber.Ctx) (htmx.Node, error) {
 		return components.Page(
 			components.PageProps{},
