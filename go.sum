@@ -314,6 +314,8 @@ github.com/karamaru-alpha/copyloopvar v1.2.1 h1:wmZaZYIjnJ0b5UoKDjUHrikcV0zuPyyx
 github.com/karamaru-alpha/copyloopvar v1.2.1/go.mod h1:nFmMlFNlClC2BPvNaHMdkirmTJxVCY0lhxBtlfOypMM=
 github.com/katallaxie/fiber-htmx v1.0.1-0.20250608191517-4034a8f76995 h1:j/D2d3JJj2iQ9t0u6XumplupwE65GgqnQof/ECzuBBk=
 github.com/katallaxie/fiber-htmx v1.0.1-0.20250608191517-4034a8f76995/go.mod h1:YxMhH4zb5UtwDEQZK9EW4gxF/60mGHQ49dMmon2HQFQ=
+github.com/katallaxie/fiber-htmx v1.0.1-0.20250609193715-ee69b58ae778 h1:JpSD43sMLcJnIiLaHkefFbnLcxEh3h8LauPrWcJpN00=
+github.com/katallaxie/fiber-htmx v1.0.1-0.20250609193715-ee69b58ae778/go.mod h1:KnsByKMvdCIr7VJVVUG1Uy0Oc8eXMc9kq0/s333jfeQ=
 github.com/katallaxie/htmx v0.5.2 h1:9CAC6391Jnafjis954bxRS0bB095ioXIOro7t+PLpoU=
 github.com/katallaxie/htmx v0.5.2/go.mod h1:lga5AdRVvUJCvhC9ffWzPruHhbUTSiEO7xBK4G7NLx0=
 github.com/katallaxie/pkg v0.7.7 h1:bDtgRP79yx/RRGdx1D6AxP0jEEaYgeqjFMdVKUEwbt8=

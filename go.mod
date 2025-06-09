@@ -15,7 +15,7 @@ require (
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/gofiber/fiber/v2 v2.52.8
 	github.com/google/uuid v1.6.0
-	github.com/katallaxie/fiber-htmx v1.0.1-0.20250608191517-4034a8f76995
+	github.com/katallaxie/fiber-htmx v1.0.1-0.20250609193715-ee69b58ae778
 	github.com/katallaxie/htmx v0.5.2
 	github.com/katallaxie/pkg v0.7.7
 	github.com/kelseyhightower/envconfig v1.4.0

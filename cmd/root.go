@@ -163,9 +163,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// handlers := handlers.New(store)
 
 		app := fiber.New(
-			fiber.Config{
-				ErrorHandler: htmx.ToastsErrorHandler,
-			},
+			fiber.Config{},
 		)
 		app.Use(requestid.New())
 		app.Use(helmet.New())
@@ -178,15 +176,13 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 
 		app.Use(goth.NewProtectMiddleware(gothConfig))
 
-		compFuncConfig := htmx.Config{
-			ErrorHandler: htmx.ToastsErrorHandler,
-		}
+		compFuncConfig := htmx.Config{}
 
 		// app.Get("/", handlers.Dashboard())
 		app.Get("/login", htmx.NewCompFuncHandler(handlers.UserLogin(), compFuncConfig))
-		// app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
-		// app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
-		// app.Get("/logout", goth.NewLogoutHandler(gothConfig))
+		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
+		app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
+		app.Get("/logout", goth.NewLogoutHandler(gothConfig))
 
 		// // Stats ...
 		// stats := app.Group("/stats")
