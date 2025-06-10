@@ -10,7 +10,7 @@ import (
 
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"
-	"github.com/zeiss/fiber-htmx/components/toasts"
+	"github.com/katallaxie/htmx/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )
 

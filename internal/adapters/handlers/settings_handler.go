@@ -9,10 +9,10 @@ import (
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/joins"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	goth "github.com/zeiss/fiber-goth"
 	reload "github.com/zeiss/fiber-reload"
-	"github.com/zeiss/pkg/errorx"
 )
 
 type SettingsHandler struct{}

@@ -6,10 +6,10 @@ import (
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/toasts"
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components/lenses"
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/errorx"
 )
 
 // LensPublishControllerImpl ...

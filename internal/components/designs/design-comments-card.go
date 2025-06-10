@@ -11,10 +11,10 @@ import (
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/cast"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
 	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/pkg/cast"
 )
 
 // DesignCommentsCardProps ...

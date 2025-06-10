@@ -11,6 +11,7 @@ import (
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
 	"github.com/yuin/goldmark/extension"
@@ -18,7 +19,6 @@ import (
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
 	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/pkg/conv"
 
 	"go.abhg.dev/goldmark/mermaid"
 )

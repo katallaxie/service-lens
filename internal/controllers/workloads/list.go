@@ -3,12 +3,12 @@ package workloads
 import (
 	"context"
 
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/workloads"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/errorx"
 
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"

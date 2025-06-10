@@ -4,8 +4,8 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/models"
-	"github.com/zeiss/pkg/conv"
 )
 
 // EnvironmentMetadataCardProps ...

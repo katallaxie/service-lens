@@ -4,8 +4,8 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/avatars"
 	"github.com/katallaxie/htmx/dropdowns"
+	"github.com/katallaxie/pkg/cast"
 	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/pkg/cast"
 )
 
 // ProfileMenuProps ...

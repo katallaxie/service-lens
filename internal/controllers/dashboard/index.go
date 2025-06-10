@@ -10,7 +10,7 @@ import (
 	"github.com/katallaxie/htmx/loading"
 	"github.com/katallaxie/htmx/stats"
 	"github.com/katallaxie/htmx/tailwind"
-	"github.com/zeiss/fiber-htmx/components/toasts"
+	"github.com/katallaxie/htmx/toasts"
 	seed "github.com/zeiss/gorm-seed"
 )
 

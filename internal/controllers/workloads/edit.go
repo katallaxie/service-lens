@@ -16,8 +16,8 @@ import (
 	"github.com/katallaxie/htmx/links"
 	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/htmx/toasts"
+	"github.com/katallaxie/pkg/errorx"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/errorx"
 )
 
 // WorkloadEditControllerImpl ...

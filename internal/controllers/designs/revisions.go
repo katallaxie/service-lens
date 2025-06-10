@@ -7,10 +7,10 @@ import (
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/conv"
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/pkg/conv"
-	"github.com/zeiss/pkg/errorx"
 
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"

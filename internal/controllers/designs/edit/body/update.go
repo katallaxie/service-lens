@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	"github.com/katallaxie/htmx/buttons"
+	"github.com/katallaxie/htmx/toasts"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/builders"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
@@ -16,9 +18,7 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/conv"
 
 	htmx "github.com/katallaxie/htmx"
 )

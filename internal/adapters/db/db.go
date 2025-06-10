@@ -9,9 +9,9 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/pkg/cast"
+	"github.com/katallaxie/pkg/dbx"
 	"github.com/zeiss/fiber-goth/adapters"
-	"github.com/zeiss/pkg/cast"
-	"github.com/zeiss/pkg/dbx"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

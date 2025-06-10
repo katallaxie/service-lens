@@ -6,7 +6,7 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tailwind"
-	"github.com/zeiss/pkg/conv"
+	"github.com/katallaxie/pkg/conv"
 )
 
 // WorkloadProfileCardProps ...

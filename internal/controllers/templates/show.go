@@ -3,11 +3,11 @@ package templates
 import (
 	"context"
 
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/templates"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/pkg/errorx"
 
 	htmx "github.com/katallaxie/htmx"
 	seed "github.com/zeiss/gorm-seed"

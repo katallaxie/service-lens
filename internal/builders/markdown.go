@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"text/template"
 
+	"github.com/katallaxie/pkg/conv"
 	"github.com/yuin/goldmark/ast"
 	ext "github.com/yuin/goldmark/extension"
 	gast "github.com/yuin/goldmark/extension/ast"
 	render "github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
-	"github.com/zeiss/pkg/conv"
 )
 
 // MarkdownBuilder ...

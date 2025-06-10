@@ -9,13 +9,13 @@ import (
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/profiles"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/conv"
 )
 
 // ProfileShowControllerImpl ...

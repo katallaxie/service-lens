@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/zeiss/pkg/conv"
+	"github.com/katallaxie/pkg/conv"
 	"gorm.io/gorm"
 )
 

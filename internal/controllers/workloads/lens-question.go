@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	"github.com/zeiss/pkg/conv"
 
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"

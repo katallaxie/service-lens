@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/katallaxie/htmx/stats"
+	"github.com/katallaxie/pkg/conv"
+	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/conv"
-	"github.com/zeiss/pkg/errorx"
 
 	htmx "github.com/katallaxie/htmx"
 )

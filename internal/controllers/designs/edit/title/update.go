@@ -6,10 +6,10 @@ import (
 
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/htmx/toasts"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/toasts"
 	seed "github.com/zeiss/gorm-seed"
 
 	htmx "github.com/katallaxie/htmx"

@@ -5,12 +5,12 @@ import (
 	"fmt"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/katallaxie/htmx/toasts"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-htmx/components/toasts"
-	"github.com/zeiss/pkg/conv"
 
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"

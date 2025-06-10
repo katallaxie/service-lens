@@ -9,8 +9,8 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/toasts"
+	"github.com/katallaxie/pkg/conv"
 	seed "github.com/zeiss/gorm-seed"
-	"github.com/zeiss/pkg/conv"
 )
 
 var _ = htmx.Controller(&SearchEnvironmentsControllerImpl{})

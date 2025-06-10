@@ -5,6 +5,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
+	"github.com/katallaxie/pkg/conv"
 	"github.com/katallaxie/service-lens/internal/builders/renderers"
 	"github.com/katallaxie/service-lens/internal/builders/transformers"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -15,7 +16,6 @@ import (
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/util"
-	"github.com/zeiss/pkg/conv"
 
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/forms"
