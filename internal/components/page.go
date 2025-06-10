@@ -2,6 +2,9 @@ package components
 
 import (
 	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/imports"
+	"github.com/katallaxie/htmx/imports/cache"
+	"github.com/katallaxie/htmx/imports/jsdeliver"
 )
 
 // PageProps is the properties for the Page component.
@@ -18,35 +21,31 @@ func Page(props PageProps, children ...htmx.Node) htmx.Node {
 		htmx.HTML5Props{
 			Title:    props.Title,
 			Language: "en",
-			Attributes: []htmx.Node{
-				htmx.DataAttribute("theme", "light"),
-			},
 			Head: append([]htmx.Node{
 				htmx.Link(
-					htmx.Attribute("href", "https://unpkg.com/daisyui@4.12.13/dist/full.css"),
-					htmx.Attribute("rel", "stylesheet"),
-					htmx.Attribute("type", "text/css"),
-					htmx.CrossOrigin("anonymous"),
-				),
-				htmx.Link(
+					htmx.Href("https://cdn.jsdelivr.net/npm/daisyui@5"),
 					htmx.Rel("stylesheet"),
-					htmx.Href("https://unpkg.com/fiber-htmx@1.3.31/dist/out.css"),
-					htmx.Attribute("type", "text/css"),
-					htmx.CrossOrigin("anonymous"),
+					htmx.Type("text/css"),
+				),
+				htmx.Imports(
+					htmx.ImportsProp{
+						Resolver: cache.New(jsdeliver.New()),
+						Pkgs: []imports.ExactPackage{
+							{
+								Name:    "htmx.org",
+								Version: "2.0.4",
+							},
+						},
+						Requires: []imports.Require{
+							{
+								File: "dist/htmx.esm.js",
+							},
+						},
+					},
 				),
 				htmx.Script(
-					htmx.Attribute("src", "https://unpkg.com/htmx.org@2.0.2"),
-					htmx.CrossOrigin("anonymous"),
-				),
-				htmx.Script(
-					htmx.Src("https://unpkg.com/fiber-htmx@1.3.31"),
-					htmx.CrossOrigin("anonymous"),
-					htmx.Defer(),
-				),
-				htmx.Script(
-					htmx.Attribute("src", "https://unpkg.com/alpinejs@3.14.3/dist/cdn.min.js"),
-					htmx.CrossOrigin("anonymous"),
-					htmx.Defer(),
+					htmx.Type("module"),
+					htmx.Raw(`import htmx from "htmx.org";`),
 				),
 			}, props.Head...),
 		},

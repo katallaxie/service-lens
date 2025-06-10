@@ -176,9 +176,11 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 
 		app.Use(goth.NewProtectMiddleware(gothConfig))
 
-		compFuncConfig := htmx.Config{}
+		compFuncConfig := htmx.Config{
+			ErrorHandler: htmx.ToastsErrorHandler,
+		}
 
-		// app.Get("/", handlers.Dashboard())
+		app.Get("/", htmx.NewCompFuncHandler(handlers.Dashboard(), compFuncConfig))
 		app.Get("/login", htmx.NewCompFuncHandler(handlers.UserLogin(), compFuncConfig))
 		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
 		app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))

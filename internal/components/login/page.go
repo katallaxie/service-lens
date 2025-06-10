@@ -50,7 +50,7 @@ func NewLogin() htmx.Node {
 						htmx.ClassNames{
 							"mt-4": true,
 						},
-						links.Button(
+						links.Primary(
 							links.Props{
 								ClassNames: htmx.ClassNames{
 									"w-full":      true,
@@ -65,11 +65,10 @@ func NewLogin() htmx.Node {
 						htmx.ClassNames{
 							"mt-4": true,
 						},
-						links.Button(
+						links.Primary(
 							links.Props{
 								ClassNames: htmx.ClassNames{
-									"w-full":      true,
-									"btn-outline": true,
+									"w-full": true,
 								},
 								Href: "/login/github",
 							},
