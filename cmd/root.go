@@ -15,6 +15,7 @@ import (
 	logger "github.com/gofiber/fiber/v2/middleware/logger"
 	requestid "github.com/gofiber/fiber/v2/middleware/requestid"
 	htmx "github.com/katallaxie/fiber-htmx"
+	reload "github.com/katallaxie/fiber-reload"
 	"github.com/katallaxie/pkg/dbx"
 	"github.com/katallaxie/pkg/server"
 	"github.com/kelseyhightower/envconfig"
@@ -25,7 +26,6 @@ import (
 	"github.com/zeiss/fiber-goth/providers"
 	"github.com/zeiss/fiber-goth/providers/entraid"
 	"github.com/zeiss/fiber-goth/providers/github"
-	reload "github.com/zeiss/fiber-reload"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
@@ -180,17 +180,17 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
-		app.Get("/", htmx.NewCompFuncHandler(handlers.Dashboard(), compFuncConfig))
+		app.Get("/", htmx.NewCompFuncHandler(handlers.GetDashboard(), compFuncConfig))
 		app.Get("/login", htmx.NewCompFuncHandler(handlers.UserLogin(), compFuncConfig))
 		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
 		app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
 		app.Get("/logout", goth.NewLogoutHandler(gothConfig))
 
-		// // Stats ...
-		// stats := app.Group("/stats")
-		// stats.Get("/profiles", handlers.StatsTotalProfiles())
-		// stats.Get("/designs", handlers.StatsTotalDesigns())
-		// stats.Get("/workloads", handlers.StatsTotalWorkloads())
+		// Stats ...
+		stats := app.Group("/stats")
+		stats.Get("/profiles", htmx.NewCompFuncHandler(handlers.GetDashboardTotalProfiles(store), compFuncConfig))
+		stats.Get("/workloads", htmx.NewCompFuncHandler(handlers.GetDashboardTotalWorkloads(store), compFuncConfig))
+		stats.Get("/designs", htmx.NewCompFuncHandler(handlers.GetDashboardTotalDesigns(store), compFuncConfig))
 
 		// // Designs ...
 		// designs := app.Group("/designs")
