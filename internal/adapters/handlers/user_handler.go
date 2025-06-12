@@ -9,6 +9,7 @@ import (
 	htmx "github.com/katallaxie/htmx"
 )
 
+// UserLogin handles the user login page.
 func UserLogin() middleware.CompFunc {
 	return func(c *fiber.Ctx) (htmx.Node, error) {
 		return components.Page(

@@ -298,7 +298,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// templates.Post("/new", handlers.CreateTemplate())
 
 		// // Me ...
-		// app.Get("/me", handlers.Me())
+		app.Get("/me", htmx.NewCompFuncHandler(handlers.Me(), compFuncConfig))
 
 		// // Settings ...
 		// app.Get("/settings", htmx.NewCompFuncHandler(settingsHandlers.ListSettings, compFuncConfig))

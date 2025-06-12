@@ -1,37 +1,30 @@
-package me
+package handlers
 
 import (
-	"github.com/katallaxie/service-lens/internal/components"
-	"github.com/katallaxie/service-lens/internal/ports"
-	seed "github.com/zeiss/gorm-seed"
-
+	"github.com/gofiber/fiber/v2"
+	middleware "github.com/katallaxie/fiber-htmx"
+	reload "github.com/katallaxie/fiber-reload"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
+	"github.com/katallaxie/service-lens/internal/components"
+	goth "github.com/zeiss/fiber-goth"
 )
 
-// MeController ...
-type MeController struct {
-	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
-	htmx.DefaultController
-}
+// Me package handlers
+func Me() middleware.CompFunc {
+	return func(c *fiber.Ctx) (htmx.Node, error) {
+		s, err := goth.SessionFromContext(c)
+		if err != nil {
+			return nil, err
+		}
 
-// NewMeIndexController ...
-func NewMeController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *MeController {
-	return &MeController{
-		store: store,
-	}
-}
-
-// Get ...
-func (m *MeController) Get() error {
-	return m.Render(
-		components.DefaultLayout(
+		return components.DefaultLayout(
 			components.DefaultLayoutProps{
-				Path:        m.Path(),
-				User:        m.Session().User,
-				Development: m.IsDevelopment(),
+				Path:        c.Path(),
+				User:        s.User,
+				Development: reload.IsDevelopment(c.UserContext()),
 			},
 			func() htmx.Node {
 				return cards.CardBordered(
@@ -61,7 +54,7 @@ func (m *MeController) Get() error {
 								forms.TextInputBordered(
 									forms.TextInputProps{
 										Name:     "username",
-										Value:    m.Session().User.Name,
+										Value:    s.User.Name,
 										Disabled: true,
 									},
 								),
@@ -89,7 +82,7 @@ func (m *MeController) Get() error {
 								forms.TextInputBordered(
 									forms.TextInputProps{
 										Name:     "email",
-										Value:    m.Session().User.Email,
+										Value:    s.User.Email,
 										Disabled: true,
 									},
 								),
@@ -120,6 +113,6 @@ func (m *MeController) Get() error {
 					),
 				)
 			},
-		),
-	)
+		), nil
+	}
 }
