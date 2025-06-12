@@ -27,6 +27,9 @@ func Page(props PageProps, children ...htmx.Node) htmx.Node {
 					htmx.Rel("stylesheet"),
 					htmx.Type("text/css"),
 				),
+				htmx.Script(
+					htmx.Src("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"),
+				),
 				htmx.Imports(
 					htmx.ImportsProp{
 						Resolver: cache.New(jsdeliver.New()),
