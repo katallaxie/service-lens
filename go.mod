@@ -12,7 +12,7 @@ tool (
 
 require (
 	github.com/expr-lang/expr v1.17.5
-	github.com/go-playground/validator/v10 v10.26.0
+	github.com/go-playground/validator/v10 v10.27.0
 	github.com/gofiber/fiber/v2 v2.52.8
 	github.com/google/uuid v1.6.0
 	github.com/katallaxie/fiber-htmx v1.0.3
@@ -28,6 +28,7 @@ require (
 	github.com/yuin/goldmark-emoji v1.0.6
 	github.com/zeiss/fiber-goth v1.2.15
 	github.com/zeiss/gorm-seed v0.1.2
+	github.com/zeiss/pkg v0.1.23
 	go.abhg.dev/goldmark/mermaid v0.5.0
 	golang.org/x/mod v0.25.0
 	gorm.io/driver/postgres v1.6.0
@@ -265,7 +266,6 @@ require (
 	github.com/ykadowak/zerologlint v0.1.5 // indirect
 	github.com/zeiss/fiber-authz v1.0.33 // indirect
 	github.com/zeiss/fiber-reload v0.1.1 // indirect
-	github.com/zeiss/pkg v0.1.23 // indirect
 	gitlab.com/bosi/decorder v0.4.2 // indirect
 	go-simpler.org/musttag v0.13.1 // indirect
 	go-simpler.org/sloglint v0.11.0 // indirect
