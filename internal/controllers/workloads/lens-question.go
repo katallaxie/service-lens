@@ -10,7 +10,6 @@ import (
 
 	"github.com/google/uuid"
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/alpine"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/collapsible"
@@ -118,7 +117,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 				},
 				cards.Body(
 					cards.BodyProps{},
-					alpine.XData(`{ doesNotApply: $refs.doesNotApply.checked }`),
+					// .XData(`{ doesNotApply: $refs.doesNotApply.checked }`),
 					forms.FormControl(
 						forms.FormControlProps{
 							ClassNames: htmx.ClassNames{
@@ -140,13 +139,13 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 								Value:   "true",
 								Checked: w.answer.DoesNotApply,
 							},
-							alpine.XModel(`doesNotApply`),
-							alpine.XRef(`doesNotApply`),
+							// alpine.XModel(`doesNotApply`),
+							// alpine.XRef(`doesNotApply`),
 						),
 					),
 					forms.FormControl(
 						forms.FormControlProps{},
-						alpine.XShow(`doesNotApply`),
+						// alpine.XShow(`doesNotApply`),
 						forms.SelectBordered(
 							forms.SelectProps{
 								ClassNames: htmx.ClassNames{
@@ -208,7 +207,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 										Checked:  w.answer.IsChecked(choice.ID), // todo(katallaxie): should be a default option in the model
 										Disabled: w.answer.DoesNotApply || (choice.Ref == models.NoneOfTheseQuestionRef && w.answer.DoesNotApply),
 									},
-									alpine.XBind("disabled", "doesNotApply"),
+									// alpine.XBind("disabled", "doesNotApply"),
 								),
 							),
 						)

@@ -17,7 +17,7 @@ type WelcomeCardProps struct {
 
 // WelcomeCard ...
 func WelcomeCard(props WelcomeCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

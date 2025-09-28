@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/alpine"
 	"github.com/katallaxie/htmx/avatars"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
@@ -71,25 +70,25 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 }`,
 						)),
 						htmx.Div(
-							alpine.XData(`{
-            value: 'Start typing...',
-            init() {
-                let editor = new SimpleMDE({
-                  element: this.$refs.editor,
-				  status: false,
-                  previewRender: function(plainText, preview) {
-                    htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
+							// 					alpine.XData(`{
+							//     value: 'Start typing...',
+							//     init() {
+							//         let editor = new SimpleMDE({
+							//           element: this.$refs.editor,
+							// 		  status: false,
+							//           previewRender: function(plainText, preview) {
+							//             htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
 
-                    return "Loading...";
-                  }
-                })
-                editor.value(this.value)
-                editor.codemirror.on('change', () => {
-                    this.value = editor.value()
-                })
-            },
-        }`,
-							),
+							//             return "Loading...";
+							//           }
+							//         })
+							//         editor.value(this.value)
+							//         editor.codemirror.on('change', () => {
+							//             this.value = editor.value()
+							//         })
+							//     },
+							// }`,
+							// 					),
 							forms.TextareaBordered(
 								forms.TextareaProps{
 									ClassNames: htmx.ClassNames{
@@ -97,7 +96,7 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 									},
 									Name: "comment",
 								},
-								alpine.XRef("editor"),
+								// alpine.XRef("editor"),
 							),
 						),
 						forms.FormControlLabel(

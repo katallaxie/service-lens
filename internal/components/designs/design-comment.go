@@ -26,7 +26,7 @@ type DesignCommentProps struct {
 
 // DesignComment ...
 func DesignComment(props DesignCommentProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2: true,
@@ -80,7 +80,7 @@ func DesignComment(props DesignCommentProps) htmx.Node {
 								"btn": true,
 							},
 						},
-						icons.EllipsisHorizontalOutline(
+						icons.El(
 							icons.IconProps{},
 						),
 					),

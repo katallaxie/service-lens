@@ -2,7 +2,6 @@ package designs
 
 import (
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/alpine"
 	"github.com/katallaxie/htmx/forms"
 )
 
@@ -15,25 +14,25 @@ type EditorProps struct {
 // Editor ...
 func Editor(props EditorProps) htmx.Node {
 	return htmx.Div(
-		alpine.XData(`{
-value: '',
-init() {
-let editor = new SimpleMDE({
-forceSync: true,
-element: this.$refs.editor,
-status: false,
-previewRender: function(plainText, preview) {
-htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
-	return "Loading...";
-}
-})
+		// 		alpine.XData(`{
+		// value: '',
+		// init() {
+		// let editor = new SimpleMDE({
+		// forceSync: true,
+		// element: this.$refs.editor,
+		// status: false,
+		// previewRender: function(plainText, preview) {
+		// htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
+		// 	return "Loading...";
+		// }
+		// })
 
-editor.codemirror.on('change', () => {
-this.value = editor.value()
-})
-},
-}`,
-		),
+		// editor.codemirror.on('change', () => {
+		// this.value = editor.value()
+		// })
+		// },
+		// }`,
+		// 		),
 		forms.TextareaBordered(
 			forms.TextareaProps{
 				ClassNames: htmx.ClassNames{
@@ -41,7 +40,7 @@ this.value = editor.value()
 				},
 				Name: "body",
 			},
-			alpine.XRef("editor"),
+			// alpine.XRef("editor"),
 			htmx.Text(props.Content),
 		),
 	)

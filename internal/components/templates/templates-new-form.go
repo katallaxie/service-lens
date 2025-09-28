@@ -2,7 +2,6 @@ package templates
 
 import (
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/alpine"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
@@ -82,26 +81,26 @@ func TemplateNewForm(props TemplateNewFormProps) htmx.Node {
 						ClassNames: htmx.ClassNames{},
 					},
 					htmx.Div(
-						alpine.XData(`{
-        value: '# Write Some Markdown...',
-        init() {
-            let editor = new SimpleMDE({
-              element: this.$refs.editor,
-              previewRender: function(plainText, preview) {
-                htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
+						// 					alpine.XData(`{
+						//     value: '# Write Some Markdown...',
+						//     init() {
+						//         let editor = new SimpleMDE({
+						//           element: this.$refs.editor,
+						//           previewRender: function(plainText, preview) {
+						//             htmx.ajax('POST', '/preview', {values: {body: plainText}, target: '.editor-preview', swap: 'innerHTML'})
 
-		            return "Loading...";
-	            }
-            })
+						// 	            return "Loading...";
+						//             }
+						//         })
 
-            editor.value(this.value)
+						//         editor.value(this.value)
 
-            editor.codemirror.on('change', () => {
-                this.value = editor.value()
-            })
-        },
-    }`,
-						),
+						//         editor.codemirror.on('change', () => {
+						//             this.value = editor.value()
+						//         })
+						//     },
+						// }`,
+						// 					),
 						forms.TextareaBordered(
 							forms.TextareaProps{
 								ClassNames: htmx.ClassNames{
@@ -109,7 +108,7 @@ func TemplateNewForm(props TemplateNewFormProps) htmx.Node {
 								},
 								Name: "body",
 							},
-							alpine.XRef("editor"),
+							// alpine.XRef("editor"),
 						),
 					),
 					forms.FormControlLabel(
