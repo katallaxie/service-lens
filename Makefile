@@ -1,19 +1,25 @@
 .DEFAULT_GOAL := build
 
+include .env
+export
+
 # Go variables
 GO 					?= go
-GO_RELEASER 		?= goreleaser
+GO_RELEASER 		?= $(GO_TOOL) github.com/goreleaser/goreleaser
 GO_TOOL 			?= $(GO) tool
 GO_TEST 			?= $(GO_TOOL) gotest.tools/gotestsum --format pkgname
-AIR  				?= air
 
 .PHONY: start
-start: ## Start the application.
-	air -c .air.toml
+start: ## Start the service.
+	$(GO_TOOL) github.com/air-verse/air
 
 .PHONY: build
 build: ## Build the binary file.
 	$(GO_RELEASER) build --snapshot --clean
+
+.PHONY: migrate
+migrate: ## Run database migrations.
+	$(GO) run main.go migrate
 
 .PHONY: generate
 generate: ## Generate code.
