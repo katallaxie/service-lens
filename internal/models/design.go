@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/zeiss/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/adapters"
 	"gorm.io/gorm"
 )
 

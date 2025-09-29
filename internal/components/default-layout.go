@@ -1,8 +1,8 @@
 package components
 
 import (
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // DefaultLayoutProps ...

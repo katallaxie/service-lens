@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	goth "github.com/katallaxie/fiber-goth"
 	reload "github.com/katallaxie/fiber-reload"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
@@ -12,7 +13,6 @@ import (
 	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
-	goth "github.com/zeiss/fiber-goth"
 )
 
 type SettingsHandler struct{}
@@ -30,7 +30,7 @@ func (h *SettingsHandler) ListSettings(c *fiber.Ctx) (htmx.Node, error) {
 		},
 		func() htmx.Node {
 			return htmx.Fragment(
-				cards.CardBordered(
+				cards.CardBorder(
 					cards.CardProps{
 						ClassNames: htmx.Merge(
 							htmx.ClassNames{

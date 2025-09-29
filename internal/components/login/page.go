@@ -10,7 +10,7 @@ import (
 )
 
 func NewLogin() htmx.Node {
-	return htmx.Fragment(
+	return htmx.Body(
 		htmx.Section(
 			htmx.Merge(
 				htmx.ClassNames{
@@ -33,11 +33,12 @@ func NewLogin() htmx.Node {
 					"lg:py-0":        true,
 				},
 			),
-			cards.CardBordered(
+			cards.CardBorder(
 				cards.CardProps{
 					ClassNames: htmx.ClassNames{
-						"w-96":     true,
-						"max-w-lg": true,
+						"w-full":    true,
+						"max-w-md":  true,
+						"shadow-xl": true,
 					},
 				},
 				cards.Body(
@@ -47,14 +48,11 @@ func NewLogin() htmx.Node {
 						htmx.Text("Sign in to your account"),
 					),
 					htmx.Div(
-						htmx.ClassNames{
-							"mt-4": true,
-						},
-						links.Primary(
+						htmx.ClassNames{},
+						links.Button(
 							links.Props{
 								ClassNames: htmx.ClassNames{
-									"w-full":      true,
-									"btn-outline": true,
+									"w-full": true,
 								},
 								Href: "/login/entraid",
 							},
@@ -62,10 +60,8 @@ func NewLogin() htmx.Node {
 						),
 					),
 					htmx.Div(
-						htmx.ClassNames{
-							"mt-4": true,
-						},
-						links.Primary(
+						htmx.ClassNames{},
+						links.Button(
 							links.Props{
 								ClassNames: htmx.ClassNames{
 									"w-full": true,
@@ -76,49 +72,46 @@ func NewLogin() htmx.Node {
 						),
 					),
 					dividers.Divider(
-						dividers.DividerProps{},
+						dividers.Props{},
 						htmx.Text("OR"),
 					),
 					htmx.Form(
 						htmx.HxPost("/login"),
-						forms.FormControl(
-							forms.FormControlProps{
-								ClassNames: htmx.ClassNames{
-									"py-4": true,
-								},
-							},
-							forms.TextInputBordered(
+						forms.Fieldset(
+							forms.FieldsetProps{},
+							forms.Legend(
+								forms.LegendProps{},
+								htmx.Text("Login with your credentials"),
+							),
+							forms.Label(
+								forms.LabelProps{},
+								htmx.Text("Username"),
+							),
+							forms.TextInput(
 								forms.TextInputProps{
 									Name:        "username",
 									Placeholder: "indy@jones.com",
 								},
 							),
-						),
-						forms.FormControl(
-							forms.FormControlProps{},
-							forms.TextInputBordered(
+							forms.Label(
+								forms.LabelProps{},
+								htmx.Text("Password"),
+							),
+							forms.TextInput(
 								forms.TextInputProps{
-									Name:        "password",
-									Placeholder: "supersecret",
+									Name: "password",
+									Type: "password",
 								},
-								htmx.Type("password"),
 							),
 						),
-						cards.Actions(
-							cards.ActionsProps{
+						buttons.Primary(
+							buttons.ButtonProps{
 								ClassNames: htmx.ClassNames{
-									"py-4":  true,
-									"-mb-4": true,
+									"w-full": true,
+									"my-4":   true,
 								},
 							},
-							buttons.Outline(
-								buttons.ButtonProps{
-									ClassNames: htmx.ClassNames{
-										"w-full": true,
-									},
-								},
-								htmx.Text("Login"),
-							),
+							htmx.Text("Login"),
 						),
 					),
 				),

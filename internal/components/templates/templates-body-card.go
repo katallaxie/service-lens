@@ -7,6 +7,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
 
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
@@ -18,7 +19,6 @@ import (
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/util"
-	"github.com/zeiss/fiber-goth/adapters"
 
 	"go.abhg.dev/goldmark/mermaid"
 )

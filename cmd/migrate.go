@@ -4,9 +4,9 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/db"
 	"github.com/katallaxie/service-lens/internal/models"
 
+	"github.com/katallaxie/fiber-goth/adapters"
 	"github.com/katallaxie/pkg/dbx"
 	"github.com/spf13/cobra"
-	"github.com/zeiss/fiber-goth/adapters"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
@@ -16,9 +16,9 @@ var Migrate = &cobra.Command{
 	Use:   "migrate",
 	Short: "Migrate the database",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		conn, err := gorm.Open(postgres.Open(config.Flags.DatabaseURI), &gorm.Config{
+		conn, err := gorm.Open(postgres.Open(cfg.Flags.DatabaseURI), &gorm.Config{
 			NamingStrategy: schema.NamingStrategy{
-				TablePrefix: config.Flags.DatabaseTablePrefix,
+				TablePrefix: cfg.Flags.DatabaseTablePrefix,
 			},
 		})
 		if err != nil {

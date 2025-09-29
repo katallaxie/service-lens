@@ -16,7 +16,7 @@ type AddTagsProps struct {
 
 // AddTags ...
 func AddTags(props AddTagsProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
@@ -32,17 +32,17 @@ func AddTags(props AddTagsProps) htmx.Node {
 				htmx.Text("Tags - Optional"),
 			),
 			htmx.Div(
-				alpine.XData(`{
-          tags: [],
-          addTag(tag) {
-            this.tags.push({name: '', value: ''});
-          },
-          removeTag(index) {
-            this.tags.splice(index, 1);
-          }
-        }`),
+				// 		alpine.XData(`{
+				//   tags: [],
+				//   addTag(tag) {
+				//     this.tags.push({name: '', value: ''});
+				//   },
+				//   removeTag(index) {
+				//     this.tags.splice(index, 1);
+				//   }
+				// }`),
 				htmx.Template(
-					alpine.XFor("(tag, index) in tags"),
+					// alpine.XFor("(tag, index) in tags"),
 					htmx.Attribute(":key", "index"),
 					htmx.Div(
 						htmx.ClassNames{
@@ -55,8 +55,8 @@ func AddTags(props AddTagsProps) htmx.Node {
 							},
 							forms.TextInputBordered(
 								forms.TextInputProps{},
-								alpine.XModel("tag.name"),
-								alpine.XBind("name", "`tags.${index}.name`"),
+								// alpine.XModel("tag.name"),
+								// alpine.XBind("name", "`tags.${index}.name`"),
 							),
 							forms.FormControlLabel(
 								forms.FormControlLabelProps{},
@@ -76,8 +76,8 @@ func AddTags(props AddTagsProps) htmx.Node {
 							},
 							forms.TextInputBordered(
 								forms.TextInputProps{},
-								alpine.XModel("tag.value"),
-								alpine.XBind("name", "`tags.${index}.value`"),
+								// alpine.XModel("tag.value"),
+								// alpine.XBind("name", "`tags.${index}.value`"),
 							),
 							forms.FormControlLabel(
 								forms.FormControlLabelProps{},
@@ -99,7 +99,7 @@ func AddTags(props AddTagsProps) htmx.Node {
 						buttons.ButtonProps{
 							Type: "button",
 						},
-						alpine.XOn("click", "addTag()"),
+						// alpine.XOn("click", "addTag()"),
 						htmx.Text("Add Tag"),
 					),
 				),

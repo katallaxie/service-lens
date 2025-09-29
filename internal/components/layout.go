@@ -1,6 +1,7 @@
 package components
 
 import (
+	"github.com/katallaxie/fiber-goth/adapters"
 	middleware "github.com/katallaxie/fiber-htmx"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dividers"
@@ -8,7 +9,6 @@ import (
 	"github.com/katallaxie/htmx/icons"
 	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/navbars"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // LayoutProps is the properties for the Layout component.
@@ -41,16 +41,13 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 		htmx.Div(
 			htmx.ClassNames{},
 			drawers.Drawer(
-				drawers.DrawerProps{
-					ID: "global-drawer",
+				drawers.Props{
 					ClassNames: htmx.ClassNames{
 						"lg:drawer-open": true,
 					},
 				},
 				drawers.DrawerContent(
-					drawers.DrawerContentProps{
-						ID: "drawer",
-					},
+					drawers.DrawerContentProps{},
 					middleware.Toasts(),
 					htmx.Div(
 						htmx.ClassNames{
@@ -81,7 +78,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 											"gap-3": true,
 										},
 									},
-									drawers.DrawerOpenButton(
+									drawers.DrawerOpen(
 										drawers.DrawerOpenProps{
 											ID: "global-drawer",
 											ClassNames: htmx.ClassNames{
@@ -111,11 +108,9 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 					),
 				),
 				drawers.DrawerSide(
-					drawers.DrawerSideProps{
-						ID: "drawer",
-					},
-					drawers.DrawerSideMenu(
-						drawers.DrawerSideMenuProps{
+					drawers.DrawerSideProps{},
+					drawers.DrawerSide(
+						drawers.DrawerSideProps{
 							ClassNames: htmx.ClassNames{
 								"border-r":               true,
 								"border-neutral-content": true,
@@ -124,7 +119,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 							},
 						},
 						dividers.Divider(
-							dividers.DividerProps{},
+							dividers.Props{},
 						),
 						MainMenu(
 							MainMenuProps{
@@ -132,7 +127,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 							},
 						),
 						dividers.Divider(
-							dividers.DividerProps{},
+							dividers.Props{},
 						),
 						UserMenu(
 							UserMenuProps{

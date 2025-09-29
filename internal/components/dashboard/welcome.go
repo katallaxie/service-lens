@@ -1,10 +1,10 @@
 package dashboard
 
 import (
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tailwind"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // WelcomeCardProps ...

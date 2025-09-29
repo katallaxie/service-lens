@@ -3,29 +3,27 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"github.com/katallaxie/service-lens/internal/adapters/db"
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
-	"github.com/katallaxie/service-lens/internal/cfg"
+	config "github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/models"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	logger "github.com/gofiber/fiber/v2/middleware/logger"
 	requestid "github.com/gofiber/fiber/v2/middleware/requestid"
+	goth "github.com/katallaxie/fiber-goth"
+	"github.com/katallaxie/fiber-goth/adapters"
+	adapter "github.com/katallaxie/fiber-goth/adapters/gorm"
+	"github.com/katallaxie/fiber-goth/providers"
+	"github.com/katallaxie/fiber-goth/providers/entraid"
+	"github.com/katallaxie/fiber-goth/providers/github"
 	htmx "github.com/katallaxie/fiber-htmx"
 	reload "github.com/katallaxie/fiber-reload"
 	"github.com/katallaxie/pkg/dbx"
 	"github.com/katallaxie/pkg/server"
-	"github.com/kelseyhightower/envconfig"
 	"github.com/spf13/cobra"
-	goth "github.com/zeiss/fiber-goth"
-	"github.com/zeiss/fiber-goth/adapters"
-	adapter "github.com/zeiss/fiber-goth/adapters/gorm"
-	"github.com/zeiss/fiber-goth/providers"
-	"github.com/zeiss/fiber-goth/providers/entraid"
-	"github.com/zeiss/fiber-goth/providers/github"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
@@ -41,32 +39,35 @@ var (
 
 var versionFmt = fmt.Sprintf("%s-%s (%s) %s/%s", version, commit, date, os, arch)
 
-var config *cfg.Config
+var cfg = config.New()
 
-func init() {
-	config = cfg.New()
+func Init() error {
+	ctx := context.Background()
 
-	err := envconfig.Process("", config.Flags)
+	err := cfg.InitDefaultConfig()
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	Root.AddCommand(Migrate)
 
-	Root.PersistentFlags().StringVar(&config.Flags.Addr, "addr", config.Flags.Addr, "addr")
-	Root.PersistentFlags().StringVar(&config.Flags.Environment, "environment", config.Flags.Environment, "environment")
-	Root.PersistentFlags().StringVar(&config.Flags.DatabaseURI, "db-rul", config.Flags.DatabaseURI, "Database URI")
-	Root.PersistentFlags().StringVar(&config.Flags.DatabaseTablePrefix, "db-table-prefix", config.Flags.DatabaseTablePrefix, "Database table prefix")
-	Root.PersistentFlags().BoolVar(&config.Flags.GitHubEnabled, "github-enabled", config.Flags.GitHubEnabled, "GitHub enabled")
-	Root.PersistentFlags().BoolVar(&config.Flags.EntraIDEnabled, "entraid-enabled", config.Flags.EntraIDEnabled, "EntraID enabled")
-
 	Root.SilenceUsage = true
+
+	err = Root.ExecuteContext(ctx)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 var Root = &cobra.Command{
+	Use:     "service-lens",
+	Short:   "Service Lens is a tool to help you manage your services.",
+	Long:    `Service Lens is a tool to help you manage your services.`,
 	Version: versionFmt,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		srv := NewWebSrv(config)
+		srv := NewWebSrv(cfg)
 
 		s, _ := server.WithContext(cmd.Context())
 		s.Listen(srv, false)
@@ -79,11 +80,11 @@ var _ server.Listener = (*WebSrv)(nil)
 
 // WebSrv is the server that implements the Noop interface.
 type WebSrv struct {
-	cfg *cfg.Config
+	cfg *config.Config
 }
 
 // NewWebSrv returns a new instance of NoopSrv.
-func NewWebSrv(cfg *cfg.Config) *WebSrv {
+func NewWebSrv(cfg *config.Config) *WebSrv {
 	return &WebSrv{cfg}
 }
 
@@ -98,7 +99,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			providers.RegisterProvider(entraid.New(s.cfg.Flags.EntraIDClientID, s.cfg.Flags.EntraIDClientSecret, s.cfg.Flags.EntraIDCallbackURL, entraid.TenantType(s.cfg.Flags.EntraIDTenantID)))
 		}
 
-		conn, err := gorm.Open(postgres.Open(config.Flags.DatabaseURI), &gorm.Config{
+		conn, err := gorm.Open(postgres.Open(s.cfg.Flags.DatabaseURI), &gorm.Config{
 			NamingStrategy: schema.NamingStrategy{
 				TablePrefix: s.cfg.Flags.DatabaseTablePrefix,
 			},
@@ -298,7 +299,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// templates.Post("/new", handlers.CreateTemplate())
 
 		// // Me ...
-		app.Get("/me", htmx.NewCompFuncHandler(handlers.Me(), compFuncConfig))
+		app.Get("/me", htmx.NewCompFuncHandler(handlers.NewMeHandler(), compFuncConfig))
 
 		// // Settings ...
 		// app.Get("/settings", htmx.NewCompFuncHandler(settingsHandlers.ListSettings, compFuncConfig))

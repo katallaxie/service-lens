@@ -1,11 +1,11 @@
 package components
 
 import (
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/htmx/icons"
 	"github.com/katallaxie/htmx/icons/heroicons"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // AccountSwitcherProps ...

@@ -1,11 +1,11 @@
 package components
 
 import (
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/avatars"
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/pkg/cast"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // ProfileMenuProps ...

@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
+	goth "github.com/katallaxie/fiber-goth"
 	middleware "github.com/katallaxie/fiber-htmx"
 	reload "github.com/katallaxie/fiber-reload"
 	htmx "github.com/katallaxie/htmx"
@@ -9,11 +10,10 @@ import (
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/service-lens/internal/components"
-	goth "github.com/zeiss/fiber-goth"
 )
 
-// Me package handlers
-func Me() middleware.CompFunc {
+// NewMeHandler returns a handler that renders the profile page.
+func NewMeHandler() middleware.CompFunc {
 	return func(c *fiber.Ctx) (htmx.Node, error) {
 		s, err := goth.SessionFromContext(c)
 		if err != nil {
@@ -27,7 +27,7 @@ func Me() middleware.CompFunc {
 				Development: reload.IsDevelopment(c.UserContext()),
 			},
 			func() htmx.Node {
-				return cards.CardBordered(
+				return cards.CardBorder(
 					cards.CardProps{
 						ClassNames: htmx.ClassNames{
 							"m-2": true,

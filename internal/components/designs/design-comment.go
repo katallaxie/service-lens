@@ -3,6 +3,7 @@ package designs
 import (
 	"fmt"
 
+	"github.com/katallaxie/fiber-goth/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/avatars"
 	"github.com/katallaxie/htmx/cards"
@@ -14,7 +15,6 @@ import (
 	"github.com/katallaxie/pkg/cast"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
-	"github.com/zeiss/fiber-goth/adapters"
 )
 
 // DesignCommentProps ...

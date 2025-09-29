@@ -148,9 +148,9 @@ func EmojiPicker(props EmojiPickerProps) htmx.Node {
 				htmx.Attribute(":aria-expanded", "open"),
 				htmx.Attribute(":aria-controls", "$id('dropdown-button')"),
 				htmx.Attribute("type", "button"),
-				htmx.Span(
-					alpine.XText("input"),
-				),
+				// htmx.Span(
+				// 	alpine.XText("input"),
+				// ),
 			),
 			dropdowns.DropdownMenuItems(
 				dropdowns.DropdownMenuItemsProps{

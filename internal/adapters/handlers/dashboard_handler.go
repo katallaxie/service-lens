@@ -3,13 +3,13 @@ package handlers
 import (
 	"context"
 
+	goth "github.com/katallaxie/fiber-goth"
 	reload "github.com/katallaxie/fiber-reload"
 	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/dashboard"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"
-	goth "github.com/zeiss/fiber-goth"
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 
