@@ -928,6 +928,8 @@ github.com/katallaxie/fiber-goth v1.0.2-0.20250915044111-992a3f2250ec h1:/nYmgWk
 github.com/katallaxie/fiber-goth v1.0.2-0.20250915044111-992a3f2250ec/go.mod h1:iVCen5Err6f2F+CbLI+MC9JhXqa5eVyx+NxW9ODHH5Y=
 github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.1 h1:Jeaubq8oEoOfilwMWO0I0Y90OU4HW2QDCbVzSXur9qg=
 github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.1/go.mod h1:gva6kJ9DctVNvc+seABKk3b4Wjp2IzcQjUvPVgaCXbo=
+github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3 h1:c3HQEBbrkr6+utMZFZsLMcPT/funUoda5r7Cm04fgFE=
+github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3/go.mod h1:gva6kJ9DctVNvc+seABKk3b4Wjp2IzcQjUvPVgaCXbo=
 github.com/katallaxie/fiber-htmx/v3 v3.0.0-20250930140135-5e16190f0d95 h1:t1zqFRyeYasOWwDBQQtr2TX85AyboDFRhNe50zjfTQ0=
 github.com/katallaxie/fiber-htmx/v3 v3.0.0-20250930140135-5e16190f0d95/go.mod h1:YGvJtB2KupfHu8lXcxwA53KgS8jx3yN7Fzg9H/LgLjM=
 github.com/katallaxie/fiber-reload/v3 v3.0.0 h1:S/9ak7QljOWG44Crz0xkAeyNC3st+2VrNHysPvbY2I4=
