@@ -1,8 +1,8 @@
 package components
 
 import (
-	"github.com/katallaxie/fiber-goth/adapters"
-	middleware "github.com/katallaxie/fiber-htmx"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
+	middleware "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"

@@ -7,7 +7,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
 
-	"github.com/katallaxie/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"

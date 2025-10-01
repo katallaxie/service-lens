@@ -4,14 +4,14 @@ import (
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/login"
 
-	"github.com/gofiber/fiber/v2"
-	middleware "github.com/katallaxie/fiber-htmx"
+	"github.com/gofiber/fiber/v3"
+	middleware "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 )
 
 // UserLogin handles the user login page.
 func UserLogin() middleware.CompFunc {
-	return func(c *fiber.Ctx) (htmx.Node, error) {
+	return func(c fiber.Ctx) (htmx.Node, error) {
 		return components.Page(
 			components.PageProps{},
 			components.Wrap(

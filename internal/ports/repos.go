@@ -5,7 +5,7 @@ import (
 	"io"
 
 	"github.com/google/uuid"
-	"github.com/katallaxie/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
 )

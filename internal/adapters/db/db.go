@@ -8,7 +8,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/ports"
 
 	"github.com/google/uuid"
-	"github.com/katallaxie/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/pkg/cast"
 	"github.com/katallaxie/pkg/dbx"

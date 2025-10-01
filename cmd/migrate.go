@@ -4,7 +4,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/db"
 	"github.com/katallaxie/service-lens/internal/models"
 
-	"github.com/katallaxie/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
 	"github.com/katallaxie/pkg/dbx"
 	"github.com/spf13/cobra"
 	"gorm.io/driver/postgres"

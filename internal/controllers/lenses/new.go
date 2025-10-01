@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 
-	middleware "github.com/katallaxie/fiber-htmx"
+	middleware "github.com/katallaxie/fiber-htmx/v3"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	"github.com/katallaxie/service-lens/internal/utils"

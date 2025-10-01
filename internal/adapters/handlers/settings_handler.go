@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/gofiber/fiber/v2"
-	goth "github.com/katallaxie/fiber-goth"
-	reload "github.com/katallaxie/fiber-reload"
+	"github.com/gofiber/fiber/v3"
+	goth "github.com/katallaxie/fiber-goth/v3"
+	reload "github.com/katallaxie/fiber-reload/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
@@ -21,12 +21,12 @@ func NewSettingsHandler() *SettingsHandler {
 	return &SettingsHandler{}
 }
 
-func (h *SettingsHandler) ListSettings(c *fiber.Ctx) (htmx.Node, error) {
+func (h *SettingsHandler) ListSettings(c fiber.Ctx) (htmx.Node, error) {
 	return components.DefaultLayout(
 		components.DefaultLayoutProps{
 			Path:        c.Path(),
 			User:        errorx.Ignore(goth.SessionFromContext(c)).User,
-			Development: reload.IsDevelopment(c.UserContext()),
+			Development: reload.IsDevelopment(c),
 		},
 		func() htmx.Node {
 			return htmx.Fragment(

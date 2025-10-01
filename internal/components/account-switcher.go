@@ -1,7 +1,7 @@
 package components
 
 import (
-	"github.com/katallaxie/fiber-goth/adapters"
+	"github.com/katallaxie/fiber-goth/v3/adapters"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/htmx/icons"

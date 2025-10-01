@@ -3,8 +3,8 @@ package handlers
 import (
 	"context"
 
-	goth "github.com/katallaxie/fiber-goth"
-	reload "github.com/katallaxie/fiber-reload"
+	goth "github.com/katallaxie/fiber-goth/v3"
+	reload "github.com/katallaxie/fiber-reload/v3"
 	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/dashboard"
@@ -13,8 +13,8 @@ import (
 	seed "github.com/zeiss/gorm-seed"
 	"github.com/zeiss/pkg/conv"
 
-	"github.com/gofiber/fiber/v2"
-	middleware "github.com/katallaxie/fiber-htmx"
+	"github.com/gofiber/fiber/v3"
+	middleware "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/loading"
 	"github.com/katallaxie/htmx/stats"
@@ -23,12 +23,12 @@ import (
 
 // GetDashboard returns the dashboard index handler.
 func GetDashboard() middleware.CompFunc {
-	return func(c *fiber.Ctx) (htmx.Node, error) {
+	return func(c fiber.Ctx) (htmx.Node, error) {
 		return components.DefaultLayout(
 			components.DefaultLayoutProps{
 				Path:        c.Path(),
 				User:        errorx.Ignore(goth.SessionFromContext(c)).User,
-				Development: reload.IsDevelopment(c.UserContext()),
+				Development: reload.IsDevelopment(c),
 			},
 			func() htmx.Node {
 				return htmx.Fragment(
@@ -96,7 +96,7 @@ func GetDashboard() middleware.CompFunc {
 
 // GetDashboardTotalDesigns returns the total number of designs in the dashboard.
 func GetDashboardTotalDesigns(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) middleware.CompFunc {
-	return func(c *fiber.Ctx) (htmx.Node, error) {
+	return func(c fiber.Ctx) (htmx.Node, error) {
 		return htmx.Fallback(
 			htmx.ErrorBoundary(func() htmx.Node {
 				var total int64
@@ -120,7 +120,7 @@ func GetDashboardTotalDesigns(store seed.Database[ports.ReadTx, ports.ReadWriteT
 
 // GetDashboardTotalWorkloads returns the total number of workloads in the dashboard.
 func GetDashboardTotalWorkloads(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) middleware.CompFunc {
-	return func(c *fiber.Ctx) (htmx.Node, error) {
+	return func(c fiber.Ctx) (htmx.Node, error) {
 		return htmx.Fallback(
 			htmx.ErrorBoundary(func() htmx.Node {
 				var total int64
@@ -144,7 +144,7 @@ func GetDashboardTotalWorkloads(store seed.Database[ports.ReadTx, ports.ReadWrit
 
 // GetDashboardTotalProfiles returns the total number of profiles in the dashboard.
 func GetDashboardTotalProfiles(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) middleware.CompFunc {
-	return func(c *fiber.Ctx) (htmx.Node, error) {
+	return func(c fiber.Ctx) (htmx.Node, error) {
 		return htmx.Fallback(
 			htmx.ErrorBoundary(func() htmx.Node {
 				var total int64
