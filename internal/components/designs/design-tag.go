@@ -8,6 +8,7 @@ import (
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
@@ -79,7 +80,7 @@ func DesignTag(props DesignTagProps) htmx.Node {
 			buttons.ButtonProps{
 				Type: "submit",
 			},
-			icons.TrashOutline(
+			heroicons.TrashOutline(
 				icons.IconProps{},
 			),
 		),

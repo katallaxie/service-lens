@@ -16,7 +16,7 @@ type EnvironmentMetadataCardProps struct {
 
 // EnvironmentMetadataCard ...
 func EnvironmentMetadataCard(props EnvironmentMetadataCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

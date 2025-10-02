@@ -16,7 +16,7 @@ type WorkloadTagsCardProps struct {
 
 // WorkloadTagsCard ...
 func WorkloadTagsCard(props WorkloadTagsCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2: true,

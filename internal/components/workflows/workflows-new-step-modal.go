@@ -20,7 +20,7 @@ type NewStepModalProps struct {
 // NewStepModal ...
 func NewStepModal(props NewStepModalProps) htmx.Node {
 	return modals.Modal(
-		modals.ModalProps{
+		modals.Props{
 			ID: "new_step_modal",
 		},
 		htmx.FormElement(

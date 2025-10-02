@@ -22,7 +22,7 @@ type WorkflowStepProps struct {
 
 // WorkflowStep ...
 func WorkflowStep(props WorkflowStepProps, children ...htmx.Node) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

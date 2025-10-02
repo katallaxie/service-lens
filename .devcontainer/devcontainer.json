@@ -8,6 +8,7 @@
     }
   },
   "runArgs": [
+    "--add-host=host.containers.internal:host-gateway"
   ],
   "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "postCreateCommand": "bash scripts/postCreateCommand.sh",

@@ -33,7 +33,7 @@ func LensPillarTable(props LensPillarTableProps, children ...htmx.Node) htmx.Nod
 					Cell: func(p tables.TableProps, row *models.Pillar) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									// Href: fmt.Sprintf(workloadLensURL, props.Workload.ID, row.ID),
 								},
 								htmx.Text(row.Name),

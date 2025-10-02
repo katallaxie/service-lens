@@ -16,7 +16,7 @@ type ProfilesMetadataCardProps struct {
 
 // ProfilesMetadataCard ...
 func ProfilesMetadataCard(props ProfilesMetadataCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

@@ -5,6 +5,7 @@ import (
 
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/links"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -120,7 +121,7 @@ func WorkloadsTable(props WorkloadsTableProps, children ...htmx.Node) htmx.Node 
 					Cell: func(p tables.TableProps, row *models.Workload) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: "/workloads/" + row.ID.String(),
 								},
 								htmx.Text(row.Name),
@@ -137,7 +138,7 @@ func WorkloadsTable(props WorkloadsTableProps, children ...htmx.Node) htmx.Node 
 					Cell: func(p tables.TableProps, row *models.Workload) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: fmt.Sprintf(profileShowURL, row.Profile.ID),
 								},
 								htmx.Text(row.Profile.Name),
@@ -154,7 +155,7 @@ func WorkloadsTable(props WorkloadsTableProps, children ...htmx.Node) htmx.Node 
 					Cell: func(p tables.TableProps, row *models.Workload) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: fmt.Sprintf(environmentShowURL, row.Environment.ID),
 								},
 								htmx.Text(row.Environment.Name),
@@ -178,7 +179,7 @@ func WorkloadsTable(props WorkloadsTableProps, children ...htmx.Node) htmx.Node 
 								htmx.HxConfirm("Are you sure you want to delete workload?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								icons.TrashOutline(
+								heroicons.TrashOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

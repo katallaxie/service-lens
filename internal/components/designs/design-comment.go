@@ -9,6 +9,7 @@ import (
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/dropdowns"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/htmx/tooltips"
 	"github.com/katallaxie/htmx/typography"
@@ -42,8 +43,8 @@ func DesignComment(props DesignCommentProps) htmx.Node {
 					},
 				},
 				tooltips.Tooltip(
-					tooltips.TooltipProps{
-						DataTip: props.User.Name,
+					tooltips.Props{
+						Tip: props.User.Name,
 					},
 					avatars.AvatarRoundSmall(
 						avatars.AvatarProps{},
@@ -80,7 +81,7 @@ func DesignComment(props DesignCommentProps) htmx.Node {
 								"btn": true,
 							},
 						},
-						icons.El(
+						heroicons.EllipsisHorizontalOutline(
 							icons.IconProps{},
 						),
 					),

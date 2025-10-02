@@ -10,6 +10,7 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/links"
 	"github.com/katallaxie/htmx/tables"
 )
@@ -115,7 +116,7 @@ func DesignsTable(props DesignsTableProps, children ...htmx.Node) htmx.Node {
 					Cell: func(p tables.TableProps, row *models.Design) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: fmt.Sprintf(utils.ShowDesigUrlFormat, row.ID),
 								},
 								htmx.Text(row.Title),
@@ -149,7 +150,7 @@ func DesignsTable(props DesignsTableProps, children ...htmx.Node) htmx.Node {
 								htmx.HxConfirm("Are you sure you want to delete this design?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								icons.TrashOutline(
+								heroicons.TrashOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

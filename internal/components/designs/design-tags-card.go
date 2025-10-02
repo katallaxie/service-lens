@@ -16,7 +16,7 @@ type DesignTagsCardProps struct {
 
 // DesignTagsCard ...
 func DesignTagsCard(props DesignTagsCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2: true,

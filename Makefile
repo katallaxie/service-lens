@@ -13,6 +13,10 @@ GO_TEST 			?= $(GO_TOOL) gotest.tools/gotestsum --format pkgname
 start: ## Start the service.
 	$(GO_TOOL) github.com/air-verse/air
 
+.PHONY: migrate
+migrate: ## Run database migrations.
+	$(GO) run main.go migrate
+
 .PHONY: build
 build: ## Build the binary file.
 	$(GO_RELEASER) build --snapshot --clean

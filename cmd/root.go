@@ -7,18 +7,16 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/db"
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
 	config "github.com/katallaxie/service-lens/internal/cfg"
-	"github.com/katallaxie/service-lens/internal/models"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/helmet"
 	logger "github.com/gofiber/fiber/v3/middleware/logger"
 	requestid "github.com/gofiber/fiber/v3/middleware/requestid"
-	"github.com/katallaxie/fiber-goth/providers"
-	"github.com/katallaxie/fiber-goth/providers/entraid"
-	"github.com/katallaxie/fiber-goth/providers/github"
 	goth "github.com/katallaxie/fiber-goth/v3"
-	"github.com/katallaxie/fiber-goth/v3/adapters"
 	adapter "github.com/katallaxie/fiber-goth/v3/adapters/gorm"
+	"github.com/katallaxie/fiber-goth/v3/providers"
+	"github.com/katallaxie/fiber-goth/v3/providers/entraid"
+	"github.com/katallaxie/fiber-goth/v3/providers/github"
 	htmx "github.com/katallaxie/fiber-htmx/v3"
 	reload "github.com/katallaxie/fiber-reload/v3"
 	"github.com/katallaxie/pkg/dbx"
@@ -113,42 +111,6 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			return err
 		}
 
-		err = store.Migrate(ctx,
-			&adapters.GothUser{},
-			&adapters.GothAccount{},
-			&adapters.GothSession{},
-			&adapters.GothVerificationToken{},
-			&models.Template{},
-			&models.Ownable{},
-			&models.Workflow{},
-			&models.WorkflowState{},
-			&models.WorkflowTransition{},
-			&models.Workable{},
-			&models.Reaction{},
-			&models.ProfileQuestion{},
-			&models.ProfileQuestionChoice{},
-			&models.ProfileQuestionAnswer{},
-			&models.Design{},
-			&models.DesignRevision{},
-			&models.DesignComment{},
-			&models.DesignCommentRevision{},
-			&models.Environment{},
-			&models.Profile{},
-			&models.Tag{},
-			&models.Lens{},
-			&models.Pillar{},
-			&models.Question{},
-			&models.Resource{},
-			&models.Choice{},
-			&models.Risk{},
-			&models.Workload{},
-			&models.WorkloadLensQuestionAnswer{},
-			&models.Setting{},
-		)
-		if err != nil {
-			return err
-		}
-
 		gorm := adapter.New(conn)
 
 		gothConfig := goth.Config{
@@ -163,9 +125,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 
 		// handlers := handlers.New(store)
 
-		app := fiber.New(
-			fiber.Config{},
-		)
+		app := fiber.New()
 		app.Use(requestid.New())
 		app.Use(helmet.New())
 		app.Use(logger.New())

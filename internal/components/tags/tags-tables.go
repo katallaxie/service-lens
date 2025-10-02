@@ -7,6 +7,7 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/utils"
@@ -137,7 +138,7 @@ func TagsTable(props TagsTableProps, children ...htmx.Node) htmx.Node {
 								htmx.HxConfirm("Are you sure you want to delete this tag?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								icons.TrashOutline(
+								heroicons.TrashOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

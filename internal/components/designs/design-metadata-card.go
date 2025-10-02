@@ -14,7 +14,7 @@ type DesignMetadataCardProps struct {
 
 // DesignMetadataCard ...
 func DesignMetadataCard(props DesignMetadataCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

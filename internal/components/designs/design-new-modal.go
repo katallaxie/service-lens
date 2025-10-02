@@ -17,7 +17,7 @@ type NewDesignModalProps struct{}
 // NewDesignModal ...
 func NewDesignModal() htmx.Node {
 	return modals.Modal(
-		modals.ModalProps{
+		modals.Props{
 			ID: "new_design_modal",
 		},
 		htmx.FormElement(

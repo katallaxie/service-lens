@@ -42,7 +42,7 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 			htmx.HxPost(fmt.Sprintf(utils.CreateDesignCommentUrlFormat, props.Design.ID)),
 			htmx.HxTarget("#comments"),
 			htmx.HxSwap("beforeend"),
-			cards.CardBordered(
+			cards.CardBorder(
 				cards.CardProps{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
@@ -64,7 +64,7 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 						forms.FormControlProps{
 							ClassNames: htmx.ClassNames{},
 						},
-						htmx.StyleElement(htmx.Raw(
+						htmx.Style(htmx.Raw(
 							`.CodeMirror, .CodeMirror-scroll {
 	min-height: 200px;
 }`,

@@ -20,7 +20,7 @@ type DesignRevisionsCardProps struct {
 
 // DesignRevisionsCard ...
 func DesignRevisionsCard(props DesignRevisionsCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{

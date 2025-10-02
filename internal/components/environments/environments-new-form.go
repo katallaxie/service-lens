@@ -15,7 +15,7 @@ type NewFormProps struct{}
 func NewForm(props NewFormProps) htmx.Node {
 	return htmx.FormElement(
 		htmx.HxPost(""),
-		cards.CardBordered(
+		cards.CardBorder(
 			cards.CardProps{
 				ClassNames: htmx.ClassNames{
 					"m-2": true,

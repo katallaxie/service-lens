@@ -15,7 +15,7 @@ type NewWorkflowModalProps struct{}
 // NewWorkflowModal ...
 func NewWorkflowModal() htmx.Node {
 	return modals.Modal(
-		modals.ModalProps{
+		modals.Props{
 			ID: "new_workflow_modal",
 		},
 		htmx.FormElement(

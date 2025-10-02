@@ -16,8 +16,7 @@ require (
 	github.com/go-playground/validator/v10 v10.27.0
 	github.com/gofiber/fiber/v3 v3.0.0-rc.2
 	github.com/google/uuid v1.6.0
-	github.com/katallaxie/fiber-goth v1.0.2-0.20250915044111-992a3f2250ec
-	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3
+	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251002173908-73e0e1a910fe
 	github.com/katallaxie/fiber-htmx/v3 v3.0.0-20250930140135-5e16190f0d95
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
 	github.com/katallaxie/htmx v0.5.3

@@ -18,7 +18,7 @@ type WorkloadsRisksCardProps struct {
 // WorkloadsRisksCard ...
 func WorkloadsRisksCard(props WorkloadsRisksCardProps) htmx.Node {
 	return stats.Stats(
-		stats.StatsProps{
+		stats.Props{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2:     true,
 				tailwind.Shadow: false,

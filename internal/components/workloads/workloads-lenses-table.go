@@ -49,7 +49,7 @@ func LensesTable(props LensesTableProps, children ...htmx.Node) htmx.Node {
 					Cell: func(p tables.TableProps, row *models.Lens) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: fmt.Sprintf(utils.WorkloadLensUrlFormat, props.Workload.ID, row.ID),
 								},
 								htmx.Text(row.Name),

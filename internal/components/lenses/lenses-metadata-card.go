@@ -14,7 +14,7 @@ type LensMetadataCardProps struct {
 
 // LensMetadataCard ...
 func LensMetadataCard(props LensMetadataCardProps) htmx.Node {
-	return cards.CardBordered(
+	return cards.CardBorder(
 		cards.CardProps{
 			ClassNames: htmx.ClassNames{
 				"m-2": true,

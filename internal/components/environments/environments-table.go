@@ -6,6 +6,7 @@ import (
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/links"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -113,7 +114,7 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 					Cell: func(p tables.TableProps, row *models.Environment) htmx.Node {
 						return htmx.Td(
 							links.Link(
-								links.LinkProps{
+								links.Props{
 									Href: "/environments/" + row.ID.String(),
 								},
 								htmx.Text(row.Name),
@@ -137,7 +138,7 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 								htmx.HxConfirm("Are you sure you want to delete environment tag?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								icons.TrashOutline(
+								heroicons.TrashOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

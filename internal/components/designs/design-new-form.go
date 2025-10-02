@@ -6,6 +6,7 @@ import (
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/icons"
+	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/loading"
 	"github.com/katallaxie/htmx/tabs"
 	"github.com/katallaxie/htmx/tailwind"
@@ -24,7 +25,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 	return htmx.FormElement(
 		htmx.HxPost(""),
 		htmx.HxTarget("this"),
-		cards.CardBordered(
+		cards.CardBorder(
 			cards.CardProps{
 				ClassNames: htmx.ClassNames{
 					tailwind.M2: true,
@@ -62,8 +63,8 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 					forms.FormControlProps{
 						ClassNames: htmx.ClassNames{},
 					},
-					tabs.TabsBoxed(
-						tabs.TabsProps{},
+					tabs.Boxed(
+						tabs.Props{},
 						tabs.Tab(
 							tabs.TabProps{
 								Active: true,
@@ -115,56 +116,56 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownBold(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("0"),
-								icons.BoldOutline(
+								heroicons.BoldOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownItalic(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.ItalicOutline(
+								heroicons.ItalicOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownQuote(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.ArrowUturnLeftOutline(
+								heroicons.ArrowUturnLeftOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownCode(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.ItalicCodeBracketOutline(
+								heroicons.CodeBracketOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownLink(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.LinkOutline(
+								heroicons.LinkOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownImage(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.ImageOutline(
+								heroicons.InformationCircleOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownUnorderedList(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.ListBulletOutline(
+								heroicons.ListBulletOutline(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownOrderedList(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.NumberedListOutline(
+								heroicons.NumberedListOutline(
 									icons.IconProps{},
 								),
 							),
@@ -176,7 +177,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownMention(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.AtSymbolOutline(
+								heroicons.AtSymbolOutline(
 									icons.IconProps{},
 								),
 							),
@@ -188,7 +189,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownStrikethrough(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								icons.StrikethroughOutline(
+								heroicons.StrikethroughOutline(
 									icons.IconProps{},
 								),
 							),
@@ -216,7 +217,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 				),
 			),
 		),
-		cards.CardBordered(
+		cards.CardBorder(
 			cards.CardProps{
 				ClassNames: htmx.ClassNames{
 					tailwind.M2: true,
