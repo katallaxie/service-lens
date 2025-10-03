@@ -45,7 +45,7 @@ func (w *WorkloadListControllerImpl) Get() error {
 				}))
 
 				return cards.CardBordered(
-					cards.CardProps{
+					cards.Props{
 						ClassNames: htmx.ClassNames{
 							tailwind.M2: true,
 						},

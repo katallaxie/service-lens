@@ -49,7 +49,7 @@ func (w *ProfileListControllerImpl) Get() error {
 			},
 			func() htmx.Node {
 				return cards.CardBordered(
-					cards.CardProps{
+					cards.Props{
 						ClassNames: htmx.ClassNames{
 							tailwind.M2: true,
 						},

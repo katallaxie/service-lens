@@ -72,7 +72,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 		htmx.Form(
 			htmx.HxPut(fmt.Sprintf(updateWorkloadAnswerURL, w.params.WorkloadID, w.params.LensID, w.params.QuestionID)),
 			cards.CardBordered(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},
@@ -86,7 +86,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 				),
 			),
 			cards.CardBordered(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},
@@ -110,7 +110,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 				),
 			),
 			cards.CardBordered(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},
@@ -215,7 +215,7 @@ func (w *WorkloadLensEditQuestionControllerImpl) Get() error {
 				),
 			),
 			cards.CardBordered(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},

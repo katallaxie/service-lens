@@ -53,7 +53,7 @@ func (l *ListDesignsControllerImpl) Get() error {
 				}))
 
 				return cards.CardBordered(
-					cards.CardProps{
+					cards.Props{
 						ClassNames: htmx.ClassNames{
 							"m-2": true,
 						},

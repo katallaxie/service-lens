@@ -56,7 +56,7 @@ func (l *IndexLoginController) Get() error {
 						},
 					),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								"w-96":     true,
 								"max-w-lg": true,

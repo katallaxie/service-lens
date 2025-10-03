@@ -19,7 +19,7 @@ require (
 	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251002173908-73e0e1a910fe
 	github.com/katallaxie/fiber-htmx/v3 v3.0.0-20250930140135-5e16190f0d95
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
-	github.com/katallaxie/htmx v0.5.3
+	github.com/katallaxie/htmx v0.5.4-0.20251003194518-e09abad4babe
 	github.com/katallaxie/pkg v0.7.9
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
@@ -553,8 +553,8 @@ require (
 	google.golang.org/genproto v0.0.0-20250715232539-7130f93afb79 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20250721164621-a45f3dfb1074 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250818200422-3122310a409c // indirect
-	google.golang.org/grpc v1.74.2 // indirect
-	google.golang.org/protobuf v1.36.9 // indirect
+	google.golang.org/grpc v1.75.1 // indirect
+	google.golang.org/protobuf v1.36.10 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/mail.v2 v2.3.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect

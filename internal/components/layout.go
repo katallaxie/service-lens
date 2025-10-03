@@ -64,7 +64,7 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 								"bg-base-200": true,
 							},
 							navbars.Navbar(
-								navbars.NavbarProps{
+								navbars.Props{
 									ClassNames: htmx.ClassNames{
 										"navbar":      true,
 										"z-10":        true,
@@ -72,8 +72,8 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 										"bg-base-100": true,
 									},
 								},
-								navbars.NavbarStart(
-									navbars.NavbarStartProps{
+								navbars.Start(
+									navbars.StartProps{
 										ClassNames: htmx.ClassNames{
 											"gap-3": true,
 										},
@@ -92,8 +92,8 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 										),
 									),
 								),
-								navbars.NavbarEnd(
-									navbars.NavbarEndProps{},
+								navbars.End(
+									navbars.EndProps{},
 									ProfileMenu(
 										ProfileMenuProps{
 											User: p.User,

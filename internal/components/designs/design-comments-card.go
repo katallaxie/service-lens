@@ -43,7 +43,7 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 			htmx.HxTarget("#comments"),
 			htmx.HxSwap("beforeend"),
 			cards.CardBorder(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},

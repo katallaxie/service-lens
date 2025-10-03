@@ -59,7 +59,7 @@ func (w *WorkloadNewControllerImpl) Get() error {
 				return htmx.FormElement(
 					htmx.HxPost(""),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},
@@ -153,7 +153,7 @@ func (w *WorkloadNewControllerImpl) Get() error {
 						),
 					),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},

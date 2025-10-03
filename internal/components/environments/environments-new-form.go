@@ -16,7 +16,7 @@ func NewForm(props NewFormProps) htmx.Node {
 	return htmx.FormElement(
 		htmx.HxPost(""),
 		cards.CardBorder(
-			cards.CardProps{
+			cards.Props{
 				ClassNames: htmx.ClassNames{
 					"m-2": true,
 				},

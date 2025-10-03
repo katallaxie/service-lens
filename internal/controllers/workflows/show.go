@@ -78,7 +78,7 @@ func (p *WorkflowShowControllerImpl) Get() error {
 			func() htmx.Node {
 				return htmx.Fragment(
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},
@@ -138,7 +138,7 @@ func (p *WorkflowShowControllerImpl) Get() error {
 					),
 
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},

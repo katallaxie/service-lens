@@ -31,7 +31,7 @@ func (h *SettingsHandler) ListSettings(c fiber.Ctx) (htmx.Node, error) {
 		func() htmx.Node {
 			return htmx.Fragment(
 				cards.CardBorder(
-					cards.CardProps{
+					cards.Props{
 						ClassNames: htmx.Merge(
 							htmx.ClassNames{
 								tailwind.M2: true,

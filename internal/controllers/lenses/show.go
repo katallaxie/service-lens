@@ -56,7 +56,7 @@ func (l *LensShowControllerImpl) Get() error {
 				return htmx.Fragment(
 
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},

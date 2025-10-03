@@ -17,7 +17,7 @@ type WorkloadMetadataCardProps struct {
 // WorkloadMetadataCard ...
 func WorkloadMetadataCard(props WorkloadMetadataCardProps) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2: true,
 			},

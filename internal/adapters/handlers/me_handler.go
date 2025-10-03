@@ -28,7 +28,7 @@ func NewMeHandler() middleware.CompFunc {
 			},
 			func() htmx.Node {
 				return cards.CardBorder(
-					cards.CardProps{
+					cards.Props{
 						ClassNames: htmx.ClassNames{
 							"m-2": true,
 						},

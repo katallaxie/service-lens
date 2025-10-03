@@ -28,7 +28,7 @@ type DesignCommentProps struct {
 // DesignComment ...
 func DesignComment(props DesignCommentProps) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.ClassNames{
 				tailwind.M2: true,
 			},

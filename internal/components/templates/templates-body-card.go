@@ -36,7 +36,7 @@ type TemplateBodyCardProps struct {
 // TemplateBodyCard ...
 func TemplateBodyCard(props TemplateBodyCardProps) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
 					tailwind.M2: true,

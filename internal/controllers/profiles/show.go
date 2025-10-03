@@ -64,7 +64,7 @@ func (p *ProfileShowControllerImpl) Get() error {
 			func() htmx.Node {
 				return htmx.Fragment(
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								"m-2": true,
 							},
@@ -132,13 +132,13 @@ func (p *ProfileShowControllerImpl) Get() error {
 						},
 					),
 					cards.CardBordered(
-						cards.CardProps{},
+						cards.Props{},
 						cards.Body(
 							cards.BodyProps{},
 							htmx.Group(
 								htmx.ForEach(p.questions.GetRows(), func(q *models.ProfileQuestion, profileIdx int) htmx.Node {
 									return cards.CardBordered(
-										cards.CardProps{
+										cards.Props{
 											ClassNames: htmx.ClassNames{
 												"w-full": true,
 												"my-4":   true,

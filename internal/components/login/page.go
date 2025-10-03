@@ -34,7 +34,7 @@ func NewLogin() htmx.Node {
 				},
 			),
 			cards.CardBorder(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						"w-full":    true,
 						"max-w-md":  true,

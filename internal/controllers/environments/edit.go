@@ -53,7 +53,7 @@ func (p *EnvironmentEditControllerImpl) Get() error {
 				htmx.FormElement(
 					htmx.HxPut(fmt.Sprintf("/environments/%s", p.environment.ID)),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								"w-full": true,
 								"my-4":   true,

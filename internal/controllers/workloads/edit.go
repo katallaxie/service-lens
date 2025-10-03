@@ -61,7 +61,7 @@ func (p *WorkloadEditControllerImpl) Post() error {
 	return p.Render(
 
 		cards.CardBordered(
-			cards.CardProps{
+			cards.Props{
 				ClassNames: htmx.ClassNames{
 					tailwind.M2: true,
 				},
@@ -152,7 +152,7 @@ func (p *WorkloadEditControllerImpl) Get() error {
 					htmx.HxTarget("this"),
 					htmx.HxSwap("outerHTML"),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},

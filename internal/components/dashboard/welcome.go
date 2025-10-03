@@ -18,7 +18,7 @@ type WelcomeCardProps struct {
 // WelcomeCard ...
 func WelcomeCard(props WelcomeCardProps) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
 					tailwind.M2: true,

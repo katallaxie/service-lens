@@ -56,7 +56,7 @@ func (w *WorkloadShowControllerImpl) Get() error {
 			func() htmx.Node {
 				return htmx.Fragment(
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},
@@ -141,7 +141,7 @@ func (w *WorkloadShowControllerImpl) Get() error {
 						},
 					),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},

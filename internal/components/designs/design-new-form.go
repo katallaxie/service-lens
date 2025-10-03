@@ -26,7 +26,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 		htmx.HxPost(""),
 		htmx.HxTarget("this"),
 		cards.CardBorder(
-			cards.CardProps{
+			cards.Props{
 				ClassNames: htmx.ClassNames{
 					tailwind.M2: true,
 				},
@@ -218,7 +218,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 			),
 		),
 		cards.CardBorder(
-			cards.CardProps{
+			cards.Props{
 				ClassNames: htmx.ClassNames{
 					tailwind.M2: true,
 				},

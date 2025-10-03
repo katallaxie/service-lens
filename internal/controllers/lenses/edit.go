@@ -99,7 +99,7 @@ func (l *LensEditController) Get() error {
 			components.Layout(
 				components.LayoutProps{},
 				cards.CardBordered(
-					cards.CardProps{},
+					cards.Props{},
 					cards.Body(
 						cards.BodyProps{},
 						cards.Title(

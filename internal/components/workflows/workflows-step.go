@@ -23,7 +23,7 @@ type WorkflowStepProps struct {
 // WorkflowStep ...
 func WorkflowStep(props WorkflowStepProps, children ...htmx.Node) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
 					tailwind.CursorPointer: true,

@@ -51,7 +51,7 @@ func (l *ShowControllerImpl) Get() error {
 			htmx.HxTarget("this"),
 			htmx.HxSwap("outerHTML"),
 			cards.CardBordered(
-				cards.CardProps{
+				cards.Props{
 					ClassNames: htmx.ClassNames{
 						tailwind.M2: true,
 					},

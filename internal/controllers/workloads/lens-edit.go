@@ -80,7 +80,7 @@ func (w *WorkloadLensEditControllerImpl) Get() error {
 						drawers.DrawerContentProps{},
 						htmx.ID("pillars-drawer-content"),
 						cards.CardBordered(
-							cards.CardProps{
+							cards.Props{
 								ClassNames: htmx.ClassNames{
 									tailwind.M4: true,
 								},

@@ -23,7 +23,7 @@ type DesignTitleCardProps struct {
 // DesignTitleCard ...
 func DesignTitleCard(props DesignTitleCardProps) htmx.Node {
 	return cards.CardBorder(
-		cards.CardProps{
+		cards.Props{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
 					tailwind.M2: true,

@@ -71,7 +71,7 @@ func (p *ProfileEditController) Get() error {
 				htmx.FormElement(
 					htmx.HxPost(""),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								"w-full": true,
 								"my-4":   true,

@@ -79,7 +79,7 @@ func (p *NewProfileControllerImpl) Get() error {
 				return htmx.FormElement(
 					htmx.HxPost(""),
 					cards.CardBordered(
-						cards.CardProps{
+						cards.Props{
 							ClassNames: htmx.ClassNames{
 								tailwind.M2: true,
 							},
@@ -157,7 +157,7 @@ func (p *NewProfileControllerImpl) Get() error {
 					htmx.Group(
 						htmx.ForEach(p.questions.GetRows(), func(q *models.ProfileQuestion, profileIdx int) htmx.Node {
 							return cards.CardBordered(
-								cards.CardProps{
+								cards.Props{
 									ClassNames: htmx.ClassNames{
 										"w-full": true,
 										"my-4":   true,

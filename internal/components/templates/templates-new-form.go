@@ -20,7 +20,7 @@ func TemplateNewForm(props TemplateNewFormProps) htmx.Node {
 		htmx.HxSwap("outerHTML"),
 		htmx.ID("body"),
 		cards.CardBorder(
-			cards.CardProps{
+			cards.Props{
 				ClassNames: htmx.ClassNames{
 					"my-2": true,
 					"mx-2": true,
