@@ -16,11 +16,11 @@ require (
 	github.com/go-playground/validator/v10 v10.27.0
 	github.com/gofiber/fiber/v3 v3.0.0-rc.2
 	github.com/google/uuid v1.6.0
-	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251002173908-73e0e1a910fe
+	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251004142506-c52276bb81fa
 	github.com/katallaxie/fiber-htmx/v3 v3.0.0-20250930140135-5e16190f0d95
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
 	github.com/katallaxie/htmx v0.5.4-0.20251003194518-e09abad4babe
-	github.com/katallaxie/pkg v0.7.9
+	github.com/katallaxie/pkg v0.7.10-0.20251004142418-b325fe12855e
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.10.1
@@ -526,11 +526,11 @@ require (
 	go.opentelemetry.io/contrib/detectors/gcp v1.37.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.62.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.62.0 // indirect
-	go.opentelemetry.io/otel v1.37.0 // indirect
-	go.opentelemetry.io/otel/metric v1.37.0 // indirect
+	go.opentelemetry.io/otel v1.38.0 // indirect
+	go.opentelemetry.io/otel/metric v1.38.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.37.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.37.0 // indirect
-	go.opentelemetry.io/otel/trace v1.37.0 // indirect
+	go.opentelemetry.io/otel/trace v1.38.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
@@ -562,7 +562,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gotest.tools/gotestsum v1.13.0 // indirect
 	honnef.co/go/tools v0.6.1 // indirect
-	k8s.io/apimachinery v0.34.0 // indirect
+	k8s.io/apimachinery v0.34.1 // indirect
 	k8s.io/helm v2.17.0+incompatible // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	lukechampine.com/blake3 v1.2.1 // indirect
