@@ -48,7 +48,6 @@ func Init() error {
 	}
 
 	Root.AddCommand(Migrate)
-
 	Root.SilenceUsage = true
 
 	err = Root.ExecuteContext(ctx)
@@ -119,12 +118,6 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			CookieHTTPOnly: true,
 		}
 
-		// userHandler := handlers.NewUserHandler()
-		// settingsHandlers := handlers.NewSettingsHandler()
-		// previewHandlers := handlers.NewPreviewHandler()
-
-		// handlers := handlers.New(store)
-
 		app := fiber.New()
 		app.Use(requestid.New())
 		app.Use(helmet.New())
@@ -162,7 +155,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// Tags ...
 		tags := app.Group("/tags")
 		tags.Get("/", htmx.NewCompFuncHandler(th.ListTags, compFuncConfig))
-		// tags.Post("/new", handlers.CreateTag())
+		tags.Post("/new", htmx.NewCompFuncHandler(th.CreateTag, compFuncConfig))
 		// tags.Delete("/:id", handlers.DeleteTag())
 
 		// // Designs ...
