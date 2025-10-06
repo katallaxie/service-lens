@@ -141,17 +141,29 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
+		uh := handlers.NewUserHandler()
+		th := handlers.NewTagsHandler(store)
+
 		app.Get("/", htmx.NewCompFuncHandler(handlers.GetDashboard(), compFuncConfig))
-		app.Get("/login", htmx.NewCompFuncHandler(handlers.UserLogin(), compFuncConfig))
+		app.Get("/login", htmx.NewCompFuncHandler(uh.GetLogin, compFuncConfig))
 		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
 		app.Get("/auth/:provider/callback", goth.NewCompleteAuthHandler(gothConfig))
 		app.Get("/logout", goth.NewLogoutHandler(gothConfig))
+
+		// User
+		app.Get("/me", htmx.NewCompFuncHandler(uh.GetProfile, compFuncConfig))
 
 		// Stats ...
 		stats := app.Group("/stats")
 		stats.Get("/profiles", htmx.NewCompFuncHandler(handlers.GetDashboardTotalProfiles(store), compFuncConfig))
 		stats.Get("/workloads", htmx.NewCompFuncHandler(handlers.GetDashboardTotalWorkloads(store), compFuncConfig))
 		stats.Get("/designs", htmx.NewCompFuncHandler(handlers.GetDashboardTotalDesigns(store), compFuncConfig))
+
+		// Tags ...
+		tags := app.Group("/tags")
+		tags.Get("/", htmx.NewCompFuncHandler(th.ListTags, compFuncConfig))
+		// tags.Post("/new", handlers.CreateTag())
+		// tags.Delete("/:id", handlers.DeleteTag())
 
 		// // Designs ...
 		// designs := app.Group("/designs")
@@ -230,12 +242,6 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// workloads.Get("/:workload/lenses/:lens/question/:question", handlers.ShowLensQuestion())
 		// workloads.Put("/:workload/lenses/:lens/question/:question", handlers.UpdateWorkloadAnswer())
 
-		// // Tags ...
-		// tags := app.Group("/tags")
-		// tags.Get("/", handlers.ListTags())
-		// tags.Post("/new", handlers.CreateTag())
-		// tags.Delete("/:id", handlers.DeleteTag())
-
 		// // Workflows ...
 		// workflows := app.Group("/workflows")
 		// workflows.Get("/", handlers.ListWorkflows())
@@ -258,16 +264,11 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// templates.Put("/:id/edit/title", handlers.EditTemplateTitle())
 		// templates.Post("/new", handlers.CreateTemplate())
 
-		// // Me ...
-		app.Get("/me", htmx.NewCompFuncHandler(handlers.NewMeHandler(), compFuncConfig))
-
 		// // Settings ...
 		// app.Get("/settings", htmx.NewCompFuncHandler(settingsHandlers.ListSettings, compFuncConfig))
 
 		// // Preview ...
 		// app.Post("/preview", htmx.NewCompFuncHandler(previewHandlers.Preview, compFuncConfig))
-
-		fmt.Println(s.cfg.Flags.Addr)
 
 		err = app.Listen(s.cfg.Flags.Addr)
 		if err != nil {

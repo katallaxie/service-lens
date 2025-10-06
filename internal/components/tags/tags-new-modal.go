@@ -18,74 +18,77 @@ func NewTagModal() htmx.Node {
 		modals.Props{
 			ID: "new_tag_modal",
 		},
-		htmx.FormElement(
-			htmx.ID("new-tag-form"),
-			htmx.HxTrigger("submit"),
-			htmx.HxPost(utils.CreateTagUrlFormat),
-			htmx.HxDisabledElt("find button, find input"),
-			htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
-			htmx.HxSwap("none"),
-			forms.FormControl(
-				forms.FormControlProps{
-					ClassNames: htmx.ClassNames{},
-				},
-				forms.TextInputBordered(
-					forms.TextInputProps{
-						Name:        "name",
-						Placeholder: "Provide tag name ...",
+		modals.ModalBox(
+			modals.ModalBoxProps{},
+			htmx.FormElement(
+				htmx.ID("new-tag-form"),
+				htmx.HxTrigger("submit"),
+				htmx.HxPost(utils.CreateTagUrlFormat),
+				htmx.HxDisabledElt("find button, find input"),
+				htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
+				htmx.HxSwap("none"),
+				forms.FormControl(
+					forms.FormControlProps{
+						ClassNames: htmx.ClassNames{},
 					},
-					htmx.AutoComplete("off"),
-				),
-				forms.FormControlLabel(
-					forms.FormControlLabelProps{},
-					forms.FormControlLabelText(
-						forms.FormControlLabelTextProps{
-							ClassNames: htmx.ClassNames{
-								"text-neutral-500": true,
-							},
+					forms.TextInputBordered(
+						forms.TextInputProps{
+							Name:        "name",
+							Placeholder: "Provide tag name ...",
 						},
-						htmx.Text("Use a unique name to identify the tag that has between 3 and 255 characters."),
+						htmx.AutoComplete("off"),
+					),
+					forms.FormControlLabel(
+						forms.FormControlLabelProps{},
+						forms.FormControlLabelText(
+							forms.FormControlLabelTextProps{
+								ClassNames: htmx.ClassNames{
+									"text-neutral-500": true,
+								},
+							},
+							htmx.Text("Use a unique name to identify the tag that has between 3 and 255 characters."),
+						),
 					),
 				),
-			),
-			forms.FormControl(
-				forms.FormControlProps{
-					ClassNames: htmx.ClassNames{},
-				},
-				forms.TextInputBordered(
-					forms.TextInputProps{
-						Name:        "value",
-						Placeholder: "Provide a tag value ...",
+				forms.FormControl(
+					forms.FormControlProps{
+						ClassNames: htmx.ClassNames{},
 					},
-					htmx.AutoComplete("off"),
-				),
-				forms.FormControlLabel(
-					forms.FormControlLabelProps{},
-					forms.FormControlLabelText(
-						forms.FormControlLabelTextProps{
-							ClassNames: htmx.ClassNames{
-								"text-neutral-500": true,
-							},
+					forms.TextInputBordered(
+						forms.TextInputProps{
+							Name:        "value",
+							Placeholder: "Provide a tag value ...",
 						},
-						htmx.Text("Use a unique value of the tag that has between 3 and 255 characters."),
+						htmx.AutoComplete("off"),
+					),
+					forms.FormControlLabel(
+						forms.FormControlLabelProps{},
+						forms.FormControlLabelText(
+							forms.FormControlLabelTextProps{
+								ClassNames: htmx.ClassNames{
+									"text-neutral-500": true,
+								},
+							},
+							htmx.Text("Use a unique value of the tag that has between 3 and 255 characters."),
+						),
 					),
 				),
-			),
-			modals.ModalAction(
-				modals.ModalActionProps{},
-				buttons.Ghost(
-					buttons.ButtonProps{
-						Type: "button",
-					},
-					htmx.Text("Cancel"),
-					htmx.Attribute("formnovalidate", ""),
-					htmx.OnClick("event.target.closest('dialog').close()"),
-				),
-				buttons.Button(
-					buttons.ButtonProps{
-						Type: "submit",
-					},
-					htmx.Text("Add"),
+				modals.ModalAction(
+					modals.ModalActionProps{},
+					buttons.Ghost(
+						buttons.ButtonProps{
+							Type: "button",
+						},
+						htmx.Text("Cancel"),
+						htmx.Attribute("formnovalidate", ""),
+						htmx.OnClick("event.target.closest('dialog').close()"),
+					),
+					buttons.Button(
+						buttons.ButtonProps{
+							Type: "submit",
+						},
+						htmx.Text("Add"),
+					),
 				),
 			),
 		),
