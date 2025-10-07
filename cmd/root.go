@@ -9,6 +9,7 @@ import (
 	config "github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
+	"github.com/katallaxie/service-lens/internal/controllers/tags"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/helmet"
@@ -136,8 +137,6 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
-		th := handlers.NewTagsHandler(store)
-
 		app.Get("/", htmx.NewCompFuncHandler(handlers.GetDashboard(), compFuncConfig))
 		app.Get("/login", htmx.NewControllerHandler(login.NewIndexLoginController(), compFuncConfig))
 		app.Get("/login/:provider", goth.NewBeginAuthHandler(gothConfig))
@@ -154,9 +153,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		stats.Get("/designs", htmx.NewCompFuncHandler(handlers.GetDashboardTotalDesigns(store), compFuncConfig))
 
 		// Tags ...
-		tags := app.Group("/tags")
-		tags.Get("/", htmx.NewCompFuncHandler(th.ListTags, compFuncConfig))
-		tags.Post("/new", htmx.NewCompFuncHandler(th.CreateTag, compFuncConfig))
+		tg := app.Group("/tags")
+		tg.Get("/", htmx.NewControllerHandler(tags.NewIndexController(store), compFuncConfig))
+		tg.Post("/new", htmx.NewControllerHandler(tags.NewCreateController(store), compFuncConfig))
 		// tags.Delete("/:id", handlers.DeleteTag())
 
 		// // Designs ...
