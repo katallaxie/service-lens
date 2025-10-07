@@ -8,6 +8,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
 	config "github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
+	"github.com/katallaxie/service-lens/internal/controllers/me"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/helmet"
@@ -135,7 +136,6 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 			ErrorHandler: htmx.ToastsErrorHandler,
 		}
 
-		uh := handlers.NewUserHandler()
 		th := handlers.NewTagsHandler(store)
 
 		app.Get("/", htmx.NewCompFuncHandler(handlers.GetDashboard(), compFuncConfig))
@@ -145,7 +145,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		app.Get("/logout", goth.NewLogoutHandler(gothConfig))
 
 		// User
-		app.Get("/me", htmx.NewCompFuncHandler(uh.GetProfile, compFuncConfig))
+		app.Get("/me", htmx.NewControllerHandler(me.NewIndexController(), compFuncConfig))
 
 		// Stats ...
 		stats := app.Group("/stats")

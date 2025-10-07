@@ -7,22 +7,22 @@ import (
 	htmx "github.com/katallaxie/fiber-htmx/v3"
 )
 
-// IndexLoginController ...
-type IndexLoginController struct {
+// IndexController ...
+type IndexController struct {
 	htmx.UnimplementedController
 }
 
-func (c *IndexLoginController) Clone() htmx.Controller {
-	return &IndexLoginController{}
+func (c *IndexController) Clone() htmx.Controller {
+	return &IndexController{}
 }
 
 // NewIndexLoginController ...
-func NewIndexLoginController() *IndexLoginController {
-	return &IndexLoginController{}
+func NewIndexLoginController() *IndexController {
+	return &IndexController{}
 }
 
 // Get ...
-func (l *IndexLoginController) Get() error {
+func (l *IndexController) Get() error {
 	return l.Render(
 		components.Page(
 			components.PageProps{},
