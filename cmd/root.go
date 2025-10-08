@@ -7,6 +7,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/db"
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
 	config "github.com/katallaxie/service-lens/internal/cfg"
+	"github.com/katallaxie/service-lens/internal/controllers/designs"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
@@ -158,9 +159,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		tg.Post("/new", htmx.NewControllerHandler(tags.NewCreateController(store), compFuncConfig))
 		tg.Delete("/:id", htmx.NewControllerHandler(tags.NewDeleteTagController(store), compFuncConfig))
 
-		// // Designs ...
-		// designs := app.Group("/designs")
-		// designs.Get("/", handlers.ListDesigns())
+		// Designs ...
+		dg := app.Group("/designs")
+		dg.Get("/", htmx.NewControllerHandler(designs.NewIndexController(store), compFuncConfig))
 		// designs.Get("/new", handlers.NewDesign())
 		// designs.Post("/new", handlers.CreateDesign())
 		// designs.Get("/search/workflows", handlers.SearchWorkflows())

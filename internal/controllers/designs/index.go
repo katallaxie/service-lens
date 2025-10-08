@@ -1,25 +1,24 @@
-package tags
+package designs
 
 import (
 	"context"
 
+	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/service-lens/internal/components"
-	"github.com/katallaxie/service-lens/internal/components/tags"
+	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 
 	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tables"
-	"github.com/katallaxie/htmx/tailwind"
 	seed "github.com/zeiss/gorm-seed"
 )
 
 // IndexController ...
 type IndexController struct {
-	model tables.Results[models.Tag]
-	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
+	results tables.Results[models.Design]
+	store   seed.Database[ports.ReadTx, ports.ReadWriteTx]
 	handlers.UnimplementedController
 }
 
@@ -33,14 +32,13 @@ func NewIndexController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *I
 	return &IndexController{store: store}
 }
 
-// Prepare ...
-func (i *IndexController) Prepare() error {
-	if err := i.BindQuery(&i.model); err != nil {
+func (l *IndexController) Prepare() error {
+	if err := l.BindQuery(&l.results); err != nil {
 		return err
 	}
 
-	err := i.store.ReadTx(i.Context(), func(ctx context.Context, tx ports.ReadTx) error {
-		return tx.ListTags(ctx, &i.model)
+	err := l.store.ReadTx(l.Context(), func(ctx context.Context, tx ports.ReadTx) error {
+		return tx.ListDesigns(ctx, &l.results)
 	})
 	if err != nil {
 		return err
@@ -49,31 +47,32 @@ func (i *IndexController) Prepare() error {
 	return nil
 }
 
-// Post ...
-func (i *IndexController) Get() error {
-	return i.Render(
+// Get ...
+func (l *IndexController) Get() error {
+	return l.Render(
 		components.DefaultLayout(
 			components.DefaultLayoutProps{
-				Path:        i.Path(),
-				User:        i.Session().User,
-				Development: i.IsDevelopment(),
+				Path:        l.Path(),
+				User:        l.Session().User,
+				Development: l.IsDevelopment(),
 			},
 			func() htmx.Node {
 				return cards.CardBorder(
 					cards.Props{
 						ClassNames: htmx.ClassNames{
-							tailwind.M2: true,
+							"m-2": true,
 						},
 					},
 					cards.Body(
 						cards.BodyProps{},
-						tags.TagsTable(
-							tags.TagsTableProps{
-								Tags:   i.model.GetRows(),
-								Offset: i.model.GetOffset(),
-								Limit:  i.model.GetLimit(),
-								Total:  i.model.GetTotalRows(),
-								URL:    i.OriginalURL(),
+						designs.DesignsTable(
+							designs.DesignsTableProps{
+								Designs: l.results.GetRows(),
+								Offset:  l.results.GetOffset(),
+								Limit:   l.results.GetLimit(),
+								Total:   l.results.GetLen(),
+								Search:  l.results.GetSearch(),
+								URL:     l.OriginalURL(),
 							},
 						),
 					),
