@@ -7,48 +7,59 @@ import (
 	"github.com/katallaxie/service-lens/internal/components/profiles"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	seed "github.com/zeiss/gorm-seed"
 
+	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
+	seed "github.com/zeiss/gorm-seed"
 )
 
-// ProfileListControllerImpl ...
-type ProfileListControllerImpl struct {
-	profiles tables.Results[models.Profile]
-	store    seed.Database[ports.ReadTx, ports.ReadWriteTx]
-	htmx.DefaultController
+// ListController ...
+type ListController struct {
+	model tables.Results[models.Profile]
+	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
+	handlers.UnimplementedController
 }
 
-// NewProfilesListController ...
-func NewProfilesListController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *ProfileListControllerImpl {
-	return &ProfileListControllerImpl{store: store}
+// Clone ...
+func (i *ListController) Clone() handlers.Controller {
+	return &ListController{store: i.store}
+}
+
+// NewListController ...
+func NewListController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *ListController {
+	return &ListController{store: store}
 }
 
 // Prepare ...
-func (w *ProfileListControllerImpl) Prepare() error {
-	if err := w.BindQuery(&w.profiles); err != nil {
+func (i *ListController) Prepare() error {
+	if err := i.BindQuery(&i.model); err != nil {
 		return err
 	}
 
-	return w.store.ReadTx(w.Context(), func(ctx context.Context, tx ports.ReadTx) error {
-		return tx.ListProfiles(ctx, &w.profiles)
+	err := i.store.ReadTx(i.Context(), func(ctx context.Context, tx ports.ReadTx) error {
+		return tx.ListProfiles(ctx, &i.model)
 	})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
-// Get ...
-func (w *ProfileListControllerImpl) Get() error {
-	return w.Render(
+// Post ...
+func (i *ListController) Get() error {
+	return i.Render(
 		components.DefaultLayout(
 			components.DefaultLayoutProps{
-				Path:        w.Path(),
-				User:        w.Session().User,
-				Development: w.IsDevelopment(),
+				Path:        i.Path(),
+				User:        i.Session().User,
+				Development: i.IsDevelopment(),
 			},
 			func() htmx.Node {
-				return cards.CardBordered(
+				return cards.CardBorder(
 					cards.Props{
 						ClassNames: htmx.ClassNames{
 							tailwind.M2: true,
@@ -58,11 +69,11 @@ func (w *ProfileListControllerImpl) Get() error {
 						cards.BodyProps{},
 						profiles.ProfilesTable(
 							profiles.ProfilesTableProps{
-								Profiles: w.profiles.GetRows(),
-								Offset:   w.profiles.GetOffset(),
-								Limit:    w.profiles.GetLimit(),
-								Total:    w.profiles.GetTotalRows(),
-								URL:      w.OriginalURL(),
+								Profiles: i.model.GetRows(),
+								Offset:   i.model.GetOffset(),
+								Limit:    i.model.GetLimit(),
+								Total:    i.model.GetTotalRows(),
+								URL:      i.OriginalURL(),
 							},
 						),
 					),

@@ -11,6 +11,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/controllers/environments"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
+	"github.com/katallaxie/service-lens/internal/controllers/profiles"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
 
 	"github.com/gofiber/fiber/v3"
@@ -185,9 +186,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// designs.Post("/:id/comments/:comment_id/reactions", handlers.CreateDesignCommentReaction())
 		// designs.Delete("/:id/comments/:comment_id/reactions/:reaction_id", handlers.DeleteDesignCommentReaction())
 
-		// // Profiles
-		// profiles := app.Group("/profiles")
-		// profiles.Get("/", handlers.ListProfiles())
+		// Profiles
+		pg := app.Group("/profiles")
+		pg.Get("/", htmx.NewControllerHandler(profiles.NewListController(store), compFuncConfig))
 		// profiles.Get("/new", handlers.NewProfile())
 		// profiles.Post("/new", handlers.CreateProfile())
 		// profiles.Get("/:id", handlers.ShowProfile())
