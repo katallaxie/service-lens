@@ -156,7 +156,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		tg := app.Group("/tags")
 		tg.Get("/", htmx.NewControllerHandler(tags.NewIndexController(store), compFuncConfig))
 		tg.Post("/new", htmx.NewControllerHandler(tags.NewCreateController(store), compFuncConfig))
-		// tags.Delete("/:id", handlers.DeleteTag())
+		tg.Delete("/:id", htmx.NewControllerHandler(tags.NewDeleteTagController(store), compFuncConfig))
 
 		// // Designs ...
 		// designs := app.Group("/designs")

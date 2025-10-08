@@ -17,7 +17,7 @@ require (
 	github.com/gofiber/fiber/v3 v3.0.0-rc.2
 	github.com/google/uuid v1.6.0
 	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251004142506-c52276bb81fa
-	github.com/katallaxie/fiber-htmx/v3 v3.0.2
+	github.com/katallaxie/fiber-htmx/v3 v3.0.3-0.20251008082453-b6c2367e1086
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
 	github.com/katallaxie/htmx v0.5.4-0.20251003194518-e09abad4babe
 	github.com/katallaxie/pkg v0.7.10-0.20251004142418-b325fe12855e
