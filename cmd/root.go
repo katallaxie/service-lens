@@ -8,6 +8,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/adapters/handlers"
 	config "github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/controllers/designs"
+	"github.com/katallaxie/service-lens/internal/controllers/environments"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
@@ -193,9 +194,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// profiles.Put("/:id", handlers.EditProfile())
 		// profiles.Delete("/:id", handlers.DeleteProfile())
 
-		// // Environments ...
-		// environments := app.Group("/environments")
-		// environments.Get("/", handlers.ListEnvironments())
+		// Environments ...
+		eg := app.Group("/environments")
+		eg.Get("/", htmx.NewControllerHandler(environments.NewListController(store), compFuncConfig))
 		// environments.Get("/new", handlers.NewEnvironment())
 		// environments.Post("/new", handlers.CreateEnvironment())
 		// environments.Get("/:id", handlers.ShowEnvironment())
