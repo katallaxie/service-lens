@@ -13,6 +13,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/controllers/me"
 	"github.com/katallaxie/service-lens/internal/controllers/profiles"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
+	"github.com/katallaxie/service-lens/internal/controllers/workflows"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/helmet"
@@ -238,9 +239,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// workloads.Get("/:workload/lenses/:lens/question/:question", handlers.ShowLensQuestion())
 		// workloads.Put("/:workload/lenses/:lens/question/:question", handlers.UpdateWorkloadAnswer())
 
-		// // Workflows ...
-		// workflows := app.Group("/workflows")
-		// workflows.Get("/", handlers.ListWorkflows())
+		// Workflows ...
+		wg := app.Group("/workflows")
+		wg.Get("/", htmx.NewControllerHandler(workflows.NewListController(store), compFuncConfig))
 		// workflows.Post("/new", handlers.CreateWorkflow())
 		// workflows.Get("/:id", handlers.ShowWorkflow())
 		// workflows.Post("/:id/steps", handlers.CreateWorkflowStep())

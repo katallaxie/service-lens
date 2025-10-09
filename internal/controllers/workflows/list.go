@@ -3,52 +3,63 @@ package workflows
 import (
 	"context"
 
-	"github.com/katallaxie/htmx/cards"
-	"github.com/katallaxie/htmx/tailwind"
-	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/workflows"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	seed "github.com/zeiss/gorm-seed"
 
+	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/tailwind"
+	seed "github.com/zeiss/gorm-seed"
 )
 
-var _ = htmx.Controller(&ListWorkflowsControllerImpl{})
-
-// ListWorkflowsControllerImpl ...
-type ListWorkflowsControllerImpl struct {
+// ListController ...
+type ListController struct {
+	model tables.Results[models.Workflow]
 	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
-	htmx.DefaultController
+	handlers.UnimplementedController
 }
 
-// NewListWorkflowsController ...
-func NewListWorkflowsController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *ListWorkflowsControllerImpl {
-	return &ListWorkflowsControllerImpl{
-		store: store,
-	}
+// Clone ...
+func (i *ListController) Clone() handlers.Controller {
+	return &ListController{store: i.store}
+}
+
+// NewListController ...
+func NewListController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *ListController {
+	return &ListController{store: store}
 }
 
 // Prepare ...
-func (l *ListWorkflowsControllerImpl) Get() error {
-	return l.Render(
+func (i *ListController) Prepare() error {
+	if err := i.BindQuery(&i.model); err != nil {
+		return err
+	}
+
+	err := i.store.ReadTx(i.Context(), func(ctx context.Context, tx ports.ReadTx) error {
+		return tx.ListWorkflows(ctx, &i.model)
+	})
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Post ...
+func (i *ListController) Get() error {
+	return i.Render(
 		components.DefaultLayout(
 			components.DefaultLayoutProps{
-				Path:        l.Path(),
-				User:        l.Session().User,
-				Development: l.IsDevelopment(),
+				Path:        i.Path(),
+				User:        i.Session().User,
+				Development: i.IsDevelopment(),
 			},
 			func() htmx.Node {
-				results := tables.Results[models.Workflow]{SearchFields: []string{"Name"}}
-
-				errorx.Panic(l.BindQuery(&results))
-				errorx.Panic(l.store.ReadTx(l.Context(), func(ctx context.Context, tx ports.ReadTx) error {
-					return tx.ListWorkflows(ctx, &results)
-				}))
-
-				return cards.CardBordered(
+				return cards.CardBorder(
 					cards.Props{
 						ClassNames: htmx.ClassNames{
 							tailwind.M2: true,
@@ -58,11 +69,11 @@ func (l *ListWorkflowsControllerImpl) Get() error {
 						cards.BodyProps{},
 						workflows.WorkflowsTable(
 							workflows.WorkflowsTableProps{
-								Workflows: results.GetRows(),
-								Offset:    results.GetOffset(),
-								Limit:     results.GetLimit(),
-								Total:     results.GetLen(),
-								URL:       l.OriginalURL(),
+								Workflows: i.model.GetRows(),
+								Offset:    i.model.GetOffset(),
+								Limit:     i.model.GetLimit(),
+								Total:     i.model.GetTotalRows(),
+								URL:       i.OriginalURL(),
 							},
 						),
 					),
