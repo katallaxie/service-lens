@@ -20,63 +20,66 @@ func NewDesignModal() htmx.Node {
 		modals.Props{
 			ID: "new_design_modal",
 		},
-		htmx.FormElement(
-			htmx.ID("new-design-form"),
-			htmx.Action(utils.CreateDesignUrlFormat),
-			htmx.Method("get"),
-			// htmx.HxDisabledElt("find button, find input"),
-			// htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
-			forms.FormControl(
-				forms.FormControlProps{},
-				htmx.Div(
-					htmx.ClassNames{
-						tailwind.Flex:           true,
-						tailwind.JustifyBetween: true,
-					},
-					forms.Datalist(
-						forms.DatalistProps{
-							ID:          "templates",
-							Name:        "template",
-							Placeholder: "Search a template ...",
-							URL:         utils.DesignSearchTemplatesUrlFormat,
+		modals.ModalBox(
+			modals.ModalBoxProps{},
+			htmx.FormElement(
+				htmx.ID("new-design-form"),
+				htmx.Action(utils.CreateDesignUrlFormat),
+				htmx.Method("get"),
+				// htmx.HxDisabledElt("find button, find input"),
+				// htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
+				forms.FormControl(
+					forms.FormControlProps{},
+					htmx.Div(
+						htmx.ClassNames{
+							tailwind.Flex:           true,
+							tailwind.JustifyBetween: true,
 						},
-					),
-					loading.Spinner(
-						loading.SpinnerProps{
-							ClassNames: htmx.ClassNames{
-								"htmx-indicator": true,
-								tailwind.M2:      true,
+						forms.Datalist(
+							forms.DatalistProps{
+								ID:          "templates",
+								Name:        "template",
+								Placeholder: "Search a template ...",
+								URL:         utils.DesignSearchTemplatesUrlFormat,
 							},
-						},
-					),
-				),
-				forms.FormControlLabel(
-					forms.FormControlLabelProps{},
-					forms.FormControlLabelText(
-						forms.FormControlLabelTextProps{
-							ClassNames: htmx.ClassNames{
-								"text-neutral-500": true,
+						),
+						loading.Spinner(
+							loading.SpinnerProps{
+								ClassNames: htmx.ClassNames{
+									"htmx-indicator": true,
+									tailwind.M2:      true,
+								},
 							},
-						},
-						htmx.Text("Optional - The template to use for the new design"),
+						),
+					),
+					forms.FormControlLabel(
+						forms.FormControlLabelProps{},
+						forms.FormControlLabelText(
+							forms.FormControlLabelTextProps{
+								ClassNames: htmx.ClassNames{
+									"text-neutral-500": true,
+								},
+							},
+							htmx.Text("Optional - The template to use for the new design"),
+						),
 					),
 				),
-			),
-			modals.ModalAction(
-				modals.ModalActionProps{},
-				buttons.Ghost(
-					buttons.ButtonProps{
-						Type: "button",
-					},
-					htmx.Text("Cancel"),
-					htmx.Attribute("formnovalidate", ""),
-					htmx.OnClick("event.target.closest('dialog').close()"),
-				),
-				buttons.Button(
-					buttons.ButtonProps{
-						Type: "submit",
-					},
-					htmx.Text("Add Design"),
+				modals.ModalAction(
+					modals.ModalActionProps{},
+					buttons.Ghost(
+						buttons.ButtonProps{
+							Type: "button",
+						},
+						htmx.Text("Cancel"),
+						htmx.Attribute("formnovalidate", ""),
+						htmx.OnClick("event.target.closest('dialog').close()"),
+					),
+					buttons.Button(
+						buttons.ButtonProps{
+							Type: "submit",
+						},
+						htmx.Text("Add Design"),
+					),
 				),
 			),
 		),

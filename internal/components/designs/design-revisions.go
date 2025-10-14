@@ -31,17 +31,17 @@ func DesignRevisionsCard(props DesignRevisionsCardProps) htmx.Node {
 		},
 		cards.Body(
 			cards.BodyProps{},
-			collapsible.CollapseArrow(
-				collapsible.CollapseProps{},
+			collapsible.Collapse(
+				collapsible.Props{},
 				htmx.HxTrigger("click once"),
 				htmx.HxGet(fmt.Sprintf(utils.ListDesignRevisionsUrlFormat, props.DesignID)),
 				htmx.HxTarget(".collapse-content"),
 				htmx.HxIndicator("find .htmx-indicator"),
-				collapsible.CollapseCheckbox(
-					collapsible.CollapseCheckboxProps{},
+				collapsible.Checkbox(
+					collapsible.CheckboxProps{},
 				),
-				collapsible.CollapseTitle(
-					collapsible.CollapseTitleProps{
+				collapsible.Title(
+					collapsible.TitleProps{
 						ClassNames: htmx.ClassNames{
 							tailwind.Flex:        true,
 							tailwind.ItemsCenter: true,
@@ -57,8 +57,8 @@ func DesignRevisionsCard(props DesignRevisionsCardProps) htmx.Node {
 						},
 					),
 				),
-				collapsible.CollapseContent(
-					collapsible.CollapseContentProps{},
+				collapsible.Content(
+					collapsible.ContentProps{},
 					htmx.Div(
 						htmx.Text("Loading..."),
 					),

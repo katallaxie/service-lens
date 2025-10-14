@@ -3,7 +3,7 @@ package lenses
 import (
 	"context"
 
-	htmx "github.com/katallaxie/htmx"
+	handlers "github.com/katallaxie/fiber-htmx"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
 	seed "github.com/zeiss/gorm-seed"
@@ -13,7 +13,7 @@ import (
 type LensDeleteControllerImpl struct {
 	lens  models.Lens
 	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
-	htmx.DefaultController
+	handlers.UnimplementedController
 }
 
 // NewLensDeleteController ...

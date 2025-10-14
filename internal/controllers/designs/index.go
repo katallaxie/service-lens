@@ -3,7 +3,6 @@ package designs
 import (
 	"context"
 
-	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -11,13 +10,14 @@ import (
 
 	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
-	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/htmx/cards"
+	"github.com/katallaxie/pkg/dbx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
 // IndexController ...
 type IndexController struct {
-	results tables.Results[models.Design]
+	results dbx.Results[models.Design]
 	store   seed.Database[ports.ReadTx, ports.ReadWriteTx]
 	handlers.UnimplementedController
 }

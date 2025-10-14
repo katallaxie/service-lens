@@ -52,25 +52,23 @@ func (h *SettingsHandler) ListSettings(c fiber.Ctx) (htmx.Node, error) {
 										tailwind.WFull: true,
 									},
 								},
-								collapsible.CollapseArrow(
-									collapsible.CollapseProps{
+								collapsible.Collapse(
+									collapsible.Props{
 										ClassNames: htmx.ClassNames{
 											"join-item": true,
 										},
 									},
-									collapsible.CollapseRadio(
-										collapsible.CollapseRadioProps{
-											Name: "authentication_settings",
-										},
+									collapsible.Checkbox(
+										collapsible.CheckboxProps{},
 									),
-									collapsible.CollapseTitle(
-										collapsible.CollapseTitleProps{
+									collapsible.Title(
+										collapsible.TitleProps{
 											ClassNames: htmx.ClassNames{},
 										},
 										htmx.Text("Microsoft Entra ID"),
 									),
-									collapsible.CollapseContent(
-										collapsible.CollapseContentProps{},
+									collapsible.Content(
+										collapsible.ContentProps{},
 										forms.FormControl(
 											forms.FormControlProps{
 												ClassNames: htmx.ClassNames{
@@ -95,25 +93,23 @@ func (h *SettingsHandler) ListSettings(c fiber.Ctx) (htmx.Node, error) {
 										),
 									),
 								),
-								collapsible.CollapseArrow(
-									collapsible.CollapseProps{
+								collapsible.Collapse(
+									collapsible.Props{
 										ClassNames: htmx.ClassNames{
 											"join-item": true,
 										},
 									},
-									collapsible.CollapseRadio(
-										collapsible.CollapseRadioProps{
-											Name: "authentication_settings",
-										},
+									collapsible.Checkbox(
+										collapsible.CheckboxProps{},
 									),
-									collapsible.CollapseTitle(
-										collapsible.CollapseTitleProps{
+									collapsible.Title(
+										collapsible.TitleProps{
 											ClassNames: htmx.ClassNames{},
 										},
 										htmx.Text("GitHub"),
 									),
-									collapsible.CollapseContent(
-										collapsible.CollapseContentProps{},
+									collapsible.Content(
+										collapsible.ContentProps{},
 										forms.FormControl(
 											forms.FormControlProps{
 												ClassNames: htmx.ClassNames{

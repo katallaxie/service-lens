@@ -9,7 +9,6 @@ import (
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
 	"github.com/katallaxie/htmx/forms"
-	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
 	"github.com/katallaxie/pkg/cast"
 	"github.com/katallaxie/service-lens/internal/models"
@@ -26,18 +25,18 @@ type DesignCommentsCardProps struct {
 // DesignCommentsCard ...
 func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 	return htmx.Fragment(
-		htmx.Div(
-			htmx.ID("comments"),
-			htmx.Group(htmx.ForEach(tables.RowsPtr(props.Design.Comments), func(c *models.DesignComment, choiceIdx int) htmx.Node {
-				return DesignComment(
-					DesignCommentProps{
-						Comment: cast.Value(c),
-						User:    props.User,
-						Design:  props.Design,
-					},
-				)
-			})...),
-		),
+		// htmx.Div(
+		// 	htmx.ID("comments"),
+		// 	htmx.Group(htmx.ForEach(tables.RowsPtr(props.Design.Comments), func(c *models.DesignComment, choiceIdx int) htmx.Node {
+		// 		return DesignComment(
+		// 			DesignCommentProps{
+		// 				Comment: cast.Value(c),
+		// 				User:    props.User,
+		// 				Design:  props.Design,
+		// 			},
+		// 		)
+		// 	})...),
+		// ),
 		htmx.FormElement(
 			htmx.HxPost(fmt.Sprintf(utils.CreateDesignCommentUrlFormat, props.Design.ID)),
 			htmx.HxTarget("#comments"),
@@ -52,8 +51,8 @@ func DesignCommentsCard(props DesignCommentsCardProps) htmx.Node {
 					cards.BodyProps{},
 					cards.Title(
 						cards.TitleProps{},
-						avatars.AvatarRoundSmall(
-							avatars.AvatarProps{},
+						avatars.RoundSmall(
+							avatars.Props{},
 							htmx.Img(
 								htmx.Attribute("src", cast.Value(props.User.Image)),
 							),

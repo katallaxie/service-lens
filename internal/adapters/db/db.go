@@ -9,7 +9,6 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/katallaxie/fiber-goth/v3/adapters"
-	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/pkg/cast"
 	"github.com/katallaxie/pkg/dbx"
 	"gorm.io/gorm"
@@ -46,23 +45,23 @@ func (r *readTxImpl) GetDesign(ctx context.Context, design *models.Design) error
 }
 
 // ListDesigns is a method that returns a list of designs
-func (r *readTxImpl) ListDesigns(ctx context.Context, pagination *tables.Results[models.Design]) error {
-	return r.conn.Debug().Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListDesigns(ctx context.Context, pagination *dbx.Results[models.Design]) error {
+	return r.conn.Debug().Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // ListProfiles is a method that returns a list of profiles
-func (r *readTxImpl) ListProfiles(ctx context.Context, pagination *tables.Results[models.Profile]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListProfiles(ctx context.Context, pagination *dbx.Results[models.Profile]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // ListProfileQuestions is a method that returns a list of profile questions
-func (r *readTxImpl) ListProfileQuestions(ctx context.Context, pagination *tables.Results[models.ProfileQuestion]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Preload("Choices").Find(&pagination.Rows).Error
+func (r *readTxImpl) ListProfileQuestions(ctx context.Context, pagination *dbx.Results[models.ProfileQuestion]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Preload("Choices").Find(&pagination.Rows).Error
 }
 
 // ListEnvironments is a method that returns a list of environments
-func (r *readTxImpl) ListEnvironments(ctx context.Context, pagination *tables.Results[models.Environment]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListEnvironments(ctx context.Context, pagination *dbx.Results[models.Environment]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // GetEnvironment is a method that returns an environment by ID
@@ -79,8 +78,8 @@ func (r *readTxImpl) GetProfile(ctx context.Context, profile *models.Profile) er
 }
 
 // ListLenses is a method that returns a list of lenses
-func (r *readTxImpl) ListLenses(ctx context.Context, pagination *tables.Results[models.Lens]) error {
-	return r.conn.Debug().Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListLenses(ctx context.Context, pagination *dbx.Results[models.Lens]) error {
+	return r.conn.Debug().Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // GetLens is a method that returns a lens by ID
@@ -103,8 +102,8 @@ func (r *readTxImpl) GetLensQuestion(ctx context.Context, question *models.Quest
 }
 
 // ListWorkloads is a method that returns a list of workloads
-func (r *readTxImpl) ListWorkloads(ctx context.Context, pagination *tables.Results[models.Workload]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).
+func (r *readTxImpl) ListWorkloads(ctx context.Context, pagination *dbx.Results[models.Workload]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).
 		Preload("Lenses").
 		Preload("Profile").
 		Preload("Environment").
@@ -135,18 +134,18 @@ func (r *readTxImpl) GetWorkload(ctx context.Context, workload *models.Workload)
 }
 
 // ListTags is a method that returns a list of tags
-func (r *readTxImpl) ListTags(ctx context.Context, pagination *tables.Results[models.Tag]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListTags(ctx context.Context, pagination *dbx.Results[models.Tag]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // ListWorkflows is a method that returns a list of workflows
-func (r *readTxImpl) ListWorkflows(ctx context.Context, pagination *tables.Results[models.Workflow]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListWorkflows(ctx context.Context, pagination *dbx.Results[models.Workflow]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // ListTemplates is a method that returns a list of templates
-func (r *readTxImpl) ListTemplates(ctx context.Context, pagination *tables.Results[models.Template]) error {
-	return r.conn.Scopes(tables.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
+func (r *readTxImpl) ListTemplates(ctx context.Context, pagination *dbx.Results[models.Template]) error {
+	return r.conn.Scopes(dbx.PaginatedResults(&pagination.Rows, pagination, r.conn)).Find(&pagination.Rows).Error
 }
 
 // GetTemplate is a method that returns a template by ID
@@ -192,7 +191,7 @@ func (r *readTxImpl) ListDesignCommentReactions(ctx context.Context, comment *mo
 }
 
 // ListDesignRevisions is a method that returns a list of design revisions
-func (r *readTxImpl) ListDesignRevisions(ctx context.Context, designID uuid.UUID, pagination *tables.Results[models.DesignRevision]) error {
+func (r *readTxImpl) ListDesignRevisions(ctx context.Context, designID uuid.UUID, pagination *dbx.Results[models.DesignRevision]) error {
 	return r.conn.Where("design_id = ?", designID).Find(&pagination.Rows).Error
 }
 

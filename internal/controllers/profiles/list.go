@@ -11,14 +11,14 @@ import (
 	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
-	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/dbx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
 // ListController ...
 type ListController struct {
-	model tables.Results[models.Profile]
+	model dbx.Results[models.Profile]
 	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
 	handlers.UnimplementedController
 }

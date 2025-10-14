@@ -25,8 +25,8 @@ func MainMenu(p MainMenuProps, children ...htmx.Node) htmx.Node {
 		menus.Menu(
 			menus.Props{
 				ClassNames: htmx.ClassNames{
-					"w-full":      true,
-					"bg-base-200": false,
+					"min-h-full": true,
+					"w-80":       true,
 				},
 			},
 			menus.Item(
@@ -57,7 +57,6 @@ func MainMenu(p MainMenuProps, children ...htmx.Node) htmx.Node {
 					htmx.Text("Designs"),
 				),
 			),
-
 			menus.Item(
 				menus.ItemProps{
 					ClassNames: htmx.ClassNames{

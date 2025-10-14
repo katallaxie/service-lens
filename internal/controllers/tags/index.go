@@ -11,14 +11,14 @@ import (
 	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
-	"github.com/katallaxie/htmx/tables"
 	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/dbx"
 	seed "github.com/zeiss/gorm-seed"
 )
 
 // IndexController ...
 type IndexController struct {
-	model tables.Results[models.Tag]
+	model dbx.Results[models.Tag]
 	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
 	handlers.UnimplementedController
 }

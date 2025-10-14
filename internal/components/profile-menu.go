@@ -33,8 +33,8 @@ func ProfileMenu(p ProfileMenuProps, children ...htmx.Node) htmx.Node {
 					"btn-ghost":  true,
 				},
 			},
-			avatars.AvatarRoundSmall(
-				avatars.AvatarProps{},
+			avatars.RoundSmall(
+				avatars.Props{},
 				htmx.Img(
 					htmx.Attribute("src", cast.Value(p.User.Image)),
 				),

@@ -5,7 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/katallaxie/fiber-goth/v3/adapters"
-	"github.com/katallaxie/htmx/tables"
+	"github.com/katallaxie/pkg/dbx"
 	"github.com/katallaxie/service-lens/internal/models"
 )
 
@@ -16,23 +16,23 @@ type ReadTx interface {
 	// GetDesign is a method that returns a design by ID
 	GetDesign(ctx context.Context, design *models.Design) error
 	// ListDesigns is a method that returns a list of designs
-	ListDesigns(ctx context.Context, designs *tables.Results[models.Design]) error
+	ListDesigns(ctx context.Context, designs *dbx.Results[models.Design]) error
 	// ListProfiles is a method that returns a list of profiles
-	ListProfiles(ctx context.Context, profiles *tables.Results[models.Profile]) error
+	ListProfiles(ctx context.Context, profiles *dbx.Results[models.Profile]) error
 	// ListProfileQuestions is a method that returns a list of profile questions
-	ListProfileQuestions(ctx context.Context, questions *tables.Results[models.ProfileQuestion]) error
+	ListProfileQuestions(ctx context.Context, questions *dbx.Results[models.ProfileQuestion]) error
 	// GetProfile is a method that returns a profile by ID
 	GetProfile(ctx context.Context, profile *models.Profile) error
 	// ListEnvironments is a method that returns a list of environments
-	ListEnvironments(ctx context.Context, environments *tables.Results[models.Environment]) error
+	ListEnvironments(ctx context.Context, environments *dbx.Results[models.Environment]) error
 	// GetEnvironment is a method that returns an environment by ID
 	GetEnvironment(ctx context.Context, environment *models.Environment) error
 	// ListLenses is a method that returns a list of lenses
-	ListLenses(ctx context.Context, lenses *tables.Results[models.Lens]) error
+	ListLenses(ctx context.Context, lenses *dbx.Results[models.Lens]) error
 	// GetLens is a method that returns a lens by ID
 	GetLens(ctx context.Context, lens *models.Lens) error
 	// ListWorkloads is a method that returns a list of workloads
-	ListWorkloads(ctx context.Context, workloads *tables.Results[models.Workload]) error
+	ListWorkloads(ctx context.Context, workloads *dbx.Results[models.Workload]) error
 	// GetWorkload is a method that returns a workload by ID
 	GetWorkload(ctx context.Context, workload *models.Workload) error
 	// GetLensQuestion is a method that returns a lens question by ID
@@ -40,13 +40,13 @@ type ReadTx interface {
 	// GetWorkloadAnswer is a method that returns a workload answer by ID
 	GetWorkloadAnswer(ctx context.Context, answer *models.WorkloadLensQuestionAnswer) error
 	// ListTags is a method that returns a list of tags
-	ListTags(ctx context.Context, tags *tables.Results[models.Tag]) error
+	ListTags(ctx context.Context, tags *dbx.Results[models.Tag]) error
 	// GetWorkflow is a method that returns a workflow by ID
 	GetWorkflow(ctx context.Context, workflow *models.Workflow) error
 	// ListWorkflows is a method that returns a list of workflows
-	ListWorkflows(ctx context.Context, workflows *tables.Results[models.Workflow]) error
+	ListWorkflows(ctx context.Context, workflows *dbx.Results[models.Workflow]) error
 	// ListTemplates is a method that returns a list of templates
-	ListTemplates(ctx context.Context, templates *tables.Results[models.Template]) error
+	ListTemplates(ctx context.Context, templates *dbx.Results[models.Template]) error
 	// GetTemplate is a method that returns a template by ID
 	GetTemplate(ctx context.Context, template *models.Template) error
 	// GetTotalNumberOfProfiles is a method that returns the total number of profiles
@@ -58,7 +58,7 @@ type ReadTx interface {
 	// GetDesignComment is a method that returns a design comment by ID
 	GetDesignComment(ctx context.Context, comment *models.DesignComment) error
 	// ListDesignRevisions is a method that returns a list of design revisions
-	ListDesignRevisions(ctx context.Context, designID uuid.UUID, revisions *tables.Results[models.DesignRevision]) error
+	ListDesignRevisions(ctx context.Context, designID uuid.UUID, revisions *dbx.Results[models.DesignRevision]) error
 	// ListLensAnswers is a method that returns a list of lens answers
 	ListLensAnswers(ctx context.Context, lensID uuid.UUID, answers *[]models.WorkloadLensQuestionAnswer) error
 }

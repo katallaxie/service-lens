@@ -46,8 +46,8 @@ func DesignComment(props DesignCommentProps) htmx.Node {
 					tooltips.Props{
 						Tip: props.User.Name,
 					},
-					avatars.AvatarRoundSmall(
-						avatars.AvatarProps{},
+					avatars.RoundSmall(
+						avatars.Props{},
 						htmx.Img(
 							htmx.Attribute("src", cast.Value(props.Comment.Author.Image)),
 						),
