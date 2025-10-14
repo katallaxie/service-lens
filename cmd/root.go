@@ -11,6 +11,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/controllers/environments"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
+	"github.com/katallaxie/service-lens/internal/controllers/preview"
 	"github.com/katallaxie/service-lens/internal/controllers/profiles"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
 	"github.com/katallaxie/service-lens/internal/controllers/workflows"
@@ -149,6 +150,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 
 		// User
 		app.Get("/me", htmx.NewControllerHandler(me.NewIndexController(), compFuncConfig))
+
+		// Preview
+		app.Post("/preview", htmx.NewControllerHandler(preview.NewIndexController(), compFuncConfig))
 
 		// Stats ...
 		stats := app.Group("/stats")
