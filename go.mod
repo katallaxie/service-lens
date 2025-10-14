@@ -19,7 +19,7 @@ require (
 	github.com/katallaxie/fiber-goth/v3 v3.0.0-alpha.3.0.20251004142506-c52276bb81fa
 	github.com/katallaxie/fiber-htmx/v3 v3.0.3-0.20251008082453-b6c2367e1086
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
-	github.com/katallaxie/htmx v0.5.4-0.20251014111335-cda11794814a
+	github.com/katallaxie/htmx v0.5.4-0.20251014201054-e12d02862111
 	github.com/katallaxie/pkg v0.7.10-0.20251004142418-b325fe12855e
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1

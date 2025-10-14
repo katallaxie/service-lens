@@ -75,6 +75,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 									tailwind.P2:  true,
 								},
 							},
+							htmx.Role("tab"),
 							forms.TextareaBordered(
 								forms.TextareaProps{
 									ClassNames: htmx.ClassNames{
@@ -103,6 +104,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 									tailwind.P4:  true,
 								},
 							},
+							htmx.Role("tab"),
 							htmx.ID("preview"),
 							htmx.Text("Whoops! You have not written anything yet."),
 						),
