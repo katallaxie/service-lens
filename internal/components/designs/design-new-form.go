@@ -118,56 +118,56 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownBold(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("0"),
-								heroicons.BoldOutline(
+								heroicons.BoldSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownItalic(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.ItalicOutline(
+								heroicons.ItalicSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownQuote(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.ArrowUturnLeftOutline(
+								heroicons.ArrowUturnLeftSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownCode(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.CodeBracketOutline(
+								heroicons.CodeBracketSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownLink(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.LinkOutline(
+								heroicons.LinkSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownImage(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.InformationCircleOutline(
+								heroicons.PaintBrushSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownUnorderedList(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.ListBulletOutline(
+								heroicons.ListBulletSolid(
 									icons.IconProps{},
 								),
 							),
 							components.MarkdownOrderedList(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.NumberedListOutline(
+								heroicons.NumberedListSolid(
 									icons.IconProps{},
 								),
 							),
@@ -179,7 +179,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownMention(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.AtSymbolOutline(
+								heroicons.AtSymbolSolid(
 									icons.IconProps{},
 								),
 							),
@@ -191,7 +191,7 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 							components.MarkdownStrikethrough(
 								htmx.Class("btn btn-ghost btn-sm"),
 								htmx.TabIndex("-1"),
-								heroicons.StrikethroughOutline(
+								heroicons.StrikethroughSolid(
 									icons.IconProps{},
 								),
 							),
