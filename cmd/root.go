@@ -15,6 +15,7 @@ import (
 	"github.com/katallaxie/service-lens/internal/controllers/profiles"
 	"github.com/katallaxie/service-lens/internal/controllers/tags"
 	"github.com/katallaxie/service-lens/internal/controllers/workflows"
+	"github.com/katallaxie/service-lens/internal/controllers/workloads"
 
 	"github.com/gofiber/fiber/v3"
 	"github.com/gofiber/fiber/v3/middleware/helmet"
@@ -221,9 +222,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// lenses.Post("/:id/publish", handlers.PublishLens())
 		// lenses.Delete("/:id/publish", handlers.UnpublishLens())
 
-		// // Workloads ...
-		// workloads := app.Group("/workloads")
-		// workloads.Get("/", handlers.ListWorkloads())
+		// Workloads ...
+		wg := app.Group("/workloads")
+		wg.Get("/", htmx.NewControllerHandler(workloads.NewIndexController(store), compFuncConfig))
 		// workloads.Get("/new", handlers.NewWorkload())
 		// workloads.Post("/new", handlers.CreateWorkload())
 		// workloads.Get("/search/lenses", handlers.SearchLenses())
@@ -244,8 +245,8 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// workloads.Put("/:workload/lenses/:lens/question/:question", handlers.UpdateWorkloadAnswer())
 
 		// Workflows ...
-		wg := app.Group("/workflows")
-		wg.Get("/", htmx.NewControllerHandler(workflows.NewListController(store), compFuncConfig))
+		wfg := app.Group("/workflows")
+		wfg.Get("/", htmx.NewControllerHandler(workflows.NewListController(store), compFuncConfig))
 		// workflows.Post("/new", handlers.CreateWorkflow())
 		// workflows.Get("/:id", handlers.ShowWorkflow())
 		// workflows.Post("/:id/steps", handlers.CreateWorkflowStep())
