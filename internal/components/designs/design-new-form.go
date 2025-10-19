@@ -212,8 +212,9 @@ func DesignNewForm(props DesignNewFormProps) htmx.Node {
 				cards.Actions(
 					cards.ActionsProps{},
 					buttons.Button(
-						buttons.ButtonProps{},
-						htmx.Attribute("type", "submit"),
+						buttons.ButtonProps{
+							Type: "submit",
+						},
 						htmx.Text("Save Design"),
 					),
 				),

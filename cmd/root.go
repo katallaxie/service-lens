@@ -170,7 +170,9 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// Designs ...
 		dg := app.Group("/designs")
 		dg.Get("/", htmx.NewControllerHandler(designs.NewIndexController(store), compFuncConfig))
-		dg.Get("/new", htmx.NewControllerHandler(designs.NewCreateDesignController(store), compFuncConfig))
+		dg.Get("/new", htmx.NewControllerHandler(designs.NewDesignController(store), compFuncConfig))
+		dg.Post("/new", htmx.NewControllerHandler(designs.NewCreateDesignControllerImpl(store), compFuncConfig))
+
 		// designs.Post("/new", handlers.CreateDesign())
 		// designs.Get("/search/workflows", handlers.SearchWorkflows())
 		// designs.Get("/search/templates", handlers.SearchTemplates())

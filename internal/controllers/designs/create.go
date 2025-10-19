@@ -2,75 +2,52 @@ package designs
 
 import (
 	"context"
-	"errors"
+	"fmt"
 
-	"github.com/google/uuid"
 	handlers "github.com/katallaxie/fiber-htmx/v3"
-	"github.com/katallaxie/pkg/errorx"
-	"github.com/katallaxie/service-lens/internal/components"
-	"github.com/katallaxie/service-lens/internal/components/designs"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
+	"github.com/katallaxie/service-lens/internal/utils"
 	seed "github.com/zeiss/gorm-seed"
-	"gorm.io/gorm"
-
-	htmx "github.com/katallaxie/htmx"
 )
 
-// CreateDesignController ...
-type CreateDesignController struct {
-	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
+// CreateDesignControllerImpl ...
+type CreateDesignControllerImpl struct {
+	design models.Design
+	store  seed.Database[ports.ReadTx, ports.ReadWriteTx]
 	handlers.UnimplementedController
 }
 
-// NewCreateDesignController ...
-func NewCreateDesignController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *CreateDesignController {
-	return &CreateDesignController{store: store}
+// NewCreateDesignControllerImpl ...
+func NewCreateDesignControllerImpl(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *CreateDesignControllerImpl {
+	return &CreateDesignControllerImpl{store: store}
 }
 
 // Clone ...
-func (i *CreateDesignController) Clone() handlers.Controller {
-	return &CreateDesignController{store: i.store}
+func (i *CreateDesignControllerImpl) Clone() handlers.Controller {
+	return &CreateDesignControllerImpl{store: i.store}
 }
 
-// Get ...
-func (l *CreateDesignController) Get() error {
-	return l.Render(
-		components.DefaultLayout(
-			components.DefaultLayoutProps{
-				Path:        l.Path(),
-				User:        l.Session().User,
-				Development: l.IsDevelopment(),
-				Head: []htmx.Node{
-					htmx.Script(
-						htmx.Src("https://unpkg.com/@github/markdown-toolbar-element@latest/dist/index.js"),
-						htmx.Type("module"),
-					),
-				},
-			},
-			func() htmx.Node {
-				params := struct {
-					Template uuid.UUID `json:"template"`
-				}{}
-				errorx.Ignore(params, l.BindQuery(&params))
+// Prepare ...
+func (l *CreateDesignControllerImpl) Prepare() error {
+	err := l.BindAll(l.design)
+	if err != nil {
+		return err
+	}
 
-				template := models.Template{
-					ID: params.Template,
-				}
+	err = l.store.ReadWriteTx(l.Context(), func(ctx context.Context, tx ports.ReadWriteTx) error {
+		return tx.CreateDesign(ctx, &l.design)
+	})
+	if err != nil {
+		return err
+	}
 
-				err := l.store.ReadTx(l.Context(), func(ctx context.Context, tx ports.ReadTx) error {
-					return tx.GetTemplate(ctx, &template)
-				})
-				if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
-					panic(err)
-				}
+	return nil
+}
 
-				return designs.DesignNewForm(
-					designs.DesignNewFormProps{
-						Template: template.Body,
-					},
-				)
-			},
-		),
-	)
+// Post ...
+func (l *CreateDesignControllerImpl) Post() error {
+	l.Redirect(fmt.Sprintf(utils.ShowDesigUrlFormat, l.design.ID))
+
+	return nil
 }
