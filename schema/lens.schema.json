@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://katallaxie.github.io/service-lens/schema/lens.schema.json",
+  "title": "Service Lens Schema",
+  "description": "JSON Schema for the Service Lens format",
+  "type": "object",
+  "required": ["version", "name", "description", "pillars"],
+  "properties": {
+    "version": { "type": "integer" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "pillars": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/pillar" }
+    }
+  },
+  "$defs": {
+    "pillar": {
+      "type": "object",
+      "required": ["ref", "name", "description", "questions"],
+      "properties": {
+        "ref": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "resources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/resource" }
+        },
+        "questions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/question" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "resource": {
+      "type": "object",
+      "required": ["url", "description"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "question": {
+      "type": "object",
+      "required": ["ref", "title", "description", "choices", "risks"],
+      "properties": {
+        "ref": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "resources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/resource" }
+        },
+        "choices": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/choice" }
+        },
+        "risks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/risk" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "choice": {
+      "type": "object",
+      "required": ["ref", "title", "description"],
+      "properties": {
+        "ref": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "risk": {
+      "type": "object",
+      "required": ["risk", "condition"],
+      "properties": {
+        "risk": {
+          "type": "string",
+          "enum": ["NO_RISK", "MEDIUM_RISK", "HIGH_RISK"]
+        },
+        "condition": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
