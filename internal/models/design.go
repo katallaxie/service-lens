@@ -11,7 +11,7 @@ import (
 // Design ...
 type Design struct {
 	// ID is the primary key
-	ID uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()" params:"id" validate:"-" form:"-" query:"-"`
+	ID uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()" params:"id"`
 	// Title of the design
 	Title string `json:"title" form:"title" validate:"required,min=3,max=255"`
 	// Body of the design in markdown, HTML, or plain text

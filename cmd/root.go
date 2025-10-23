@@ -172,6 +172,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		dg.Get("/", htmx.NewControllerHandler(designs.NewIndexController(store), compFuncConfig))
 		dg.Get("/new", htmx.NewControllerHandler(designs.NewDesignController(store), compFuncConfig))
 		dg.Post("/new", htmx.NewControllerHandler(designs.NewCreateDesignControllerImpl(store), compFuncConfig))
+		dg.Get("/:id", htmx.NewControllerHandler(designs.NewShowDesignController(store), compFuncConfig))
 
 		// designs.Post("/new", handlers.CreateDesign())
 		// designs.Get("/search/workflows", handlers.SearchWorkflows())
