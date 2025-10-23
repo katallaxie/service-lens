@@ -11,7 +11,7 @@ import (
 // Design ...
 type Design struct {
 	// ID is the primary key
-	ID uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()" params:"id"`
+	ID uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()" params:"id" validate:"-" form:"-" query:"-"`
 	// Title of the design
 	Title string `json:"title" form:"title" validate:"required,min=3,max=255"`
 	// Body of the design in markdown, HTML, or plain text
@@ -27,7 +27,7 @@ type Design struct {
 	// Workable is the workable
 	// Workable *Workable `json:"workable" gorm:"polymorphic:Workable;polymorphic_value:design"`
 	// Comments are the comments associated with the design
-	Comments []DesignComment `json:"comments"`
+	Comments []DesignComment `json:"comments" form:"-"`
 	// CreatedAt ...
 	CreatedAt time.Time `json:"created_at"`
 	// UpdatedAt ...
@@ -83,8 +83,6 @@ type DesignComment struct {
 	Author adapters.GothUser `json:"author" gorm:"foreignKey:AuthorID;references:ID"`
 	// ParentID is the foreign key to the parent comment
 	ParentID *uuid.UUID `json:"parent_id" gorm:"type:uuid;index" params:"parent_id"`
-	// Parent is the parent comment
-	Parent *DesignComment `json:"parent" gorm:"foreignKey:ParentID;references:ID"`
 	// Reactions are the reactions associated with the design comment
 	Reactions []Reaction `json:"reactions" gorm:"polymorphicType:ReactableType;polymorphicId:ReactableID;polymorphicValue:design_comment"`
 	// CreatedAt ...

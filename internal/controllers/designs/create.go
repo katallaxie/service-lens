@@ -30,10 +30,13 @@ func (i *CreateDesignControllerImpl) Clone() handlers.Controller {
 
 // Prepare ...
 func (l *CreateDesignControllerImpl) Prepare() error {
-	err := l.BindAll(l.design)
+	err := l.BindAll(&l.design)
 	if err != nil {
 		return err
 	}
+
+	l.design.AuthorID = l.Session().User.ID
+	l.design.Author = l.Session().User
 
 	err = l.store.ReadWriteTx(l.Context(), func(ctx context.Context, tx ports.ReadWriteTx) error {
 		return tx.CreateDesign(ctx, &l.design)
