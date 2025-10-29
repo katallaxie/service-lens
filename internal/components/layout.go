@@ -91,6 +91,16 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 							menus.ItemProps{},
 							menus.Link(
 								menus.LinkProps{
+									Href:   "/lenses",
+									Active: p.Path == "/lenses",
+								},
+								htmx.Text("Lenses"),
+							),
+						),
+						menus.Item(
+							menus.ItemProps{},
+							menus.Link(
+								menus.LinkProps{
 									Href:   "/workloads",
 									Active: p.Path == "/workloads",
 								},

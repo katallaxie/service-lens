@@ -3,62 +3,75 @@ package lenses
 import (
 	"context"
 
-	"github.com/katallaxie/pkg/errorx"
 	"github.com/katallaxie/service-lens/internal/components"
 	"github.com/katallaxie/service-lens/internal/components/lenses"
 	"github.com/katallaxie/service-lens/internal/models"
 	"github.com/katallaxie/service-lens/internal/ports"
-	seed "github.com/zeiss/gorm-seed"
 
+	handlers "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/cards"
-	"github.com/katallaxie/htmx/tables"
-	"github.com/katallaxie/htmx/tailwind"
+	"github.com/katallaxie/pkg/dbx"
+	seed "github.com/zeiss/gorm-seed"
 )
 
-// LensListController ...
-type LensListController struct {
-	store seed.Database[ports.ReadTx, ports.ReadWriteTx]
-	htmx.DefaultController
+// ListController ...
+type ListController struct {
+	results dbx.Results[models.Lens]
+	store   seed.Database[ports.ReadTx, ports.ReadWriteTx]
+	handlers.UnimplementedController
 }
 
-// NewLensListController ...
-func NewLensListController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *LensListController {
-	return &LensListController{store: store}
+// Clone ...
+func (l *ListController) Clone() handlers.Controller {
+	return &ListController{store: l.store}
+}
+
+// NewListController ...
+func NewListController(store seed.Database[ports.ReadTx, ports.ReadWriteTx]) *ListController {
+	return &ListController{store: store}
+}
+
+func (l *ListController) Prepare() error {
+	if err := l.BindQuery(&l.results); err != nil {
+		return err
+	}
+
+	err := l.store.ReadTx(l.Context(), func(ctx context.Context, tx ports.ReadTx) error {
+		return tx.ListLenses(ctx, &l.results)
+	})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // Get ...
-func (c *LensListController) Get() error {
-	return c.Render(
+func (l *ListController) Get() error {
+	return l.Render(
 		components.DefaultLayout(
 			components.DefaultLayoutProps{
-				Path:        c.Path(),
-				User:        c.Session().User,
-				Development: c.IsDevelopment(),
+				Path:        l.Path(),
+				User:        l.Session().User,
+				Development: l.IsDevelopment(),
 			},
 			func() htmx.Node {
-				results := tables.Results[models.Lens]{SearchFields: []string{"Name"}}
-
-				errorx.Panic(c.BindQuery(&results))
-				errorx.Panic(c.store.ReadTx(c.Context(), func(ctx context.Context, tx ports.ReadTx) error {
-					return tx.ListLenses(ctx, &results)
-				}))
-
-				return cards.CardBordered(
+				return cards.CardBorder(
 					cards.Props{
 						ClassNames: htmx.ClassNames{
-							tailwind.M2: true,
+							"m-2": true,
 						},
 					},
 					cards.Body(
 						cards.BodyProps{},
 						lenses.LensesTable(
 							lenses.LensesTableProps{
-								Lenses: results.GetRows(),
-								Offset: results.GetOffset(),
-								Limit:  results.GetLimit(),
-								Total:  results.GetTotalRows(),
-								URL:    c.OriginalURL(),
+								Lenses: l.results.GetRows(),
+								Offset: l.results.GetOffset(),
+								Limit:  l.results.GetLimit(),
+								Total:  l.results.GetLen(),
+								URL:    l.OriginalURL(),
 							},
 						),
 					),

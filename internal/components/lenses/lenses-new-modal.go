@@ -18,64 +18,67 @@ func NewLensModal(props NewLensModalProps) htmx.Node {
 		modals.Props{
 			ID: "new_lens_modal",
 		},
-		htmx.FormElement(
-			htmx.ID("new-lens-form"),
-			htmx.HxEncoding("multipart/form-data"),
-			htmx.HxTrigger("submit"),
-			htmx.HxPost(utils.CreateLensUrlFormat),
-			htmx.HxDisabledElt("find button, find input"),
-			htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
-			htmx.HxSwap("none"),
-			htmx.Div(
-				forms.FormControl(
-					forms.FormControlProps{},
-					forms.FormControlLabel(
-						forms.FormControlLabelProps{},
-						forms.FormControlLabelText(
-							forms.FormControlLabelTextProps{
+		modals.ModalBox(
+			modals.ModalBoxProps{},
+			htmx.FormElement(
+				htmx.ID("new-lens-form"),
+				htmx.HxEncoding("multipart/form-data"),
+				htmx.HxTrigger("submit"),
+				htmx.HxPost(utils.CreateLensUrlFormat),
+				htmx.HxDisabledElt("find button, find input"),
+				htmx.HxOn("htmx:after-settle", "event.target.closest('dialog').close(), event.target.reset()"),
+				htmx.HxSwap("none"),
+				htmx.Div(
+					forms.FormControl(
+						forms.FormControlProps{},
+						forms.FormControlLabel(
+							forms.FormControlLabelProps{},
+							forms.FormControlLabelText(
+								forms.FormControlLabelTextProps{
+									ClassNames: htmx.ClassNames{
+										"text-neutral-500": true,
+									},
+								},
+								htmx.Text("Select the file to upload."),
+							),
+						),
+						forms.FileInputBordered(
+							forms.FileInputProps{
 								ClassNames: htmx.ClassNames{
-									"text-neutral-500": true,
+									tailwind.MaxWXs: false,
 								},
 							},
-							htmx.Text("Select the file to upload."),
+							htmx.Attribute("name", "spec"),
+						),
+						forms.FormControlLabel(
+							forms.FormControlLabelProps{},
+							forms.FormControlLabelText(
+								forms.FormControlLabelTextProps{
+									ClassNames: htmx.ClassNames{
+										"text-neutral-500": true,
+									},
+								},
+								htmx.Text("Needs to conform the lens format specification."),
+							),
 						),
 					),
-					forms.FileInputBordered(
-						forms.FileInputProps{
-							ClassNames: htmx.ClassNames{
-								tailwind.MaxWXs: false,
-							},
+				),
+				modals.ModalAction(
+					modals.ModalActionProps{},
+					buttons.Ghost(
+						buttons.ButtonProps{
+							Type: "button",
 						},
-						htmx.Attribute("name", "spec"),
+						htmx.Text("Cancel"),
+						htmx.Attribute("formnovalidate", ""),
+						htmx.OnClick("event.target.closest('dialog').close()"),
 					),
-					forms.FormControlLabel(
-						forms.FormControlLabelProps{},
-						forms.FormControlLabelText(
-							forms.FormControlLabelTextProps{
-								ClassNames: htmx.ClassNames{
-									"text-neutral-500": true,
-								},
-							},
-							htmx.Text("Needs to conform the lens format specification."),
-						),
+					buttons.Button(
+						buttons.ButtonProps{
+							Type: "submit",
+						},
+						htmx.Text("Add Lens"),
 					),
-				),
-			),
-			modals.ModalAction(
-				modals.ModalActionProps{},
-				buttons.Ghost(
-					buttons.ButtonProps{
-						Type: "button",
-					},
-					htmx.Text("Cancel"),
-					htmx.Attribute("formnovalidate", ""),
-					htmx.OnClick("event.target.closest('dialog').close()"),
-				),
-				buttons.Button(
-					buttons.ButtonProps{
-						Type: "submit",
-					},
-					htmx.Text("Add Lens"),
 				),
 			),
 		),

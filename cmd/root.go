@@ -9,6 +9,7 @@ import (
 	config "github.com/katallaxie/service-lens/internal/cfg"
 	"github.com/katallaxie/service-lens/internal/controllers/designs"
 	"github.com/katallaxie/service-lens/internal/controllers/environments"
+	"github.com/katallaxie/service-lens/internal/controllers/lenses"
 	"github.com/katallaxie/service-lens/internal/controllers/login"
 	"github.com/katallaxie/service-lens/internal/controllers/me"
 	"github.com/katallaxie/service-lens/internal/controllers/preview"
@@ -215,8 +216,8 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// environments.Delete("/:id", handlers.DeleteEnvironment())
 
 		// // Lenses ...
-		// lenses := app.Group("/lenses")
-		// lenses.Get("/", handlers.ListLenses())
+		lg := app.Group("/lenses")
+		lg.Get("/", htmx.NewControllerHandler(lenses.NewListController(store), compFuncConfig))
 		// lenses.Post("/", handlers.NewLens())
 		// lenses.Get("/:id", handlers.ShowLens())
 		// lenses.Get("/:id/edit", handlers.EditLens())
