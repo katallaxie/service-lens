@@ -218,6 +218,7 @@ func (s *WebSrv) Start(ctx context.Context, ready server.ReadyFunc, run server.R
 		// // Lenses ...
 		lg := app.Group("/lenses")
 		lg.Get("/", htmx.NewControllerHandler(lenses.NewListController(store), compFuncConfig))
+		lg.Post("/", htmx.NewControllerHandler(lenses.NewCreateController(store), compFuncConfig))
 		// lenses.Post("/", handlers.NewLens())
 		// lenses.Get("/:id", handlers.ShowLens())
 		// lenses.Get("/:id/edit", handlers.EditLens())
