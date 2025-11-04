@@ -20,7 +20,7 @@ require (
 	github.com/katallaxie/fiber-htmx v1.0.4
 	github.com/katallaxie/fiber-htmx/v3 v3.0.3-0.20251008082453-b6c2367e1086
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
-	github.com/katallaxie/htmx v0.5.4-0.20251014201054-e12d02862111
+	github.com/katallaxie/htmx v0.5.4
 	github.com/katallaxie/pkg v0.7.10
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pkg/errors v0.9.1
@@ -485,7 +485,7 @@ require (
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
-	github.com/tdewolff/parse/v2 v2.8.3 // indirect
+	github.com/tdewolff/parse/v2 v2.8.5 // indirect
 	github.com/tetafro/godot v1.5.4 // indirect
 	github.com/theupdateframework/go-tuf v0.7.0 // indirect
 	github.com/theupdateframework/go-tuf/v2 v2.0.2 // indirect

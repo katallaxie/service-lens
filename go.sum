@@ -936,8 +936,8 @@ github.com/katallaxie/fiber-reload v0.9.0 h1:sW6jcJQDh0A4XKts3nFjwQdpwAtNtdd4M64
 github.com/katallaxie/fiber-reload v0.9.0/go.mod h1:ZO/tqorYK0FCKyHhLY7tLvavt9UQgN+QPbm7vYe0Rwk=
 github.com/katallaxie/fiber-reload/v3 v3.0.0 h1:S/9ak7QljOWG44Crz0xkAeyNC3st+2VrNHysPvbY2I4=
 github.com/katallaxie/fiber-reload/v3 v3.0.0/go.mod h1:F8sSIWV1+riFHEU8q7zCwbNtY/poNlNpiJommZzhavo=
-github.com/katallaxie/htmx v0.5.4-0.20251014201054-e12d02862111 h1:m4x4f2bMZ0nvQsKGNvkxDJ/ISoZ8uT5q0IrioOo1iXI=
-github.com/katallaxie/htmx v0.5.4-0.20251014201054-e12d02862111/go.mod h1:8jhT/GWZU4fPMfoAXN1J4f8pidCOBHIYRb67S/KAH/g=
+github.com/katallaxie/htmx v0.5.4 h1:R/2C1r8U6aCkNXzeLbIahkCvSV5OM6C2N1VfcftytBI=
+github.com/katallaxie/htmx v0.5.4/go.mod h1:9oE2ERUGzWwm++vrgo/YL72LtwG1VL1BxKBu2v0MeAc=
 github.com/katallaxie/pkg v0.7.10 h1:8+kIcJWWa//xqAypVT5b8OEUAWpziPS/73swu8CT7yo=
 github.com/katallaxie/pkg v0.7.10/go.mod h1:SNvshiWzWQuBCUkWAPm9gIQCEBm0mMGVsANFA3mteW4=
 github.com/kelseyhightower/envconfig v1.4.0 h1:Im6hONhd3pLkfDFsbRgu68RDNkGF1r3dvMUtDTo2cv8=
@@ -1325,8 +1325,8 @@ github.com/subosito/gotenv v1.6.0 h1:9NlTDc1FTs4qu0DDq7AEtTPNw6SVm7uBMsUCUjABIf8
 github.com/subosito/gotenv v1.6.0/go.mod h1:Dk4QP5c2W3ibzajGcXpNraDfq2IrhjMIvMSWPKKo0FU=
 github.com/tdewolff/minify/v2 v2.24.2 h1:vnY3nTulEAbCAAlxTxPPDkzG24rsq31SOzp63yT+7mo=
 github.com/tdewolff/minify/v2 v2.24.2/go.mod h1:1JrCtoZXaDbqioQZfk3Jdmr0GPJKiU7c1Apmb+7tCeE=
-github.com/tdewolff/parse/v2 v2.8.3 h1:5VbvtJ83cfb289A1HzRA9sf02iT8YyUwN84ezjkdY1I=
-github.com/tdewolff/parse/v2 v2.8.3/go.mod h1:Hwlni2tiVNKyzR1o6nUs4FOF07URA+JLBLd6dlIXYqo=
+github.com/tdewolff/parse/v2 v2.8.5 h1:ZmBiA/8Do5Rpk7bDye0jbbDUpXXbCdc3iah4VeUvwYU=
+github.com/tdewolff/parse/v2 v2.8.5/go.mod h1:Hwlni2tiVNKyzR1o6nUs4FOF07URA+JLBLd6dlIXYqo=
 github.com/tdewolff/test v1.0.11 h1:FdLbwQVHxqG16SlkGveC0JVyrJN62COWTRyUFzfbtBE=
 github.com/tdewolff/test v1.0.11/go.mod h1:XPuWBzvdUzhCuxWO1ojpXsyzsA5bFoS3tO/Q3kFuTG8=
 github.com/teekennedy/goldmark-markdown v0.5.1 h1:2lIlJ3AcIwaD1wFl4dflJSJFMhRTKEsEj+asVsu6M/0=
