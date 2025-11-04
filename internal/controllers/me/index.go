@@ -2,6 +2,7 @@ package me
 
 import (
 	handler "github.com/katallaxie/fiber-htmx/v3"
+	reload "github.com/katallaxie/fiber-reload/v3"
 	htmx "github.com/katallaxie/htmx"
 	"github.com/katallaxie/htmx/buttons"
 	"github.com/katallaxie/htmx/cards"
@@ -21,6 +22,11 @@ func (c *IndexController) Clone() handler.Controller {
 // NewIndexController ...
 func NewIndexController() *IndexController {
 	return &IndexController{}
+}
+
+// IsDevelopment ...
+func (l *IndexController) IsDevelopment() bool {
+	return reload.IsDevelopment(l.Ctx().Context())
 }
 
 // Get ...
@@ -112,7 +118,7 @@ func (l *IndexController) Get() error {
 										Disabled: true,
 									},
 									htmx.Attribute("type", "submit"),
-									htmx.Text("Update Profile"),
+									htmx.Text("Update"),
 								),
 							),
 						),

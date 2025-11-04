@@ -8,7 +8,7 @@ import (
 
 // Flags contains the command line flags.
 type Flags struct {
-	Environment         string `envconfig:"SERVICE_LENS_ENV" default:"production"`
+	Environment         string `envconfig:"SERVICE_LENS_ENV" default:"development"`
 	Addr                string `envconfig:"SERVICE_LENS_ADDR" default:":3000"`
 	DatabaseURI         string `envconfig:"SERVICE_LENS_DATABASE_URI" default:""`
 	DatabaseTablePrefix string `envconfig:"SERVICE_LENS_DATABASE_TABLE_PREFIX" default:"service_lens_"`
