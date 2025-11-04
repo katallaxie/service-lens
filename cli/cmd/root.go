@@ -20,8 +20,7 @@ type Config struct {
 	Flags *Flags
 }
 
-type Flags struct {
-}
+type Flags struct{}
 
 var versionFmt = fmt.Sprintf("%s-%s (%s) %s/%s", version, commit, date, system, arch)
 

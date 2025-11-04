@@ -40,7 +40,6 @@ func (i *CreateController) Prepare() error {
 
 // Post ...
 func (i *CreateController) Post() error {
-
 	i.Redirect(utils.ListTagsUrlFormat)
 
 	return nil
