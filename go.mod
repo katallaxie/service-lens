@@ -33,7 +33,7 @@ require (
 	github.com/zeiss/gorm-seed v0.1.2
 	github.com/zeiss/pkg v0.1.23
 	go.abhg.dev/goldmark/mermaid v0.6.0
-	golang.org/x/mod v0.29.0
+	golang.org/x/mod v0.30.0
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.31.1
 	helm.sh/helm v2.17.0+incompatible
@@ -359,8 +359,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/julz/importas v0.2.0 // indirect
 	github.com/karamaru-alpha/copyloopvar v1.2.1 // indirect
-	github.com/katallaxie/fiber-goth v1.0.1 // indirect
-	github.com/katallaxie/fiber-reload v0.9.0 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/kisielk/errcheck v1.9.0 // indirect
 	github.com/kkHAIKE/contextcheck v1.1.6 // indirect
@@ -553,7 +551,7 @@ require (
 	golang.org/x/term v0.36.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
-	golang.org/x/tools v0.37.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/api v0.248.0 // indirect
 	google.golang.org/genproto v0.0.0-20250715232539-7130f93afb79 // indirect
