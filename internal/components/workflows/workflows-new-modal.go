@@ -19,8 +19,8 @@ func NewWorkflowModal() htmx.Node {
 		modals.Props{
 			ID: "new_workflow_modal",
 		},
-		modals.ModalBox(
-			modals.ModalBoxProps{},
+		modals.Box(
+			modals.BoxProps{},
 			typography.H3(
 				typography.Props{},
 				htmx.Text("Create New Workflow"),
@@ -72,8 +72,8 @@ func NewWorkflowModal() htmx.Node {
 						),
 					),
 				),
-				modals.ModalAction(
-					modals.ModalActionProps{},
+				modals.Action(
+					modals.ActionProps{},
 					buttons.Button(
 						buttons.ButtonProps{
 							Type: "submit",

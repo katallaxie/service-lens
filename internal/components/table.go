@@ -30,7 +30,7 @@ func Table[R tables.Row](props TableProps[R], columns ...tables.ColumnDef[R]) ht
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: props.ID,
 				Pagination: tables.TablePagination(
 					tables.TablePaginationProps{},
@@ -45,7 +45,7 @@ func Table[R tables.Row](props TableProps[R], columns ...tables.ColumnDef[R]) ht
 							},
 						),
 						tables.Select(
-							tables.SelectProps{
+							tables.PaginationProps{
 								Total:  props.Total,
 								Offset: props.Offset,
 								Limit:  props.Limit,

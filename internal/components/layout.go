@@ -1,13 +1,15 @@
 package components
 
 import (
+	"strings"
+
 	"github.com/katallaxie/fiber-goth/v3/adapters"
-	middleware "github.com/katallaxie/fiber-htmx/v3"
 	htmx "github.com/katallaxie/htmx"
+	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"
 	"github.com/katallaxie/htmx/menus"
 	"github.com/katallaxie/htmx/navbars"
-	"github.com/katallaxie/htmx/typography"
+	"github.com/katallaxie/service-lens/internal/utils"
 )
 
 // LayoutProps is the properties for the Layout component.
@@ -37,87 +39,42 @@ func Wrap(p WrapProps, children ...htmx.Node) htmx.Node {
 func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 	return drawers.Drawer(
 		drawers.Props{
-			ClassNames: htmx.ClassNames{
-				"drawer-open": true,
-			},
+			Open: true,
 		},
 		drawers.Toggle(
 			drawers.ToggleProps{
-				ID: "global-drawer",
+				ID: "app-drawer",
 			},
 		),
 		drawers.Content(
 			drawers.ContentProps{},
-			middleware.Toasts(),
 			navbars.Navbar(
-				navbars.Props{},
-				htmx.Div(
-					htmx.ClassNames{
-						"mx-2":   true,
-						"flex-1": true,
-						"px-2":   true,
-						"py-1":   true,
+				navbars.Props{
+					ClassNames: htmx.ClassNames{
+						"w-full":      true,
+						"bg-base-300": true,
 					},
-					typography.H4(
-						typography.Props{},
-						htmx.Text("Service Lens"),
+				},
+				navbars.Start(
+					navbars.StartProps{},
+					htmx.Label(
+						htmx.For("app-drawer"),
+						htmx.ClassNames{
+							"btn":        true,
+							"btn-ghost":  true,
+							"btn-circle": true,
+							"lg:hidden":  true,
+						},
+						htmx.Span(
+							htmx.ClassNames{
+								"material-symbols-outlined": true,
+							},
+							htmx.Text("menu"),
+						),
 					),
 				),
 				navbars.End(
 					navbars.EndProps{},
-					menus.MenuHorizontal(
-						menus.Props{},
-						menus.Item(
-							menus.ItemProps{},
-							menus.Link(
-								menus.LinkProps{
-									Href:   "/",
-									Active: p.Path == "/",
-								},
-								htmx.Text("Dashboard"),
-							),
-						),
-						menus.Item(
-							menus.ItemProps{},
-							menus.Link(
-								menus.LinkProps{
-									Href:   "/designs",
-									Active: p.Path == "/designs",
-								},
-								htmx.Text("Designs"),
-							),
-						),
-						menus.Item(
-							menus.ItemProps{},
-							menus.Link(
-								menus.LinkProps{
-									Href:   "/lenses",
-									Active: p.Path == "/lenses",
-								},
-								htmx.Text("Lenses"),
-							),
-						),
-						menus.Item(
-							menus.ItemProps{},
-							menus.Link(
-								menus.LinkProps{
-									Href:   "/workloads",
-									Active: p.Path == "/workloads",
-								},
-								htmx.Text("Workloads"),
-							),
-						),
-						menus.Item(
-							menus.ItemProps{},
-							menus.Link(
-								menus.LinkProps{
-									Href:   "/settings",
-									Active: p.Path == "/settings",
-								},
-								htmx.Text("Settings"),
-							),
-						),
-					),
 					ProfileMenu(
 						ProfileMenuProps{
 							User: p.User,
@@ -125,95 +82,191 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 					),
 				),
 			),
-			htmx.Div(
-				htmx.ClassNames{
-					"h-full": true,
-					"w-full": true,
+			Wrap(
+				WrapProps{
+					ClassNames: htmx.ClassNames{
+						"p-4":         true,
+						"min-h-full":  true,
+						"bg-base-100": true,
+					},
 				},
-				htmx.Group(
-					children...,
+				children...,
+			),
+		),
+		drawers.Side(
+			drawers.SideProps{
+				ClassNames: htmx.ClassNames{
+					"w-80":            true,
+					"bg-base-200":     true,
+					"min-h-full":      true,
+					"flex":            true,
+					"flex-col":        true,
+					"justify-between": true,
+				},
+			},
+			menus.Menu(
+				menus.Props{
+					ClassNames: htmx.ClassNames{
+						"bg-base-200": true,
+						"rounded-box": true,
+						"w-80":        true,
+						"p-4":         true,
+					},
+				},
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/",
+							Active: p.Path == "/",
+						},
+						htmx.Text("Dashboard"),
+					),
+				),
+				dividers.Divider(
+					dividers.Props{},
+				),
+				menus.Title(
+					menus.TitleProps{},
+					htmx.Text("Design & Review"),
+				),
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/designs",
+							Active: strings.HasPrefix(p.Path, "/designs"),
+						},
+						htmx.Text("Designs"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/workloads",
+							Active: strings.HasPrefix(p.Path, "/workloads"),
+						},
+						htmx.Text("Workloads"),
+					),
+				),
+				menus.Title(
+					menus.TitleProps{},
+					htmx.Text("Configuration"),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{
+							"hover:bg-base-300": false,
+						},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/lenses",
+							Active: strings.HasPrefix(p.Path, "/lenses"),
+						},
+						htmx.Text("Lenses"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{
+							"hover:bg-base-300": false,
+						},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/profiles",
+							Active: strings.HasPrefix(p.Path, "/profiles"),
+						},
+						htmx.Text("Profiles"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/environments",
+							Active: strings.HasPrefix(p.Path, "/environments"),
+						},
+						htmx.Text("Environments"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   utils.ListTagsUrlFormat,
+							Active: strings.HasPrefix(p.Path, "/tags"),
+						},
+						htmx.Text("Tags"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   utils.ListWorkflowsUrlFormat,
+							Active: strings.HasPrefix(p.Path, "/workflows"),
+						},
+						htmx.Text("Workflows"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{
+						ClassNames: htmx.ClassNames{},
+					},
+					menus.Link(
+						menus.LinkProps{
+							Href:   utils.ListTemplatesUrlFormat,
+							Active: strings.HasPrefix(p.Path, utils.ListTemplatesUrlFormat),
+						},
+						htmx.Text("Templates"),
+					),
+				),
+				dividers.Divider(
+					dividers.Props{},
+				),
+				menus.Title(
+					menus.TitleProps{},
+					htmx.Text("Settings"),
+				),
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/settings",
+							Active: strings.HasPrefix(p.Path, "/settings"),
+						},
+						htmx.Text("Settings"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href:   "/me",
+							Active: strings.HasPrefix(p.Path, "/me"),
+						},
+						htmx.Text("Profile"),
+					),
+				),
+				menus.Item(
+					menus.ItemProps{},
+					menus.Link(
+						menus.LinkProps{
+							Href: "/logout",
+						},
+						htmx.Text("Logout"),
+					),
 				),
 			),
-			// htmx.Div(
-			// 	htmx.ClassNames{
-			// 		"h-full":        true,
-			// 		"max-w-full":    true,
-			// 		"overflow-auto": true,
-			// 		"w-full":        true,
-			// 	},
-			// 	htmx.Div(
-			// 		htmx.ClassNames{
-			// 			"flex":        true,
-			// 			"h-full":      true,
-			// 			"flex-col":    true,
-			// 			"bg-base-200": true,
-			// 		},
-			// 		navbars.Navbar(
-			// 			navbars.Props{
-			// 				ClassNames: htmx.ClassNames{
-			// 					"navbar":      true,
-			// 					"z-10":        true,
-			// 					"px-3":        true,
-			// 					"bg-base-100": true,
-			// 				},
-			// 			},
-			// 			navbars.Start(
-			// 				navbars.StartProps{
-			// 					ClassNames: htmx.ClassNames{
-			// 						"gap-3": true,
-			// 					},
-			// 				},
-			// 				drawers.Toggle(
-			// 					drawers.ToggleProps{
-			// 						ID: "global-drawer",
-			// 						ClassNames: htmx.ClassNames{
-			// 							"btn-sm":      true,
-			// 							"btn-square":  true,
-			// 							"btn-primary": false,
-			// 						},
-			// 					},
-			// 					heroicons.Bars3Outline(
-			// 						icons.IconProps{},
-			// 					),
-			// 				),
-			// 			),
-			// 			navbars.End(
-			// 				navbars.EndProps{},
-			// 				ProfileMenu(
-			// 					ProfileMenuProps{
-			// 						User: p.User,
-			// 					},
-			// 				),
-			// 			),
-			// 		),
-			// 		htmx.Group(
-			// 			children...,
-			// 		),
-			// 	),
-			// ),
 		),
-		// drawers.Side(
-		// 	drawers.SideProps{
-		// 		ClassNames: htmx.ClassNames{
-		// 			"border-r":               true,
-		// 			"border-neutral-content": true,
-		// 			"bg-base-100":            true,
-		// 			"bg-base-200":            false,
-		// 		},
-		// 	},
-		// 	MainMenu(
-		// 		MainMenuProps{
-		// 			Path: p.Path,
-		// 		},
-		// 	),
-		// 	dividers.Divider(
-		// 		dividers.Props{},
-		// 	),
-		// 	UserMenu(
-		// 		UserMenuProps{
-		// 			Path: p.Path,
-		// 		},
-		// 	),
-		// ),
 	)
 }

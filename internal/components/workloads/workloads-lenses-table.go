@@ -24,17 +24,17 @@ func LensesTable(props LensesTableProps, children ...htmx.Node) htmx.Node {
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: "lenses-tables",
 			},
 			[]tables.ColumnDef[*models.Lens]{
 				{
 					ID:          "id",
 					AccessorKey: "id",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("ID"))
 					},
-					Cell: func(p tables.TableProps, row *models.Lens) htmx.Node {
+					Cell: func(p tables.Props, row *models.Lens) htmx.Node {
 						return htmx.Td(
 							htmx.Text(row.ID.String()),
 						)
@@ -43,10 +43,10 @@ func LensesTable(props LensesTableProps, children ...htmx.Node) htmx.Node {
 				{
 					ID:          "name",
 					AccessorKey: "name",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Name"))
 					},
-					Cell: func(p tables.TableProps, row *models.Lens) htmx.Node {
+					Cell: func(p tables.Props, row *models.Lens) htmx.Node {
 						return htmx.Td(
 							links.Link(
 								links.Props{
@@ -60,10 +60,10 @@ func LensesTable(props LensesTableProps, children ...htmx.Node) htmx.Node {
 				{
 					ID:          "updated_at",
 					AccessorKey: "updated_at",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Last Updated"))
 					},
-					Cell: func(p tables.TableProps, row *models.Lens) htmx.Node {
+					Cell: func(p tables.Props, row *models.Lens) htmx.Node {
 						return htmx.Td(htmx.Text(row.UpdatedAt.Format("2006-01-02 15:04:05")))
 					},
 				},

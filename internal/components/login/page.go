@@ -79,8 +79,8 @@ func NewLogin() htmx.Node {
 						htmx.HxPost("/login"),
 						forms.Fieldset(
 							forms.FieldsetProps{},
-							forms.Legend(
-								forms.LegendProps{},
+							forms.FieldSetLegend(
+								forms.FieldSetLegendProps{},
 								htmx.Text("Login with your credentials"),
 							),
 							forms.Label(

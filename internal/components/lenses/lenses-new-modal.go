@@ -18,8 +18,8 @@ func NewLensModal(props NewLensModalProps) htmx.Node {
 		modals.Props{
 			ID: "new_lens_modal",
 		},
-		modals.ModalBox(
-			modals.ModalBoxProps{},
+		modals.Box(
+			modals.BoxProps{},
 			htmx.FormElement(
 				htmx.ID("new-lens-form"),
 				htmx.HxEncoding("multipart/form-data"),
@@ -63,8 +63,8 @@ func NewLensModal(props NewLensModalProps) htmx.Node {
 						),
 					),
 				),
-				modals.ModalAction(
-					modals.ModalActionProps{},
+				modals.Action(
+					modals.ActionProps{},
 					buttons.Ghost(
 						buttons.ButtonProps{
 							Type: "button",

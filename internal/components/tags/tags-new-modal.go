@@ -18,8 +18,8 @@ func NewTagModal() htmx.Node {
 		modals.Props{
 			ID: "new_tag_modal",
 		},
-		modals.ModalBox(
-			modals.ModalBoxProps{},
+		modals.Box(
+			modals.BoxProps{},
 			htmx.FormElement(
 				htmx.ID("new-tag-form"),
 				htmx.HxTrigger("submit"),
@@ -73,8 +73,8 @@ func NewTagModal() htmx.Node {
 						),
 					),
 				),
-				modals.ModalAction(
-					modals.ModalActionProps{},
+				modals.Action(
+					modals.ActionProps{},
 					buttons.Ghost(
 						buttons.ButtonProps{
 							Type: "button",

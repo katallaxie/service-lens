@@ -46,8 +46,8 @@ func (h *SettingsHandler) ListSettings(c fiber.Ctx) (htmx.Node, error) {
 								cards.TitleProps{},
 								htmx.Text("Settings"),
 							),
-							joins.JoinVertical(
-								joins.JoinProps{
+							joins.Vertical(
+								joins.Props{
 									ClassNames: htmx.ClassNames{
 										tailwind.WFull: true,
 									},

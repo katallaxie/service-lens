@@ -20,8 +20,8 @@ func NewDesignModal() htmx.Node {
 		modals.Props{
 			ID: "new_design_modal",
 		},
-		modals.ModalBox(
-			modals.ModalBoxProps{},
+		modals.Box(
+			modals.BoxProps{},
 			htmx.FormElement(
 				htmx.ID("new-design-form"),
 				htmx.Action(utils.CreateDesignUrlFormat),
@@ -64,8 +64,8 @@ func NewDesignModal() htmx.Node {
 						),
 					),
 				),
-				modals.ModalAction(
-					modals.ModalActionProps{},
+				modals.Action(
+					modals.ActionProps{},
 					buttons.Ghost(
 						buttons.ButtonProps{
 							Type: "button",

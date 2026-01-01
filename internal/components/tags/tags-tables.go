@@ -27,7 +27,7 @@ func TagsTable(props TagsTableProps, children ...htmx.Node) htmx.Node {
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: "tags-tables",
 				Pagination: tables.TablePagination(
 					tables.TablePaginationProps{},
@@ -43,7 +43,7 @@ func TagsTable(props TagsTableProps, children ...htmx.Node) htmx.Node {
 						),
 
 						tables.Select(
-							tables.SelectProps{
+							tables.PaginationProps{
 								Total:  props.Total,
 								Offset: props.Offset,
 								Limit:  props.Limit,
@@ -95,38 +95,38 @@ func TagsTable(props TagsTableProps, children ...htmx.Node) htmx.Node {
 				{
 					ID:          "name",
 					AccessorKey: "name",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Name"))
 					},
-					Cell: func(p tables.TableProps, row *models.Tag) htmx.Node {
+					Cell: func(p tables.Props, row *models.Tag) htmx.Node {
 						return htmx.Td(htmx.Text(row.Name))
 					},
 				},
 				{
 					ID:          "value",
 					AccessorKey: "value",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Value"))
 					},
-					Cell: func(p tables.TableProps, row *models.Tag) htmx.Node {
+					Cell: func(p tables.Props, row *models.Tag) htmx.Node {
 						return htmx.Td(htmx.Text(row.Value))
 					},
 				},
 				{
 					ID:          "created_at",
 					AccessorKey: "created_at",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Created At"))
 					},
-					Cell: func(p tables.TableProps, row *models.Tag) htmx.Node {
+					Cell: func(p tables.Props, row *models.Tag) htmx.Node {
 						return htmx.Td(htmx.Text(row.CreatedAt.Format(time.RFC822)))
 					},
 				},
 				{
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return nil
 					},
-					Cell: func(p tables.TableProps, row *models.Tag) htmx.Node {
+					Cell: func(p tables.Props, row *models.Tag) htmx.Node {
 						return htmx.Td(
 							buttons.Button(
 								buttons.ButtonProps{

@@ -20,17 +20,17 @@ func LensPillarTable(props LensPillarTableProps, children ...htmx.Node) htmx.Nod
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: "lenses-pillar-table",
 			},
 			[]tables.ColumnDef[*models.Pillar]{
 				{
 					ID:          "name",
 					AccessorKey: "name",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Name"))
 					},
-					Cell: func(p tables.TableProps, row *models.Pillar) htmx.Node {
+					Cell: func(p tables.Props, row *models.Pillar) htmx.Node {
 						return htmx.Td(
 							links.Link(
 								links.Props{

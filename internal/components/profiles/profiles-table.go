@@ -28,7 +28,7 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: "profiles-tables",
 				Pagination: tables.TablePagination(
 					tables.TablePaginationProps{},
@@ -44,7 +44,7 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 						),
 
 						tables.Select(
-							tables.SelectProps{
+							tables.PaginationProps{
 								Total:  props.Total,
 								Offset: props.Offset,
 								Limit:  props.Limit,
@@ -97,10 +97,10 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 				{
 					ID:          "id",
 					AccessorKey: "id",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("ID"))
 					},
-					Cell: func(p tables.TableProps, row *models.Profile) htmx.Node {
+					Cell: func(p tables.Props, row *models.Profile) htmx.Node {
 						return htmx.Td(
 							htmx.Text(row.ID.String()),
 						)
@@ -109,10 +109,10 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 				{
 					ID:          "name",
 					AccessorKey: "name",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Name"))
 					},
-					Cell: func(p tables.TableProps, row *models.Profile) htmx.Node {
+					Cell: func(p tables.Props, row *models.Profile) htmx.Node {
 						return htmx.Td(
 							links.Link(
 								links.Props{
@@ -124,10 +124,10 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 					},
 				},
 				{
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return nil
 					},
-					Cell: func(p tables.TableProps, row *models.Profile) htmx.Node {
+					Cell: func(p tables.Props, row *models.Profile) htmx.Node {
 						return htmx.Td(
 							buttons.Button(
 								buttons.ButtonProps{

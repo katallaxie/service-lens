@@ -19,7 +19,7 @@ type DefaultLayoutProps struct {
 func DefaultLayout(props DefaultLayoutProps, node htmx.ErrBoundaryFunc) htmx.Node {
 	if props.Development {
 		reload := htmx.Script(
-			htmx.Src("https://unpkg.com/fiber-reload@0.9.0/reload.js"),
+			htmx.Src("/static/reload.js"),
 			htmx.Type("text/javascript"),
 		)
 

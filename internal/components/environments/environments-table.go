@@ -27,7 +27,7 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 	return htmx.Div(
 		htmx.ClassNames{},
 		tables.Table(
-			tables.TableProps{
+			tables.Props{
 				ID: "environments-tables",
 				Pagination: tables.TablePagination(
 					tables.TablePaginationProps{},
@@ -43,7 +43,7 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 						),
 
 						tables.Select(
-							tables.SelectProps{
+							tables.PaginationProps{
 								Total:  props.Total,
 								Offset: props.Offset,
 								Limit:  props.Limit,
@@ -96,10 +96,10 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 				{
 					ID:          "id",
 					AccessorKey: "id",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("ID"))
 					},
-					Cell: func(p tables.TableProps, row *models.Environment) htmx.Node {
+					Cell: func(p tables.Props, row *models.Environment) htmx.Node {
 						return htmx.Td(
 							htmx.Text(row.ID.String()),
 						)
@@ -108,10 +108,10 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 				{
 					ID:          "name",
 					AccessorKey: "name",
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return htmx.Th(htmx.Text("Name"))
 					},
-					Cell: func(p tables.TableProps, row *models.Environment) htmx.Node {
+					Cell: func(p tables.Props, row *models.Environment) htmx.Node {
 						return htmx.Td(
 							links.Link(
 								links.Props{
@@ -123,10 +123,10 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 					},
 				},
 				{
-					Header: func(p tables.TableProps) htmx.Node {
+					Header: func(p tables.Props) htmx.Node {
 						return nil
 					},
-					Cell: func(p tables.TableProps, row *models.Environment) htmx.Node {
+					Cell: func(p tables.Props, row *models.Environment) htmx.Node {
 						return htmx.Td(
 							buttons.Button(
 								buttons.ButtonProps{
