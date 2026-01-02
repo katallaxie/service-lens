@@ -940,6 +940,16 @@ github.com/katallaxie/htmx v0.5.7-0.20260102163328-92ce68d5911f h1:4i3k3CFEEumsf
 github.com/katallaxie/htmx v0.5.7-0.20260102163328-92ce68d5911f/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
 github.com/katallaxie/htmx v0.5.7-0.20260102164712-4dde82af67b8 h1:8+wYcXrSc8urP0vZI3wZUKM3Q6AHE01Wx+Mx4mJFCmA=
 github.com/katallaxie/htmx v0.5.7-0.20260102164712-4dde82af67b8/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.8 h1:6nSn33TGh5VmTH1ckZn9MD/F6z4JF84elECuvJf8tq4=
+github.com/katallaxie/htmx v0.5.8/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.9-0.20260102193456-da472a324f0b h1:xFePhwBl521DYku3tqBVDTDCCWbObPbtwZASiYaF63c=
+github.com/katallaxie/htmx v0.5.9-0.20260102193456-da472a324f0b/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.9 h1:g59Ka2djvQsHicnZBTOIbirYgw+BxV1AyBJyYHvnaqc=
+github.com/katallaxie/htmx v0.5.9/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.10-0.20260102194322-d2c3d4dbf679 h1:AAX8cKtC00fSxh5xyYcFuVrrFgkgBCMp7LWrI8StIlc=
+github.com/katallaxie/htmx v0.5.10-0.20260102194322-d2c3d4dbf679/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.10-0.20260102194442-19c13ddd7468 h1:RSiQB18TXQnh4IGTQgKpQw2lIucmWg3a2/jVEnc+53A=
+github.com/katallaxie/htmx v0.5.10-0.20260102194442-19c13ddd7468/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102130842-0b0e2d094ccb h1:TtW69GLfiEwC8lwVBUp6vKMOkDFsiRqoJFhZuvCIHCU=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102130842-0b0e2d094ccb/go.mod h1:txOsC/SaluX7ryPkq8rPafP+HPtkesvEwRySZpDXxiM=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102131143-78cdac114de0 h1:ohD8o8Abfv/DQ7Mf2dXu0h2qq1mc+4JCSXSRYu0NKhs=
