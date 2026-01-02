@@ -8,8 +8,7 @@ import (
 	darkmode "github.com/katallaxie/htmx-dark-mode-element"
 	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"
-	"github.com/katallaxie/htmx/icons"
-	"github.com/katallaxie/htmx/icons/heroicons"
+	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/menus"
 	"github.com/katallaxie/htmx/navbars"
 	"github.com/katallaxie/service-lens/internal/utils"
@@ -86,30 +85,13 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 					darkmode.DarkMode(
 						darkmode.DarkTheme("dark"),
 						darkmode.LightTheme("light"),
-						htmx.Label(
-							htmx.ClassNames{
-								"swap":        true,
-								"swap-rotate": true,
-								"mx-4":        true,
+						forms.Toggle(
+							forms.ToggleProps{
+								ClassNames: htmx.ClassNames{
+									"mx-2":      true,
+									"toggle-md": true,
+								},
 							},
-							htmx.Input(
-								htmx.Type("checkbox"),
-								htmx.Value("dark"),
-							),
-							heroicons.SunDefaultOutline(
-								icons.IconProps{
-									ClassNames: htmx.ClassNames{
-										"swap-on": true,
-									},
-								},
-							),
-							heroicons.MoonDefaultOutline(
-								icons.IconProps{
-									ClassNames: htmx.ClassNames{
-										"swap-off": true,
-									},
-								},
-							),
 						),
 					),
 				),
