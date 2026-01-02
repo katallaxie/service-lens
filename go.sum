@@ -950,6 +950,8 @@ github.com/katallaxie/htmx v0.5.10-0.20260102194322-d2c3d4dbf679 h1:AAX8cKtC00fS
 github.com/katallaxie/htmx v0.5.10-0.20260102194322-d2c3d4dbf679/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
 github.com/katallaxie/htmx v0.5.10-0.20260102194442-19c13ddd7468 h1:RSiQB18TXQnh4IGTQgKpQw2lIucmWg3a2/jVEnc+53A=
 github.com/katallaxie/htmx v0.5.10-0.20260102194442-19c13ddd7468/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
+github.com/katallaxie/htmx v0.5.10-0.20260102214316-cbc56ca1b8f1 h1:EPr59KaO7b1eiqfhoyf5UF81jPgpWrpqLueM6YZM2Mo=
+github.com/katallaxie/htmx v0.5.10-0.20260102214316-cbc56ca1b8f1/go.mod h1:Hqu6ONqgXyTPHmgt3OncC+oMlrDxcpaf5dE8g1yi17o=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102130842-0b0e2d094ccb h1:TtW69GLfiEwC8lwVBUp6vKMOkDFsiRqoJFhZuvCIHCU=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102130842-0b0e2d094ccb/go.mod h1:txOsC/SaluX7ryPkq8rPafP+HPtkesvEwRySZpDXxiM=
 github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102131143-78cdac114de0 h1:ohD8o8Abfv/DQ7Mf2dXu0h2qq1mc+4JCSXSRYu0NKhs=

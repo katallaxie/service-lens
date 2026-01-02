@@ -5,10 +5,8 @@ import (
 
 	"github.com/katallaxie/fiber-goth/v3/adapters"
 	htmx "github.com/katallaxie/htmx"
-	darkmode "github.com/katallaxie/htmx-dark-mode-element"
 	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"
-	"github.com/katallaxie/htmx/forms"
 	"github.com/katallaxie/htmx/menus"
 	"github.com/katallaxie/htmx/navbars"
 	"github.com/katallaxie/service-lens/internal/utils"
@@ -77,22 +75,13 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 				),
 				navbars.End(
 					navbars.EndProps{},
+					DarkModeSwitch(
+						DarkModeSwitchProps{},
+					),
 					ProfileMenu(
 						ProfileMenuProps{
 							User: p.User,
 						},
-					),
-					darkmode.DarkMode(
-						darkmode.DarkTheme("dark"),
-						darkmode.LightTheme("light"),
-						forms.Toggle(
-							forms.ToggleProps{
-								ClassNames: htmx.ClassNames{
-									"mx-2":      true,
-									"toggle-md": true,
-								},
-							},
-						),
 					),
 				),
 			),
