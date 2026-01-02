@@ -80,7 +80,7 @@ func DesignTag(props DesignTagProps) htmx.Node {
 			buttons.ButtonProps{
 				Type: "submit",
 			},
-			heroicons.TrashOutline(
+			heroicons.TrashDefaultOutline(
 				icons.IconProps{},
 			),
 		),

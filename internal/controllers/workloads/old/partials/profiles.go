@@ -44,7 +44,7 @@ func (w *ProfilePartialListControllerImpl) Get() error {
 		htmx.Fragment(
 			htmx.ForEach(w.profiles.GetRows(), func(e *models.Profile, profileIdx int) htmx.Node {
 				return dropdowns.DropdownMenuItem(
-					dropdowns.DropdownMenuItemProps{},
+					dropdowns.MenuItemProps{},
 					htmx.A(
 						htmx.Text(e.Name),
 						htmx.DataAttribute("profile", e.ID.String()),

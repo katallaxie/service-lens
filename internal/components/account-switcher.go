@@ -19,9 +19,9 @@ type AccountSwitcherProps struct {
 // AccountSwitcher ...
 func AccountSwitcher(props AccountSwitcherProps, children ...htmx.Node) htmx.Node {
 	return dropdowns.Dropdown(
-		dropdowns.DropdownProps{},
-		dropdowns.DropdownButton(
-			dropdowns.DropdownButtonProps{
+		dropdowns.Props{},
+		dropdowns.Button(
+			dropdowns.ButtonProps{
 				ClassNames: htmx.ClassNames{
 					"btn":             true,
 					"btn-sm":          true,
@@ -31,10 +31,10 @@ func AccountSwitcher(props AccountSwitcherProps, children ...htmx.Node) htmx.Nod
 				},
 			},
 			htmx.Text("ZEISS"),
-			heroicons.ChevronUpDownOutline(icons.IconProps{}),
+			heroicons.ChevronUpDownDefaultOutline(icons.IconProps{}),
 		),
-		dropdowns.DropdownMenuItems(
-			dropdowns.DropdownMenuItemsProps{
+		dropdowns.Props(
+			dropdowns.Props{
 				ClassNames: htmx.ClassNames{
 					"w-full": true,
 				},

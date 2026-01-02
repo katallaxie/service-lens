@@ -26,9 +26,9 @@ func MultiSelect(props MultiSelectProps) htmx.Node {
 			htmx.HxIndicator(".htmx-indicator"),
 		),
 		dropdowns.Dropdown(
-			dropdowns.DropdownProps{},
-			dropdowns.DropdownButton(
-				dropdowns.DropdownButtonProps{
+			dropdowns.Props{},
+			dropdowns.Button(
+				dropdowns.ButtonProps{
 					ClassNames: htmx.ClassNames{
 						"btn":             true,
 						"btn-sm":          true,
@@ -38,7 +38,7 @@ func MultiSelect(props MultiSelectProps) htmx.Node {
 					},
 				},
 				htmx.Text("Select Profile"),
-				heroicons.ChevronUpDownOutline(icons.IconProps{}),
+				heroicons.ChevronUpDownDefaultOutline(icons.IconProps{}),
 
 				//         <h3>
 				//   Search Contacts

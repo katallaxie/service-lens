@@ -17,7 +17,7 @@ type ProfileMenuProps struct {
 // ProfileMenu ...
 func ProfileMenu(p ProfileMenuProps, children ...htmx.Node) htmx.Node {
 	return dropdowns.Dropdown(
-		dropdowns.DropdownProps{
+		dropdowns.Props{
 			ClassNames: htmx.Merge(
 				htmx.ClassNames{
 					"dropdown-end": true,
@@ -25,8 +25,8 @@ func ProfileMenu(p ProfileMenuProps, children ...htmx.Node) htmx.Node {
 				p.ClassNames,
 			),
 		},
-		dropdowns.DropdownButton(
-			dropdowns.DropdownButtonProps{
+		dropdowns.Button(
+			dropdowns.ButtonProps{
 				ClassNames: htmx.ClassNames{
 					"m-1":        true,
 					"btn-circle": true,
@@ -40,17 +40,17 @@ func ProfileMenu(p ProfileMenuProps, children ...htmx.Node) htmx.Node {
 				),
 			),
 		),
-		dropdowns.DropdownMenuItems(
-			dropdowns.DropdownMenuItemsProps{},
+		dropdowns.MenuItems(
+			dropdowns.MenuItemsProps{},
 			dropdowns.DropdownMenuItem(
-				dropdowns.DropdownMenuItemProps{},
+				dropdowns.MenuItemProps{},
 				htmx.A(
 					htmx.Attribute("href", "/me"),
 					htmx.Text("Profile"),
 				),
 			),
 			dropdowns.DropdownMenuItem(
-				dropdowns.DropdownMenuItemProps{},
+				dropdowns.MenuItemProps{},
 				htmx.A(
 					htmx.Attribute("href", "/logout"),
 					htmx.Text("Logout"),

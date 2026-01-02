@@ -80,7 +80,7 @@ func WorkloadTag(props WorkloadTagProps) htmx.Node {
 			buttons.ButtonProps{
 				Type: "submit",
 			},
-			heroicons.TrashOutline(
+			heroicons.TrashDefaultOutline(
 				icons.IconProps{},
 			),
 		),

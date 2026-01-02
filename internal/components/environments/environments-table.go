@@ -138,7 +138,7 @@ func EnvironmentsTable(props EnvironmentsTableProps, children ...htmx.Node) htmx
 								htmx.HxConfirm("Are you sure you want to delete environment tag?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								heroicons.TrashOutline(
+								heroicons.TrashDefaultOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

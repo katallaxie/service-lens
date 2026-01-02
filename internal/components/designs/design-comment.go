@@ -72,28 +72,28 @@ func DesignComment(props DesignCommentProps) htmx.Node {
 					},
 				),
 				dropdowns.Dropdown(
-					dropdowns.DropdownProps{
+					dropdowns.Props{
 						ClassNames: htmx.ClassNames{},
 					},
-					dropdowns.DropdownButton(
-						dropdowns.DropdownButtonProps{
+					dropdowns.Button(
+						dropdowns.ButtonProps{
 							ClassNames: htmx.ClassNames{
 								"btn": true,
 							},
 						},
-						heroicons.EllipsisHorizontalOutline(
+						heroicons.EllipsisHorizontalDefaultOutline(
 							icons.IconProps{},
 						),
 					),
-					dropdowns.DropdownMenuItems(
-						dropdowns.DropdownMenuItemsProps{
+					dropdowns.MenuItems(
+						dropdowns.MenuItemsProps{
 							ClassNames: htmx.ClassNames{
 								tailwind.WFull: false,
 								"w-52":         false,
 							},
 						},
 						dropdowns.DropdownMenuItem(
-							dropdowns.DropdownMenuItemProps{},
+							dropdowns.MenuItemProps{},
 							htmx.A(
 								typography.Error(
 									typography.Props{},

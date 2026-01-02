@@ -136,13 +136,13 @@ func EmojiPicker(props EmojiPickerProps) htmx.Node {
 			// alpine.XModel("input"),
 		),
 		dropdowns.Dropdown(
-			dropdowns.DropdownProps{
+			dropdowns.Props{
 				ClassNames: htmx.ClassNames{
 					"dropdown-right": true,
 				},
 			},
-			dropdowns.DropdownButton(
-				dropdowns.DropdownButtonProps{},
+			dropdowns.Button(
+				dropdowns.ButtonProps{},
 				// alpine.XRef("button"),
 				// alpine.XOn("click", "toggle()"),
 				htmx.Attribute(":aria-expanded", "open"),
@@ -152,8 +152,8 @@ func EmojiPicker(props EmojiPickerProps) htmx.Node {
 				// 	alpine.XText("input"),
 				// ),
 			),
-			dropdowns.DropdownMenuItems(
-				dropdowns.DropdownMenuItemsProps{
+			dropdowns.Button(
+				dropdowns.ButtonProps{
 					ClassNames: htmx.ClassNames{
 						"menu":      false,
 						"w-52":      false,

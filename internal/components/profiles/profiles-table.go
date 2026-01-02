@@ -139,7 +139,7 @@ func ProfilesTable(props ProfilesTableProps, children ...htmx.Node) htmx.Node {
 								htmx.HxConfirm("Are you sure you want to delete this profile?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								heroicons.TrashOutline(
+								heroicons.TrashDefaultOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
 											"w-6 h-6": false,

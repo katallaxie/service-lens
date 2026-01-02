@@ -44,7 +44,7 @@ func (w *EnvironmentParialListControllerImpl) Get() error {
 		htmx.Fragment(
 			htmx.ForEach(w.environments.GetRows(), func(e *models.Environment, choiceIdx int) htmx.Node {
 				return dropdowns.DropdownMenuItem(
-					dropdowns.DropdownMenuItemProps{},
+					dropdowns.MenuItemProps{},
 					htmx.A(
 						htmx.Text(e.Name),
 						htmx.DataAttribute("environment", e.ID.String()),

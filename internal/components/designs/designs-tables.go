@@ -152,12 +152,11 @@ func DesignsTable(props DesignsTableProps, children ...htmx.Node) htmx.Node {
 								htmx.HxConfirm("Are you sure you want to delete this design?"),
 								htmx.HxTarget("closest tr"),
 								htmx.HxSwap("outerHTML swap:1s"),
-								heroicons.TrashOutline(
+								heroicons.TrashDefaultOutline(
 									icons.IconProps{
 										ClassNames: htmx.ClassNames{
-											"w-6 h-6": false,
-											"w-4":     true,
-											"h-4":     true,
+											"w-4": true,
+											"h-4": true,
 										},
 									},
 								),

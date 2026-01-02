@@ -20,7 +20,7 @@ require (
 	github.com/katallaxie/fiber-htmx v1.0.5-0.20251104190611-75883957d682
 	github.com/katallaxie/fiber-htmx/v3 v3.0.3-0.20251008082453-b6c2367e1086
 	github.com/katallaxie/fiber-reload/v3 v3.0.0
-	github.com/katallaxie/htmx v0.5.5
+	github.com/katallaxie/htmx v0.5.7-0.20260102164712-4dde82af67b8
 	github.com/katallaxie/htmx-dark-mode-element v0.0.0-20260102131143-78cdac114de0
 	github.com/katallaxie/pkg v0.7.10
 	github.com/kelseyhightower/envconfig v1.4.0
