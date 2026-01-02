@@ -12,6 +12,7 @@ import (
 	"github.com/katallaxie/htmx/icons"
 	"github.com/katallaxie/htmx/icons/heroicons"
 	"github.com/katallaxie/htmx/links"
+	"github.com/katallaxie/htmx/modals"
 	"github.com/katallaxie/htmx/tables"
 )
 
@@ -87,9 +88,10 @@ func DesignsTable(props DesignsTableProps, children ...htmx.Node) htmx.Node {
 						),
 					),
 					NewDesignModal(),
-					buttons.Button(
-						buttons.ButtonProps{},
-						htmx.OnClick("new_design_modal.showModal()"),
+					modals.OpenButton(
+						modals.OpenButtonProps{
+							ID: "new-design-modal",
+						},
 						htmx.Text("Add Design"),
 					),
 				),

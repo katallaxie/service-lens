@@ -18,7 +18,7 @@ type NewDesignModalProps struct{}
 func NewDesignModal() htmx.Node {
 	return modals.Modal(
 		modals.Props{
-			ID: "new_design_modal",
+			ID: "new-design-modal",
 		},
 		modals.Box(
 			modals.BoxProps{},
@@ -66,13 +66,14 @@ func NewDesignModal() htmx.Node {
 				),
 				modals.Action(
 					modals.ActionProps{},
-					buttons.Ghost(
-						buttons.ButtonProps{
-							Type: "button",
+					modals.CloseButton(
+						modals.CloseButtonProps{
+							ID: "new-design-modal",
+							ClassNames: htmx.ClassNames{
+								"btn-ghost": true,
+							},
 						},
 						htmx.Text("Cancel"),
-						htmx.Attribute("formnovalidate", ""),
-						htmx.OnClick("event.target.closest('dialog').close()"),
 					),
 					buttons.Button(
 						buttons.ButtonProps{

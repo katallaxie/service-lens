@@ -5,6 +5,7 @@ import (
 
 	"github.com/katallaxie/fiber-goth/v3/adapters"
 	htmx "github.com/katallaxie/htmx"
+	darkmode "github.com/katallaxie/htmx-dark-mode-element"
 	"github.com/katallaxie/htmx/dividers"
 	"github.com/katallaxie/htmx/drawers"
 	"github.com/katallaxie/htmx/menus"
@@ -79,6 +80,24 @@ func Layout(p LayoutProps, children ...htmx.Node) htmx.Node {
 						ProfileMenuProps{
 							User: p.User,
 						},
+					),
+					darkmode.DarkMode(
+						darkmode.DarkTheme("dark"),
+						darkmode.LightTheme("light"),
+						htmx.Label(
+							htmx.ClassNames{
+								"swap":        true,
+								"swap-rotate": true,
+								"btn":         true,
+								"btn-ghost":   true,
+								"btn-circle":  true,
+								"ml-2":        true,
+							},
+							htmx.Input(
+								htmx.Type("checkbox"),
+								htmx.Value("dark"),
+							),
+						),
 					),
 				),
 			),

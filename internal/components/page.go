@@ -31,6 +31,10 @@ func Page(props PageProps, children ...htmx.Node) htmx.Node {
 						htmx.Type("text/css"),
 					),
 					htmx.Script(
+						htmx.Src("https://unpkg.com/@htmx/htmx-dark-mode@latest/dist/index.js"),
+						htmx.Type("module"),
+					),
+					htmx.Script(
 						htmx.Src("https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"),
 					),
 					htmx.Imports(
