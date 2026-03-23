@@ -1,0 +1,45 @@
+'use server'
+
+import { insertWorkload } from '@/db/queries/workloads'
+import { TWorkload, workloadInsertSchema } from '@/db/schema'
+import { redirect } from 'next/navigation'
+import 'server-only'
+import { z } from 'zod'
+import { AddWorkloadModalFormState } from './add-workload-modal.schema'
+
+export async function createWorkloadAction(_: AddWorkloadModalFormState, data: FormData) {
+    const values = {
+        name: data.get('name') as string,
+        description: data.get('description') as string,
+    }
+
+    const result = workloadInsertSchema.safeParse(values)
+
+    if (!result.success) {
+        const errors = z.treeifyError(result.error)
+
+        return {
+            values,
+            errors,
+            success: false,
+        }
+    }
+
+    let workload: TWorkload | null = null
+
+    try {
+        workload = await insertWorkload(result.data)
+    } catch (error) {
+        return {
+            success: false,
+        }
+    }
+
+    if (!workload) {
+        return {
+            success: false,
+        }
+    }
+
+    return redirect(`/workloads/${workload?.id}`)
+}
