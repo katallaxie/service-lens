@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  service-lens:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2026-03-23T21:16:25.013610504Z"
+    description: A helm chart for Service Lens
+    digest: 778e665ccd4532e1c42b37f1bbcab1bb3afe6982f1663a0319cf993ef08d7577
+    home: http://github.com/open-cloud-initiative/service-lens
+    keywords:
+    - productivity
+    name: service-lens
+    sources:
+    - https://github.com/open-cloud-initiative/service-lens
+    urls:
+    - https://github.com/katallaxie/service-lens/releases/download/service-lens-0.0.1/service-lens-0.0.1.tgz
+    version: 0.0.1
+generated: "2026-03-23T21:16:25.013616615Z"
