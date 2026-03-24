@@ -42,7 +42,7 @@
         "@graphql-codegen/typescript-resolvers": "^5.1.7",
         "@hookform/resolvers": "^5.2.2",
         "@orpc/client": "^1.13.6",
-        "@orpc/openapi": "^1.13.7",
+        "@orpc/openapi": "^1.13.9",
         "@orpc/server": "^1.13.9",
         "@radix-ui/react-direction": "^1.1.1",
         "@radix-ui/react-label": "^2.1.8",
