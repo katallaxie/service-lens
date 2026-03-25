@@ -1,11 +1,13 @@
 import { seedDesign } from '@/db/seeds/design'
 import { seedUser } from '@/db/seeds/user'
 import { seedEnvironment } from './seeds/environment'
+import { seedWorkload } from './seeds/workload'
 
 const SEED_FUNCTIONS = {
     user: () => seedUser(),
     design: () => seedDesign({ count: 100 }),
     environment: () => seedEnvironment({ names: ['Development', 'Staging', 'Production'] }),
+    workload: () => seedWorkload({ count: 100 }),
 } as const
 
 type TableName = keyof typeof SEED_FUNCTIONS
