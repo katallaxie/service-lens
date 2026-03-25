@@ -28,6 +28,8 @@ export const workloadLens = pgTable('workload_lens', {
     lensId: uuid()
         .notNull()
         .references(() => lenses.id),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
 export const workloadProfile = pgTable('workload_profile', {
@@ -40,12 +42,15 @@ export const workloadProfile = pgTable('workload_profile', {
 })
 
 export const workloadEnvironment = pgTable('workload_environment', {
+    id: bigint({ mode: 'bigint' }).primaryKey(),
     workloadId: uuid()
         .notNull()
         .references(() => workloads.id, { onDelete: 'cascade' }),
     environmentId: uuid()
         .notNull()
         .references(() => environments.id),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
 export const workloadTag = pgTable('workload_tag', {
@@ -58,10 +63,51 @@ export const workloadTag = pgTable('workload_tag', {
 })
 
 export const workloadRelations = relations(workloads, ({ many }) => ({
-    tags: many(tags),
-    profiles: many(profiles),
-    lenses: many(lenses),
-    environments: many(environments),
+    environments: many(workloadEnvironment),
+}))
+
+export const workloadEnvironmentRelations = relations(workloadEnvironment, ({ one }) => ({
+    workload: one(workloads, {
+        fields: [workloadEnvironment.workloadId],
+        references: [workloads.id],
+    }),
+    environment: one(environments, {
+        fields: [workloadEnvironment.environmentId],
+        references: [environments.id],
+    }),
+}))
+
+export const workloadLensRelations = relations(workloadLens, ({ one }) => ({
+    workload: one(workloads, {
+        fields: [workloadLens.workloadId],
+        references: [workloads.id],
+    }),
+    lens: one(lenses, {
+        fields: [workloadLens.lensId],
+        references: [lenses.id],
+    }),
+}))
+
+export const workloadProfileRelations = relations(workloadProfile, ({ one }) => ({
+    workload: one(workloads, {
+        fields: [workloadProfile.workloadId],
+        references: [workloads.id],
+    }),
+    profile: one(profiles, {
+        fields: [workloadProfile.profileId],
+        references: [profiles.id],
+    }),
+}))
+
+export const workloadTagRelations = relations(workloadTag, ({ one }) => ({
+    workload: one(workloads, {
+        fields: [workloadTag.workloadId],
+        references: [workloads.id],
+    }),
+    tag: one(tags, {
+        fields: [workloadTag.tagId],
+        references: [tags.id],
+    }),
 }))
 
 export const workloadInsertSchema = createInsertSchema(workloads, {

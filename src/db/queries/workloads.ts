@@ -1,7 +1,7 @@
 import 'server-only'
 
 import { db } from '@/db'
-import { TWorkload, workloadDeleteSchema, workloadInsertSchema, workloads } from '@/db/schema'
+import { workloadDeleteSchema, workloadInsertSchema, workloads } from '@/db/schema'
 import type { TWorkloadDeleteSchema, TWorkloadInsertSchema } from '@/db/schemas/workload'
 import { takeFirstOrNull } from '@/db/utils'
 import { count, eq } from 'drizzle-orm'
@@ -47,11 +47,17 @@ export const deleteWorkload = async (input: TWorkloadDeleteSchema) => {
     await db.delete(workloads).where(eq(workloads.id, parsed.id))
 }
 
-export const getWorkloadById = async (id: string): Promise<TWorkload | null> => {
+export const getWorkloadById = async (id: string) => {
     try {
-        const result = await db.select().from(workloads).where(eq(workloads.id, id)).limit(1)
-        return result[0] || null
-    } catch {
+        const result = await db.query.workloads.findFirst({
+            where: (workload, { eq }) => eq(workload.id, id),
+            with: {
+                environments: true,
+            },
+        })
+        return result || null
+    } catch (e) {
+        console.error('Error fetching workload by ID:', e)
         return null
     }
 }

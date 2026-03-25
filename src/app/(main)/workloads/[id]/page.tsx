@@ -35,6 +35,15 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 </CardContent>
             </Card>
 
+            {/* Environments */}
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">Environments</CardTitle>
+                    <CardDescription>Associated environments for this workload.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2"></CardContent>
+            </Card>
+
             {/* Timestamps */}
             <Card>
                 <CardHeader>

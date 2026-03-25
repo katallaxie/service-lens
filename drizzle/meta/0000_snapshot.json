@@ -1,5 +1,5 @@
 {
-  "id": "022f96e6-0a72-4efc-b8d3-10b39a17ad90",
+  "id": "8c5dc7e5-6441-4d8c-be7d-37f3dbac596a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -1421,6 +1421,190 @@
         }
       },
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.service_lens_workload_environment": {
+      "name": "service_lens_workload_environment",
+      "schema": "",
+      "columns": {
+        "workloadId": {
+          "name": "workloadId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmentId": {
+          "name": "environmentId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "service_lens_workload_environment_workloadId_service_lens_workload_id_fk": {
+          "name": "service_lens_workload_environment_workloadId_service_lens_workload_id_fk",
+          "tableFrom": "service_lens_workload_environment",
+          "tableTo": "service_lens_workload",
+          "columnsFrom": [
+            "workloadId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "service_lens_workload_environment_environmentId_service_lens_environment_id_fk": {
+          "name": "service_lens_workload_environment_environmentId_service_lens_environment_id_fk",
+          "tableFrom": "service_lens_workload_environment",
+          "tableTo": "service_lens_environment",
+          "columnsFrom": [
+            "environmentId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.service_lens_workload_lens": {
+      "name": "service_lens_workload_lens",
+      "schema": "",
+      "columns": {
+        "workloadId": {
+          "name": "workloadId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lensId": {
+          "name": "lensId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "service_lens_workload_lens_workloadId_service_lens_workload_id_fk": {
+          "name": "service_lens_workload_lens_workloadId_service_lens_workload_id_fk",
+          "tableFrom": "service_lens_workload_lens",
+          "tableTo": "service_lens_workload",
+          "columnsFrom": [
+            "workloadId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "service_lens_workload_lens_lensId_service_lens_lens_id_fk": {
+          "name": "service_lens_workload_lens_lensId_service_lens_lens_id_fk",
+          "tableFrom": "service_lens_workload_lens",
+          "tableTo": "service_lens_lens",
+          "columnsFrom": [
+            "lensId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.service_lens_workload_profile": {
+      "name": "service_lens_workload_profile",
+      "schema": "",
+      "columns": {
+        "workloadId": {
+          "name": "workloadId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "profileId": {
+          "name": "profileId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "service_lens_workload_profile_workloadId_service_lens_workload_id_fk": {
+          "name": "service_lens_workload_profile_workloadId_service_lens_workload_id_fk",
+          "tableFrom": "service_lens_workload_profile",
+          "tableTo": "service_lens_workload",
+          "columnsFrom": [
+            "workloadId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "service_lens_workload_profile_profileId_service_lens_profile_id_fk": {
+          "name": "service_lens_workload_profile_profileId_service_lens_profile_id_fk",
+          "tableFrom": "service_lens_workload_profile",
+          "tableTo": "service_lens_profile",
+          "columnsFrom": [
+            "profileId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},

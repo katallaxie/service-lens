@@ -3,6 +3,7 @@ import { relations } from 'drizzle-orm'
 import { bigint, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { tags } from './tag'
+import { workloadEnvironment } from './workload'
 
 export const environments = pgTable('environment', {
     id: uuid().primaryKey().defaultRandom(),
@@ -28,6 +29,7 @@ export const environmentTag = pgTable('environment_tag', {
 })
 
 export const environmentRelations = relations(environments, ({ many }) => ({
+    workloads: many(workloadEnvironment),
     tags: many(tags),
 }))
 
