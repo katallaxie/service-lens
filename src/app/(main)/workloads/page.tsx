@@ -1,6 +1,7 @@
 import { paginationParams } from "@/db/queries/pagination";
 import { getWorkloads } from "@/db/queries/workloads";
 import type { SearchParams } from "@/types";
+
 import { WorkloadDataTable } from "./_components/data-table";
 
 interface IndexPageProps {

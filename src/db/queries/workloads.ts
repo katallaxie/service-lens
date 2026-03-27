@@ -1,10 +1,12 @@
 import "server-only";
 
+import { count, eq } from "drizzle-orm";
+
 import { db } from "@/db";
 import { workloadDeleteSchema, workloadInsertSchema, workloads } from "@/db/schema";
 import type { TWorkloadDeleteSchema, TWorkloadInsertSchema } from "@/db/schemas/workload";
 import { takeFirstOrNull } from "@/db/utils";
-import { count, eq } from "drizzle-orm";
+
 import type { paginationParams } from "./pagination";
 
 export type getWorkloadsSchema = ReturnType<typeof paginationParams.parse>;
@@ -47,17 +49,20 @@ export const deleteWorkload = async (input: TWorkloadDeleteSchema) => {
   await db.delete(workloads).where(eq(workloads.id, parsed.id));
 };
 
-export const getWorkloadById = async (id: string) => {
+export const getTotalNumberOfWorkloads = async () => {
   try {
-    const result = await db.query.workloads.findFirst({
-      where: (workload, { eq }) => eq(workload.id, id),
-      with: {
-        environments: true,
-      },
-    });
-    return result || null;
+    const result = await db
+      .select({
+        count: count(),
+      })
+      .from(workloads)
+      .execute()
+      .then((res) => res[0]?.count ?? 0);
+    return result;
   } catch (e) {
-    console.error("Error fetching workload by ID:", e);
-    return null;
+    console.error("Error fetching total number of workloads:", e);
+    return 0;
   }
-};
+}
+
+

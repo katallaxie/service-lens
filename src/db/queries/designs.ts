@@ -1,16 +1,17 @@
 import "server-only";
 
+import { count, eq } from "drizzle-orm";
+
 import { db } from "@/db";
 import { designs } from "@/db/schema";
 import {
-  designInsertSchema,
   designDeleteSchema,
-  designSelectSchema,
-  type TDesignInsertSchema,
-  type TDesignDeleteSchema,
+  designInsertSchema,
   type TDesign,
+  type TDesignDeleteSchema,
+  type TDesignInsertSchema
 } from "@/db/schemas/design";
-import { count, eq } from "drizzle-orm";
+
 import type { paginationParams } from "./pagination";
 
 export type GetDesignsSchema = ReturnType<typeof paginationParams.parse>;
@@ -51,6 +52,22 @@ export const insertDesign = async (input: TDesignInsertSchema) => {
 export const deleteDesign = async (input: TDesignDeleteSchema) => {
   const parsed = await designDeleteSchema.parseAsync(input);
   await db.delete(designs).where(eq(designs.id, parsed.id));
+};
+
+export const getTotalNumberOfDesigns = async () => {
+  try {
+    const result = await db
+      .select({
+        count: count(),
+      })
+      .from(designs)
+      .execute()
+      .then((res) => res[0]?.count ?? 0);
+
+    return result;
+  } catch {
+    return 0;
+  }
 };
 
 export const updateDesign = async (id: string, input: Partial<TDesignInsertSchema>): Promise<TDesign | null> => {

@@ -1,5 +1,7 @@
 import "server-only";
 
+import { count, eq } from "drizzle-orm";
+
 import { db } from "@/db";
 import {
   environmentDeleteSchema,
@@ -9,7 +11,7 @@ import {
   type TEnvironmentInsertSchema,
 } from "@/db/schema";
 import { takeFirstOrNull } from "@/db/utils";
-import { count, eq } from "drizzle-orm";
+
 import type { paginationParams } from "./pagination";
 
 export type getEnvironmentsSchema = ReturnType<typeof paginationParams.parse>;
@@ -56,3 +58,19 @@ export const deleteEnvironment = async (input: TEnvironmentDeleteSchema) => {
   const parsed = await environmentDeleteSchema.parseAsync(input);
   await db.delete(environments).where(eq(environments.id, parsed.id));
 };
+
+export const getTotalNumberOfEnvironments = async () => {
+  try {
+    const result = await db
+      .select({
+        count: count(),
+      })
+      .from(environments)
+      .execute()
+      .then((res) => res[0]?.count ?? 0);
+
+    return result;
+  } catch {
+    return 0;
+  }
+}

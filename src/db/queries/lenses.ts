@@ -1,9 +1,11 @@
 import "server-only";
 
+import { count, eq } from "drizzle-orm";
+
 import { db } from "@/db";
 import { lensDeleteSchema, lenses, lensInsertSchema, type TLensDeleteSchema, type TLensInsertSchema } from "@/db/schema";
 import { takeFirstOrNull } from "@/db/utils";
-import { count, eq } from "drizzle-orm";
+
 import type { paginationParams } from "./pagination";
 
 export type getLensesSchema = ReturnType<typeof paginationParams.parse>;
@@ -54,3 +56,19 @@ export const deleteLens = async (input: TLensDeleteSchema) => {
   const parsed = await lensDeleteSchema.parseAsync(input);
   await db.delete(lenses).where(eq(lenses.id, parsed.id));
 };
+
+export const getTotalNumberOfLenses = async () => {
+  try {
+    const result = await db
+      .select({
+        count: count(),
+      })
+      .from(lenses)
+      .execute()
+      .then((res) => res[0]?.count ?? 0);
+
+    return result;
+  } catch {
+    return 0;
+  }
+}
