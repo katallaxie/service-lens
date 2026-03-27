@@ -1,10 +1,10 @@
-import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import type { TTag } from "@/db/schema";
-import type { ColumnDef } from "@tanstack/react-table";
-import Link from "next/link";
-import { DataTableRowActions } from "./data-rows-actions";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import type { TTag } from "@/db/schema"
+import type { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { DataTableRowActions } from "./data-rows-actions"
 
 export const tagsColumns: ColumnDef<TTag>[] = [
   {
@@ -39,7 +39,7 @@ export const tagsColumns: ColumnDef<TTag>[] = [
         <Button variant="link" className="w-fit px-0 text-left text-foreground" asChild>
           <Link href={`/tags/${row.original.id}`}>{row.original.name}</Link>
         </Button>
-      );
+      )
     },
     enableSorting: false,
   },
@@ -48,7 +48,7 @@ export const tagsColumns: ColumnDef<TTag>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Value" />,
     cell: ({ row }) => {
       // return <TableCellViewer item={row.original} />
-      return row.original.value;
+      return row.original.value
     },
     enableSorting: false,
   },
@@ -57,4 +57,4 @@ export const tagsColumns: ColumnDef<TTag>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
     enableSorting: false,
   },
-];
+]

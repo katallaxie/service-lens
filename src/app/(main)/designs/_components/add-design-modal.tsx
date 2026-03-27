@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,16 +10,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { createDesignAction } from "./add-design-modal.action";
+} from "@/components/ui/dialog"
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Plus } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { createDesignAction } from "./add-design-modal.action"
 
 export function AddDesignModal() {
-  const [state, formAction, pending] = useActionState(createDesignAction, null);
+  const [state, formAction, pending] = useActionState(createDesignAction, null)
 
   return (
     <Dialog>
@@ -63,5 +63,5 @@ export function AddDesignModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { organizationClient } from "better-auth/client/plugins";
-import { createAuthClient } from "better-auth/react";
+import { organizationClient } from "better-auth/client/plugins"
+import { createAuthClient } from "better-auth/react"
 
 export const client = createAuthClient({
   /** The base URL of the server (optional if you're using the same domain) */
@@ -9,6 +9,6 @@ export const client = createAuthClient({
       teams: { enabled: true },
     }),
   ],
-});
+})
 
-export const { signIn, signUp, signOut, useSession, useListOrganizations, useActiveOrganization } = client;
+export const { signIn, signUp, signOut, useSession, useListOrganizations, useActiveOrganization } = client

@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,16 +10,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { createProfileAction } from "./add-profile-modal.action";
+} from "@/components/ui/dialog"
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Plus } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { createProfileAction } from "./add-profile-modal.action"
 
 export function AddProfileModal() {
-  const [state, formAction, pending] = useActionState(createProfileAction, null);
+  const [state, formAction, pending] = useActionState(createProfileAction, null)
 
   return (
     <Dialog>
@@ -63,5 +63,5 @@ export function AddProfileModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

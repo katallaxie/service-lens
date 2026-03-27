@@ -1,7 +1,7 @@
-import { RootLayout } from "@/components/layout/root";
-import { Separator } from "@/components/ui/separator";
-import { Bell, Monitor, Palette, UserCog, Wrench } from "lucide-react";
-import { SidebarNav } from "./_components/sidebar-nav";
+import { RootLayout } from "@/components/layout/root"
+import { Separator } from "@/components/ui/separator"
+import { Bell, Monitor, Palette, UserCog, Wrench } from "lucide-react"
+import { SidebarNav } from "./_components/sidebar-nav"
 
 const sidebarNavItems = [
   {
@@ -29,7 +29,7 @@ const sidebarNavItems = [
     href: "/settings/display",
     icon: <Monitor size={18} />,
   },
-];
+]
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -46,5 +46,5 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         <div className="flex w-full overflow-y-hidden p-1">{children}</div>
       </div>
     </RootLayout>
-  );
+  )
 }

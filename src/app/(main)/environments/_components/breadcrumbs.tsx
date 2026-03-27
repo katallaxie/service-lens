@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TEnvironment } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TEnvironment } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  environment: TEnvironment;
+  environment: TEnvironment
 }
 
 export function Breadcrumbs({ environment }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ environment }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

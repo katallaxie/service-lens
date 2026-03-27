@@ -1,11 +1,11 @@
-import { pgTable } from "@/db/utils";
-import { relations } from "drizzle-orm";
-import { bigint, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { environments } from "./environment";
-import { lenses } from "./lens";
-import { profiles } from "./profile";
-import { tags } from "./tag";
+import { pgTable } from "@/db/utils"
+import { relations } from "drizzle-orm"
+import { bigint, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
+import { createInsertSchema, createSelectSchema } from "drizzle-zod"
+import { environments } from "./environment"
+import { lenses } from "./lens"
+import { profiles } from "./profile"
+import { tags } from "./tag"
 
 export const workloads = pgTable("workload", {
   id: uuid().primaryKey().defaultRandom(),
@@ -16,10 +16,10 @@ export const workloads = pgTable("workload", {
     .defaultNow()
     .$onUpdate(() => new Date()),
   deletedAt: timestamp("deleted_at"),
-});
+})
 
-export type TWorkload = typeof workloads.$inferSelect;
-export type TNewWorkload = typeof workloads.$inferInsert;
+export type TWorkload = typeof workloads.$inferSelect
+export type TNewWorkload = typeof workloads.$inferInsert
 
 export const workloadLens = pgTable("workload_lens", {
   workloadId: uuid()
@@ -30,7 +30,7 @@ export const workloadLens = pgTable("workload_lens", {
     .references(() => lenses.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
+})
 
 export const workloadProfile = pgTable("workload_profile", {
   workloadId: uuid()
@@ -39,7 +39,7 @@ export const workloadProfile = pgTable("workload_profile", {
   profileId: uuid()
     .notNull()
     .references(() => profiles.id),
-});
+})
 
 export const workloadEnvironment = pgTable("workload_environment", {
   id: bigint({ mode: "bigint" }).primaryKey(),
@@ -51,7 +51,7 @@ export const workloadEnvironment = pgTable("workload_environment", {
     .references(() => environments.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
+})
 
 export const workloadTag = pgTable("workload_tag", {
   workloadId: uuid()
@@ -60,11 +60,11 @@ export const workloadTag = pgTable("workload_tag", {
   tagId: bigint({ mode: "bigint" })
     .notNull()
     .references(() => tags.id, { onDelete: "cascade" }),
-});
+})
 
 export const workloadRelations = relations(workloads, ({ many }) => ({
   environments: many(workloadEnvironment),
-}));
+}))
 
 export const workloadEnvironmentRelations = relations(workloadEnvironment, ({ one }) => ({
   workload: one(workloads, {
@@ -75,7 +75,7 @@ export const workloadEnvironmentRelations = relations(workloadEnvironment, ({ on
     fields: [workloadEnvironment.environmentId],
     references: [environments.id],
   }),
-}));
+}))
 
 export const workloadLensRelations = relations(workloadLens, ({ one }) => ({
   workload: one(workloads, {
@@ -86,7 +86,7 @@ export const workloadLensRelations = relations(workloadLens, ({ one }) => ({
     fields: [workloadLens.lensId],
     references: [lenses.id],
   }),
-}));
+}))
 
 export const workloadProfileRelations = relations(workloadProfile, ({ one }) => ({
   workload: one(workloads, {
@@ -97,7 +97,7 @@ export const workloadProfileRelations = relations(workloadProfile, ({ one }) => 
     fields: [workloadProfile.profileId],
     references: [profiles.id],
   }),
-}));
+}))
 
 export const workloadTagRelations = relations(workloadTag, ({ one }) => ({
   workload: one(workloads, {
@@ -108,7 +108,7 @@ export const workloadTagRelations = relations(workloadTag, ({ one }) => ({
     fields: [workloadTag.tagId],
     references: [tags.id],
   }),
-}));
+}))
 
 export const workloadInsertSchema = createInsertSchema(workloads, {
   name: (schema) => schema.min(1, "Name is required").max(255, "Name must be at most 255 characters"),
@@ -117,13 +117,13 @@ export const workloadInsertSchema = createInsertSchema(workloads, {
 }).pick({
   name: true,
   description: true,
-});
+})
 
-export const workloadSelectSchema = createSelectSchema(workloads);
+export const workloadSelectSchema = createSelectSchema(workloads)
 export const workloadDeleteSchema = createSelectSchema(workloads).pick({
   id: true,
-});
+})
 
-export type TWorkloadInsertSchema = ReturnType<typeof workloadInsertSchema.parse>;
-export type TWorkloadSelectSchema = ReturnType<typeof workloadSelectSchema.parse>;
-export type TWorkloadDeleteSchema = ReturnType<typeof workloadDeleteSchema.parse>;
+export type TWorkloadInsertSchema = ReturnType<typeof workloadInsertSchema.parse>
+export type TWorkloadSelectSchema = ReturnType<typeof workloadSelectSchema.parse>
+export type TWorkloadDeleteSchema = ReturnType<typeof workloadDeleteSchema.parse>

@@ -1,38 +1,38 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import type { TDesign } from "@/db/schemas/design";
-import { zodResolver } from "@hookform/resolvers/zod";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-import { updateDesignAction, type UpdateDesignFormData } from "./actions";
+import { Button } from "@/components/ui/button"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import type { TDesign } from "@/db/schemas/design"
+import { zodResolver } from "@hookform/resolvers/zod"
+import dynamic from "next/dynamic"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { FormProvider, useForm } from "react-hook-form"
+import { toast } from "sonner"
+import { z } from "zod"
+import { updateDesignAction, type UpdateDesignFormData } from "./actions"
 
 // Dynamically import the markdown editor to avoid SSR issues
-const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
+const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
 
 // Form schema
 const editDesignSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters").max(255, "Title must be at most 255 characters"),
   description: z.string().max(1024, "Description must be at most 1024 characters").optional().nullable(),
   body: z.string().optional().nullable(),
-});
+})
 
 interface EditDesignFormProps {
-  design: TDesign;
+  design: TDesign
 }
 
 export function EditDesignForm({ design }: EditDesignFormProps) {
-  const router = useRouter();
-  const [saving, setSaving] = useState(false);
-  const [markdownValue, setMarkdownValue] = useState<string>(design.body || "");
+  const router = useRouter()
+  const [saving, setSaving] = useState(false)
+  const [markdownValue, setMarkdownValue] = useState<string>(design.body || "")
 
   const form = useForm<UpdateDesignFormData>({
     resolver: zodResolver(editDesignSchema),
@@ -41,40 +41,40 @@ export function EditDesignForm({ design }: EditDesignFormProps) {
       description: design.description || "",
       body: design.body || "",
     },
-  });
+  })
 
   const {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = form;
+  } = form
 
   // Handle markdown editor changes
   const handleMarkdownChange = (value?: string) => {
-    const newValue = value || "";
-    setMarkdownValue(newValue);
-    setValue("body", newValue);
-  };
+    const newValue = value || ""
+    setMarkdownValue(newValue)
+    setValue("body", newValue)
+  }
 
   // Handle form submission
   const onSubmit = async (data: UpdateDesignFormData) => {
-    setSaving(true);
+    setSaving(true)
     try {
-      const result = await updateDesignAction(design.id, data);
+      const result = await updateDesignAction(design.id, data)
 
       if (result.success) {
-        toast.success("Design updated successfully");
-        router.push(`/designs/${design.id}`);
+        toast.success("Design updated successfully")
+        router.push(`/designs/${design.id}`)
       } else {
-        toast.error(result.error || "Failed to update design");
+        toast.error(result.error || "Failed to update design")
       }
     } catch (error) {
-      console.error("Error updating design:", error);
-      toast.error("Failed to update design");
+      console.error("Error updating design:", error)
+      toast.error("Failed to update design")
     } finally {
-      setSaving(false);
+      setSaving(false)
     }
-  };
+  }
 
   return (
     <FormProvider {...form}>
@@ -129,8 +129,8 @@ export function EditDesignForm({ design }: EditDesignFormProps) {
         </div>
       </form>
     </FormProvider>
-  );
+  )
 }
 
 // Ensure the module is properly exported
-export default EditDesignForm;
+export default EditDesignForm

@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Plus } from "lucide-react";
-import { siApple, siFigma, siOpenaigym, siPaypal, siVercel } from "simple-icons";
+import { Plus } from "lucide-react"
+import { siApple, siFigma, siOpenaigym, siPaypal, siVercel } from "simple-icons"
 
-import { SimpleIcon } from "@/components/simple-icon";
-import { Button } from "@/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useSession } from "@/lib/auth-client";
-import { cn, formatCurrency } from "@/lib/utils";
+import { SimpleIcon } from "@/components/simple-icon"
+import { Button } from "@/components/ui/button"
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useSession } from "@/lib/auth-client"
+import { cn, formatCurrency } from "@/lib/utils"
 
 function ChipSVG() {
   return (
@@ -23,7 +23,7 @@ function ChipSVG() {
       <rect x="74.5" y="61.5" width="48" height="21" rx="10.5" className="fill-accent stroke-accent-foreground" />
       <rect x="74.5" y="35.5" width="48" height="21" rx="10.5" className="fill-accent stroke-accent-foreground" />
     </svg>
-  );
+  )
 }
 
 const recentPayments = [
@@ -63,10 +63,10 @@ const recentPayments = [
     amount: 35,
     date: "Jul 2",
   },
-];
+]
 
 export function AccountOverview() {
-  const session = useSession();
+  const session = useSession()
 
   return (
     <Card className="shadow-xs">
@@ -179,5 +179,5 @@ export function AccountOverview() {
         </Tabs>
       </CardContent>
     </Card>
-  );
+  )
 }

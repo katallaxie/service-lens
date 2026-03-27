@@ -1,28 +1,28 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 
-import { Inter } from "next/font/google";
+import { Inter } from "next/font/google"
 
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
-import { QueryProvider } from "@/components/providers";
-import { Toaster } from "@/components/ui/sonner";
-import { APP_CONFIG } from "@/config/app-config";
-import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
-import { ThemeBootScript } from "@/scripts/theme-boot";
-import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
+import { QueryProvider } from "@/components/providers"
+import { Toaster } from "@/components/ui/sonner"
+import { APP_CONFIG } from "@/config/app-config"
+import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config"
+import { ThemeBootScript } from "@/scripts/theme-boot"
+import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider"
 
-import "@/styles/globals.css";
+import "@/styles/globals.css"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: APP_CONFIG.meta.title,
   description: APP_CONFIG.meta.description,
-};
+}
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const { theme_mode, theme_preset, content_layout, navbar_style, sidebar_variant, sidebar_collapsible } =
-    PREFERENCE_DEFAULTS;
+    PREFERENCE_DEFAULTS
   return (
     <html
       lang="en"
@@ -52,5 +52,5 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </PreferencesStoreProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -1,32 +1,32 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 
-import { cookies } from "next/headers";
+import { cookies } from "next/headers"
 
-import { AppSidebar } from "@/app/(main)/dashboard/_components/sidebar/app-sidebar";
-import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { auth } from "@/lib/auth";
-import { SIDEBAR_COLLAPSIBLE_VALUES, SIDEBAR_VARIANT_VALUES } from "@/lib/preferences/layout";
-import { cn } from "@/lib/utils";
-import { getPreference } from "@/server/server-actions";
-import { headers } from "next/headers";
+import { AppSidebar } from "@/app/(main)/dashboard/_components/sidebar/app-sidebar"
+import { Separator } from "@/components/ui/separator"
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { auth } from "@/lib/auth"
+import { SIDEBAR_COLLAPSIBLE_VALUES, SIDEBAR_VARIANT_VALUES } from "@/lib/preferences/layout"
+import { cn } from "@/lib/utils"
+import { getPreference } from "@/server/server-actions"
+import { headers } from "next/headers"
 
-import { LayoutControls } from "./sidebar/layout-controls";
-import { SearchDialog } from "./sidebar/search-dialog";
-import { TeamSwitcher } from "./sidebar/team-switcher";
-import { ThemeSwitcher } from "./sidebar/theme-switcher";
+import { LayoutControls } from "./sidebar/layout-controls"
+import { SearchDialog } from "./sidebar/search-dialog"
+import { TeamSwitcher } from "./sidebar/team-switcher"
+import { ThemeSwitcher } from "./sidebar/theme-switcher"
 
 export async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
-  const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false";
+  const cookieStore = await cookies()
+  const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false"
   const [variant, collapsible] = await Promise.all([
     getPreference("sidebar_variant", SIDEBAR_VARIANT_VALUES, "inset"),
     getPreference("sidebar_collapsible", SIDEBAR_COLLAPSIBLE_VALUES, "icon"),
-  ]);
+  ])
 
   const session = await auth.api.getSession({
     headers: await headers(),
-  });
+  })
 
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
@@ -62,5 +62,5 @@ export async function RootLayout({ children }: Readonly<{ children: ReactNode }>
         <div className="h-full p-4 md:p-6">{children}</div>
       </SidebarInset>
     </SidebarProvider>
-  );
+  )
 }

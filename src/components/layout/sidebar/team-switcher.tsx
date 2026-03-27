@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { signOut } from "@/lib/auth-client";
-import { BadgeCheck, Bell, CreditCard, EllipsisVertical, LogOut } from "lucide-react";
-import { redirect } from "next/navigation";
-import { toast } from "sonner";
+import { signOut } from "@/lib/auth-client"
+import { BadgeCheck, Bell, CreditCard, EllipsisVertical, LogOut } from "lucide-react"
+import { redirect } from "next/navigation"
+import { toast } from "sonner"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,24 +13,24 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { getInitials } from "@/lib/utils";
-import type { User } from "better-auth";
+} from "@/components/ui/dropdown-menu"
+import { getInitials } from "@/lib/utils"
+import type { User } from "better-auth"
 
 export function TeamSwitcher({ user }: { user?: User }) {
   const onClick = async () => {
     await signOut({
       fetchOptions: {
         onError: (ctx) => {
-          toast.error(ctx.error.message);
+          toast.error(ctx.error.message)
         },
         onSuccess: async () => {
-          toast.success("Successfully logged out");
-          redirect("/");
+          toast.success("Successfully logged out")
+          redirect("/")
         },
       },
-    });
-  };
+    })
+  }
 
   return (
     <DropdownMenu>
@@ -76,5 +76,5 @@ export function TeamSwitcher({ user }: { user?: User }) {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

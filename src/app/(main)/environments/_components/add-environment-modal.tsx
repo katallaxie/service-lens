@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,16 +10,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { createEnvironmentAction } from "./add-environment-modal.action";
+} from "@/components/ui/dialog"
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Plus } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { createEnvironmentAction } from "./add-environment-modal.action"
 
 export function AddEnvironmentModal() {
-  const [state, formAction, pending] = useActionState(createEnvironmentAction, null);
+  const [state, formAction, pending] = useActionState(createEnvironmentAction, null)
 
   return (
     <Dialog>
@@ -63,5 +63,5 @@ export function AddEnvironmentModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

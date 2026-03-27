@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
 import {
   closestCenter,
@@ -12,21 +12,21 @@ import {
   type UniqueIdentifier,
   useSensor,
   useSensors,
-} from "@dnd-kit/core";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { type ColumnDef, flexRender, type Table as TanStackTable } from "@tanstack/react-table";
+} from "@dnd-kit/core"
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers"
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
+import { type ColumnDef, flexRender, type Table as TanStackTable } from "@tanstack/react-table"
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
-import { DraggableRow } from "./draggable-row";
+import { DraggableRow } from "./draggable-row"
 
 interface DataTableProps<TData, TValue> {
-  table: TanStackTable<TData>;
-  data?: TData[];
-  columns: ColumnDef<TData, TValue>[];
-  dndEnabled?: boolean;
-  onReorder?: (newData: TData[]) => void;
+  table: TanStackTable<TData>
+  data?: TData[]
+  columns: ColumnDef<TData, TValue>[]
+  dndEnabled?: boolean
+  onReorder?: (newData: TData[]) => void
 }
 
 function renderTableBody<TData, TValue>({
@@ -35,10 +35,10 @@ function renderTableBody<TData, TValue>({
   dndEnabled = false,
   dataIds,
 }: {
-  table: TanStackTable<TData>;
-  columns: ColumnDef<TData, TValue>[];
-  dndEnabled: boolean;
-  dataIds: UniqueIdentifier[];
+  table: TanStackTable<TData>
+  columns: ColumnDef<TData, TValue>[]
+  dndEnabled: boolean
+  dataIds: UniqueIdentifier[]
 }) {
   if (!table.getRowModel().rows.length) {
     return (
@@ -47,7 +47,7 @@ function renderTableBody<TData, TValue>({
           No results.
         </TableCell>
       </TableRow>
-    );
+    )
   }
   if (dndEnabled) {
     return (
@@ -56,7 +56,7 @@ function renderTableBody<TData, TValue>({
           <DraggableRow key={row.id} row={row} />
         ))}
       </SortableContext>
-    );
+    )
   }
   return table.getRowModel().rows.map((row) => (
     <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
@@ -64,7 +64,7 @@ function renderTableBody<TData, TValue>({
         <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
       ))}
     </TableRow>
-  ));
+  ))
 }
 
 export function DataTable<TData, TValue>({
@@ -73,19 +73,19 @@ export function DataTable<TData, TValue>({
   dndEnabled = false,
   onReorder,
 }: DataTableProps<TData, TValue>) {
-  const dataIds: UniqueIdentifier[] = table.getRowModel().rows.map((row) => Number(row.id) as UniqueIdentifier);
-  const sortableId = React.useId();
-  const sensors = useSensors(useSensor(MouseSensor, {}), useSensor(TouchSensor, {}), useSensor(KeyboardSensor, {}));
+  const dataIds: UniqueIdentifier[] = table.getRowModel().rows.map((row) => Number(row.id) as UniqueIdentifier)
+  const sortableId = React.useId()
+  const sensors = useSensors(useSensor(MouseSensor, {}), useSensor(TouchSensor, {}), useSensor(KeyboardSensor, {}))
 
   function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event;
+    const { active, over } = event
     if (active && over && active.id !== over.id && onReorder) {
-      const oldIndex = dataIds.indexOf(active.id);
-      const newIndex = dataIds.indexOf(over.id);
+      const oldIndex = dataIds.indexOf(active.id)
+      const newIndex = dataIds.indexOf(over.id)
 
       // Call parent with new data order (parent manages state)
-      const newData = arrayMove(table.options.data, oldIndex, newIndex);
-      onReorder(newData);
+      const newData = arrayMove(table.options.data, oldIndex, newIndex)
+      onReorder(newData)
     }
   }
 
@@ -99,7 +99,7 @@ export function DataTable<TData, TValue>({
                 <TableHead key={header.id} colSpan={header.colSpan}>
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </TableHead>
-              );
+              )
             })}
           </TableRow>
         ))}
@@ -108,7 +108,7 @@ export function DataTable<TData, TValue>({
         {renderTableBody({ table, columns, dndEnabled, dataIds })}
       </TableBody>
     </Table>
-  );
+  )
 
   if (dndEnabled) {
     return (
@@ -121,8 +121,8 @@ export function DataTable<TData, TValue>({
       >
         {tableContent}
       </DndContext>
-    );
+    )
   }
 
-  return tableContent;
+  return tableContent
 }

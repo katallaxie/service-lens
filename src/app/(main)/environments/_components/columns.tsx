@@ -1,10 +1,10 @@
-import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import type { TEnvironment } from "@/db/schema";
-import type { ColumnDef } from "@tanstack/react-table";
-import Link from "next/link";
-import { DataTableRowActions } from "./data-rows-actions";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import type { TEnvironment } from "@/db/schema"
+import type { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { DataTableRowActions } from "./data-rows-actions"
 
 export const environmentColumns: ColumnDef<TEnvironment>[] = [
   {
@@ -39,7 +39,7 @@ export const environmentColumns: ColumnDef<TEnvironment>[] = [
         <Button variant="link" className="w-fit px-0 text-left text-foreground" asChild>
           <Link href={`/environments/${row.original.id}`}>{row.original.name}</Link>
         </Button>
-      );
+      )
     },
     enableSorting: false,
   },
@@ -48,4 +48,4 @@ export const environmentColumns: ColumnDef<TEnvironment>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
     enableSorting: false,
   },
-];
+]

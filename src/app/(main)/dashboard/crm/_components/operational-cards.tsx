@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { Clock } from "lucide-react";
-import { Funnel, FunnelChart, LabelList } from "recharts";
+import { Clock } from "lucide-react"
+import { Funnel, FunnelChart, LabelList } from "recharts"
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer } from "@/components/ui/chart";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Progress } from "@/components/ui/progress";
-import { cn, formatCurrency } from "@/lib/utils";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartContainer } from "@/components/ui/chart"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Progress } from "@/components/ui/progress"
+import { cn, formatCurrency } from "@/lib/utils"
 
-import { actionItems, regionSalesData, salesPipelineChartConfig, salesPipelineChartData } from "./crm.config";
+import { actionItems, regionSalesData, salesPipelineChartConfig, salesPipelineChartData } from "./crm.config"
 
 export function OperationalCards() {
-  const totalSales = regionSalesData.reduce((sum, region) => sum + region.sales, 0);
+  const totalSales = regionSalesData.reduce((sum, region) => sum + region.sales, 0)
   return (
     <div className="grid grid-cols-1 gap-4 *:data-[slot=card]:shadow-xs sm:grid-cols-2 xl:grid-cols-3">
       <Card>
@@ -111,5 +111,5 @@ export function OperationalCards() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

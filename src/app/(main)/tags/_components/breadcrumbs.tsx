@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TTag } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TTag } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  tag: TTag;
+  tag: TTag
 }
 
 export function Breadcrumbs({ tag }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ tag }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

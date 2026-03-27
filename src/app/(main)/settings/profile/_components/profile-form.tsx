@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useSession } from "@/lib/auth-client";
-import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { useSession } from "@/lib/auth-client"
+import { useForm } from "react-hook-form"
 // import { showSubmittedData } from '@/lib/show-submitted-data'
-import { zodResolver } from "@hookform/resolvers/zod";
-import type { User } from "better-auth";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import type { User } from "better-auth"
+import { z } from "zod"
 
 const FormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-});
+})
 
-type ProfileFormValues = z.infer<typeof FormSchema>;
+type ProfileFormValues = z.infer<typeof FormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<User> = {
   name: "Indy Jones",
   email: "indy@jones.com",
-};
+}
 
 export function ProfileForm() {
-  const session = useSession();
+  const session = useSession()
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(FormSchema),
@@ -33,7 +33,7 @@ export function ProfileForm() {
       email: session.data?.user.email || defaultValues.email,
     },
     mode: "onChange",
-  });
+  })
 
   // const { fields, append } = useFieldArray({
   //     name: 'urls',
@@ -111,5 +111,5 @@ export function ProfileForm() {
         <Button type="submit">Update profile</Button>
       </form>
     </Form>
-  );
+  )
 }

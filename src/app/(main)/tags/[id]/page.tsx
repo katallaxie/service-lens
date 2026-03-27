@@ -1,20 +1,20 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { getTagById } from "@/db/queries/tags";
-import { notFound } from "next/navigation";
-import { Breadcrumbs } from "../_components/breadcrumbs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { getTagById } from "@/db/queries/tags"
+import { notFound } from "next/navigation"
+import { Breadcrumbs } from "../_components/breadcrumbs"
 
 export default async function Page({ params }: { params: Promise<{ id: number }> }) {
-  const { id } = await params;
+  const { id } = await params
 
   if (!id) {
-    notFound();
+    notFound()
   }
 
-  const tag = await getTagById(id);
+  const tag = await getTagById(id)
 
   if (!tag) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -72,5 +72,5 @@ export default async function Page({ params }: { params: Promise<{ id: number }>
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

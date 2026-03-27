@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from "next/link"
 
-import { Command } from "lucide-react";
+import { Command } from "lucide-react"
 
-import { RegisterForm } from "../../_components/register-form";
-import { GitHubButton } from "../../_components/social-auth/github-button";
-import { GoogleButton } from "../../_components/social-auth/google-button";
+import { RegisterForm } from "../../_components/register-form"
+import { GitHubButton } from "../../_components/social-auth/github-button"
+import { GoogleButton } from "../../_components/social-auth/google-button"
 
 export default function RegisterV1() {
   return (
@@ -43,5 +43,5 @@ export default function RegisterV1() {
         </div>
       </div>
     </div>
-  );
+  )
 }

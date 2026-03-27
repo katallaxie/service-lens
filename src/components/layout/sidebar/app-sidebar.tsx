@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import Link from "next/link";
+import Link from "next/link"
 
-import { CircleHelp, ClipboardList, Command, Database, File, Search, Settings } from "lucide-react";
-import { useShallow } from "zustand/react/shallow";
+import { CircleHelp, ClipboardList, Command, Database, File, Search, Settings } from "lucide-react"
+import { useShallow } from "zustand/react/shallow"
 
 import {
   Sidebar,
@@ -13,14 +13,14 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { APP_CONFIG } from "@/config/app-config";
-import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
-import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
+} from "@/components/ui/sidebar"
+import { APP_CONFIG } from "@/config/app-config"
+import { sidebarItems } from "@/navigation/sidebar/sidebar-items"
+import { usePreferencesStore } from "@/stores/preferences/preferences-provider"
 
-import { useSession } from "@/lib/auth-client";
-import { NavMain } from "./nav-main";
-import { NavUser } from "./nav-user";
+import { useSession } from "@/lib/auth-client"
+import { NavMain } from "./nav-main"
+import { NavUser } from "./nav-user"
 
 const _data = {
   navSecondary: [
@@ -57,7 +57,7 @@ const _data = {
       icon: File,
     },
   ],
-};
+}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { sidebarVariant, sidebarCollapsible, isSynced } = usePreferencesStore(
@@ -66,12 +66,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       sidebarCollapsible: s.sidebarCollapsible,
       isSynced: s.isSynced,
     })),
-  );
+  )
 
-  const variant = isSynced ? sidebarVariant : props.variant;
-  const collapsible = isSynced ? sidebarCollapsible : props.collapsible;
+  const variant = isSynced ? sidebarVariant : props.variant
+  const collapsible = isSynced ? sidebarCollapsible : props.collapsible
 
-  const session = useSession();
+  const session = useSession()
 
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
@@ -96,5 +96,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={session.data?.user} />
       </SidebarFooter>
     </Sidebar>
-  );
+  )
 }

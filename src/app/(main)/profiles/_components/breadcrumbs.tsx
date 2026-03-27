@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TProfile } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TProfile } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  profile: TProfile;
+  profile: TProfile
 }
 
 export function Breadcrumbs({ profile }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ profile }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

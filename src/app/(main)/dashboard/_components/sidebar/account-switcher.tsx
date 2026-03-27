@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { signOut } from "@/lib/auth-client";
-import { BadgeCheck, Bell, CreditCard, LogOut } from "lucide-react";
-import { redirect } from "next/navigation";
-import { useState } from "react";
-import { toast } from "sonner";
+import { signOut } from "@/lib/auth-client"
+import { BadgeCheck, Bell, CreditCard, LogOut } from "lucide-react"
+import { redirect } from "next/navigation"
+import { useState } from "react"
+import { toast } from "sonner"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,35 +14,35 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn, getInitials } from "@/lib/utils";
+} from "@/components/ui/dropdown-menu"
+import { cn, getInitials } from "@/lib/utils"
 
 export function AccountSwitcher({
   users,
 }: {
   readonly users: ReadonlyArray<{
-    readonly id: string;
-    readonly name: string;
-    readonly email: string;
-    readonly avatar: string;
-    readonly role: string;
-  }>;
+    readonly id: string
+    readonly name: string
+    readonly email: string
+    readonly avatar: string
+    readonly role: string
+  }>
 }) {
-  const [activeUser, setActiveUser] = useState(users[0]);
+  const [activeUser, setActiveUser] = useState(users[0])
 
   const onClick = async () => {
     await signOut({
       fetchOptions: {
         onError: (ctx) => {
-          toast.error(ctx.error.message);
+          toast.error(ctx.error.message)
         },
         onSuccess: async () => {
-          toast.success("Successfully logged out");
-          redirect("/");
+          toast.success("Successfully logged out")
+          redirect("/")
         },
       },
-    });
-  };
+    })
+  }
 
   return (
     <DropdownMenu>
@@ -93,5 +93,5 @@ export function AccountSwitcher({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

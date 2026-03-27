@@ -1,5 +1,7 @@
 # 👓 Service Lens
 
+![preview](media/dashboard.png)
+
 ## Lens Format
 
 ### Overview

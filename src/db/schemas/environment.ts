@@ -1,9 +1,9 @@
-import { pgTable } from "@/db/utils";
-import { relations } from "drizzle-orm";
-import { bigint, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { tags } from "./tag";
-import { workloadEnvironment } from "./workload";
+import { pgTable } from "@/db/utils"
+import { relations } from "drizzle-orm"
+import { bigint, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
+import { createInsertSchema, createSelectSchema } from "drizzle-zod"
+import { tags } from "./tag"
+import { workloadEnvironment } from "./workload"
 
 export const environments = pgTable("environment", {
   id: uuid().primaryKey().defaultRandom(),
@@ -14,10 +14,10 @@ export const environments = pgTable("environment", {
     .defaultNow()
     .$onUpdate(() => new Date()),
   deletedAt: timestamp("deleted_at"),
-});
+})
 
-export type TEnvironment = typeof environments.$inferSelect;
-export type TNewEnvironment = typeof environments.$inferInsert;
+export type TEnvironment = typeof environments.$inferSelect
+export type TNewEnvironment = typeof environments.$inferInsert
 
 export const environmentTag = pgTable("environment_tag", {
   environmentId: uuid()
@@ -26,12 +26,12 @@ export const environmentTag = pgTable("environment_tag", {
   tagId: bigint({ mode: "bigint" })
     .notNull()
     .references(() => tags.id, { onDelete: "cascade" }),
-});
+})
 
 export const environmentRelations = relations(environments, ({ many }) => ({
   workloads: many(workloadEnvironment),
   tags: many(tags),
-}));
+}))
 
 export const environmentInsertSchema = createInsertSchema(environments, {
   name: (schema) => schema.min(1, "Name is required").max(255, "Name must be at most 255 characters"),
@@ -40,13 +40,13 @@ export const environmentInsertSchema = createInsertSchema(environments, {
 }).pick({
   name: true,
   description: true,
-});
+})
 
-export const environmentSelectSchema = createSelectSchema(environments);
+export const environmentSelectSchema = createSelectSchema(environments)
 export const environmentDeleteSchema = createSelectSchema(environments).pick({
   id: true,
-});
+})
 
-export type TEnvironmentInsertSchema = ReturnType<typeof environmentInsertSchema.parse>;
-export type TEnvironmentSelectSchema = ReturnType<typeof environmentSelectSchema.parse>;
-export type TEnvironmentDeleteSchema = ReturnType<typeof environmentDeleteSchema.parse>;
+export type TEnvironmentInsertSchema = ReturnType<typeof environmentInsertSchema.parse>
+export type TEnvironmentSelectSchema = ReturnType<typeof environmentSelectSchema.parse>
+export type TEnvironmentDeleteSchema = ReturnType<typeof environmentDeleteSchema.parse>

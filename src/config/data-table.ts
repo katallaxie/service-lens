@@ -1,4 +1,4 @@
-export type DataTableConfig = typeof dataTableConfig;
+export type DataTableConfig = typeof dataTableConfig
 
 export const dataTableConfig = {
   textOperators: [
@@ -70,4 +70,4 @@ export const dataTableConfig = {
     "isRelativeToToday",
   ] as const,
   joinOperators: ["and", "or"] as const,
-};
+}

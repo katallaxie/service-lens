@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { Ellipsis, ShoppingBasket, TramFront } from "lucide-react";
-import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
+import { Ellipsis, ShoppingBasket, TramFront } from "lucide-react"
+import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Separator } from "@/components/ui/separator";
-import { formatCurrency } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { Separator } from "@/components/ui/separator"
+import { formatCurrency } from "@/lib/utils"
 
-const chartData = [{ period: "last-week", groceries: 380, transport: 120, other: 80 }];
+const chartData = [{ period: "last-week", groceries: 380, transport: 120, other: 80 }]
 
 const chartConfig = {
   groceries: {
@@ -23,10 +23,10 @@ const chartConfig = {
     label: "Other",
     color: "var(--chart-3)",
   },
-} satisfies ChartConfig;
+} satisfies ChartConfig
 
 export function ExpenseSummary() {
-  const totalExpenses = chartData.length ? chartData[0].groceries + chartData[0].transport + chartData[0].other : 0;
+  const totalExpenses = chartData.length ? chartData[0].groceries + chartData[0].transport + chartData[0].other : 0
   return (
     <Card>
       <CardHeader>
@@ -62,7 +62,7 @@ export function ExpenseSummary() {
                             Spent
                           </tspan>
                         </text>
-                      );
+                      )
                     }
                   }}
                 />
@@ -128,5 +128,5 @@ export function ExpenseSummary() {
         </span>
       </CardContent>
     </Card>
-  );
+  )
 }

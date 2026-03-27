@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,16 +10,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { createWorkloadAction } from "./add-workload-modal.action";
+} from "@/components/ui/dialog"
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Plus } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { createWorkloadAction } from "./add-workload-modal.action"
 
 export function AddWorkloadModal() {
-  const [state, formAction, pending] = useActionState(createWorkloadAction, null);
+  const [state, formAction, pending] = useActionState(createWorkloadAction, null)
 
   return (
     <Dialog>
@@ -76,5 +76,5 @@ export function AddWorkloadModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

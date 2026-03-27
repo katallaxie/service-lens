@@ -1,6 +1,6 @@
-import { pgTable } from "@/db/utils";
-import { integer, json, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { pgTable } from "@/db/utils"
+import { integer, json, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
+import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 
 export const lenses = pgTable("lens", {
   id: uuid().primaryKey().defaultRandom(),
@@ -13,10 +13,10 @@ export const lenses = pgTable("lens", {
     .defaultNow()
     .$onUpdate(() => new Date()),
   deletedAt: timestamp("deleted_at"),
-});
+})
 
-export type TLens = typeof lenses.$inferSelect;
-export type TNewLens = typeof lenses.$inferInsert;
+export type TLens = typeof lenses.$inferSelect
+export type TNewLens = typeof lenses.$inferInsert
 
 export const lensInsertSchema = createInsertSchema(lenses, {
   name: (schema) => schema.min(1, "Name is required").max(255, "Name must be at most 255 characters"),
@@ -26,13 +26,13 @@ export const lensInsertSchema = createInsertSchema(lenses, {
   name: true,
   version: true,
   raw: true,
-});
+})
 
-export const lensSelectSchema = createSelectSchema(lenses);
+export const lensSelectSchema = createSelectSchema(lenses)
 export const lensDeleteSchema = createSelectSchema(lenses).pick({
   id: true,
-});
+})
 
-export type TLensInsertSchema = ReturnType<typeof lensInsertSchema.parse>;
-export type TLensSelectSchema = ReturnType<typeof lensSelectSchema.parse>;
-export type TLensDeleteSchema = ReturnType<typeof lensDeleteSchema.parse>;
+export type TLensInsertSchema = ReturnType<typeof lensInsertSchema.parse>
+export type TLensSelectSchema = ReturnType<typeof lensSelectSchema.parse>
+export type TLensDeleteSchema = ReturnType<typeof lensDeleteSchema.parse>

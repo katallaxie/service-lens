@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,44 +11,44 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import type { TDesign } from "@/db/schemas/design";
-import { TrashIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "sonner";
-import { deleteDesignAction } from "../_components/data-rows-actions.action";
+} from "@/components/ui/alert-dialog"
+import type { TDesign } from "@/db/schemas/design"
+import { TrashIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { toast } from "sonner"
+import { deleteDesignAction } from "../_components/data-rows-actions.action"
 
 interface DeleteButtonProps {
-  design: TDesign;
+  design: TDesign
 }
 
 export function DeleteButton({ design }: DeleteButtonProps) {
-  const router = useRouter();
-  const [isDeleting, setIsDeleting] = useState(false);
+  const router = useRouter()
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = async () => {
-    setIsDeleting(true);
+    setIsDeleting(true)
     try {
       // Create FormData to match the expected action signature
-      const formData = new FormData();
-      formData.append("id", design.id);
+      const formData = new FormData()
+      formData.append("id", design.id)
 
-      const result = await deleteDesignAction(null, formData);
+      const result = await deleteDesignAction(null, formData)
 
       if (result?.success) {
-        toast.success("Design deleted successfully");
-        router.push("/designs");
+        toast.success("Design deleted successfully")
+        router.push("/designs")
       } else {
-        toast.error("Failed to delete design");
+        toast.error("Failed to delete design")
       }
     } catch (error) {
-      console.error("Error deleting design:", error);
-      toast.error("Failed to delete design");
+      console.error("Error deleting design:", error)
+      toast.error("Failed to delete design")
     } finally {
-      setIsDeleting(false);
+      setIsDeleting(false)
     }
-  };
+  }
 
   return (
     <AlertDialog>
@@ -77,5 +77,5 @@ export function DeleteButton({ design }: DeleteButtonProps) {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  )
 }

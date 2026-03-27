@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { ArrowLeftRight, RefreshCw } from "lucide-react";
+import { ArrowLeftRight, RefreshCw } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { formatCurrency } from "@/lib/utils";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Separator } from "@/components/ui/separator"
+import { formatCurrency } from "@/lib/utils"
 
 function CurrencySelector(props: { defaultValue: string }) {
   return (
@@ -21,7 +21,7 @@ function CurrencySelector(props: { defaultValue: string }) {
         <SelectItem value="aed">AED</SelectItem>
       </SelectContent>
     </Select>
-  );
+  )
 }
 
 export function CurrencyExchange() {
@@ -77,5 +77,5 @@ export function CurrencyExchange() {
         </Button>
       </CardContent>
     </Card>
-  );
+  )
 }

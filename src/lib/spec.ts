@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 /**
  * Resource schema - links to external documentation or resources
@@ -6,9 +6,9 @@ import { z } from "zod";
 export const resourceSchema = z.object({
   url: z.string().url(),
   description: z.string(),
-});
+})
 
-export type Resource = z.infer<typeof resourceSchema>;
+export type Resource = z.infer<typeof resourceSchema>
 
 /**
  * Choice schema - represents a selectable option in a question
@@ -17,16 +17,16 @@ export const choiceSchema = z.object({
   ref: z.string().min(1),
   title: z.string().min(1),
   description: z.string(),
-});
+})
 
-export type Choice = z.infer<typeof choiceSchema>;
+export type Choice = z.infer<typeof choiceSchema>
 
 /**
  * Risk level enum
  */
-export const riskLevelSchema = z.enum(["NO_RISK", "MEDIUM_RISK", "HIGH_RISK"]);
+export const riskLevelSchema = z.enum(["NO_RISK", "MEDIUM_RISK", "HIGH_RISK"])
 
-export type RiskLevel = z.infer<typeof riskLevelSchema>;
+export type RiskLevel = z.infer<typeof riskLevelSchema>
 
 /**
  * Risk schema - defines risk level based on condition
@@ -35,9 +35,9 @@ export type RiskLevel = z.infer<typeof riskLevelSchema>;
 export const riskSchema = z.object({
   risk: riskLevelSchema,
   condition: z.string().min(1),
-});
+})
 
-export type Risk = z.infer<typeof riskSchema>;
+export type Risk = z.infer<typeof riskSchema>
 
 /**
  * Question schema - represents a single evaluation question
@@ -49,9 +49,9 @@ export const questionSchema = z.object({
   resources: z.array(resourceSchema).optional().default([]),
   choices: z.array(choiceSchema).min(1),
   risks: z.array(riskSchema).min(1),
-});
+})
 
-export type Question = z.infer<typeof questionSchema>;
+export type Question = z.infer<typeof questionSchema>
 
 /**
  * Pillar schema - represents a category/pillar of evaluation
@@ -62,9 +62,9 @@ export const pillarSchema = z.object({
   description: z.string(),
   questions: z.array(questionSchema).min(1),
   resources: z.array(resourceSchema).optional().default([]),
-});
+})
 
-export type Pillar = z.infer<typeof pillarSchema>;
+export type Pillar = z.infer<typeof pillarSchema>
 
 /**
  * Lens specification schema - the root schema for a lens definition
@@ -74,9 +74,9 @@ export const lensSpecSchema = z.object({
   name: z.string().min(1),
   description: z.string(),
   pillars: z.array(pillarSchema).min(1),
-});
+})
 
-export type LensSpec = z.infer<typeof lensSpecSchema>;
+export type LensSpec = z.infer<typeof lensSpecSchema>
 
 /**
  * JSON Schema representation of the Lens Spec
@@ -244,7 +244,7 @@ export const lensSpecJsonSchema = {
       },
     },
   },
-} as const;
+} as const
 
 /**
  * Parse and validate a lens specification from JSON
@@ -253,7 +253,7 @@ export const lensSpecJsonSchema = {
  * @throws ZodError if validation fails
  */
 export function parseLensSpec(data: unknown): LensSpec {
-  return lensSpecSchema.parse(data);
+  return lensSpecSchema.parse(data)
 }
 
 /**
@@ -262,5 +262,5 @@ export function parseLensSpec(data: unknown): LensSpec {
  * @returns SafeParseReturnType with success/error information
  */
 export function safeParseLensSpec(data: unknown) {
-  return lensSpecSchema.safeParse(data);
+  return lensSpecSchema.safeParse(data)
 }

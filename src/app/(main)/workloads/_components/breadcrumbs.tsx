@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TWorkload } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TWorkload } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  workload: TWorkload;
+  workload: TWorkload
 }
 
 export function Breadcrumbs({ workload }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ workload }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

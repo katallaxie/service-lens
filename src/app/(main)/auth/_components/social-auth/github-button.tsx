@@ -1,8 +1,8 @@
-import { siGithub } from "simple-icons";
+import { siGithub } from "simple-icons"
 
-import { SimpleIcon } from "@/components/simple-icon";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { SimpleIcon } from "@/components/simple-icon"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 export function GitHubButton({ className, ...props }: React.ComponentProps<typeof Button>) {
   return (
@@ -10,5 +10,5 @@ export function GitHubButton({ className, ...props }: React.ComponentProps<typeo
       <SimpleIcon icon={siGithub} className="size-4" />
       Continue with GitHub
     </Button>
-  );
+  )
 }

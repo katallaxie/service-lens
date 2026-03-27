@@ -1,6 +1,6 @@
-import { pgTable } from "@/db/utils";
-import { relations } from "drizzle-orm";
-import { boolean, index, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+import { pgTable } from "@/db/utils"
+import { relations } from "drizzle-orm"
+import { boolean, index, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core"
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -13,10 +13,10 @@ export const user = pgTable("user", {
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
-});
+})
 
-export type TUser = typeof user.$inferSelect;
-export type NewUser = typeof user.$inferInsert;
+export type TUser = typeof user.$inferSelect
+export type NewUser = typeof user.$inferInsert
 
 export const session = pgTable(
   "session",
@@ -37,10 +37,10 @@ export const session = pgTable(
     activeTeamId: text("active_team_id"),
   },
   (table) => [index("session_userId_idx").on(table.userId)],
-);
+)
 
-export type TSession = typeof session.$inferSelect;
-export type NewSession = typeof session.$inferInsert;
+export type TSession = typeof session.$inferSelect
+export type NewSession = typeof session.$inferInsert
 
 export const account = pgTable(
   "account",
@@ -64,10 +64,10 @@ export const account = pgTable(
       .notNull(),
   },
   (table) => [index("account_userId_idx").on(table.userId)],
-);
+)
 
-export type TAccount = typeof account.$inferSelect;
-export type NewAccount = typeof account.$inferInsert;
+export type TAccount = typeof account.$inferSelect
+export type NewAccount = typeof account.$inferInsert
 
 export const verification = pgTable(
   "verification",
@@ -83,10 +83,10 @@ export const verification = pgTable(
       .notNull(),
   },
   (table) => [index("verification_identifier_idx").on(table.identifier)],
-);
+)
 
-export type TVerification = typeof verification.$inferSelect;
-export type NewVerification = typeof verification.$inferInsert;
+export type TVerification = typeof verification.$inferSelect
+export type NewVerification = typeof verification.$inferInsert
 
 export const organization = pgTable(
   "organization",
@@ -99,10 +99,10 @@ export const organization = pgTable(
     metadata: text("metadata"),
   },
   (table) => [uniqueIndex("organization_slug_uidx").on(table.slug)],
-);
+)
 
-export type TOrganization = typeof organization.$inferSelect;
-export type NewOrganization = typeof organization.$inferInsert;
+export type TOrganization = typeof organization.$inferSelect
+export type NewOrganization = typeof organization.$inferInsert
 
 export const team = pgTable(
   "team",
@@ -116,10 +116,10 @@ export const team = pgTable(
     updatedAt: timestamp("updated_at").$onUpdate(() => /* @__PURE__ */ new Date()),
   },
   (table) => [index("team_organizationId_idx").on(table.organizationId)],
-);
+)
 
-export type TTeam = typeof team.$inferSelect;
-export type NewTeam = typeof team.$inferInsert;
+export type TTeam = typeof team.$inferSelect
+export type NewTeam = typeof team.$inferInsert
 
 export const teamMember = pgTable(
   "team_member",
@@ -134,10 +134,10 @@ export const teamMember = pgTable(
     createdAt: timestamp("created_at"),
   },
   (table) => [index("teamMember_teamId_idx").on(table.teamId), index("teamMember_userId_idx").on(table.userId)],
-);
+)
 
-export type TTeamMember = typeof teamMember.$inferSelect;
-export type NewTeamMember = typeof teamMember.$inferInsert;
+export type TTeamMember = typeof teamMember.$inferSelect
+export type NewTeamMember = typeof teamMember.$inferInsert
 
 export const member = pgTable(
   "member",
@@ -153,10 +153,10 @@ export const member = pgTable(
     createdAt: timestamp("created_at").notNull(),
   },
   (table) => [index("member_organizationId_idx").on(table.organizationId), index("member_userId_idx").on(table.userId)],
-);
+)
 
-export type TMember = typeof member.$inferSelect;
-export type NewMember = typeof member.$inferInsert;
+export type TMember = typeof member.$inferSelect
+export type NewMember = typeof member.$inferInsert
 
 export const invitation = pgTable(
   "invitation",
@@ -179,7 +179,7 @@ export const invitation = pgTable(
     index("invitation_organizationId_idx").on(table.organizationId),
     index("invitation_email_idx").on(table.email),
   ],
-);
+)
 
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
@@ -187,27 +187,27 @@ export const userRelations = relations(user, ({ many }) => ({
   teamMembers: many(teamMember),
   members: many(member),
   invitations: many(invitation),
-}));
+}))
 
 export const sessionRelations = relations(session, ({ one }) => ({
   user: one(user, {
     fields: [session.userId],
     references: [user.id],
   }),
-}));
+}))
 
 export const accountRelations = relations(account, ({ one }) => ({
   user: one(user, {
     fields: [account.userId],
     references: [user.id],
   }),
-}));
+}))
 
 export const organizationRelations = relations(organization, ({ many }) => ({
   teams: many(team),
   members: many(member),
   invitations: many(invitation),
-}));
+}))
 
 export const teamRelations = relations(team, ({ one, many }) => ({
   organization: one(organization, {
@@ -215,7 +215,7 @@ export const teamRelations = relations(team, ({ one, many }) => ({
     references: [organization.id],
   }),
   teamMembers: many(teamMember),
-}));
+}))
 
 export const teamMemberRelations = relations(teamMember, ({ one }) => ({
   team: one(team, {
@@ -226,7 +226,7 @@ export const teamMemberRelations = relations(teamMember, ({ one }) => ({
     fields: [teamMember.userId],
     references: [user.id],
   }),
-}));
+}))
 
 export const memberRelations = relations(member, ({ one }) => ({
   organization: one(organization, {
@@ -237,7 +237,7 @@ export const memberRelations = relations(member, ({ one }) => ({
     fields: [member.userId],
     references: [user.id],
   }),
-}));
+}))
 
 export const invitationRelations = relations(invitation, ({ one }) => ({
   organization: one(organization, {
@@ -248,4 +248,4 @@ export const invitationRelations = relations(invitation, ({ one }) => ({
     fields: [invitation.inviterId],
     references: [user.id],
   }),
-}));
+}))

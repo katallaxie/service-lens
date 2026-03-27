@@ -1,13 +1,13 @@
-import { useSortable } from "@dnd-kit/sortable";
-import type { ColumnDef } from "@tanstack/react-table";
-import { GripVertical } from "lucide-react";
+import { useSortable } from "@dnd-kit/sortable"
+import type { ColumnDef } from "@tanstack/react-table"
+import { GripVertical } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 function DragHandle({ id }: { id: number }) {
   const { attributes, listeners } = useSortable({
     id,
-  });
+  })
 
   return (
     <Button
@@ -20,7 +20,7 @@ function DragHandle({ id }: { id: number }) {
       <GripVertical className="size-3 text-muted-foreground" />
       <span className="sr-only">Drag to reorder</span>
     </Button>
-  );
+  )
 }
 
 export const dragColumn: ColumnDef<any> = {
@@ -29,4 +29,4 @@ export const dragColumn: ColumnDef<any> = {
   cell: ({ row }) => <DragHandle id={row.original.id} />,
   enableSorting: false,
   enableHiding: false,
-};
+}

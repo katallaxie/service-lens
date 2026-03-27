@@ -1,27 +1,27 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import type { Row } from "@tanstack/react-table";
-import { EllipsisVertical } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { deleteLensAction } from "./data-rows-actions.action";
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import type { Row } from "@tanstack/react-table"
+import { EllipsisVertical } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { deleteLensAction } from "./data-rows-actions.action"
 
 interface DataTableRowActionsProps<TData> {
-  row: Row<TData>;
+  row: Row<TData>
 }
 
 export function DataTableRowActions<TDesign>({ row }: DataTableRowActionsProps<TDesign>) {
-  const { id } = row;
-  const [state, formAction, pending] = useActionState(deleteLensAction, null);
+  const { id } = row
+  const [state, formAction, pending] = useActionState(deleteLensAction, null)
 
   return (
     <DropdownMenu>
@@ -46,5 +46,5 @@ export function DataTableRowActions<TDesign>({ row }: DataTableRowActionsProps<T
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

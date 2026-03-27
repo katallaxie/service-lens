@@ -1,32 +1,32 @@
-import { db } from "@/db/index";
-import { designs, type TNewDesign } from "@/db/schema";
+import { db } from "@/db/index"
+import { designs, type TNewDesign } from "@/db/schema"
 
 export async function seedDesign(input: { count: number }) {
-  const count = input.count ?? 100;
+  const count = input.count ?? 100
 
   try {
-    const allDesigns: TNewDesign[] = [];
+    const allDesigns: TNewDesign[] = []
 
     // Add some predefined designs with rich content
-    allDesigns.push(...getPredefinedDesigns());
+    allDesigns.push(...getPredefinedDesigns())
 
     // Add random designs
     for (let i = 0; i < count - 3; i++) {
-      allDesigns.push(generateRandomDesign());
+      allDesigns.push(generateRandomDesign())
     }
 
-    await db.delete(designs);
+    await db.delete(designs)
 
-    console.log("📝 Inserting designs", allDesigns.length);
+    console.log("📝 Inserting designs", allDesigns.length)
 
-    await db.insert(designs).values(allDesigns).onConflictDoNothing();
+    await db.insert(designs).values(allDesigns).onConflictDoNothing()
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 }
 
 export function generateRandomDesign(input?: Partial<TNewDesign>): TNewDesign {
-  const designNumber = Math.floor(Math.random() * 1000);
+  const designNumber = Math.floor(Math.random() * 1000)
   const sampleBodies = [
     `# Design Overview ${designNumber}
 
@@ -61,14 +61,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 **Bold text** and *italic text* for emphasis.`,
 
     null, // Some designs without body content
-  ];
+  ]
 
   return {
     title: `Design ${designNumber}`,
     description: `This is a description for design ${designNumber}`,
     body: sampleBodies[Math.floor(Math.random() * sampleBodies.length)],
     ...input,
-  };
+  }
 }
 
 function getPredefinedDesigns(): TNewDesign[] {
@@ -498,5 +498,5 @@ Use consistent colors, typography, and spacing throughout the app.
 
 *These guidelines should be reviewed and updated quarterly to ensure they remain current with platform updates and best practices.*`,
     },
-  ];
+  ]
 }

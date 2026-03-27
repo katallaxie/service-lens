@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { CircleUser, CreditCard, EllipsisVertical, LogOut, MessageSquareDot } from "lucide-react";
+import { CircleUser, CreditCard, EllipsisVertical, LogOut, MessageSquareDot } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,28 +11,28 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
-import { signOut } from "@/lib/auth-client";
-import type { User } from "better-auth";
-import { redirect } from "next/navigation";
-import { toast } from "sonner";
+} from "@/components/ui/dropdown-menu"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
+import { signOut } from "@/lib/auth-client"
+import type { User } from "better-auth"
+import { redirect } from "next/navigation"
+import { toast } from "sonner"
 
 export function NavUser({ user }: { user?: User }) {
-  const { isMobile } = useSidebar();
+  const { isMobile } = useSidebar()
   const onClick = async () => {
     await signOut({
       fetchOptions: {
         onError: (ctx) => {
-          toast.error(ctx.error.message);
+          toast.error(ctx.error.message)
         },
         onSuccess: async () => {
-          toast.success("Successfully logged out");
-          redirect("/");
+          toast.success("Successfully logged out")
+          redirect("/")
         },
       },
-    });
-  };
+    })
+  }
 
   return (
     <SidebarMenu>
@@ -96,5 +96,5 @@ export function NavUser({ user }: { user?: User }) {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }

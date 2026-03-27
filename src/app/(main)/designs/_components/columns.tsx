@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import type { TDesign } from "@/db/schema";
-import type { ColumnDef } from "@tanstack/react-table";
-import Link from "next/link";
-import { DataTableColumnHeader } from "../../../../components/data-table/data-table-column-header";
-import { DataTableRowActions } from "./data-rows-actions";
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import type { TDesign } from "@/db/schema"
+import type { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { DataTableColumnHeader } from "../../../../components/data-table/data-table-column-header"
+import { DataTableRowActions } from "./data-rows-actions"
 
 export const designColumns: ColumnDef<TDesign>[] = [
   {
@@ -39,7 +39,7 @@ export const designColumns: ColumnDef<TDesign>[] = [
         <Button variant="link" className="w-fit px-0 text-left text-foreground" asChild>
           <Link href={`/designs/${row.original.id}`}>{row.original.title}</Link>
         </Button>
-      );
+      )
     },
     enableSorting: false,
   },
@@ -48,4 +48,4 @@ export const designColumns: ColumnDef<TDesign>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
     enableSorting: false,
   },
-];
+]

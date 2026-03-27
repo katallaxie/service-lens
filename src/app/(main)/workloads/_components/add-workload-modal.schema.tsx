@@ -1,4 +1,4 @@
-import type { TWorkloadInsertSchema } from "@/db/schema";
-import type { ZodFormState } from "@/types";
+import type { TWorkloadInsertSchema } from "@/db/schema"
+import type { ZodFormState } from "@/types"
 
-export type AddWorkloadModalFormState = ZodFormState<TWorkloadInsertSchema> | null;
+export type AddWorkloadModalFormState = ZodFormState<TWorkloadInsertSchema> | null

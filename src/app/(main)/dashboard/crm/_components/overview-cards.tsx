@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { format, subMonths } from "date-fns";
-import { BadgeDollarSign, Wallet } from "lucide-react";
-import { Area, AreaChart, Bar, BarChart, Line, LineChart, XAxis } from "recharts";
+import { format, subMonths } from "date-fns"
+import { BadgeDollarSign, Wallet } from "lucide-react"
+import { Area, AreaChart, Bar, BarChart, Line, LineChart, XAxis } from "recharts"
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 import {
   leadsChartConfig,
@@ -14,9 +14,9 @@ import {
   proposalsChartData,
   revenueChartConfig,
   revenueChartData,
-} from "./crm.config";
+} from "./crm.config"
 
-const lastMonth = format(subMonths(new Date(), 1), "LLLL");
+const lastMonth = format(subMonths(new Date(), 1), "LLLL")
 
 export function OverviewCards() {
   return (
@@ -147,5 +147,5 @@ export function OverviewCards() {
         </CardFooter>
       </Card>
     </div>
-  );
+  )
 }

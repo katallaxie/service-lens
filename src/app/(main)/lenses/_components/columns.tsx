@@ -1,10 +1,10 @@
-import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import type { TLens } from "@/db/schema";
-import type { ColumnDef } from "@tanstack/react-table";
-import Link from "next/link";
-import { DataTableRowActions } from "./data-rows-actions";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import type { TLens } from "@/db/schema"
+import type { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { DataTableRowActions } from "./data-rows-actions"
 
 export const lensColumns: ColumnDef<TLens>[] = [
   {
@@ -39,7 +39,7 @@ export const lensColumns: ColumnDef<TLens>[] = [
         <Button variant="link" className="w-fit px-0 text-left text-foreground" asChild>
           <Link href={`/lenses/${row.original.id}`}>{row.original.name}</Link>
         </Button>
-      );
+      )
     },
     enableSorting: false,
   },
@@ -48,4 +48,4 @@ export const lensColumns: ColumnDef<TLens>[] = [
     cell: ({ row }) => <DataTableRowActions row={row} />,
     enableSorting: false,
   },
-];
+]

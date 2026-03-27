@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,27 +10,27 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { PlusCircleIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect } from "react";
-import { createDesignAction } from "./quick-create-dialog.action";
-import { Label } from "./ui/label";
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { PlusCircleIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useActionState, useEffect } from "react"
+import { createDesignAction } from "./quick-create-dialog.action"
+import { Label } from "./ui/label"
 
 export function QuickCreateDialog() {
-  const router = useRouter();
+  const router = useRouter()
 
   const [state, formAction, pending] = useActionState(createDesignAction, {
     errors: [],
     success: false,
-  });
+  })
 
   useEffect(() => {
     if (state.success) {
-      router.push(`/designs/${state.designId}`);
+      router.push(`/designs/${state.designId}`)
     }
-  }, [router, state.success, state.designId]);
+  }, [router, state.success, state.designId])
 
   return (
     <Dialog>
@@ -72,5 +72,5 @@ export function QuickCreateDialog() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

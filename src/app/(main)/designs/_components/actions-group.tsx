@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   ArchiveIcon,
@@ -9,11 +9,11 @@ import {
   MoreHorizontalIcon,
   TagIcon,
   Trash2Icon,
-} from "lucide-react";
-import * as React from "react";
+} from "lucide-react"
+import * as React from "react"
 
-import { Button } from "@/components/ui/button";
-import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button"
+import { ButtonGroup } from "@/components/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,10 +26,10 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 
 export function ActionGroup() {
-  const [label, setLabel] = React.useState("personal");
+  const [label, setLabel] = React.useState("personal")
 
   return (
     <ButtonGroup>
@@ -93,5 +93,5 @@ export function ActionGroup() {
         </DropdownMenu>
       </ButtonGroup>
     </ButtonGroup>
-  );
+  )
 }

@@ -4,5 +4,5 @@ export default function Page() {
       <h1 className="font-semibold text-2xl">Page not found.</h1>
       <p className="text-muted-foreground">This page is under development and will be available in future updates.</p>
     </div>
-  );
+  )
 }

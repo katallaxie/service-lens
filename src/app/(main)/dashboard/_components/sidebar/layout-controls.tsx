@@ -1,78 +1,78 @@
-"use client";
+"use client"
 
-import { Settings } from "lucide-react";
+import { Settings } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import type { ContentLayout, NavbarStyle, SidebarCollapsible, SidebarVariant } from "@/lib/preferences/layout";
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import type { ContentLayout, NavbarStyle, SidebarCollapsible, SidebarVariant } from "@/lib/preferences/layout"
 import {
   applyContentLayout,
   applyNavbarStyle,
   applySidebarCollapsible,
   applySidebarVariant,
-} from "@/lib/preferences/layout-utils";
-import { persistPreference } from "@/lib/preferences/preferences-storage";
-import { THEME_PRESET_OPTIONS, type ThemeMode, type ThemePreset } from "@/lib/preferences/theme";
-import { applyThemeMode, applyThemePreset } from "@/lib/preferences/theme-utils";
-import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
+} from "@/lib/preferences/layout-utils"
+import { persistPreference } from "@/lib/preferences/preferences-storage"
+import { THEME_PRESET_OPTIONS, type ThemeMode, type ThemePreset } from "@/lib/preferences/theme"
+import { applyThemeMode, applyThemePreset } from "@/lib/preferences/theme-utils"
+import { usePreferencesStore } from "@/stores/preferences/preferences-provider"
 
 export function LayoutControls() {
-  const themeMode = usePreferencesStore((s) => s.themeMode);
-  const setThemeMode = usePreferencesStore((s) => s.setThemeMode);
-  const themePreset = usePreferencesStore((s) => s.themePreset);
-  const setThemePreset = usePreferencesStore((s) => s.setThemePreset);
-  const contentLayout = usePreferencesStore((s) => s.contentLayout);
-  const setContentLayout = usePreferencesStore((s) => s.setContentLayout);
-  const navbarStyle = usePreferencesStore((s) => s.navbarStyle);
-  const setNavbarStyle = usePreferencesStore((s) => s.setNavbarStyle);
-  const variant = usePreferencesStore((s) => s.sidebarVariant);
-  const setSidebarVariant = usePreferencesStore((s) => s.setSidebarVariant);
-  const collapsible = usePreferencesStore((s) => s.sidebarCollapsible);
-  const setSidebarCollapsible = usePreferencesStore((s) => s.setSidebarCollapsible);
+  const themeMode = usePreferencesStore((s) => s.themeMode)
+  const setThemeMode = usePreferencesStore((s) => s.setThemeMode)
+  const themePreset = usePreferencesStore((s) => s.themePreset)
+  const setThemePreset = usePreferencesStore((s) => s.setThemePreset)
+  const contentLayout = usePreferencesStore((s) => s.contentLayout)
+  const setContentLayout = usePreferencesStore((s) => s.setContentLayout)
+  const navbarStyle = usePreferencesStore((s) => s.navbarStyle)
+  const setNavbarStyle = usePreferencesStore((s) => s.setNavbarStyle)
+  const variant = usePreferencesStore((s) => s.sidebarVariant)
+  const setSidebarVariant = usePreferencesStore((s) => s.setSidebarVariant)
+  const collapsible = usePreferencesStore((s) => s.sidebarCollapsible)
+  const setSidebarCollapsible = usePreferencesStore((s) => s.setSidebarCollapsible)
 
   const onThemePresetChange = async (preset: ThemePreset) => {
-    applyThemePreset(preset);
-    setThemePreset(preset);
-    persistPreference("theme_preset", preset);
-  };
+    applyThemePreset(preset)
+    setThemePreset(preset)
+    persistPreference("theme_preset", preset)
+  }
 
   const onThemeModeChange = async (mode: ThemeMode | "") => {
-    if (!mode) return;
-    applyThemeMode(mode);
-    setThemeMode(mode);
-    persistPreference("theme_mode", mode);
-  };
+    if (!mode) return
+    applyThemeMode(mode)
+    setThemeMode(mode)
+    persistPreference("theme_mode", mode)
+  }
 
   const onContentLayoutChange = async (layout: ContentLayout | "") => {
-    if (!layout) return;
-    applyContentLayout(layout);
-    setContentLayout(layout);
-    persistPreference("content_layout", layout);
-  };
+    if (!layout) return
+    applyContentLayout(layout)
+    setContentLayout(layout)
+    persistPreference("content_layout", layout)
+  }
 
   const onNavbarStyleChange = async (style: NavbarStyle | "") => {
-    if (!style) return;
-    applyNavbarStyle(style);
-    setNavbarStyle(style);
-    persistPreference("navbar_style", style);
-  };
+    if (!style) return
+    applyNavbarStyle(style)
+    setNavbarStyle(style)
+    persistPreference("navbar_style", style)
+  }
 
   const onSidebarStyleChange = async (value: SidebarVariant | "") => {
-    if (!value) return;
-    setSidebarVariant(value);
-    applySidebarVariant(value);
-    persistPreference("sidebar_variant", value);
-  };
+    if (!value) return
+    setSidebarVariant(value)
+    applySidebarVariant(value)
+    persistPreference("sidebar_variant", value)
+  }
 
   const onSidebarCollapseModeChange = async (value: SidebarCollapsible | "") => {
-    if (!value) return;
-    setSidebarCollapsible(value);
-    applySidebarCollapsible(value);
-    persistPreference("sidebar_collapsible", value);
-  };
+    if (!value) return
+    setSidebarCollapsible(value)
+    applySidebarCollapsible(value)
+    persistPreference("sidebar_collapsible", value)
+  }
 
   return (
     <Popover>
@@ -209,5 +209,5 @@ export function LayoutControls() {
         </div>
       </PopoverContent>
     </Popover>
-  );
+  )
 }

@@ -1,25 +1,25 @@
-import type { ColumnDef } from "@tanstack/react-table";
-import { CircleCheck, EllipsisVertical, Loader } from "lucide-react";
-import { toast } from "sonner";
-import type { z } from "zod";
+import type { ColumnDef } from "@tanstack/react-table"
+import { CircleCheck, EllipsisVertical, Loader } from "lucide-react"
+import { toast } from "sonner"
+import type { z } from "zod"
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-import { DataTableColumnHeader } from "../../../../../components/data-table/data-table-column-header";
-import type { sectionSchema } from "./schema";
-import { TableCellViewer } from "./table-cell-viewer";
+import { DataTableColumnHeader } from "../../../../../components/data-table/data-table-column-header"
+import type { sectionSchema } from "./schema"
+import { TableCellViewer } from "./table-cell-viewer"
 
 export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
   {
@@ -49,7 +49,7 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
     accessorKey: "header",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Header" />,
     cell: ({ row }) => {
-      return <TableCellViewer item={row.original} />;
+      return <TableCellViewer item={row.original} />
     },
     enableSorting: false,
   },
@@ -86,12 +86,12 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
-          e.preventDefault();
+          e.preventDefault()
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
             loading: `Saving ${row.original.header}`,
             success: "Done",
             error: "Error",
-          });
+          })
         }}
       >
         <Label htmlFor={`${row.original.id}-target`} className="sr-only">
@@ -112,12 +112,12 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
-          e.preventDefault();
+          e.preventDefault()
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
             loading: `Saving ${row.original.header}`,
             success: "Done",
             error: "Error",
-          });
+          })
         }}
       >
         <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
@@ -136,10 +136,10 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
     accessorKey: "reviewer",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Reviewer" />,
     cell: ({ row }) => {
-      const isAssigned = row.original.reviewer !== "Assign reviewer";
+      const isAssigned = row.original.reviewer !== "Assign reviewer"
 
       if (isAssigned) {
-        return row.original.reviewer;
+        return row.original.reviewer
       }
 
       return (
@@ -161,7 +161,7 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
             </SelectContent>
           </Select>
         </>
-      );
+      )
     },
     enableSorting: false,
   },
@@ -186,4 +186,4 @@ export const dashboardColumns: ColumnDef<z.infer<typeof sectionSchema>>[] = [
     ),
     enableSorting: false,
   },
-];
+]

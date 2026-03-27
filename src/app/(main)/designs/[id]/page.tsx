@@ -1,56 +1,56 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { getDesignById } from "@/db/queries/designs";
-import { CalendarIcon, ClockIcon, EditIcon, TrashIcon, UserIcon } from "lucide-react";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import { Breadcrumbs } from "../_components/breadcrumbs";
-import { DeleteButton } from "./delete-button";
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { getDesignById } from "@/db/queries/designs"
+import { CalendarIcon, ClockIcon, EditIcon, TrashIcon, UserIcon } from "lucide-react"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import ReactMarkdown from "react-markdown"
+import { Breadcrumbs } from "../_components/breadcrumbs"
+import { DeleteButton } from "./delete-button"
 
 interface DesignPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }
 
 function formatDate(date: Date | null): string {
-  if (!date) return "Never";
+  if (!date) return "Never"
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-  }).format(new Date(date));
+  }).format(new Date(date))
 }
 
 function formatRelativeTime(date: Date | null): string {
-  if (!date) return "Never";
-  const now = new Date();
-  const diffMs = now.getTime() - new Date(date).getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-  const diffMinutes = Math.floor(diffMs / (1000 * 60));
+  if (!date) return "Never"
+  const now = new Date()
+  const diffMs = now.getTime() - new Date(date).getTime()
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24))
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60))
+  const diffMinutes = Math.floor(diffMs / (1000 * 60))
 
-  if (diffDays > 0) return `${diffDays} day${diffDays > 1 ? "s" : ""} ago`;
-  if (diffHours > 0) return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
-  if (diffMinutes > 0) return `${diffMinutes} minute${diffMinutes > 1 ? "s" : ""} ago`;
-  return "Just now";
+  if (diffDays > 0) return `${diffDays} day${diffDays > 1 ? "s" : ""} ago`
+  if (diffHours > 0) return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`
+  if (diffMinutes > 0) return `${diffMinutes} minute${diffMinutes > 1 ? "s" : ""} ago`
+  return "Just now"
 }
 
 function getContentStatistics(content: string | null) {
-  if (!content) return null;
+  if (!content) return null
 
   const wordCount = content
     .trim()
     .split(/\s+/)
-    .filter((word) => word.length > 0).length;
-  const characterCount = content.length;
-  const characterCountNoSpaces = content.replace(/\s/g, "").length;
-  const paragraphCount = content.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length;
-  const lineCount = content.split("\n").length;
-  const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200)); // Average reading speed: 200 words per minute
+    .filter((word) => word.length > 0).length
+  const characterCount = content.length
+  const characterCountNoSpaces = content.replace(/\s/g, "").length
+  const paragraphCount = content.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length
+  const lineCount = content.split("\n").length
+  const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200)) // Average reading speed: 200 words per minute
 
   return {
     wordCount,
@@ -59,20 +59,20 @@ function getContentStatistics(content: string | null) {
     paragraphCount,
     lineCount,
     readingTimeMinutes,
-  };
+  }
 }
 
 export default async function DesignPage({ params }: DesignPageProps) {
-  const { id } = await params;
+  const { id } = await params
 
   if (!id) {
-    notFound();
+    notFound()
   }
 
-  const design = await getDesignById(id);
+  const design = await getDesignById(id)
 
   if (!design) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -198,17 +198,17 @@ export default async function DesignPage({ params }: DesignPageProps) {
                         </blockquote>
                       ),
                       code: ({ children, className }) => {
-                        const isInlineCode = !className;
+                        const isInlineCode = !className
                         if (isInlineCode) {
                           return (
                             <code className="bg-muted px-2 py-1 rounded-md text-sm font-mono text-foreground border">
                               {children}
                             </code>
-                          );
+                          )
                         }
                         // Code block
-                        const language = className?.replace("language-", "") || "text";
-                        return <code className={`language-${language}`}>{children}</code>;
+                        const language = className?.replace("language-", "") || "text"
+                        return <code className={`language-${language}`}>{children}</code>
                       },
                       pre: ({ children }) => (
                         <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4 font-mono text-sm border relative">
@@ -373,8 +373,8 @@ export default async function DesignPage({ params }: DesignPageProps) {
               </CardHeader>
               <CardContent className="space-y-4">
                 {(() => {
-                  const stats = getContentStatistics(design.body);
-                  if (!stats) return null;
+                  const stats = getContentStatistics(design.body)
+                  if (!stats) return null
 
                   return (
                     <>
@@ -414,7 +414,7 @@ export default async function DesignPage({ params }: DesignPageProps) {
                         </div>
                       </div>
                     </>
-                  );
+                  )
                 })()}
               </CardContent>
             </Card>
@@ -435,5 +435,5 @@ export default async function DesignPage({ params }: DesignPageProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }

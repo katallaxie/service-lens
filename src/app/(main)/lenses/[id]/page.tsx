@@ -1,24 +1,24 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { getLensById } from "@/db/queries/lenses";
-import { notFound } from "next/navigation";
-import { Breadcrumbs } from "../_components/breadcrumbs";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { getLensById } from "@/db/queries/lenses"
+import { notFound } from "next/navigation"
+import { Breadcrumbs } from "../_components/breadcrumbs"
 
 interface LensPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }
 
 export default async function LensPage({ params }: LensPageProps) {
-  const { id } = await params;
+  const { id } = await params
 
   if (!id) {
-    notFound();
+    notFound()
   }
 
-  const lens = await getLensById(id);
+  const lens = await getLensById(id)
 
   if (!lens) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -111,5 +111,5 @@ export default async function LensPage({ params }: LensPageProps) {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

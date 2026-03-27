@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
-import { Badge } from "@/components/ui/badge";
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus, Tag, X } from "lucide-react";
-import { type KeyboardEvent, memo, type ReactNode, useEffect, useRef, useState } from "react";
-import { type FieldValues, type Path, useFormContext } from "react-hook-form";
+import { Badge } from "@/components/ui/badge"
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+import { AnimatePresence, motion } from "framer-motion"
+import { Plus, Tag, X } from "lucide-react"
+import { type KeyboardEvent, memo, type ReactNode, useEffect, useRef, useState } from "react"
+import { type FieldValues, type Path, useFormContext } from "react-hook-form"
 
 interface TagsInputFieldProps<TFieldValues extends FieldValues> {
-  name: Path<TFieldValues>;
-  beautifyName?: string;
-  description?: string;
-  label: string;
-  placeholder?: string;
-  disabled?: boolean;
-  className?: string;
-  maxTags?: number;
-  maxLength?: number;
-  autoFocus?: boolean;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
-  allowDuplicates?: boolean;
-  suggestions?: string[];
-  variant?: "default" | "enterprise" | "minimal";
-  tagVariant?: "default" | "secondary" | "outline" | "destructive";
+  name: Path<TFieldValues>
+  beautifyName?: string
+  description?: string
+  label: string
+  placeholder?: string
+  disabled?: boolean
+  className?: string
+  maxTags?: number
+  maxLength?: number
+  autoFocus?: boolean
+  startIcon?: ReactNode
+  endIcon?: ReactNode
+  allowDuplicates?: boolean
+  suggestions?: string[]
+  variant?: "default" | "enterprise" | "minimal"
+  tagVariant?: "default" | "secondary" | "outline" | "destructive"
 }
 
 const TagsInputFieldBase = <TFieldValues extends FieldValues>({
@@ -46,44 +46,44 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
   variant = "enterprise",
   tagVariant = "default",
 }: TagsInputFieldProps<TFieldValues>) => {
-  const { control } = useFormContext();
-  const [inputValue, setInputValue] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { control } = useFormContext()
+  const [inputValue, setInputValue] = useState("")
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const filteredSuggestions = suggestions.filter(
     (suggestion) => suggestion.toLowerCase().includes(inputValue.toLowerCase()) && inputValue.length > 0,
-  );
+  )
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setShowSuggestions(false);
+        setShowSuggestions(false)
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   const addTag = (tag: string, currentTags: string[], onChange: (tags: string[]) => void) => {
-    const trimmedTag = tag.trim();
-    if (!trimmedTag) return;
+    const trimmedTag = tag.trim()
+    if (!trimmedTag) return
 
-    if (!allowDuplicates && currentTags.includes(trimmedTag)) return;
-    if (maxTags && currentTags.length >= maxTags) return;
-    if (trimmedTag.length > maxLength) return;
+    if (!allowDuplicates && currentTags.includes(trimmedTag)) return
+    if (maxTags && currentTags.length >= maxTags) return
+    if (trimmedTag.length > maxLength) return
 
-    onChange([...currentTags, trimmedTag]);
-    setInputValue("");
-    setShowSuggestions(false);
-  };
+    onChange([...currentTags, trimmedTag])
+    setInputValue("")
+    setShowSuggestions(false)
+  }
 
   const removeTag = (index: number, currentTags: string[], onChange: (tags: string[]) => void) => {
-    const newTags = currentTags.filter((_, i) => i !== index);
-    onChange(newTags);
-  };
+    const newTags = currentTags.filter((_, i) => i !== index)
+    onChange(newTags)
+  }
 
   const handleKeyDown = (
     e: KeyboardEvent<HTMLInputElement>,
@@ -91,14 +91,14 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
     onChange: (tags: string[]) => void,
   ) => {
     if (e.key === "Enter" || e.key === ",") {
-      e.preventDefault();
-      addTag(inputValue, currentTags, onChange);
+      e.preventDefault()
+      addTag(inputValue, currentTags, onChange)
     } else if (e.key === "Backspace" && !inputValue && currentTags.length > 0) {
-      removeTag(currentTags.length - 1, currentTags, onChange);
+      removeTag(currentTags.length - 1, currentTags, onChange)
     } else if (e.key === "Escape") {
-      setShowSuggestions(false);
+      setShowSuggestions(false)
     }
-  };
+  }
 
   const getVariantStyles = () => {
     switch (variant) {
@@ -108,30 +108,30 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
             "dark:border-gray-600 border-2 border-muted hover:border-primary/30 transition-all duration-300 backdrop-blur-sm",
           input: "bg-transparent border-0 focus:ring-0 placeholder:text-muted-foreground/60",
           suggestions: "bg-background/95 backdrop-blur-md border border-border/50 shadow-xl",
-        };
+        }
       case "minimal":
         return {
           container: "bg-background border border-border hover:border-primary/50 transition-colors",
           input: "bg-transparent border-0 focus:ring-0",
           suggestions: "bg-background border border-border shadow-lg",
-        };
+        }
       default:
         return {
           container: "bg-background border border-input hover:border-primary/50 transition-colors",
           input: "bg-transparent border-0 focus:ring-0",
           suggestions: "bg-background border border-border shadow-lg",
-        };
+        }
     }
-  };
+  }
 
-  const styles = getVariantStyles();
+  const styles = getVariantStyles()
 
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => {
-        const tags = field.value || [];
+        const tags = field.value || []
 
         return (
           <FormItem className={cn("space-y-2", className)}>
@@ -191,8 +191,8 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
                       ref={inputRef}
                       value={inputValue}
                       onChange={(e) => {
-                        setInputValue(e.target.value);
-                        setShowSuggestions(e.target.value.length > 0 && suggestions.length > 0);
+                        setInputValue(e.target.value)
+                        setShowSuggestions(e.target.value.length > 0 && suggestions.length > 0)
                       }}
                       onKeyDown={(e) => handleKeyDown(e, tags, field.onChange)}
                       onFocus={() => setShowSuggestions(inputValue.length > 0 && suggestions.length > 0)}
@@ -217,9 +217,9 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
                       type="button"
                       onClick={() => {
                         if (inputValue.trim()) {
-                          addTag(inputValue, tags, field.onChange);
+                          addTag(inputValue, tags, field.onChange)
                         }
-                        inputRef.current?.focus();
+                        inputRef.current?.focus()
                       }}
                       className="p-1 hover:bg-muted rounded transition-colors"
                       disabled={!inputValue.trim() || (maxTags ? tags.length >= maxTags : false)}
@@ -276,10 +276,10 @@ const TagsInputFieldBase = <TFieldValues extends FieldValues>({
               </div>
             </div>
           </FormItem>
-        );
+        )
       }}
     />
-  );
-};
+  )
+}
 
-export const TagsInputField = memo(TagsInputFieldBase) as typeof TagsInputFieldBase;
+export const TagsInputField = memo(TagsInputFieldBase) as typeof TagsInputFieldBase

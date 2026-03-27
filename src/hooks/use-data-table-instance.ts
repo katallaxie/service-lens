@@ -1,5 +1,5 @@
-import type { QueryKeys } from "@/types/data-table";
-import * as React from "react";
+import type { QueryKeys } from "@/types/data-table"
+import * as React from "react"
 
 import {
   type ColumnDef,
@@ -13,17 +13,17 @@ import {
   type SortingState,
   useReactTable,
   type VisibilityState,
-} from "@tanstack/react-table";
+} from "@tanstack/react-table"
 
 type UseDataTableInstanceProps<TData, TValue> = {
-  data: TData[];
-  queryKeys?: Partial<QueryKeys>;
-  columns: ColumnDef<TData, TValue>[];
-  enableRowSelection?: boolean;
-  defaultPageIndex?: number;
-  defaultPageSize?: number;
-  getRowId?: (row: TData, index: number) => string;
-};
+  data: TData[]
+  queryKeys?: Partial<QueryKeys>
+  columns: ColumnDef<TData, TValue>[]
+  enableRowSelection?: boolean
+  defaultPageIndex?: number
+  defaultPageSize?: number
+  getRowId?: (row: TData, index: number) => string
+}
 
 export function useDataTableInstance<TData, TValue>({
   data,
@@ -33,14 +33,14 @@ export function useDataTableInstance<TData, TValue>({
   defaultPageSize,
   getRowId,
 }: UseDataTableInstanceProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [rowSelection, setRowSelection] = React.useState({})
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([])
   const [pagination, setPagination] = React.useState({
     pageIndex: defaultPageIndex ?? 0,
     pageSize: defaultPageSize ?? 1,
-  });
+  })
 
   const table = useReactTable({
     data,
@@ -65,7 +65,7 @@ export function useDataTableInstance<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-  });
+  })
 
-  return table;
+  return table
 }

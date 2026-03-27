@@ -1,4 +1,4 @@
-import type { ChartConfig } from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart"
 
 export const leadsChartData = [
   { date: "1-5", newLeads: 120, disqualified: 40 },
@@ -7,7 +7,7 @@ export const leadsChartData = [
   { date: "16-20", newLeads: 100, disqualified: 35 },
   { date: "21-25", newLeads: 150, disqualified: 70 },
   { date: "26-30", newLeads: 110, disqualified: 60 },
-];
+]
 
 export const leadsChartConfig = {
   newLeads: {
@@ -21,7 +21,7 @@ export const leadsChartConfig = {
   background: {
     color: "var(--primary)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const proposalsChartData = [
   { date: "1-5", proposalsSent: 9 },
@@ -30,14 +30,14 @@ export const proposalsChartData = [
   { date: "16-20", proposalsSent: 18 },
   { date: "21-25", proposalsSent: 11 },
   { date: "26-30", proposalsSent: 14 },
-];
+]
 
 export const proposalsChartConfig = {
   proposalsSent: {
     label: "Proposals Sent",
     color: "var(--chart-1)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const revenueChartData = [
   { month: "Jul 2024", revenue: 6700 },
@@ -52,14 +52,14 @@ export const revenueChartData = [
   { month: "Apr 2025", revenue: 9700 },
   { month: "May 2025", revenue: 11200 },
   { month: "Jun 2025", revenue: 9500 },
-];
+]
 
 export const revenueChartConfig = {
   revenue: {
     label: "Revenue",
     color: "var(--chart-1)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const leadsBySourceChartData = [
   { source: "website", leads: 170, fill: "var(--color-website)" },
@@ -67,7 +67,7 @@ export const leadsBySourceChartData = [
   { source: "social", leads: 90, fill: "var(--color-social)" },
   { source: "cold", leads: 62, fill: "var(--color-cold)" },
   { source: "other", leads: 48, fill: "var(--color-other)" },
-];
+]
 
 export const leadsBySourceChartConfig = {
   leads: {
@@ -93,7 +93,7 @@ export const leadsBySourceChartConfig = {
     label: "Other",
     color: "var(--chart-5)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const projectRevenueChartData = [
   { name: "MVP Development", actual: 82000, target: 90000 },
@@ -105,7 +105,7 @@ export const projectRevenueChartData = [
 ].map((row) => ({
   ...row,
   remaining: Math.max(0, row.target - row.actual),
-}));
+}))
 
 export const projectRevenueChartConfig = {
   actual: {
@@ -119,7 +119,7 @@ export const projectRevenueChartConfig = {
   label: {
     color: "var(--primary-foreground)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const salesPipelineChartData = [
   { stage: "Leads", value: 680, fill: "var(--chart-1)" },
@@ -127,7 +127,7 @@ export const salesPipelineChartData = [
   { stage: "Proposal Sent", value: 210, fill: "var(--chart-3)" },
   { stage: "Negotiation", value: 120, fill: "var(--chart-4)" },
   { stage: "Won", value: 45, fill: "var(--chart-5)" },
-];
+]
 
 export const salesPipelineChartConfig = {
   value: {
@@ -137,7 +137,7 @@ export const salesPipelineChartConfig = {
   stage: {
     label: "Stage",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export const regionSalesData = [
   {
@@ -175,7 +175,7 @@ export const regionSalesData = [
     growth: "+6.0%",
     isPositive: true,
   },
-];
+]
 
 export const actionItems = [
   {
@@ -205,7 +205,7 @@ export const actionItems = [
     priorityColor: "bg-green-100 text-green-700",
     checked: false,
   },
-];
+]
 
 export const recentLeadsData = [
   {
@@ -328,4 +328,4 @@ export const recentLeadsData = [
     source: "Cold Outreach",
     lastActivity: "3d ago",
   },
-];
+]

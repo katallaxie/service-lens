@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { useSelectedLayoutSegment } from "next/navigation"
 
 interface ActiveLinkProps extends React.ComponentProps<typeof Link> {}
 
 export function ActiveLink({ href, className, ...props }: ActiveLinkProps) {
-  const segment = useSelectedLayoutSegment();
+  const segment = useSelectedLayoutSegment()
 
-  const hrefSegment = typeof href === "string" ? href.split("/").filter(Boolean)[0] : null;
+  const hrefSegment = typeof href === "string" ? href.split("/").filter(Boolean)[0] : null
 
-  const isActive = hrefSegment ? segment === hrefSegment : segment === null;
+  const isActive = hrefSegment ? segment === hrefSegment : segment === null
 
   return (
     <Button variant="ghost" size="sm" asChild>
@@ -23,5 +23,5 @@ export function ActiveLink({ href, className, ...props }: ActiveLinkProps) {
         {...props}
       />
     </Button>
-  );
+  )
 }

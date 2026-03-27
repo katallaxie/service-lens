@@ -1,33 +1,33 @@
-"use client";
-"use no memo";
+"use client"
+"use no memo"
 
-import * as React from "react";
+import * as React from "react"
 
-import { Plus } from "lucide-react";
+import { Plus } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import { DataTable } from "@/components/data-table/data-table";
-import { DataTablePagination } from "@/components/data-table/data-table-pagination";
-import { DataTableViewOptions } from "@/components/data-table/data-table-view-options";
-import { withDndColumn } from "@/components/data-table/table-utils";
-import type { getEnvironments } from "@/db/queries/environments";
-import { useDataTable } from "@/hooks/use-data-table";
-import type { QueryKeys } from "@/types/data-table";
-import { AddEnvironmentModal } from "./add-environment-modal";
-import { environmentColumns } from "./columns";
+import { DataTable } from "@/components/data-table/data-table"
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
+import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
+import { withDndColumn } from "@/components/data-table/table-utils"
+import type { getEnvironments } from "@/db/queries/environments"
+import { useDataTable } from "@/hooks/use-data-table"
+import type { QueryKeys } from "@/types/data-table"
+import { AddEnvironmentModal } from "./add-environment-modal"
+import { environmentColumns } from "./columns"
 
 interface EnvironmentTableProps {
-  promises: Promise<[Awaited<ReturnType<typeof getEnvironments>>]>;
-  queryKeys?: Partial<QueryKeys>;
+  promises: Promise<[Awaited<ReturnType<typeof getEnvironments>>]>
+  queryKeys?: Partial<QueryKeys>
 }
 
 export function EnvironmentDataTable({ promises, queryKeys }: EnvironmentTableProps) {
-  const columns = withDndColumn(environmentColumns);
-  const [{ data, pageCount }] = React.use(promises);
+  const columns = withDndColumn(environmentColumns)
+  const [{ data, pageCount }] = React.use(promises)
 
   const { table } = useDataTable({
     data,
@@ -41,7 +41,7 @@ export function EnvironmentDataTable({ promises, queryKeys }: EnvironmentTablePr
     getRowId: (row) => row.id,
     shallow: false,
     clearOnDefault: true,
-  });
+  })
 
   return (
     <Tabs defaultValue="all" className="w-full flex-col justify-start gap-6">
@@ -80,5 +80,5 @@ export function EnvironmentDataTable({ promises, queryKeys }: EnvironmentTablePr
         <DataTablePagination table={table} />
       </TabsContent>
     </Tabs>
-  );
+  )
 }

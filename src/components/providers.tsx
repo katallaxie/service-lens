@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { ThemeProviderProps } from "next-themes";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { useState } from "react";
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import type { ThemeProviderProps } from "next-themes"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
+import { useState } from "react"
 
 export function QueryProvider({ children, ...props }: ThemeProviderProps) {
   const [queryClient] = useState(
@@ -17,7 +17,7 @@ export function QueryProvider({ children, ...props }: ThemeProviderProps) {
           },
         },
       }),
-  );
+  )
 
   return (
     <QueryClientProvider client={queryClient} {...props}>
@@ -25,5 +25,5 @@ export function QueryProvider({ children, ...props }: ThemeProviderProps) {
         <NuqsAdapter>{children}</NuqsAdapter>
       </TooltipProvider>
     </QueryClientProvider>
-  );
+  )
 }

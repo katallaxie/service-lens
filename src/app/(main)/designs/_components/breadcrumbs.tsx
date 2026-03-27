@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TDesign } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TDesign } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  design: TDesign;
+  design: TDesign
 }
 
 export function Breadcrumbs({ design }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ design }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { Plus } from "lucide-react";
-import type { z } from "zod";
+import { Plus } from "lucide-react"
+import type { z } from "zod"
 
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useDataTable } from "@/hooks/use-data-table";
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useDataTable } from "@/hooks/use-data-table"
 
-import type { QueryKeys } from "@/types/data-table";
-import { DataTable as DataTableNew } from "../../../../../components/data-table/data-table";
-import { DataTablePagination } from "../../../../../components/data-table/data-table-pagination";
-import { DataTableViewOptions } from "../../../../../components/data-table/data-table-view-options";
-import { withDndColumn } from "../../../../../components/data-table/table-utils";
-import { dashboardColumns } from "./columns";
-import type { sectionSchema } from "./schema";
+import type { QueryKeys } from "@/types/data-table"
+import { DataTable as DataTableNew } from "../../../../../components/data-table/data-table"
+import { DataTablePagination } from "../../../../../components/data-table/data-table-pagination"
+import { DataTableViewOptions } from "../../../../../components/data-table/data-table-view-options"
+import { withDndColumn } from "../../../../../components/data-table/table-utils"
+import { dashboardColumns } from "./columns"
+import type { sectionSchema } from "./schema"
 
 interface DesignTableProps {
-  queryKeys?: Partial<QueryKeys>;
-  data: z.infer<typeof sectionSchema>[];
+  queryKeys?: Partial<QueryKeys>
+  data: z.infer<typeof sectionSchema>[]
 }
 
 export function DataTable({ data: initialData, queryKeys }: DesignTableProps) {
-  const [data, setData] = React.useState(() => initialData);
-  const columns = withDndColumn(dashboardColumns);
+  const [data, setData] = React.useState(() => initialData)
+  const columns = withDndColumn(dashboardColumns)
   const { table } = useDataTable({
     data,
     columns,
@@ -35,7 +35,7 @@ export function DataTable({ data: initialData, queryKeys }: DesignTableProps) {
     getRowId: (row) => row.id.toString(),
     shallow: false,
     clearOnDefault: true,
-  });
+  })
 
   return (
     <Tabs defaultValue="overview" className="w-full flex-col justify-start gap-6">
@@ -69,5 +69,5 @@ export function DataTable({ data: initialData, queryKeys }: DesignTableProps) {
         <DataTablePagination table={table} />
       </TabsContent>
     </Tabs>
-  );
+  )
 }

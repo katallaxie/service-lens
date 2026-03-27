@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { signUp } from "@/lib/auth-client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import { signUp } from "@/lib/auth-client"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { toast } from "sonner"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { redirect } from "next/navigation";
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { redirect } from "next/navigation"
 
 const FormSchema = z
   .object({
@@ -23,7 +23,7 @@ const FormSchema = z
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match.",
     path: ["confirmPassword"],
-  });
+  })
 
 export function RegisterForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -34,7 +34,7 @@ export function RegisterForm() {
       password: "",
       confirmPassword: "",
     },
-  });
+  })
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) =>
     await signUp.email({
@@ -44,14 +44,14 @@ export function RegisterForm() {
       callbackURL: "/",
       fetchOptions: {
         onError: (ctx) => {
-          toast.error(ctx.error.message);
+          toast.error(ctx.error.message)
         },
         onSuccess: async () => {
-          toast.success("Successfully signed up");
-          redirect("/");
+          toast.success("Successfully signed up")
+          redirect("/")
         },
       },
-    });
+    })
 
   return (
     <Form {...form}>
@@ -119,5 +119,5 @@ export function RegisterForm() {
         </Button>
       </form>
     </Form>
-  );
+  )
 }

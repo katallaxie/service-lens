@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -9,16 +9,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Plus } from "lucide-react";
-import Form from "next/form";
-import { useActionState } from "react";
-import { createLensAction } from "./add-lens-modal.action";
+} from "@/components/ui/dialog"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Plus } from "lucide-react"
+import Form from "next/form"
+import { useActionState } from "react"
+import { createLensAction } from "./add-lens-modal.action"
 
 export function AddLensModal() {
-  const [state, formAction, pending] = useActionState(createLensAction, null);
+  const [state, formAction, pending] = useActionState(createLensAction, null)
 
   return (
     <Dialog>
@@ -51,5 +51,5 @@ export function AddLensModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -5,12 +5,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import type { TLens } from "@/db/schema";
-import Link from "next/link";
+} from "@/components/ui/breadcrumb"
+import type { TLens } from "@/db/schema"
+import Link from "next/link"
 
 export interface BreadcrumbsProps {
-  lens: TLens;
+  lens: TLens
 }
 
 export function Breadcrumbs({ lens }: BreadcrumbsProps) {
@@ -34,5 +34,5 @@ export function Breadcrumbs({ lens }: BreadcrumbsProps) {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

@@ -1,22 +1,22 @@
-import { notFound } from "next/navigation";
+import { notFound } from "next/navigation"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { getWorkloadById } from "@/db/queries/workloads";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { getWorkloadById } from "@/db/queries/workloads"
 
-import { Breadcrumbs } from "../_components/breadcrumbs";
+import { Breadcrumbs } from "../_components/breadcrumbs"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+  const { id } = await params
 
   if (!id) {
-    notFound();
+    notFound()
   }
 
-  const workload = await getWorkloadById(id);
+  const workload = await getWorkloadById(id)
 
   if (!workload) {
-    return notFound();
+    return notFound()
   }
 
   return (
@@ -93,5 +93,5 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

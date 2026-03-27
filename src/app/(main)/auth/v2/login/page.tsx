@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Link from "next/link"
 
-import { Globe } from "lucide-react";
+import { Globe } from "lucide-react"
 
-import { APP_CONFIG } from "@/config/app-config";
+import { APP_CONFIG } from "@/config/app-config"
 
-import { LoginForm } from "../../_components/login-form";
-import { GitHubButton } from "../../_components/social-auth/github-button";
-import { GoogleButton } from "../../_components/social-auth/google-button";
+import { LoginForm } from "../../_components/login-form"
+import { GitHubButton } from "../../_components/social-auth/github-button"
+import { GoogleButton } from "../../_components/social-auth/google-button"
 
 export default function LoginV2() {
   return (
@@ -43,5 +43,5 @@ export default function LoginV2() {
         </div>
       </div>
     </>
-  );
+  )
 }

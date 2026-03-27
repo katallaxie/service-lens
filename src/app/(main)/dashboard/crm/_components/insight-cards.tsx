@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { Bar, BarChart, CartesianGrid, Label, LabelList, Pie, PieChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, Label, LabelList, Pie, PieChart, XAxis, YAxis } from "recharts"
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer, ChartLegend, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartContainer, ChartLegend, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 import {
   leadsBySourceChartConfig,
   leadsBySourceChartData,
   projectRevenueChartConfig,
   projectRevenueChartData,
-} from "./crm.config";
+} from "./crm.config"
 
 export function InsightCards() {
-  const totalLeads = leadsBySourceChartData.reduce((acc, curr) => acc + curr.leads, 0);
+  const totalLeads = leadsBySourceChartData.reduce((acc, curr) => acc + curr.leads, 0)
 
   return (
     <div className="grid grid-cols-1 gap-4 *:data-[slot=card]:shadow-xs sm:grid-cols-2 xl:grid-cols-5">
@@ -59,7 +59,7 @@ export function InsightCards() {
                             Leads
                           </tspan>
                         </text>
-                      );
+                      )
                     }
                   }}
                 />
@@ -144,5 +144,5 @@ export function InsightCards() {
         </CardFooter>
       </Card>
     </div>
-  );
+  )
 }

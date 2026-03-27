@@ -1,6 +1,6 @@
-import { pgTable } from "@/db/utils";
-import { bigserial, index, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { pgTable } from "@/db/utils"
+import { bigserial, index, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core"
+import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 
 export const tags = pgTable(
   "tag",
@@ -18,10 +18,10 @@ export const tags = pgTable(
     index("tag_name_index").on(table.name),
     uniqueIndex("tag_name_value_unique_index").on(table.name, table.value), // Ensure unique combination of name and value
   ],
-);
+)
 
-export type TTag = typeof tags.$inferSelect;
-export type TNewTag = typeof tags.$inferInsert;
+export type TTag = typeof tags.$inferSelect
+export type TNewTag = typeof tags.$inferInsert
 
 export const tagInsertSchema = createInsertSchema(tags, {
   name: (schema) => schema.min(1, "Name is required").max(255, "Name must be at most 255 characters"),
@@ -29,12 +29,12 @@ export const tagInsertSchema = createInsertSchema(tags, {
 }).pick({
   name: true,
   value: true,
-});
-export const tagSelectSchema = createSelectSchema(tags);
+})
+export const tagSelectSchema = createSelectSchema(tags)
 export const tagDeleteSchema = createSelectSchema(tags).pick({
   id: true,
-});
+})
 
-export type TTagInsertSchema = ReturnType<typeof tagInsertSchema.parse>;
-export type TTagSelectSchema = ReturnType<typeof tagSelectSchema.parse>;
-export type TTagDeleteSchema = ReturnType<typeof tagDeleteSchema.parse>;
+export type TTagInsertSchema = ReturnType<typeof tagInsertSchema.parse>
+export type TTagSelectSchema = ReturnType<typeof tagSelectSchema.parse>
+export type TTagDeleteSchema = ReturnType<typeof tagDeleteSchema.parse>

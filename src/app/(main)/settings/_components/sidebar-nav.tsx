@@ -1,29 +1,29 @@
-"use client";
+"use client"
 
-import { buttonVariants } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState, type JSX } from "react";
+import { buttonVariants } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState, type JSX } from "react"
 
 type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
   items: {
-    href: string;
-    title: string;
-    icon: JSX.Element;
-  }[];
-};
+    href: string
+    title: string
+    icon: JSX.Element
+  }[]
+}
 
 export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
-  const pathname = usePathname();
-  const [val, setVal] = useState(pathname ?? "/settings");
+  const pathname = usePathname()
+  const [val, setVal] = useState(pathname ?? "/settings")
 
   const handleSelect = (e: string) => {
-    setVal(e);
+    setVal(e)
     // navigate({ to: e })
-  };
+  }
 
   return (
     <>
@@ -65,5 +65,5 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
         </nav>
       </ScrollArea>
     </>
-  );
+  )
 }

@@ -1,18 +1,13 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import { ChevronRight, MailIcon, PlusCircleIcon } from "lucide-react";
+import { ChevronRight, MailIcon, PlusCircleIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -24,25 +19,25 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import type { NavGroup, NavMainItem } from "@/navigation/sidebar/sidebar-items";
+} from "@/components/ui/sidebar"
+import type { NavGroup, NavMainItem } from "@/navigation/sidebar/sidebar-items"
 
 interface NavMainProps {
-  readonly items: readonly NavGroup[];
+  readonly items: readonly NavGroup[]
 }
 
 const IsComingSoon = () => (
   <span className="ml-auto rounded-md bg-gray-200 px-2 py-1 text-xs dark:text-gray-800">Soon</span>
-);
+)
 
 const NavItemExpanded = ({
   item,
   isActive,
   isSubmenuOpen,
 }: {
-  item: NavMainItem;
-  isActive: (url: string, subItems?: NavMainItem["subItems"]) => boolean;
-  isSubmenuOpen: (subItems?: NavMainItem["subItems"]) => boolean;
+  item: NavMainItem
+  isActive: (url: string, subItems?: NavMainItem["subItems"]) => boolean
+  isSubmenuOpen: (subItems?: NavMainItem["subItems"]) => boolean
 }) => {
   return (
     <Collapsible key={item.title} asChild defaultOpen={isSubmenuOpen(item.subItems)} className="group/collapsible">
@@ -93,15 +88,15 @@ const NavItemExpanded = ({
         )}
       </SidebarMenuItem>
     </Collapsible>
-  );
-};
+  )
+}
 
 const NavItemCollapsed = ({
   item,
   isActive,
 }: {
-  item: NavMainItem;
-  isActive: (url: string, subItems?: NavMainItem["subItems"]) => boolean;
+  item: NavMainItem
+  isActive: (url: string, subItems?: NavMainItem["subItems"]) => boolean
 }) => {
   return (
     <SidebarMenuItem key={item.title}>
@@ -138,23 +133,23 @@ const NavItemCollapsed = ({
         </DropdownMenuContent>
       </DropdownMenu>
     </SidebarMenuItem>
-  );
-};
+  )
+}
 
 export function NavMain({ items }: NavMainProps) {
-  const path = usePathname();
-  const { state, isMobile } = useSidebar();
+  const path = usePathname()
+  const { state, isMobile } = useSidebar()
 
   const isItemActive = (url: string, subItems?: NavMainItem["subItems"]) => {
     if (subItems?.length) {
-      return subItems.some((sub) => path.startsWith(sub.url));
+      return subItems.some((sub) => path.startsWith(sub.url))
     }
-    return path === url;
-  };
+    return path === url
+  }
 
   const isSubmenuOpen = (subItems?: NavMainItem["subItems"]) => {
-    return subItems?.some((sub) => path.startsWith(sub.url)) ?? false;
-  };
+    return subItems?.some((sub) => path.startsWith(sub.url)) ?? false
+  }
 
   return (
     <>
@@ -204,20 +199,20 @@ export function NavMain({ items }: NavMainProps) {
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    );
+                    )
                   }
                   // Otherwise, render the dropdown as before
-                  return <NavItemCollapsed key={item.title} item={item} isActive={isItemActive} />;
+                  return <NavItemCollapsed key={item.title} item={item} isActive={isItemActive} />
                 }
                 // Expanded view
                 return (
                   <NavItemExpanded key={item.title} item={item} isActive={isItemActive} isSubmenuOpen={isSubmenuOpen} />
-                );
+                )
               })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       ))}
     </>
-  );
+  )
 }

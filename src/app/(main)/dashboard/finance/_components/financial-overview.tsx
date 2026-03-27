@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { ArrowDownLeft, ArrowUpRight, CalendarCheck } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { ArrowDownLeft, ArrowUpRight, CalendarCheck } from "lucide-react"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { formatCurrency } from "@/lib/utils";
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Separator } from "@/components/ui/separator"
+import { formatCurrency } from "@/lib/utils"
 
 const chartData = [
   { month: "Jan", scheduled: 2000, expenses: 4000, income: 9500 },
@@ -22,7 +22,7 @@ const chartData = [
   { month: "Oct", scheduled: 2100, expenses: 4100, income: 9500 },
   { month: "Nov", scheduled: 2100, expenses: 4100, income: 9500 },
   { month: "Dec", scheduled: 2100, expenses: 4100, income: 9500 },
-];
+]
 
 const chartConfig = {
   scheduled: {
@@ -37,12 +37,12 @@ const chartConfig = {
     label: "Income",
     color: "var(--chart-3)",
   },
-} as ChartConfig;
+} as ChartConfig
 
 export function FinancialOverview() {
-  const totalIncome = chartData.reduce((acc, item) => acc + item.income, 0);
-  const totalExpenses = chartData.reduce((acc, item) => acc + item.expenses, 0);
-  const totalScheduled = chartData.reduce((acc, item) => acc + item.scheduled, 0);
+  const totalIncome = chartData.reduce((acc, item) => acc + item.income, 0)
+  const totalExpenses = chartData.reduce((acc, item) => acc + item.expenses, 0)
+  const totalScheduled = chartData.reduce((acc, item) => acc + item.scheduled, 0)
   return (
     <Card className="shadow-xs">
       <CardHeader>
@@ -114,5 +114,5 @@ export function FinancialOverview() {
         </ChartContainer>
       </CardContent>
     </Card>
-  );
+  )
 }

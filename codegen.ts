@@ -1,4 +1,4 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from "@graphql-codegen/cli"
 
 const config: CodegenConfig = {
   schema: "schema.graphql",
@@ -10,5 +10,5 @@ const config: CodegenConfig = {
       plugins: ["typescript-resolvers", "typescript-typedefs"],
     },
   },
-};
-export default config;
+}
+export default config

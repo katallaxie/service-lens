@@ -1,22 +1,22 @@
-import { notFound } from "next/navigation";
-import { getDesignById } from "@/db/queries/designs";
-import EditDesignForm from "./edit-form";
+import { notFound } from "next/navigation"
+import { getDesignById } from "@/db/queries/designs"
+import EditDesignForm from "./edit-form"
 
 interface EditPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>
 }
 
 export default async function EditPage({ params }: EditPageProps) {
-  const { id } = await params;
+  const { id } = await params
 
   if (!id) {
-    notFound();
+    notFound()
   }
 
-  const design = await getDesignById(id);
+  const design = await getDesignById(id)
 
   if (!design) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -30,5 +30,5 @@ export default async function EditPage({ params }: EditPageProps) {
 
       <EditDesignForm design={design} />
     </div>
-  );
+  )
 }

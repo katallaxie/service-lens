@@ -13,8 +13,8 @@ const nextConfig = {
         destination: "/dashboard/default",
         permanent: false,
       },
-    ];
+    ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

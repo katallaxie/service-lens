@@ -1,6 +1,6 @@
-import packageJson from "../../package.json";
+import packageJson from "../../package.json"
 
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 
 export const APP_CONFIG = {
   name: "Service Lens",
@@ -11,4 +11,4 @@ export const APP_CONFIG = {
     description:
       "Service Lens is a modern-day service governance platform that helps you manage, monitor, and optimize your services with ease.",
   },
-};
+}

@@ -1,25 +1,25 @@
-import { createStore } from "zustand/vanilla";
+import { createStore } from "zustand/vanilla"
 
-import type { ContentLayout, NavbarStyle, SidebarCollapsible, SidebarVariant } from "@/lib/preferences/layout";
-import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config";
-import type { ThemeMode, ThemePreset } from "@/lib/preferences/theme";
+import type { ContentLayout, NavbarStyle, SidebarCollapsible, SidebarVariant } from "@/lib/preferences/layout"
+import { PREFERENCE_DEFAULTS } from "@/lib/preferences/preferences-config"
+import type { ThemeMode, ThemePreset } from "@/lib/preferences/theme"
 
 export type PreferencesState = {
-  themeMode: ThemeMode;
-  themePreset: ThemePreset;
-  contentLayout: ContentLayout;
-  navbarStyle: NavbarStyle;
-  sidebarVariant: SidebarVariant;
-  sidebarCollapsible: SidebarCollapsible;
-  setThemeMode: (mode: ThemeMode) => void;
-  setThemePreset: (preset: ThemePreset) => void;
-  setContentLayout: (layout: ContentLayout) => void;
-  setNavbarStyle: (style: NavbarStyle) => void;
-  setSidebarVariant: (variant: SidebarVariant) => void;
-  setSidebarCollapsible: (mode: SidebarCollapsible) => void;
-  isSynced: boolean;
-  setIsSynced: (val: boolean) => void;
-};
+  themeMode: ThemeMode
+  themePreset: ThemePreset
+  contentLayout: ContentLayout
+  navbarStyle: NavbarStyle
+  sidebarVariant: SidebarVariant
+  sidebarCollapsible: SidebarCollapsible
+  setThemeMode: (mode: ThemeMode) => void
+  setThemePreset: (preset: ThemePreset) => void
+  setContentLayout: (layout: ContentLayout) => void
+  setNavbarStyle: (style: NavbarStyle) => void
+  setSidebarVariant: (variant: SidebarVariant) => void
+  setSidebarCollapsible: (mode: SidebarCollapsible) => void
+  isSynced: boolean
+  setIsSynced: (val: boolean) => void
+}
 
 export const createPreferencesStore = (init?: Partial<PreferencesState>) =>
   createStore<PreferencesState>()((set) => ({
@@ -37,4 +37,4 @@ export const createPreferencesStore = (init?: Partial<PreferencesState>) =>
     setSidebarCollapsible: (mode) => set({ sidebarCollapsible: mode }),
     isSynced: init?.isSynced ?? false,
     setIsSynced: (val) => set({ isSynced: val }),
-  }));
+  }))
