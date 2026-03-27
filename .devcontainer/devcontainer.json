@@ -16,12 +16,9 @@
     "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
   "appPort": 3000,
-  "forwardPorts": [
-    3000,
-    5432
-  ],
+  "forwardPorts": [3000, 5432],
   "containerEnv": {
-     "SHELL": "/usr/bin/zsh"
+    "SHELL": "/usr/bin/zsh"
   },
   "portsAttributes": {
     "3000": {
@@ -37,7 +34,7 @@
     "vscode": {
       "extensions": [
         "ms-ossdata.vscode-pgsql",
-        "dbaeumer.vscode-eslint",
+        "biomejs.biome",
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "eamodio.gitlens"

@@ -1,34 +1,34 @@
-import { db } from '@/db/index'
-import { designs, TNewDesign } from '@/db/schema'
+import { db } from "@/db/index";
+import { designs, type TNewDesign } from "@/db/schema";
 
 export async function seedDesign(input: { count: number }) {
-    const count = input.count ?? 100
+  const count = input.count ?? 100;
 
-    try {
-        const allDesigns: TNewDesign[] = []
+  try {
+    const allDesigns: TNewDesign[] = [];
 
-        // Add some predefined designs with rich content
-        allDesigns.push(...getPredefinedDesigns())
+    // Add some predefined designs with rich content
+    allDesigns.push(...getPredefinedDesigns());
 
-        // Add random designs
-        for (let i = 0; i < count - 3; i++) {
-            allDesigns.push(generateRandomDesign())
-        }
-
-        await db.delete(designs)
-
-        console.log('📝 Inserting designs', allDesigns.length)
-
-        await db.insert(designs).values(allDesigns).onConflictDoNothing()
-    } catch (err) {
-        console.error(err)
+    // Add random designs
+    for (let i = 0; i < count - 3; i++) {
+      allDesigns.push(generateRandomDesign());
     }
+
+    await db.delete(designs);
+
+    console.log("📝 Inserting designs", allDesigns.length);
+
+    await db.insert(designs).values(allDesigns).onConflictDoNothing();
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export function generateRandomDesign(input?: Partial<TNewDesign>): TNewDesign {
-    const designNumber = Math.floor(Math.random() * 1000)
-    const sampleBodies = [
-        `# Design Overview ${designNumber}
+  const designNumber = Math.floor(Math.random() * 1000);
+  const sampleBodies = [
+    `# Design Overview ${designNumber}
 
 This is a sample design document with **markdown formatting**.
 
@@ -46,7 +46,7 @@ function hello() {
 
 > This is a sample design for demonstration purposes.`,
 
-        `# Project Specification
+    `# Project Specification
 
 ## Introduction
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -60,23 +60,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 **Bold text** and *italic text* for emphasis.`,
 
-        null, // Some designs without body content
-    ]
+    null, // Some designs without body content
+  ];
 
-    return {
-        title: `Design ${designNumber}`,
-        description: `This is a description for design ${designNumber}`,
-        body: sampleBodies[Math.floor(Math.random() * sampleBodies.length)],
-        ...input,
-    }
+  return {
+    title: `Design ${designNumber}`,
+    description: `This is a description for design ${designNumber}`,
+    body: sampleBodies[Math.floor(Math.random() * sampleBodies.length)],
+    ...input,
+  };
 }
 
 function getPredefinedDesigns(): TNewDesign[] {
-    return [
-        {
-            title: 'User Authentication System',
-            description: 'Complete authentication system with JWT tokens and role-based access control',
-            body: `# User Authentication System
+  return [
+    {
+      title: "User Authentication System",
+      description: "Complete authentication system with JWT tokens and role-based access control",
+      body: `# User Authentication System
 
 ## Overview
 This document outlines the design for a comprehensive user authentication system that provides secure login, registration, and role-based access control.
@@ -174,11 +174,11 @@ Authenticate user and return JWT token.
 ---
 
 *This document is part of the system architecture documentation.*`,
-        },
-        {
-            title: 'E-commerce Product Catalog',
-            description: 'Scalable product catalog system with search, filtering, and inventory management',
-            body: `# E-commerce Product Catalog
+    },
+    {
+      title: "E-commerce Product Catalog",
+      description: "Scalable product catalog system with search, filtering, and inventory management",
+      body: `# E-commerce Product Catalog
 
 ## System Architecture
 
@@ -318,11 +318,11 @@ Search products with filters and pagination.
 ---
 
 *Last updated: December 2024*`,
-        },
-        {
-            title: 'Mobile App UI/UX Guidelines',
-            description: 'Comprehensive design system and user experience guidelines for mobile applications',
-            body: `# Mobile App UI/UX Guidelines
+    },
+    {
+      title: "Mobile App UI/UX Guidelines",
+      description: "Comprehensive design system and user experience guidelines for mobile applications",
+      body: `# Mobile App UI/UX Guidelines
 
 ## Design Principles
 
@@ -497,6 +497,6 @@ Use consistent colors, typography, and spacing throughout the app.
 ---
 
 *These guidelines should be reviewed and updated quarterly to ensure they remain current with platform updates and best practices.*`,
-        },
-    ]
+    },
+  ];
 }

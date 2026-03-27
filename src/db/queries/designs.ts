@@ -1,77 +1,77 @@
-import 'server-only'
+import "server-only";
 
-import { db } from '@/db'
-import { designs } from '@/db/schema'
+import { db } from "@/db";
+import { designs } from "@/db/schema";
 import {
-    designInsertSchema,
-    designDeleteSchema,
-    designSelectSchema,
-    TDesignInsertSchema,
-    TDesignDeleteSchema,
-    TDesign,
-} from '@/db/schemas/design'
-import { count, eq } from 'drizzle-orm'
-import { paginationParams } from './pagination'
+  designInsertSchema,
+  designDeleteSchema,
+  designSelectSchema,
+  type TDesignInsertSchema,
+  type TDesignDeleteSchema,
+  type TDesign,
+} from "@/db/schemas/design";
+import { count, eq } from "drizzle-orm";
+import type { paginationParams } from "./pagination";
 
-export type GetDesignsSchema = ReturnType<typeof paginationParams.parse>
+export type GetDesignsSchema = ReturnType<typeof paginationParams.parse>;
 
 export async function getDesigns(input: GetDesignsSchema) {
-    try {
-        const offset = (input.page - 1) * input.perPage
-        const { data, total } = await db.transaction(async (tx) => {
-            const data = await tx.select().from(designs).limit(input.perPage).offset(offset)
+  try {
+    const offset = (input.page - 1) * input.perPage;
+    const { data, total } = await db.transaction(async (tx) => {
+      const data = await tx.select().from(designs).limit(input.perPage).offset(offset);
 
-            const total = await tx
-                .select({
-                    count: count(),
-                })
-                .from(designs)
-                .execute()
-                .then((res) => res[0]?.count ?? 0)
-
-            return {
-                data,
-                total,
-            }
+      const total = await tx
+        .select({
+          count: count(),
         })
+        .from(designs)
+        .execute()
+        .then((res) => res[0]?.count ?? 0);
 
-        const pageCount = Math.ceil(total / input.perPage)
-        return { data, pageCount }
-    } catch {
-        return { data: [], pageCount: 0 }
-    }
+      return {
+        data,
+        total,
+      };
+    });
+
+    const pageCount = Math.ceil(total / input.perPage);
+    return { data, pageCount };
+  } catch {
+    return { data: [], pageCount: 0 };
+  }
 }
 
 export const insertDesign = async (input: TDesignInsertSchema) => {
-    const parsed = await designInsertSchema.parseAsync(input)
-    const result = await db.insert(designs).values(parsed).returning()
-    return result[0]
-}
+  const parsed = await designInsertSchema.parseAsync(input);
+  const result = await db.insert(designs).values(parsed).returning();
+  return result[0];
+};
 
 export const deleteDesign = async (input: TDesignDeleteSchema) => {
-    const parsed = await designDeleteSchema.parseAsync(input)
-    await db.delete(designs).where(eq(designs.id, parsed.id))
-}
+  const parsed = await designDeleteSchema.parseAsync(input);
+  await db.delete(designs).where(eq(designs.id, parsed.id));
+};
 
 export const updateDesign = async (id: string, input: Partial<TDesignInsertSchema>): Promise<TDesign | null> => {
-    try {
-        const updateData = designInsertSchema.partial().parse(input)
-        const result = await db
-            .update(designs)
-            .set({ ...updateData, updatedAt: new Date() })
-            .where(eq(designs.id, id))
-            .returning()
-        return result[0] || null
-    } catch {
-        return null
-    }
-}
+  try {
+    const updateData = designInsertSchema.partial().parse(input);
+    const result = await db
+      .update(designs)
+      .set({ ...updateData, updatedAt: new Date() })
+      .where(eq(designs.id, id))
+      .returning();
+    return result[0] || null;
+  } catch {
+    return null;
+  }
+};
 
 export const getDesignById = async (id: string): Promise<TDesign | null> => {
-    try {
-        const result = await db.select().from(designs).where(eq(designs.id, id)).limit(1)
-        return result[0] || null
-    } catch {
-        return null
-    }
-}
+  try {
+    const result = await db.select().from(designs).where(eq(designs.id, id)).limit(1);
+    return result[0] || null;
+  } catch {
+    return null;
+  }
+};

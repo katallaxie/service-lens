@@ -1,8 +1,8 @@
-import { graphql } from '@/gql/gql'
-import { useQuery } from '@tanstack/react-query'
-import { request } from 'graphql-request'
+import { graphql } from "@/gql/gql";
+import { useQuery } from "@tanstack/react-query";
+import { request } from "graphql-request";
 
-const API_URL = 'http://localhost:3000/api/graphql'
+const API_URL = "http://localhost:3000/api/graphql";
 
 const designsQueryDocument = graphql(`
     query Query {
@@ -12,20 +12,20 @@ const designsQueryDocument = graphql(`
             body
         }
     }
-`)
+`);
 
 export const fetchDesigns = async () => {
-    return request(API_URL, designsQueryDocument)
-}
+  return request(API_URL, designsQueryDocument);
+};
 
 export function useDesigns() {
-    return useQuery({
-        queryKey: ['designs'],
-        queryFn: fetchDesigns,
-    })
+  return useQuery({
+    queryKey: ["designs"],
+    queryFn: fetchDesigns,
+  });
 }
 
 const Designs = () => {
-    const { data } = useDesigns()
-    return data
-}
+  const { data } = useDesigns();
+  return data;
+};

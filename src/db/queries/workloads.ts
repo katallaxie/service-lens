@@ -1,63 +1,63 @@
-import 'server-only'
+import "server-only";
 
-import { db } from '@/db'
-import { workloadDeleteSchema, workloadInsertSchema, workloads } from '@/db/schema'
-import type { TWorkloadDeleteSchema, TWorkloadInsertSchema } from '@/db/schemas/workload'
-import { takeFirstOrNull } from '@/db/utils'
-import { count, eq } from 'drizzle-orm'
-import { paginationParams } from './pagination'
+import { db } from "@/db";
+import { workloadDeleteSchema, workloadInsertSchema, workloads } from "@/db/schema";
+import type { TWorkloadDeleteSchema, TWorkloadInsertSchema } from "@/db/schemas/workload";
+import { takeFirstOrNull } from "@/db/utils";
+import { count, eq } from "drizzle-orm";
+import type { paginationParams } from "./pagination";
 
-export type getWorkloadsSchema = ReturnType<typeof paginationParams.parse>
+export type getWorkloadsSchema = ReturnType<typeof paginationParams.parse>;
 
 export async function getWorkloads(input: getWorkloadsSchema) {
-    try {
-        const offset = (input.page - 1) * input.perPage
-        const { data, total } = await db.transaction(async (tx) => {
-            const data = await tx.select().from(workloads).limit(input.perPage).offset(offset)
+  try {
+    const offset = (input.page - 1) * input.perPage;
+    const { data, total } = await db.transaction(async (tx) => {
+      const data = await tx.select().from(workloads).limit(input.perPage).offset(offset);
 
-            const total = await tx
-                .select({
-                    count: count(),
-                })
-                .from(workloads)
-                .execute()
-                .then((res) => res[0]?.count ?? 0)
-
-            return {
-                data,
-                total,
-            }
+      const total = await tx
+        .select({
+          count: count(),
         })
+        .from(workloads)
+        .execute()
+        .then((res) => res[0]?.count ?? 0);
 
-        const pageCount = Math.ceil(total / input.perPage)
-        return { data, pageCount }
-    } catch {
-        return { data: [], pageCount: 0 }
-    }
+      return {
+        data,
+        total,
+      };
+    });
+
+    const pageCount = Math.ceil(total / input.perPage);
+    return { data, pageCount };
+  } catch {
+    return { data: [], pageCount: 0 };
+  }
 }
 
 export const insertWorkload = async (input: TWorkloadInsertSchema) => {
-    const parsed = await workloadInsertSchema.parseAsync(input)
-    const result = await db.insert(workloads).values(parsed).returning()
-    return takeFirstOrNull(result)
-}
+  const parsed = await workloadInsertSchema.parseAsync(input);
+  const result = await db.insert(workloads).values(parsed).returning();
+  return takeFirstOrNull(result);
+};
 
 export const deleteWorkload = async (input: TWorkloadDeleteSchema) => {
-    const parsed = await workloadDeleteSchema.parseAsync(input)
-    await db.delete(workloads).where(eq(workloads.id, parsed.id))
-}
+  const parsed = await workloadDeleteSchema.parseAsync(input);
+  await db.delete(workloads).where(eq(workloads.id, parsed.id));
+};
 
 export const getWorkloadById = async (id: string) => {
-    try {
-        const result = await db.query.workloads.findFirst({
-            where: (workload, { eq }) => eq(workload.id, id),
-            with: {
-                environments: true,
-            },
-        })
-        return result || null
-    } catch (e) {
-        console.error('Error fetching workload by ID:', e)
-        return null
-    }
-}
+  try {
+    const result = await db.query.workloads.findFirst({
+      where: (workload, { eq }) => eq(workload.id, id),
+      with: {
+        environments: true,
+      },
+    });
+    return result || null;
+  } catch (e) {
+    console.error("Error fetching workload by ID:", e);
+    return null;
+  }
+};

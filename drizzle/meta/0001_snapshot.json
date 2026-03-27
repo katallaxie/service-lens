@@ -110,12 +110,8 @@
           "name": "service_lens_account_user_id_service_lens_user_id_fk",
           "tableFrom": "service_lens_account",
           "tableTo": "service_lens_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -224,12 +220,8 @@
           "name": "service_lens_invitation_organization_id_service_lens_organization_id_fk",
           "tableFrom": "service_lens_invitation",
           "tableTo": "service_lens_organization",
-          "columnsFrom": [
-            "organization_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["organization_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -237,12 +229,8 @@
           "name": "service_lens_invitation_inviter_id_service_lens_user_id_fk",
           "tableFrom": "service_lens_invitation",
           "tableTo": "service_lens_user",
-          "columnsFrom": [
-            "inviter_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["inviter_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -326,12 +314,8 @@
           "name": "service_lens_member_organization_id_service_lens_organization_id_fk",
           "tableFrom": "service_lens_member",
           "tableTo": "service_lens_organization",
-          "columnsFrom": [
-            "organization_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["organization_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -339,12 +323,8 @@
           "name": "service_lens_member_user_id_service_lens_user_id_fk",
           "tableFrom": "service_lens_member",
           "tableTo": "service_lens_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -419,9 +399,7 @@
         "service_lens_organization_slug_unique": {
           "name": "service_lens_organization_slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "slug"
-          ]
+          "columns": ["slug"]
         }
       },
       "policies": {},
@@ -516,12 +494,8 @@
           "name": "service_lens_session_user_id_service_lens_user_id_fk",
           "tableFrom": "service_lens_session",
           "tableTo": "service_lens_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -531,9 +505,7 @@
         "service_lens_session_token_unique": {
           "name": "service_lens_session_token_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "token"
-          ]
+          "columns": ["token"]
         }
       },
       "policies": {},
@@ -597,12 +569,8 @@
           "name": "service_lens_team_organization_id_service_lens_organization_id_fk",
           "tableFrom": "service_lens_team",
           "tableTo": "service_lens_organization",
-          "columnsFrom": [
-            "organization_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["organization_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -679,12 +647,8 @@
           "name": "service_lens_team_member_team_id_service_lens_team_id_fk",
           "tableFrom": "service_lens_team_member",
           "tableTo": "service_lens_team",
-          "columnsFrom": [
-            "team_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["team_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -692,12 +656,8 @@
           "name": "service_lens_team_member_user_id_service_lens_user_id_fk",
           "tableFrom": "service_lens_team_member",
           "tableTo": "service_lens_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -765,9 +725,7 @@
         "service_lens_user_email_unique": {
           "name": "service_lens_user_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -864,12 +822,8 @@
           "name": "service_lens_design_tag_designId_service_lens_design_id_fk",
           "tableFrom": "service_lens_design_tag",
           "tableTo": "service_lens_design",
-          "columnsFrom": [
-            "designId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["designId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -877,12 +831,8 @@
           "name": "service_lens_design_tag_tagId_service_lens_tag_id_fk",
           "tableFrom": "service_lens_design_tag",
           "tableTo": "service_lens_tag",
-          "columnsFrom": [
-            "tagId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tagId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -974,12 +924,8 @@
           "name": "service_lens_environment_tag_environmentId_service_lens_environment_id_fk",
           "tableFrom": "service_lens_environment_tag",
           "tableTo": "service_lens_environment",
-          "columnsFrom": [
-            "environmentId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["environmentId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -987,12 +933,8 @@
           "name": "service_lens_environment_tag_tagId_service_lens_tag_id_fk",
           "tableFrom": "service_lens_environment_tag",
           "tableTo": "service_lens_tag",
-          "columnsFrom": [
-            "tagId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tagId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1142,12 +1084,8 @@
           "name": "service_lens_profile_lens_profileId_service_lens_profile_id_fk",
           "tableFrom": "service_lens_profile_lens",
           "tableTo": "service_lens_profile",
-          "columnsFrom": [
-            "profileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["profileId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1155,12 +1093,8 @@
           "name": "service_lens_profile_lens_lensId_service_lens_lens_id_fk",
           "tableFrom": "service_lens_profile_lens",
           "tableTo": "service_lens_lens",
-          "columnsFrom": [
-            "lensId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["lensId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1271,12 +1205,8 @@
           "name": "service_lens_profile_question_answer_profileQuestionId_service_lens_profile_question_id_fk",
           "tableFrom": "service_lens_profile_question_answer",
           "tableTo": "service_lens_profile_question",
-          "columnsFrom": [
-            "profileQuestionId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["profileQuestionId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1470,12 +1400,8 @@
           "name": "service_lens_workload_environment_workloadId_service_lens_workload_id_fk",
           "tableFrom": "service_lens_workload_environment",
           "tableTo": "service_lens_workload",
-          "columnsFrom": [
-            "workloadId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["workloadId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1483,12 +1409,8 @@
           "name": "service_lens_workload_environment_environmentId_service_lens_environment_id_fk",
           "tableFrom": "service_lens_workload_environment",
           "tableTo": "service_lens_environment",
-          "columnsFrom": [
-            "environmentId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["environmentId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1536,12 +1458,8 @@
           "name": "service_lens_workload_lens_workloadId_service_lens_workload_id_fk",
           "tableFrom": "service_lens_workload_lens",
           "tableTo": "service_lens_workload",
-          "columnsFrom": [
-            "workloadId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["workloadId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1549,12 +1467,8 @@
           "name": "service_lens_workload_lens_lensId_service_lens_lens_id_fk",
           "tableFrom": "service_lens_workload_lens",
           "tableTo": "service_lens_lens",
-          "columnsFrom": [
-            "lensId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["lensId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1588,12 +1502,8 @@
           "name": "service_lens_workload_profile_workloadId_service_lens_workload_id_fk",
           "tableFrom": "service_lens_workload_profile",
           "tableTo": "service_lens_workload",
-          "columnsFrom": [
-            "workloadId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["workloadId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1601,12 +1511,8 @@
           "name": "service_lens_workload_profile_profileId_service_lens_profile_id_fk",
           "tableFrom": "service_lens_workload_profile",
           "tableTo": "service_lens_profile",
-          "columnsFrom": [
-            "profileId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["profileId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1640,12 +1546,8 @@
           "name": "service_lens_workload_tag_workloadId_service_lens_workload_id_fk",
           "tableFrom": "service_lens_workload_tag",
           "tableTo": "service_lens_workload",
-          "columnsFrom": [
-            "workloadId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["workloadId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1653,12 +1555,8 @@
           "name": "service_lens_workload_tag_tagId_service_lens_tag_id_fk",
           "tableFrom": "service_lens_workload_tag",
           "tableTo": "service_lens_tag",
-          "columnsFrom": [
-            "tagId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tagId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

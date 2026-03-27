@@ -1,24 +1,24 @@
 // Utility type to extract keys from an object type T whose values match type V
 type KeysMatching<T extends object, V> = {
-    [K in keyof T]-?: T[K] extends V ? K : never
-}[keyof T]
+  [K in keyof T]-?: T[K] extends V ? K : never;
+}[keyof T];
 
 // Generic interface for API request parameters
 export type ApiRequest<T> = {
-    offset?: number
-    limit?: number
-    filter?: Partial<T>
-}
-declare const ApiRequest: new <T>() => ApiRequest<T>
+  offset?: number;
+  limit?: number;
+  filter?: Partial<T>;
+};
+declare const ApiRequest: new <T>() => ApiRequest<T>;
 
 // Generic interface for API response structure
 export type ApiResponse<T> = {
-    items: T[]
-    totalCount: number
-    offset: number
-    limit: number
-}
-declare const ApiResponse: new <T>() => ApiResponse<T>
+  items: T[];
+  totalCount: number;
+  offset: number;
+  limit: number;
+};
+declare const ApiResponse: new <T>() => ApiResponse<T>;
 
 // // Type for creating a new instance of T, excluding auto-generated fields like 'id' and timestamps
 // export type CreateParams<T> = Omit<T, KeysMatching<T, number | Date>> & Partial<Pick<T, KeysMatching<T, number | Date>>>
