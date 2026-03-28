@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { getWorkloadById } from "@/db/queries/workloads"
 
@@ -44,6 +45,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardDescription>Associated environments for this workload.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2" />
+        <CardFooter>
+          <Button>
+            Assign
+          </Button>
+        </CardFooter>
       </Card>
 
       {/* Timestamps */}
