@@ -1,14 +1,16 @@
 import { notFound } from "next/navigation"
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { getWorkloadById } from "@/db/queries/workloads"
 
+import { EnvironmentDataTable } from "../../environments/_components/data-table"
 import { Breadcrumbs } from "../_components/breadcrumbs"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+
+  const promises =  Promise.all([Promise.resolve({ data: [], pageCount: 0 })])
 
   if (!id) {
     notFound()
@@ -44,12 +46,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardTitle className="flex items-center gap-2">Environments</CardTitle>
           <CardDescription>Associated environments for this workload.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-2" />
-        <CardFooter>
-          <Button>
-            Assign
-          </Button>
-        </CardFooter>
+        <CardContent>
+          <EnvironmentDataTable promises={promises}  />
+        </CardContent>
       </Card>
 
       {/* Timestamps */}

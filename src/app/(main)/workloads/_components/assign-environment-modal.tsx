@@ -4,7 +4,6 @@ import { useActionState } from "react"
 
 import Form from "next/form"
 
-import { Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -22,20 +21,17 @@ import { Input } from "@/components/ui/input"
 
 import { createWorkloadAction } from "./add-workload-modal.action"
 
-export function AddWorkloadModal() {
+export function AssignEnvironmentModal() {
   const [state, formAction, pending] = useActionState(createWorkloadAction, null)
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm" variant="default">
-          <Plus />
-          <span>Add Workload</span>
-        </Button>
+        <Button size="sm">Assign</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">
         <DialogHeader>
-          <DialogTitle>Create Workload</DialogTitle>
+          <DialogTitle>Assign Environment</DialogTitle>
           <DialogDescription>Fill in the information below to create a new workload.</DialogDescription>
         </DialogHeader>
         <Form action={formAction} id="add-workload-form">
