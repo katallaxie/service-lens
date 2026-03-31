@@ -1,10 +1,13 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
+
 import { deleteEnvironment } from "@/db/queries/environments"
 import { environmentDeleteSchema } from "@/db/schema"
-import { revalidatePath } from "next/cache"
 import "server-only"
+
 import { z } from "zod"
+
 import type { DeleteEnvironmentSchema } from "./data-rows-actions.schema"
 
 export async function deleteEnvironmentAction(_: DeleteEnvironmentSchema, data: FormData) {

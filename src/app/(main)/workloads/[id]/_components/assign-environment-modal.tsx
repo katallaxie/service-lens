@@ -19,9 +19,13 @@ import {
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
-import { createWorkloadAction } from "./add-workload-modal.action"
+import { createWorkloadAction } from "../../_components/add-workload-modal.action"
 
-export function AssignEnvironmentModal() {
+interface AddEnvironmentModalProps {
+  workloadId: string
+}
+
+export function AssignEnvironmentModal({ workloadId }: AddEnvironmentModalProps) {
   const [state, formAction, pending] = useActionState(createWorkloadAction, null)
 
   return (
@@ -34,7 +38,8 @@ export function AssignEnvironmentModal() {
           <DialogTitle>Assign Environment</DialogTitle>
           <DialogDescription>Fill in the information below to create a new workload.</DialogDescription>
         </DialogHeader>
-        <Form action={formAction} id="add-workload-form">
+        <Form action={formAction} id={`assign-environment-form-${workloadId}`}>
+          <Input type="hidden" name="workloadId" value={workloadId} />
           <FieldGroup>
             <Field data-invalid={!!state?.errors?.properties?.name}>
               <FieldLabel htmlFor="title">Name</FieldLabel>

@@ -8,7 +8,7 @@ import "server-only"
 
 import { z } from "zod"
 
-import type { AddWorkloadModalFormState } from "./add-workload-modal.schema"
+import type { AddWorkloadModalFormState } from "../../_components/add-workload-modal.schema"
 
 export async function createWorkloadAction(_: AddWorkloadModalFormState, data: FormData) {
   const values = {

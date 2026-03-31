@@ -4,13 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Separator } from "@/components/ui/separator"
 import { getWorkloadById } from "@/db/queries/workloads"
 
-import { EnvironmentDataTable } from "../../environments/_components/data-table"
 import { Breadcrumbs } from "../_components/breadcrumbs"
+import { EnvironmentDataTable } from "./_components/data-table"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
 
-  const promises =  Promise.all([Promise.resolve({ data: [], pageCount: 0 })])
+  const promises = Promise.all([Promise.resolve({ data: [], pageCount: 0 })])
 
   if (!id) {
     notFound()
@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardDescription>Associated environments for this workload.</CardDescription>
         </CardHeader>
         <CardContent>
-          <EnvironmentDataTable promises={promises}  />
+          <EnvironmentDataTable workloadId={id} promises={promises} />
         </CardContent>
       </Card>
 
