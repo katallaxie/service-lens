@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation"
 
+import { Muted } from "@/components/typography/muted"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { getWorkloadById } from "@/db/queries/workloads"
 
 import { Breadcrumbs } from "../_components/breadcrumbs"
-import { EnvironmentDataTable } from "./_components/data-table"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -46,9 +46,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardTitle className="flex items-center gap-2">Environments</CardTitle>
           <CardDescription>Associated environments for this workload.</CardDescription>
         </CardHeader>
-        <CardContent>
-          <EnvironmentDataTable workloadId={id} promises={promises} />
-        </CardContent>
+        <CardContent />
       </Card>
 
       {/* Timestamps */}
@@ -58,19 +56,14 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardDescription>Date and time of creation and updates</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* Created At */}
-          <div>
-            <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">Created</label>
-            <p className="text-sm mt-1">{workload.createdAt?.toLocaleString()}</p>
-          </div>
+          <Muted>Created</Muted>
+          <p>{workload.createdAt?.toLocaleString()}</p>
 
           <Separator />
 
           {/* Updated At */}
-          <div>
-            <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">Last Modified</label>
-            <p className="text-sm mt-1">{workload.updatedAt?.toLocaleString()}</p>
-          </div>
+          <Muted>Updated</Muted>
+          <p className="text-sm mt-1">{workload.updatedAt?.toLocaleString()}</p>
 
           {/* Deleted At */}
           {workload.deletedAt && (
