@@ -104,7 +104,7 @@
     "dotenv": "^17.4.0",
     "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.10",
-    "esbuild": "^0.27.4",
+    "esbuild": "^0.28.0",
     "globals": "^17.4.0",
     "graphql": "^16.13.2",
     "graphql-yoga": "^5.19.0",
