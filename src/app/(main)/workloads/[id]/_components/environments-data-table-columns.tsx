@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import type { TEnvironment } from "@/db/schema"
 
-import { DataTableRowActions } from "./data-rows-actions"
-
 export const environmentColumns: ColumnDef<TEnvironment>[] = [
   {
     id: "select",
@@ -34,21 +32,16 @@ export const environmentColumns: ColumnDef<TEnvironment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "header",
+    accessorKey: "name",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => {
       // return <TableCellViewer item={row.original} />
       return (
         <Button variant="link" className="w-fit px-0 text-left text-foreground" asChild>
-          <Link href={`/environments/${row.original.id}`}>{row.original.name}</Link>
+          <Link href={`/workloads/${row.original.id}`}>{row.original.name}</Link>
         </Button>
       )
     },
-    enableSorting: false,
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
     enableSorting: false,
   },
 ]

@@ -1,6 +1,7 @@
 import { getDesigns } from "@/db/queries/designs"
 import { paginationParams } from "@/db/queries/pagination"
 import type { SearchParams } from "@/types"
+
 import { DesignDataTable } from "./_components/data-table"
 
 interface IndexPageProps {

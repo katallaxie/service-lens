@@ -6,17 +6,17 @@ import { Separator } from "@/components/ui/separator"
 import { getWorkloadById } from "@/db/queries/workloads"
 
 import { Breadcrumbs } from "../_components/breadcrumbs"
+import { EnvironmentsDataTable } from "./_components/environments-data-table"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-
-  const promises = Promise.all([Promise.resolve({ data: [], pageCount: 0 })])
 
   if (!id) {
     notFound()
   }
 
   const workload = await getWorkloadById(id)
+  const environments = workload?.environments.map((env) => ({ ...env.environment })) ?? []
 
   if (!workload) {
     return notFound()
@@ -46,7 +46,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <CardTitle className="flex items-center gap-2">Environments</CardTitle>
           <CardDescription>Associated environments for this workload.</CardDescription>
         </CardHeader>
-        <CardContent />
+        <CardContent>
+          <EnvironmentsDataTable data={environments} />
+        </CardContent>
       </Card>
 
       {/* Timestamps */}

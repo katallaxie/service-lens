@@ -1,7 +1,9 @@
-import { pgTable } from "@/db/utils"
 import { relations } from "drizzle-orm"
 import { bigint, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
+
+import { pgTable } from "@/db/utils"
+
 import { tags } from "./tag"
 import { workloadEnvironment } from "./workload"
 

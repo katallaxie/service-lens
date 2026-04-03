@@ -1,9 +1,10 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
+
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 interface ActiveLinkProps extends React.ComponentProps<typeof Link> {}
 

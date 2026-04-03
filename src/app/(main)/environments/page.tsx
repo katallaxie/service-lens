@@ -1,6 +1,7 @@
 import { getEnvironments } from "@/db/queries/environments"
 import { paginationParams } from "@/db/queries/pagination"
 import type { SearchParams } from "@/types"
+
 import { EnvironmentDataTable } from "./_components/data-table"
 
 interface IndexPageProps {
