@@ -55,7 +55,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "cross-env": "^10.1.0",
-    "date-fns": "^4.1.0",
+    "date-fns": "^4.2.1",
     "drizzle-orm": "^0.45.2",
     "drizzle-seed": "^0.3.1",
     "drizzle-zod": "^0.8.3",
